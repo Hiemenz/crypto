@@ -6,7 +6,7 @@ authors = ["hiemenz <kevinhiemenz1@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.13"
+python = "^3.11"
 pandas = "^2.2.3"
 pyyaml = "^6.0.2"
 yfinance = "^0.2.54"
