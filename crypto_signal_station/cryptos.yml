@@ -1,0 +1,41 @@
+cryptos:
+  - BTC-USD
+  - ETH-USD
+  - ADA-USD
+  - XRP-USD
+  - LTC-USD
+  - SOL-USD
+  - DOGE-USD
+  - HBAR-USD
+  - XLM-USD
+
+output_path: crypto_signal_station/crypto_station_image.bmp
+
+show_boxes: True
+
+# prices
+crypto_prices:
+  - id: bitcoin
+    symbol: BTC
+  - id: ethereum
+    symbol: ETH
+  - id: ripple
+    symbol: XRP
+  - id: flare-networks
+    symbol: FLR
+  - id: cardano
+    symbol: ADA
+  - id: hedera-hashgraph
+    symbol: HBAR
+  - id: algorand
+    symbol: ALGO
+  - id: litecoin
+    symbol: LTC
+  - id: stellar
+    symbol: XLM
+  - id: solana
+    symbol: SOL
+  - id: chainlink
+    symbol: LINK
+  - id: dogecoin
+    symbol: DOGE
