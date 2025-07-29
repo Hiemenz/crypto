@@ -263,12 +263,12 @@ def get_btc_dominance():
 import platform
 
 def is_raspberry_pi():
-    return platform.system() == "Linux" and "arm" in platform.machine()
+    return platform.system().lower() == "linux" and ("arm" in platform.machine() or "aarch64" in platform.machine())
 
 
 if is_raspberry_pi():
     from display import display_single_image
-    
+
 if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "refresh":
         process_crypto_data()
