@@ -23,7 +23,11 @@ def generate_image_from_text(text_rows, config):
     text_color = config.get("text_color", "black")
     max_font_size = config.get("max_font_size", 100)
     min_font_size = config.get("min_font_size", 10)
-    font_path = config.get("font_path", "/Library/Fonts/Arial Unicode.ttf")
+    import platform
+    if platform.system() == "Linux" and "arm" in platform.machine():
+        font_path = "/usr/share/fonts/truetype/liberation/LiberationMono-Regular.ttf"
+    else:
+        font_path = config.get("font_path", "/Library/Fonts/Arial Unicode.ttf")
     show_boxes = config.get("show_boxes", True)
     
     # Margins and line spacing
