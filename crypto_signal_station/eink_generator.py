@@ -4,6 +4,7 @@ import sys
 import hashlib
 import yaml
 from PIL import Image, ImageDraw, ImageFont
+import platform
 
 
 # Load configuration from YAML file
@@ -23,9 +24,8 @@ def generate_image_from_text(text_rows, config):
     text_color = config.get("text_color", "black")
     max_font_size = config.get("max_font_size", 100)
     min_font_size = config.get("min_font_size", 10)
-    import platform
-    if platform.system() == "Linux" and "arm" in platform.machine():
-        print('chose raspbery pi font')
+    if platform.system().lower() == "linux" and ("arm" in platform.machine() or "aarch64" in platform.machine()):
+        print('Using Raspberry Pi font')
         font_path = "/usr/share/fonts/truetype/liberation/LiberationMono-Regular.ttf"
     else:
         font_path = config.get("font_path", "/Library/Fonts/Arial Unicode.ttf")
@@ -66,12 +66,20 @@ def generate_image_from_text(text_rows, config):
     def find_font_for_column(lines, box_width, box_height):
         size = max_font_size
         while size >= min_font_size:
-            font = ImageFont.truetype(font_path, size)
+            try:
+                font = ImageFont.truetype(font_path, size)
+            except OSError:
+                print(f"WARNING: Could not open font at {font_path}. Falling back to default font.")
+                return ImageFont.load_default()
             wrapped_lines = wrap_text(lines, font, box_width - 2 * margin)
             if fits_in_box(font, wrapped_lines, box_width, box_height):
                 return font
             size -= 1
-        return ImageFont.truetype(font_path, min_font_size)
+        try:
+            return ImageFont.truetype(font_path, min_font_size)
+        except OSError:
+            print(f"WARNING: Could not open fallback font at {font_path}. Using default font.")
+            return ImageFont.load_default()
 
     font_buy = find_font_for_column(buy_lines, col_width, box_height)
     font_sell = find_font_for_column(sell_lines, col_width, box_height)
