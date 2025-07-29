@@ -25,6 +25,7 @@ def generate_image_from_text(text_rows, config):
     min_font_size = config.get("min_font_size", 10)
     import platform
     if platform.system() == "Linux" and "arm" in platform.machine():
+        print('chose raspbery pi font')
         font_path = "/usr/share/fonts/truetype/liberation/LiberationMono-Regular.ttf"
     else:
         font_path = config.get("font_path", "/Library/Fonts/Arial Unicode.ttf")
