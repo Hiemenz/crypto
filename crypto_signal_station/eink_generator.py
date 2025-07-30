@@ -23,7 +23,7 @@ def generate_image_from_text(text_rows, config):
     bg_color = config.get("background_color", "white")
     text_color = config.get("text_color", "black")
     max_font_size = config.get("max_font_size", 100)
-    min_font_size = config.get("min_font_size", 10)
+    min_font_size = config.get("min_font_size", 20)
     if platform.system().lower() == "linux" and ("arm" in platform.machine() or "aarch64" in platform.machine()):
         print('Using Raspberry Pi font')
         font_path = "/usr/share/fonts/truetype/msttcorefonts/Arial.ttf"
