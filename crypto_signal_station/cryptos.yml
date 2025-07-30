@@ -21,21 +21,21 @@ crypto_prices:
     symbol: ETH
   - id: ripple
     symbol: XRP
-  # - id: flare-networks
-  #   symbol: FLR
+  - id: flare-networks
+    symbol: FLR
   - id: cardano
     symbol: ADA
   - id: hedera-hashgraph
     symbol: HBAR
   - id: algorand
     symbol: ALGO
-  # - id: litecoin
-  #   symbol: LTC
+  - id: litecoin
+    symbol: LTC
   - id: stellar
     symbol: XLM
   # - id: solana
   #   symbol: SOL
   # - id: chainlink
   #   symbol: LINK
-  # - id: dogecoin
-  #   symbol: DOGE
+  - id: dogecoin
+    symbol: DOGE
