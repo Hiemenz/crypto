@@ -26,7 +26,7 @@ def generate_image_from_text(text_rows, config):
     min_font_size = config.get("min_font_size", 20)
     if platform.system().lower() == "linux" and ("arm" in platform.machine() or "aarch64" in platform.machine()):
         print('Using Raspberry Pi font')
-        font_path = "/usr/share/fonts/truetype/msttcorefonts/Arial.ttf"
+        font_path = "/usr/share/fonts/truetype/msttcorefonts/Arial_Bold.ttf"
     else:
         font_path = config.get("font_path", "/Library/Fonts/Arial Unicode.ttf")
     show_boxes = config.get("show_boxes", True)
