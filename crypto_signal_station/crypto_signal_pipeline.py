@@ -191,8 +191,8 @@ def generate_signals_summary(folder="crypto_history_csv", target_date=None):
     # Build summary output string
     summary_output += "\n"
     if not any(buy_tiers.values()) and not any(sell_tiers.values()):
-        sell_summary += f'No Sell signals {latest_available_date.date()}\n'
-        buy_summary += f'No Buy signals {latest_available_date.date()}\n'
+        sell_summary += f'No Sell signals\n{latest_available_date.date()}\n'
+        buy_summary += f'No Buy signals\n{latest_available_date.date()}\n'
         summary_output += f'No Buy or Sell signals\n'
     else:
         if any(sell_tiers.values()):
@@ -281,7 +281,7 @@ if __name__ == "__main__":
         image_path = generate_crypto_signal_image(buy_summary_str, sell_summary_str, current_prices_str, config)
         if is_raspberry_pi():
             display_single_image(image_path)
-            
+
         if len(sys.argv) > 1 and sys.argv[1] == "tweet":
             send_toot(combined)
 
