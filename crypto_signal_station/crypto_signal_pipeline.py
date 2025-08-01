@@ -7,6 +7,7 @@ import ta
 import yaml
 import requests
 from eink_generator import generate_crypto_signal_image
+from toot import send_toot
 
 from datetime import datetime
 import sys
@@ -190,17 +191,17 @@ def generate_signals_summary(folder="crypto_history_csv", target_date=None):
     # Build summary output string
     summary_output += "\n"
     if not any(buy_tiers.values()) and not any(sell_tiers.values()):
-        sell_summary += 'No Sell signals'
-        buy_summary += 'No Buy signals'
-        summary_output += f"No Buy|Sell signals for {latest_available_date.date()}\n"
+        sell_summary += f'No Sell signals {latest_available_date.date()}\n'
+        buy_summary += f'No Buy signals {latest_available_date.date()}\n'
+        summary_output += f'No Buy or Sell signals\n'
     else:
         if any(sell_tiers.values()):
             sell_summary += "Sell on the One Day:\n"
             for tier in ["Good", "Great", "Excellent"]:
                 if sell_tiers[tier]:
-                    sell_summary += f"{tier}:\n"
+                    sell_summary += f'{tier}:\n'
                     for sym in sell_tiers[tier]:
-                        sell_summary += f"  {sym}\n"
+                        sell_summary += f'  {sym}\n'
                     sell_summary += "\n"
         if any(buy_tiers.values()):
             buy_summary += "Buy on the One Day:\n"
@@ -272,11 +273,15 @@ if is_raspberry_pi():
 if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "refresh":
         process_crypto_data()
+    
+
     else:
-        _, buy_summary_str, sell_summary_str = generate_signals_summary(target_date=None)
+        combined, buy_summary_str, sell_summary_str = generate_signals_summary(target_date=None)
         current_prices_str = get_current_prices_string()
         image_path = generate_crypto_signal_image(buy_summary_str, sell_summary_str, current_prices_str, config)
         if is_raspberry_pi():
             display_single_image(image_path)
-
+            
+        if len(sys.argv) > 1 and sys.argv[1] == "tweet":
+            send_toot(combined)
 

@@ -39,3 +39,5 @@ crypto_prices:
   #   symbol: LINK
   - id: dogecoin
     symbol: DOGE
+
+MASTODON_ACCESS_TOKEN: insert
