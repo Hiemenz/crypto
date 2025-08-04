@@ -8,6 +8,7 @@ import yaml
 import requests
 from eink_generator import generate_crypto_signal_image
 from toot import send_toot
+from send_to_x import send_tweet
 
 from datetime import datetime
 import sys
@@ -284,4 +285,5 @@ if __name__ == "__main__":
 
         if len(sys.argv) > 1 and sys.argv[1] == "tweet":
             send_toot(combined)
+            send_tweet(combined)
 
