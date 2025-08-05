@@ -11,6 +11,7 @@ from toot import send_toot
 from send_to_x import send_tweet
 
 from datetime import datetime
+from pycoingecko import CoinGeckoAPI
 import sys
 
 global symbols
@@ -262,6 +263,15 @@ def get_btc_dominance():
     return f"BTC Dominance: {btc_dominance:.2f}%\n"
 
 
+
+def get_total_marketcap():
+    cg = CoinGeckoAPI()
+    global_data = cg.get_global()
+    total_market_cap = global_data['total_market_cap']['usd']
+    print(f"Total Market Cap: ${total_market_cap:,.0f}\n")
+    return f"TMC: ${total_market_cap:,.0f}\n"
+
+
 import platform
 
 def is_raspberry_pi():
@@ -278,7 +288,9 @@ if __name__ == "__main__":
 
     else:
         combined, buy_summary_str, sell_summary_str = generate_signals_summary(target_date=None)
-        current_prices_str = get_current_prices_string()
+        current_prices_str = get_total_marketcap()
+        current_prices_str += get_current_prices_string()
+        
         image_path = generate_crypto_signal_image(buy_summary_str, sell_summary_str, current_prices_str, config)
         if is_raspberry_pi():
             display_single_image(image_path)
@@ -286,4 +298,3 @@ if __name__ == "__main__":
         if len(sys.argv) > 1 and sys.argv[1] == "tweet":
             send_toot(combined)
             send_tweet(combined)
-
