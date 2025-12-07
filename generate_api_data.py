@@ -97,6 +97,114 @@ def main():
     
     generate_reports_json()
     generate_history_json()
+    generate_latest_signals_json()
+
+def calculate_score(row):
+    """
+    Calculates a 0-100 score representing the strength/confidence of the signal.
+    """
+    signal = str(row.get("signal", "")).lower()
+    
+    # Base score from signal tier
+    if "excellent" in signal:
+        score = 95
+    elif "great" in signal:
+        score = 85
+    elif "good" in signal:
+        score = 75
+    else:
+        # For 'Hold' or no signal, calculate a 'neutrality' or 'volatility' score? 
+        # Or just a basic trend score.
+        # Let's return a "Trend Score" where 50 is neutral, >50 is bullish, <50 bearish mapped to 0-100 confidence?
+        # User asked for "Simple scores". 
+        # Let's based it on RSI for Hold.
+        rsi = row.get("rsi")
+        if pd.isna(rsi):
+            return 50
+        
+        # If High RSI (Overbought) -> High sell pressure -> High "Avoid" score?
+        # If Low RSI (Oversold) -> High buy pressure -> High "Buy" score?
+        # Let's just return a "Health" score.
+        # RSI 50 -> Score 50.
+        # RSI 30 -> Score 70 (Good to buy).
+        # RSI 70 -> Score 70 (Good to sell?).
+        # This is ambiguous.
+        # Let's default to a "Stability" score for now, or just 50.
+        score = 50
+        
+    # Add small variance based on indicators to differentiate same-tier signals
+    # For Buys: lower RSI is better
+    rsi = row.get("rsi", 50)
+    if pd.isna(rsi): rsi = 50
+    
+    if "buy" in signal:
+        # Bonus for lower RSI
+        # RSI 20 vs 30: 20 is better.
+        # Add (30 - RSI) * 0.5
+        score += (30 - rsi) * 0.2
+    elif "sell" in signal:
+        # Bonus for higher RSI
+        # RSI 80 vs 70: 80 is better.
+        score += (rsi - 70) * 0.2
+        
+    return int(min(max(score, 0), 100))
+
+def generate_latest_signals_json():
+    print(f"Generating latest signals JSON to {OUTPUT_DIR}/latest_signals.json...")
+    
+    all_signals = []
+    
+    # Scan crypto and stocks
+    for category in ["crypto", "stocks"]:
+        parquet_files = glob.glob(os.path.join(DATA_DIR, category, "1d", "*_with_signals.parquet"))
+        
+        for file_path in parquet_files:
+            try:
+                filename = os.path.basename(file_path)
+                symbol = filename.replace("_with_signals.parquet", "")
+                
+                df = pd.read_parquet(file_path)
+                if df.empty:
+                    continue
+                    
+                # Get last row
+                last_row = df.iloc[-1]
+                
+                # Convert to dict
+                item = last_row.to_dict()
+                
+                # Clean up values for JSON
+                for k, v in item.items():
+                    if pd.isna(v):
+                        item[k] = None
+                    elif isinstance(v, (pd.Timestamp, datetime)):
+                        item[k] = str(v)
+                
+                # Add calculated fields
+                item["symbol"] = symbol
+                item["category"] = category
+                item["score"] = calculate_score(last_row)
+                
+                # Determine "Side" (Buy/Sell/Hold) for easier frontend filtering
+                sig_str = str(item.get("signal", "")).lower()
+                if "buy" in sig_str:
+                    item["side"] = "buy"
+                elif "sell" in sig_str:
+                    item["side"] = "sell"
+                else:
+                    item["side"] = "hold"
+                
+                all_signals.append(item)
+                
+            except Exception as e:
+                print(f"Error processing {file_path} for latest signals: {e}")
+                
+    # Save
+    output_path = os.path.join(OUTPUT_DIR, "latest_signals.json")
+    with open(output_path, "w") as f:
+        json.dump({"updated": str(datetime.now()), "signals": all_signals}, f, indent=2)
+        
+    print(f"Latest signals JSON generation complete. ({len(all_signals)} items)")
 
 if __name__ == "__main__":
     main()

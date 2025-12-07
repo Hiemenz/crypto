@@ -1,11 +1,47 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme {
-  --color-primary: #3b82f6;
+:root {
+  --color-dark-bg: #0f172a;
+  /* Slate 900 */
+  --color-card-bg: rgba(30, 41, 59, 0.7);
+  /* Slate 800 with opacity */
+  --color-card-border: rgba(255, 255, 255, 0.1);
+  --color-text-primary: #f1f5f9;
+  /* Slate 100 */
+  --color-text-secondary: #94a3b8;
+  /* Slate 400 */
+
+  --color-signal-excellent: #22c55e;
+  /* Green 500 */
+  --color-signal-good: #4ade80;
+  /* Green 400 */
+  --color-signal-sell: #ef4444;
+  /* Red 500 */
+
+  --glass-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
-/* Custom Utilities */
 body {
-  background-color: var(--color-slate-50);
-  color: var(--color-slate-800);
+  background-color: var(--color-dark-bg);
+  color: var(--color-text-primary);
+  font-family: 'Inter', sans-serif;
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 40%);
+}
+
+.glass-card {
+  background: var(--color-card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-card-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
