@@ -1,9 +1,9 @@
-import Dashboard from './components/Dashboard'
+import ProDashboard from './components/ProDashboard'
 import './index.css'
 
 function App() {
   return (
-    <Dashboard />
+    <ProDashboard />
   )
 }
 

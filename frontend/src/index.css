@@ -3,45 +3,180 @@
 @tailwind utilities;
 
 :root {
-  --color-dark-bg: #0f172a;
-  /* Slate 900 */
-  --color-card-bg: rgba(30, 41, 59, 0.7);
-  /* Slate 800 with opacity */
-  --color-card-border: rgba(255, 255, 255, 0.1);
-  --color-text-primary: #f1f5f9;
-  /* Slate 100 */
-  --color-text-secondary: #94a3b8;
-  /* Slate 400 */
+  /* Layered Dark Mode System */
+  --bg-main: #0F0F0F;
+  /* Deepest background layer */
+  --bg-surface: #161616;
+  /* Card/panel surfaces */
+  --bg-elevated: #1F1F1F;
+  /* Section headers, elevated panels */
+  --bg-hover: #242424;
+  /* Hover states */
 
-  --color-signal-excellent: #22c55e;
-  /* Green 500 */
-  --color-signal-good: #4ade80;
-  /* Green 400 */
-  --color-signal-sell: #ef4444;
-  /* Red 500 */
+  --border-subtle: #2a2a2a;
+  --border-accent: #3a3a3a;
 
-  --glass-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  /* Text Hierarchy */
+  --text-primary: #FFFFFF;
+  --text-secondary: #B8B8B8;
+  --text-tertiary: #7A7A7A;
+  --text-muted: #A8A8A8;
+  /* For prices */
+
+  /* Cyan Accent Theme */
+  --accent-primary: #3AF2FF;
+  --accent-glow: rgba(58, 242, 255, 0.15);
+  --accent-bright: #5FFAFF;
+
+  /* Semantic Colors */
+  --color-green: #10b981;
+  --color-red: #ef4444;
+
+  /* Spacing Tokens (8px base) */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-6: 48px;
 }
 
 body {
-  background-color: var(--color-dark-bg);
-  color: var(--color-text-primary);
-  font-family: 'Inter', sans-serif;
-  background-image:
-    radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.05) 0%, transparent 40%),
-    radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 40%);
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
 }
 
-.glass-card {
-  background: var(--color-card-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--color-card-border);
-  box-shadow: var(--glass-shadow);
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
 }
 
-.text-gradient {
-  background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
+
+/* Pro Cards with Enhanced Shadow */
+.pro-card {
+  background-color: var(--bg-surface);
+  border-radius: 16px;
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), 0 0 1px rgba(58, 242, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pro-card:hover {
+  border-color: var(--border-accent);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4), 0 0 20px var(--accent-glow);
+  transform: translateY(-2px);
+}
+
+/* Pro Table with Zebra Striping */
+.pro-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.pro-table th {
+  text-align: left;
+  padding: var(--space-2);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-tertiary);
+  border-bottom: 1px solid var(--border-subtle);
+  background-color: var(--bg-elevated);
+}
+
+.pro-table td {
+  padding: var(--space-2);
+  font-size: 0.9rem;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+}
+
+.pro-table tbody tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.pro-table tr:hover td {
+  background-color: var(--bg-hover);
+  box-shadow: inset 0 0 0 1px var(--accent-glow);
+}
+
+/* Buttons with Glow */
+.btn-accent {
+  background-color: var(--accent-primary);
+  color: #000;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 8px 16px;
+  transition: all 0.2s;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(58, 242, 255, 0.3);
+}
+
+.btn-accent:hover {
+  background-color: var(--accent-bright);
+  box-shadow: 0 0 30px rgba(58, 242, 255, 0.5);
+  transform: translateY(-1px);
+}
+
+/* Pill Badge */
+.badge-pill {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-hold {
+  background-color: rgba(122, 122, 122, 0.2);
+  color: var(--text-tertiary);
+  border: 1px solid rgba(122, 122, 122, 0.3);
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* Glow Effect */
+.glow-on-hover {
+  transition: all 0.3s ease;
+}
+
+.glow-on-hover:hover {
+  box-shadow: 0 0 15px var(--accent-glow);
 }

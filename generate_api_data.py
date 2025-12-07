@@ -98,6 +98,7 @@ def main():
     generate_reports_json()
     generate_history_json()
     generate_latest_signals_json()
+    generate_crosses_json()
 
 def calculate_score(row):
     """
@@ -115,19 +116,11 @@ def calculate_score(row):
     else:
         # For 'Hold' or no signal, calculate a 'neutrality' or 'volatility' score? 
         # Or just a basic trend score.
-        # Let's return a "Trend Score" where 50 is neutral, >50 is bullish, <50 bearish mapped to 0-100 confidence?
-        # User asked for "Simple scores". 
         # Let's based it on RSI for Hold.
         rsi = row.get("rsi")
         if pd.isna(rsi):
             return 50
         
-        # If High RSI (Overbought) -> High sell pressure -> High "Avoid" score?
-        # If Low RSI (Oversold) -> High buy pressure -> High "Buy" score?
-        # Let's just return a "Health" score.
-        # RSI 50 -> Score 50.
-        # RSI 30 -> Score 70 (Good to buy).
-        # RSI 70 -> Score 70 (Good to sell?).
         # This is ambiguous.
         # Let's default to a "Stability" score for now, or just 50.
         score = 50
@@ -205,6 +198,94 @@ def generate_latest_signals_json():
         json.dump({"updated": str(datetime.now()), "signals": all_signals}, f, indent=2)
         
     print(f"Latest signals JSON generation complete. ({len(all_signals)} items)")
+
+def generate_crosses_json():
+    """
+    Scans 1wk data for StochRSI crosses and exports to JSON.
+    """
+    print(f"Generating Stoch Crosses JSON to {OUTPUT_DIR}/crosses.json...")
+    
+    crosses = []
+    categories = ["crypto", "stocks"]
+    
+    for category in categories:
+        base_folder = os.path.join(DATA_DIR, category, "1wk") # Use DATA_DIR constant
+        
+        if not os.path.exists(base_folder):
+            continue
+        
+        for file in os.listdir(base_folder):
+            if not file.endswith("_with_signals.parquet"):
+                continue
+            
+            symbol = file.replace("_with_signals.parquet", "")
+            file_path = os.path.join(base_folder, file)
+            
+            try:
+                df = pd.read_parquet(file_path)
+                if len(df) < 2:
+                    continue
+                
+                # Ensure sorted by date
+                df = df.sort_values("Date")
+                
+                prev_k = df["stoch_rsi_k"].shift(1)
+                prev_d = df["stoch_rsi_d"].shift(1)
+                curr_k = df["stoch_rsi_k"]
+                curr_d = df["stoch_rsi_d"]
+                
+                golden_mask = (prev_k < prev_d) & (curr_k > curr_d)
+                death_mask = (prev_k > prev_d) & (curr_k < curr_d)
+                
+                events = []
+                
+                golden_events = df[golden_mask].copy()
+                if not golden_events.empty:
+                    golden_events["type"] = "Golden Cross"
+                    events.append(golden_events)
+                    
+                death_events = df[death_mask].copy()
+                if not death_events.empty:
+                    death_events["type"] = "Death Cross"
+                    events.append(death_events)
+                
+                if events:
+                    all_events = pd.concat(events)
+                    
+                    for _, row in all_events.iterrows():
+                        k = row.get("stoch_rsi_k", 0)
+                        d = row.get("stoch_rsi_d", 0)
+                        cross_type = row["type"]
+                        
+                        # Add confirmed mapping
+                        if cross_type == "Golden Cross" and k > 0.2 and d > 0.2:
+                            cross_type = "Confirmed Golden Cross"
+                        elif cross_type == "Death Cross" and k < 0.8 and d < 0.8:
+                            cross_type = "Confirmed Death Cross"
+                            
+                        crosses.append({
+                            "category": category,
+                            "symbol": symbol,
+                            "type": cross_type,
+                            "price": row.get("Close", 0),
+                            "k": round(k, 2),
+                            "d": round(d, 2),
+                            "date": str(row["Date"]) # Ensure string format
+                        })
+                        
+            except Exception as e:
+                # print(f"Error processing {symbol}: {e}")
+                continue
+                
+    # Filter for last 6 months to keep file size manageable but useful
+    # Sorting in frontend
+    
+    # Save
+    output_path = os.path.join(OUTPUT_DIR, "crosses.json")
+    with open(output_path, "w") as f:
+        json.dump({"updated": str(datetime.now()), "crosses": crosses}, f, indent=2)
+        
+    print(f"Stoch Crosses JSON generation complete. ({len(crosses)} items)")
 
 if __name__ == "__main__":
     main()
