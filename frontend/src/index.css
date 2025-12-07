@@ -79,3 +79,26 @@ body {
 .fade-in {
   animation: fadeIn 0.4s ease-out;
 }
+
+/* Mobile Slide Transitions */
+.slide-enter {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.slide-enter-active {
+  transform: translateX(0);
+  opacity: 1;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide-exit {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.slide-exit-active {
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}

@@ -1,12 +1,14 @@
 import React from 'react';
-import { TrendingUp, Zap, Menu, X } from 'lucide-react';
+import { TrendingUp, Zap, Menu, X, ChevronLeft } from 'lucide-react';
 
 const Header = ({
     activeTab,
     setActiveTab,
     signals = [],
     sidebarOpen,
-    setSidebarOpen
+    setSidebarOpen,
+    mobileView, // New prop
+    onBack      // New prop
 }) => {
 
     // Helper to get counts
@@ -22,36 +24,40 @@ const Header = ({
     };
 
     return (
-        <header className="sticky top-0 z-50 bg-[#13161B]/95 backdrop-blur-md border-b border-[#1E2228] px-4 lg:px-6 py-3">
+        <header className="sticky top-0 z-50 bg-[#000000]/80 backdrop-blur-xl border-b border-white/5 px-4 lg:px-6 py-3 supports-[backdrop-filter]:bg-black/60">
             <div className="flex items-center justify-between gap-4">
 
                 {/* Left Side: Logo & Mobile Menu */}
                 <div className="flex items-center gap-2 lg:gap-4 shrink-0">
-                    <button
-                        onClick={() => setSidebarOpen(!sidebarOpen)}
-                        className="lg:hidden p-2 -ml-2 text-[#9CA3AF] hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#00E5FF]/50 rounded-md"
-                        aria-label="Toggle Navigation Menu"
-                    >
-                        {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
-                    </button>
+                    <div className="lg:hidden">
+                        {mobileView === 'detail' ? (
+                            <button
+                                onClick={onBack}
+                                className="p-2 -ml-2 text-[#9CA3AF] hover:text-[#E4E8EC] transition-colors focus:outline-none focus:ring-2 focus:ring-[#00E5FF]/50 rounded-full hover:bg-[#1E2228]"
+                                aria-label="Go Back"
+                            >
+                                <ChevronLeft size={24} />
+                            </button>
+                        ) : null}
+                    </div>
 
                     <div className="flex items-center gap-2 lg:gap-3">
-                        <div className="w-8 h-8 lg:w-10 lg:h-10 bg-gradient-to-br from-[#00E5FF] to-[#0077FF] rounded-lg flex items-center justify-center shadow-[0_0_15px_rgba(0,229,255,0.3)]">
-                            <TrendingUp size={18} className="text-black lg:w-5 lg:h-5" />
+                        <div className="w-8 h-8 lg:w-9 lg:h-9 bg-gradient-to-br from-[#2c2c2e] to-[#1c1c1e] rounded-[10px] flex items-center justify-center border border-white/10 shadow-sm">
+                            <TrendingUp size={18} className="text-[#0A84FF] lg:w-5 lg:h-5" />
                         </div>
-                        <h1 className="hidden sm:block text-lg lg:text-xl font-bold text-white tracking-tight">Signal Pro</h1>
+                        <h1 className="hidden sm:block text-lg lg:text-xl font-semibold text-white tracking-tight font-display">Signal Pro</h1>
                     </div>
                 </div>
 
-                {/* Center: Toggle (Responsive width) */}
-                <div className="flex-1 max-w-[280px] sm:max-w-md mx-auto">
-                    <div className="relative flex items-center bg-[#0B0D10]/50 rounded-lg p-1 border border-[#1E2228]/50">
-                        {/* Animated Background */}
+                {/* Center: Toggle (iOS Segmented Control Style) */}
+                <div className="flex-1 max-w-[280px] sm:max-w-[320px] mx-auto">
+                    <div className="relative flex items-center bg-[#767680]/20 rounded-lg p-[2px]">
+                        {/* Animated Background (Thumb) */}
                         <div
-                            className="absolute top-1 bottom-1 rounded-md transition-all duration-300 ease-out bg-[#1E2228] border border-[#323842]"
+                            className="absolute top-[2px] bottom-[2px] rounded-[6px] transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] bg-[#636366] shadow-[0_2px_4px_rgba(0,0,0,0.2)]"
                             style={{
-                                left: '4px',
-                                width: 'calc(50% - 4px)',
+                                left: '2px',
+                                width: 'calc(50% - 2px)',
                                 transform: activeTab === 'stocks' ? 'translateX(0)' : 'translateX(100%)'
                             }}
                         />
@@ -59,14 +65,13 @@ const Header = ({
                         {/* Stocks Button */}
                         <button
                             onClick={() => setActiveTab('stocks')}
-                            aria-label="Filter by Stocks"
-                            className={`relative z-10 flex-1 py-1.5 lg:py-2 text-xs lg:text-sm font-medium transition-colors duration-200 flex items-center justify-center gap-2 bg-transparent focus:outline-none focus:ring-2 focus:ring-[#00E5FF]/50 rounded-md ${activeTab === 'stocks' ? 'text-white' : 'text-[#5F6670] hover:text-[#E4E8EC]'
+                            className={`relative z-10 flex-1 py-1.5 text-[13px] font-medium transition-colors duration-200 flex items-center justify-center gap-1.5 rounded-[6px] ${activeTab === 'stocks' ? 'text-white' : 'text-[#86868b] hover:text-white'
                                 }`}
                         >
-                            <TrendingUp size={14} className={activeTab === 'stocks' ? 'text-[#00E5FF]' : ''} />
-                            <span className="hidden sm:inline">Stocks</span>
+                            <TrendingUp size={13} strokeWidth={2.5} className={activeTab === 'stocks' ? 'text-white' : 'text-[#86868b]'} />
+                            <span>Stocks</span>
                             {getCount('stocks') && (
-                                <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${activeTab === 'stocks' ? 'bg-[#00E5FF]/10 text-[#00E5FF]' : 'bg-[#1E2228] text-[#5F6670]'
+                                <span className={`text-[10px] px-1.5 py-[1px] rounded-full font-semibold ml-1 ${activeTab === 'stocks' ? 'bg-white/20 text-white' : 'bg-black/20 text-[#86868b]'
                                     }`}>
                                     {getCount('stocks')}
                                 </span>
@@ -76,14 +81,13 @@ const Header = ({
                         {/* Crypto Button */}
                         <button
                             onClick={() => setActiveTab('crypto')}
-                            aria-label="Filter by Crypto"
-                            className={`relative z-10 flex-1 py-1.5 lg:py-2 text-xs lg:text-sm font-medium transition-colors duration-200 flex items-center justify-center gap-2 bg-transparent focus:outline-none focus:ring-2 focus:ring-[#FFD60A]/50 rounded-md ${activeTab === 'crypto' ? 'text-white' : 'text-[#5F6670] hover:text-[#E4E8EC]'
+                            className={`relative z-10 flex-1 py-1.5 text-[13px] font-medium transition-colors duration-200 flex items-center justify-center gap-1.5 rounded-[6px] ${activeTab === 'crypto' ? 'text-white' : 'text-[#86868b] hover:text-white'
                                 }`}
                         >
-                            <Zap size={14} className={activeTab === 'crypto' ? 'text-[#FFD60A]' : ''} />
-                            <span className="hidden sm:inline">Crypto</span>
+                            <Zap size={13} strokeWidth={2.5} className={activeTab === 'crypto' ? 'text-white' : 'text-[#86868b]'} />
+                            <span>Crypto</span>
                             {getCount('crypto') && (
-                                <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${activeTab === 'crypto' ? 'bg-[#FFD60A]/10 text-[#FFD60A]' : 'bg-[#1E2228] text-[#5F6670]'
+                                <span className={`text-[10px] px-1.5 py-[1px] rounded-full font-semibold ml-1 ${activeTab === 'crypto' ? 'bg-white/20 text-white' : 'bg-black/20 text-[#86868b]'
                                     }`}>
                                     {getCount('crypto')}
                                 </span>
@@ -100,7 +104,7 @@ const Header = ({
                     </div>
                 </div>
             </div>
-        </header >
+        </header>
     );
 };
 

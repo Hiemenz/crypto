@@ -25,6 +25,9 @@ const ProDashboard = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [chartRange, setChartRange] = useState('ALL');
 
+    // Mobile Master-Detail State
+    const [mobileView, setMobileView] = useState('list'); // 'list' | 'detail'
+
     useEffect(() => {
         Promise.all([
             fetch('/data/latest_signals.json').then(r => r.json()),
@@ -109,12 +112,15 @@ const ProDashboard = () => {
     return (
         <div className="flex flex-col h-screen overflow-hidden bg-[#0B0D10] text-[#E4E8EC]">
             {/* Header with Slider */}
+            {/* Header with Slider */}
             <Header
                 activeTab={activeTab}
                 setActiveTab={setActiveTab}
                 signals={signals}
                 sidebarOpen={sidebarOpen}
                 setSidebarOpen={setSidebarOpen}
+                mobileView={mobileView}
+                onBack={() => setMobileView('list')}
             />
 
             <div className="flex flex-1 overflow-hidden relative">
@@ -127,66 +133,83 @@ const ProDashboard = () => {
                     />
                 )}
 
-                {/* Sidebar */}
-                <div className={`fixed inset-y-0 left-0 z-40 w-72 lg:w-80 bg-[#13161B] border-r border-[#1E2228] flex flex-col transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 h-full pt-[72px] lg:pt-0 ${sidebarOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full'
-                    }`}>
+                {/* Sidebar (Desktop: Block | Mobile: Conditional) */}
+                <div className={`
+                    fixed inset-y-0 left-0 z-40 bg-[#1c1c1e] border-r border-white/5 flex flex-col transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] h-full pt-[72px] lg:pt-0
+                    lg:relative lg:translate-x-0 w-full lg:w-80
+                    ${mobileView === 'list' ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+                    ${sidebarOpen ? 'translate-x-0 shadow-2xl' : ''} 
+                `}>
 
                     {/* Search */}
-                    <div className="p-5 border-b border-[#1E2228]">
-                        <div className="relative bg-[#0B0D10] rounded-lg">
-                            <Search className="absolute left-3 top-3 w-4 h-4 text-[#5F6670]" />
+                    <div className="p-5 border-b border-white/5">
+                        <div className="relative bg-[#2c2c2e] rounded-[10px]">
+                            <Search className="absolute left-3 top-3 w-4 h-4 text-[#86868b]" />
                             <input
                                 value={searchTerm}
                                 onChange={e => setSearchTerm(e.target.value)}
-                                placeholder="Search assets..."
+                                placeholder="Search assets"
                                 aria-label="Search assets"
-                                className="w-full bg-transparent border-none py-3 pl-10 pr-4 text-sm text-[#E4E8EC] placeholder-[#5F6670] focus:outline-none focus:ring-1 focus:ring-[#00E5FF]/30 rounded-lg transition-all"
+                                className="w-full bg-transparent border-none py-2.5 pl-10 pr-4 text-[15px] text-white placeholder-[#86868b] focus:outline-none focus:ring-0 rounded-[10px]"
                             />
                         </div>
-                        <div className="mt-2 text-xs text-[#5F6670]">{assetList.length} assets</div>
+                        <div className="mt-3 text-[11px] font-medium text-[#86868b] uppercase tracking-wide px-1">{assetList.length} assets</div>
                     </div>
 
                     {/* Asset List */}
                     <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3">
                         {assetList.map(item => (
-                            <div key={item.symbol} onClick={() => setSelectedSymbol(item.symbol)}
-                                className={`p-4 rounded-xl cursor-pointer border ${selectedSymbol === item.symbol ? 'bg-[#1E2228] border-[#00E5FF]' : 'border-transparent hover:bg-[#1E2228]'}`}>
-                                <div className="flex justify-between items-center mb-2">
-                                    <span className={`font-bold ${selectedSymbol === item.symbol ? 'text-[#00E5FF]' : 'text-[#E4E8EC]'}`}>{item.symbol}</span>
-                                    <span className={`text-[9px] font-bold px-2.5 py-1 rounded-full uppercase ${item.side === 'buy' ? 'bg-[#32D74B]/10 text-[#32D74B]' :
-                                        item.side === 'sell' ? 'bg-[#FF453A]/10 text-[#FF453A]' :
-                                            'bg-[#5F6670]/10 text-[#5F6670]' // styling for Hold
+                            <div key={item.symbol}
+                                onClick={() => {
+                                    setSelectedSymbol(item.symbol);
+                                    setMobileView('detail'); // Switch to detail view on mobile
+                                }}
+                                className={`p-4 rounded-[14px] cursor-pointer transition-colors ${selectedSymbol === item.symbol ? 'bg-[#0A84FF] text-white' : 'hover:bg-[#2c2c2e] text-white'}`}>
+                                <div className="flex justify-between items-center mb-1">
+                                    <span className="font-semibold text-[17px]">{item.symbol}</span>
+                                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide ${selectedSymbol === item.symbol ? 'bg-white/20 text-white' :
+                                        item.side === 'buy' ? 'bg-[#30d158]/10 text-[#30d158]' :
+                                            item.side === 'sell' ? 'bg-[#ff453a]/10 text-[#ff453a]' :
+                                                'bg-[#86868b]/10 text-[#86868b]' // styling for Hold
                                         }`}>
                                         {item.side}
                                     </span>
                                 </div>
-                                <div className="flex justify-between text-sm">
-                                    <span className="text-[#9CA3AF]">${formatPrice(item.Close)}</span>
-                                    <span className="font-bold text-[#00E5FF]">{item.score}</span>
+                                <div className="flex justify-between items-center text-[13px]">
+                                    <span className={selectedSymbol === item.symbol ? 'text-white/80' : 'text-[#86868b]'}>${formatPrice(item.Close)}</span>
+                                    <span className={`font-medium ${selectedSymbol === item.symbol ? 'text-white' : 'text-[#0A84FF]'}`}>{item.score}</span>
                                 </div>
                             </div>
                         ))}
                     </div>
                 </div>
 
-                {/* Main Content */}
-                <div className="flex-1 flex flex-col min-w-0 overflow-hidden relative">
+                {/* Main Content (Desktop: Block | Mobile: Conditional) */}
+                <div className={`
+                    flex-1 flex flex-col min-w-0 overflow-hidden relative bg-[#0B0D10]
+                    absolute lg:static inset-0 z-50 lg:z-auto
+                    transition-transform duration-300 ease-in-out
+                    ${mobileView === 'detail' ? 'translate-x-0' : 'translate-x-full lg:translate-x-0'}
+                `}>
                     <div className="flex-1 overflow-y-auto pt-4 lg:pt-0 p-4 lg:p-8 space-y-6 lg:space-y-8">
 
                         {/* Chart */}
-                        <div className="bg-[#13161B] rounded-2xl p-6">
-                            <div className="flex justify-between items-center mb-4">
+                        <div className="bg-[#1c1c1e] rounded-[18px] p-6 lg:p-8 shadow-sm ring-1 ring-white/5">
+                            <div className="flex justify-between items-center mb-6">
                                 <div>
-                                    <div className="text-lg font-bold">{selectedSymbol}</div>
-                                    <div className="text-sm text-[#9CA3AF]">{chartData.length} data points</div>
+                                    <div className="text-[22px] font-bold text-white tracking-tight">{selectedSymbol}</div>
+                                    <div className="text-[13px] font-medium text-[#86868b]">{chartData.length} data points</div>
                                 </div>
-                                <div className="flex gap-2">
+                                <div className="flex bg-[#2c2c2e] p-0.5 rounded-[9px]">
                                     {['3M', '1Y', 'ALL'].map(r => (
                                         <button
                                             key={r}
                                             onClick={() => setChartRange(r)}
                                             aria-label={`Set chart range to ${r}`}
-                                            className={`px-4 py-1.5 text-xs font-bold rounded-lg transition-colors ${chartRange === r ? 'bg-[#00E5FF] text-black' : 'text-[#9CA3AF] hover:text-[#E4E8EC] hover:bg-[#1E2228]'}`}>
+                                            className={`px-3 py-1 text-[11px] font-semibold rounded-[7px] transition-all min-w-[40px] ${chartRange === r
+                                                ? 'bg-[#636366] text-white shadow-sm'
+                                                : 'text-[#86868b] hover:text-white'
+                                                }`}>
                                             {r}
                                         </button>
                                     ))}
@@ -195,17 +218,17 @@ const ProDashboard = () => {
 
                             <div className="h-[300px] lg:h-[450px] w-full">
                                 {!historyData ? (
-                                    <div className="h-full flex flex-col items-center justify-center text-[#5F6670] gap-2">
-                                        <div className="w-5 h-5 rounded-full border-2 border-[#1E2228] border-t-[#00E5FF] animate-spin" />
-                                        <span className="text-xs">Loading chart data...</span>
+                                    <div className="h-full flex flex-col items-center justify-center text-[#86868b] gap-2">
+                                        <div className="w-5 h-5 rounded-full border-2 border-[#2c2c2e] border-t-[#0A84FF] animate-spin" />
+                                        <span className="text-[13px]">Loading chart data...</span>
                                     </div>
                                 ) : (
                                     <ResponsiveContainer width="100%" height="100%">
                                         <LineChart data={chartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
                                             <XAxis
                                                 dataKey="date"
-                                                stroke="#5F6670"
-                                                tick={{ fontSize: 10, fill: '#9CA3AF' }}
+                                                stroke="#48484a"
+                                                tick={{ fontSize: 11, fill: '#86868b', fontWeight: 500 }}
                                                 tickFormatter={v => v.substring(5, 10)}
                                                 axisLine={false}
                                                 tickLine={false}
@@ -213,8 +236,8 @@ const ProDashboard = () => {
                                             />
                                             <YAxis
                                                 dataKey="price"
-                                                stroke="#5F6670"
-                                                tick={{ fontSize: 10, fill: '#9CA3AF' }}
+                                                stroke="#48484a"
+                                                tick={{ fontSize: 11, fill: '#86868b', fontWeight: 500 }}
                                                 orientation="right"
                                                 width={50}
                                                 domain={['auto', 'auto']}
@@ -222,14 +245,14 @@ const ProDashboard = () => {
                                                 tickLine={false}
                                             />
                                             <Tooltip
-                                                contentStyle={{ backgroundColor: 'rgba(19, 22, 27, 0.9)', borderColor: '#1E2228', borderRadius: '12px', backdropFilter: 'blur(8px)', boxShadow: '0 4px 12px rgba(0,0,0,0.5)' }}
-                                                itemStyle={{ color: '#E4E8EC', fontSize: '12px' }}
-                                                labelStyle={{ color: '#9CA3AF', fontSize: '10px', marginBottom: '4px' }}
+                                                contentStyle={{ backgroundColor: 'rgba(28, 28, 30, 0.8)', borderColor: 'rgba(255,255,255,0.1)', borderRadius: '12px', backdropFilter: 'blur(16px)', boxShadow: '0 4px 20px rgba(0,0,0,0.4)', padding: '12px' }}
+                                                itemStyle={{ color: '#fff', fontSize: '13px', fontWeight: 500 }}
+                                                labelStyle={{ color: '#86868b', fontSize: '11px', marginBottom: '4px', fontWeight: 600 }}
                                             />
                                             <Line
                                                 type="monotone"
                                                 dataKey="price"
-                                                stroke="#00E5FF"
+                                                stroke="#0A84FF"
                                                 strokeWidth={2}
                                                 dot={<CustomDot />}
                                                 activeDot={{ r: 6, strokeWidth: 0, fill: '#FFFFFF' }}
@@ -242,7 +265,7 @@ const ProDashboard = () => {
                         </div>
 
                         {/* Content Toggle: Token vs Market */}
-                        <div className="bg-[#13161B] rounded-2xl p-6 min-h-[400px]">
+                        <div className="bg-[#1c1c1e] rounded-[18px] p-6 lg:p-8 min-h-[400px] ring-1 ring-white/5">
                             <div className="flex items-center gap-6 mb-6 border-b border-[#1E2228]">
                                 <button
                                     onClick={() => setContentTab('token')}
