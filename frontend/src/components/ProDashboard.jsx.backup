@@ -1,0 +1,420 @@
+import React, { useState, useEffect, useMemo } from 'react';
+import {
+    LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Scatter, Area
+} from 'recharts';
+import { Search, ArrowUp, ArrowDown, TrendingUp, Menu, X, Zap } from 'lucide-react';
+
+const formatPrice = (p) => p < 1 ? p?.toFixed(5) : p?.toLocaleString(undefined, { maximumFractionDigits: 2 });
+const formatPercent = (val) => val >= 0 ? `+${val.toFixed(2)}%` : `${val.toFixed(2)}%`;
+
+
+const SignalMarker = ({ cx, cy, payload }) => {
+    if (!payload.signalType) return null;
+    const isBuy = payload.signalType === 'buy';
+    const color = isBuy ? '#32D74B' : '#FF453A';
+
+    return (
+        <circle
+            cx={cx}
+            cy={cy}
+            r={5}
+            fill={color}
+            stroke="#fff"
+            strokeWidth={2}
+            opacity={0.9}
+        />
+    );
+};
+
+const ProDashboard = () => {
+    const [latestSignals, setLatestSignals] = useState([]);
+    const [crossesData, setCrossesData] = useState([]);
+    const [historyData, setHistoryData] = useState(null);
+    const [activeTab, setActiveTab] = useState('crypto');
+    const [selectedSymbol, setSelectedSymbol] = useState(null);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [loading, setLoading] = useState(true);
+    const [sidebarOpen, setSidebarOpen] = useState(false);
+    const [chartRange, setChartRange] = useState('ALL');
+
+    useEffect(() => {
+        Promise.all([
+            fetch('/data/latest_signals.json').then(res => res.json()),
+            fetch('/data/crosses.json').then(res => res.json())
+        ]).then(([signalsRes, crossesRes]) => {
+            setLatestSignals(signalsRes.signals);
+            setCrossesData(crossesRes.crosses);
+            const defaultSym = signalsRes.signals.find(s => s.category === 'crypto')?.symbol;
+            if (defaultSym) setSelectedSymbol(defaultSym);
+            setLoading(false);
+        }).catch(err => {
+            console.error("Data load failed:", err);
+            setLoading(false);
+        });
+    }, []);
+
+    useEffect(() => {
+        if (!selectedSymbol) return;
+        if (window.innerWidth < 1024) setSidebarOpen(false);
+
+        setHistoryData(null);
+        fetch(`/ data / history / ${selectedSymbol}.json`)
+            .then(res => res.json())
+            .then(data => {
+                const processed = data.data.map(item => {
+                    const closeValue = parseFloat(item.Close);
+                    return {
+                        ...item,
+                        time: new Date(item.Date).getTime(),
+                        dateStr: item.Date,
+                        Close: closeValue,
+                        rsi: parseFloat(item.rsi),
+                        mfi: parseFloat(item.mfi),
+                        stoch_rsi: parseFloat(item.stoch_rsi),
+                        Volume: parseFloat(item.Volume),
+                        signalType: (item.signal && item.signal.includes('Buy')) ? 'buy' : (item.signal && item.signal.includes('Sell')) ? 'sell' : null
+                    };
+                });
+                console.log(`Loaded ${processed.length} data points for ${selectedSymbol}`);
+                console.log('Sample data:', processed.slice(-5).map(d => ({ date: d.dateStr, close: d.Close })));
+                console.log('Price range:', Math.min(...processed.map(d => d.Close)), 'to', Math.max(...processed.map(d => d.Close)));
+                setHistoryData(processed);
+            })
+            .catch(err => console.error("History fetch failed:", err));
+    }, [selectedSymbol]);
+
+    const assetList = useMemo(() => {
+        return latestSignals
+            .filter(s => s.category === activeTab)
+            .filter(s => s.symbol.toLowerCase().includes(searchTerm.toLowerCase()))
+            .sort((a, b) => b.score - a.score);
+    }, [latestSignals, activeTab, searchTerm]);
+
+    const currentAssetSignal = useMemo(() => latestSignals.find(s => s.symbol === selectedSymbol), [latestSignals, selectedSymbol]);
+
+    const currentAssetCrosses = useMemo(() => {
+        if (!selectedSymbol) return [];
+        return crossesData
+            .filter(c => c.symbol === selectedSymbol)
+            .sort((a, b) => new Date(b.date) - new Date(a.date))
+            .slice(0, 15);
+    }, [crossesData, selectedSymbol]);
+
+    const signalHistory = useMemo(() => {
+        if (!historyData) return [];
+        return historyData
+            .filter(row => row.signal && row.signal !== 'Hold' && row.signal !== 'None')
+            .slice().reverse()
+            .slice(0, 100);
+    }, [historyData]);
+
+    const chartData = useMemo(() => {
+        if (!historyData || historyData.length === 0) return [];
+        if (chartRange === 'ALL') return historyData;
+        const cutoff = new Date();
+        if (chartRange === '1Y') cutoff.setFullYear(cutoff.getFullYear() - 1);
+        if (chartRange === '3M') cutoff.setMonth(cutoff.getMonth() - 3);
+        return historyData.filter(d => new Date(d.dateStr) >= cutoff);
+    }, [historyData, chartRange]);
+
+    const signalPoints = useMemo(() => chartData.filter(d => d.signalType !== null), [chartData]);
+
+    const latestMetrics = useMemo(() => {
+        if (!historyData || historyData.length === 0) return null;
+        const latest = historyData[historyData.length - 1];
+        const previous = historyData[historyData.length - 2];
+        const priceChange = previous ? ((latest.Close - previous.Close) / previous.Close) * 100 : 0;
+        return {
+            rsi: latest.rsi,
+            mfi: latest.mfi,
+            stochRsi: latest.stoch_rsi,
+            volume: latest.Volume,
+            priceChange
+        };
+    }, [historyData]);
+
+    const getSentiment = () => {
+        if (!currentAssetSignal) return 'NEUTRAL';
+        if (currentAssetSignal.signal?.includes('Excellent')) return 'EXCELLENT';
+        if (currentAssetSignal.signal?.includes('Great')) return 'GREAT';
+        if (currentAssetSignal.signal?.includes('Good')) return 'GOOD';
+        return 'NEUTRAL';
+    };
+
+    if (loading) return <div className="h-screen flex items-center justify-center bg-[#0B0D10] text-[#9CA3AF]">Loading...</div>;
+
+    return (
+        <div className="flex h-screen overflow-hidden bg-[#0B0D10] text-[#E4E8EC] font-sans relative">
+
+            {/* MOBILE HEADER */}
+            <div className="lg:hidden fixed top-0 left-0 right-0 h-14 bg-[#13161B] border-b border-[#1E2228] flex items-center justify-between px-4 z-50">
+                <button onClick={() => setSidebarOpen(!sidebarOpen)} className="p-2 text-[#9CA3AF] hover:text-white transition-colors">
+                    {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
+                </button>
+                <div className="text-center flex-1">
+                    <div className="text-xs text-[#9CA3AF]">{selectedSymbol}</div>
+                    <div className="text-sm font-bold text-[#00E5FF]">${formatPrice(currentAssetSignal?.Close)}</div>
+                </div>
+            </div>
+
+            {/* SIDEBAR */}
+            <div className={`
+          fixed lg:relative z - 40 h - full w - 80 bg - [#13161B] border - r border - [#1E2228] flex flex - col transition - transform duration - 300
+          ${sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+`}>
+                {/* Tabs */}
+                <div className="flex border-b border-[#1E2228] mt-14 lg:mt-0 bg-[#13161B]">
+                    <button
+                        onClick={(e) => {
+                            e.preventDefault();
+                            console.log('CRYPTO BUTTON CLICKED - Current tab:', activeTab);
+                            setActiveTab('crypto');
+                            setSearchTerm('');
+                            console.log('Switched to crypto, total signals:', latestSignals.length, 'crypto:', latestSignals.filter(s => s.category === 'crypto').length);
+                        }}
+                        className={`flex - 1 py - 6 text - xs font - bold uppercase transition - all flex items - center justify - center gap - 2 ${activeTab === 'crypto' ? 'text-[#00E5FF] border-b-2 border-[#00E5FF] bg-[#1E2228]/30' : 'text-[#5F6670] hover:text-[#9CA3AF] hover:bg-[#1E2228]/20'} `}
+                    >
+                        <Zap size={14} />
+                        Crypto
+                    </button>
+                    <button
+                        onClick={(e) => {
+                            e.preventDefault();
+                            console.log('STOCKS BUTTON CLICKED - Current tab:', activeTab);
+                            setActiveTab('stocks');
+                            setSearchTerm('');
+                            console.log('Switched to stocks, total signals:', latestSignals.length, 'stocks:', latestSignals.filter(s => s.category === 'stocks').length);
+                        }}
+                        className={`flex - 1 py - 6 text - xs font - bold uppercase transition - all flex items - center justify - center gap - 2 ${activeTab === 'stocks' ? 'text-[#00E5FF] border-b-2 border-[#00E5FF] bg-[#1E2228]/30' : 'text-[#5F6670] hover:text-[#9CA3AF] hover:bg-[#1E2228]/20'} `}
+                    >
+                        <TrendingUp size={14} />
+                        Stocks
+                    </button>
+                </div>
+
+                {/* Search */}
+                <div className="p-5 border-b border-[#1E2228]">
+                    <div className="relative bg-[#0B0D10] rounded-lg border border-[rgba(255,255,255,0.05)]">
+                        <Search className="absolute left-3 top-3 w-4 h-4 text-[#5F6670]" />
+                        <input
+                            type="text"
+                            placeholder="Search..."
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            className="w-full bg-transparent border-none py-3 pl-10 pr-4 text-sm text-[#E4E8EC] focus:ring-0 placeholder-[#5F6670]"
+                        />
+                    </div>
+                    <div className="mt-2 text-xs text-[#5F6670]">
+                        {assetList.length} {activeTab} assets
+                    </div>
+                </div>
+
+                {/* Asset List */}
+                <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3" key={activeTab}>
+                    {assetList.map(item => (
+                        <div
+                            key={item.symbol}
+                            onClick={() => setSelectedSymbol(item.symbol)}
+                            className={`p - 4 rounded - xl cursor - pointer transition - all border ${selectedSymbol === item.symbol ? 'bg-[#1E2228] border-[#00E5FF] shadow-[0_0_12px_rgba(0,229,255,0.35)]' : 'border-transparent hover:bg-[#1E2228]'} `}
+                        >
+                            <div className="flex justify-between items-center mb-2">
+                                <span className={`font - bold text - base ${selectedSymbol === item.symbol ? 'text-[#00E5FF]' : 'text-[#E4E8EC]'} `}>{item.symbol}</span>
+                                {item.side && item.side !== 'hold' && (
+                                    <span className={`text - [9px] font - bold px - 2.5 py - 1 rounded - full uppercase ${item.side === 'buy' ? 'bg-[#32D74B]/10 text-[#32D74B] border border-[#32D74B]/30' : 'bg-[#FF453A]/10 text-[#FF453A] border border-[#FF453A]/30'} `}>
+                                        {item.side}
+                                    </span>
+                                )}
+                            </div>
+                            <div className="flex justify-between items-center mt-2">
+                                <span className="text-sm text-[#9CA3AF]">${formatPrice(item.Close)}</span>
+                                <span className="text-sm font-bold text-[#00E5FF]">{item.score}</span>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            {/* MAIN CONTENT */}
+            <div className="flex-1 flex flex-col min-w-0 bg-[#0B0D10] overflow-hidden">
+
+                {/* Content Area */}
+                <div className="flex-1 overflow-y-auto pt-14 lg:pt-0">
+
+                    {/* Header */}
+                    <div className="p-6 border-b border-[#1E2228]">
+                        <div className="text-sm text-[#9CA3AF] mb-1">{selectedSymbol}</div>
+                        <div className="text-4xl font-bold text-[#E4E8EC] mb-2">${formatPrice(currentAssetSignal?.Close)}</div>
+                        {latestMetrics && (
+                            <div className={`text - sm font - medium ${latestMetrics.priceChange >= 0 ? 'text-[#32D74B]' : 'text-[#FF453A]'} `}>
+                                {formatPercent(latestMetrics.priceChange)} Today
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Indicator Tiles */}
+                    {latestMetrics && (
+                        <div className="px-6 py-4 overflow-x-auto">
+                            <div className="flex gap-3 min-w-max">
+                                <div className="bg-[#13161B] border border-[rgba(255,255,255,0.05)] rounded-2xl p-4 min-w-[110px]">
+                                    <div className="text-xs text-[#9CA3AF] mb-1">STOCH RSI</div>
+                                    <div className="text-xl font-bold text-[#00E5FF]">{latestMetrics.stochRsi?.toFixed(2) || 'N/A'}</div>
+                                </div>
+                                <div className="bg-[#13161B] border border-[rgba(255,255,255,0.05)] rounded-2xl p-4 min-w-[110px]">
+                                    <div className="text-xs text-[#9CA3AF] mb-1">RSI</div>
+                                    <div className="text-xl font-bold text-[#00E5FF]">{latestMetrics.rsi?.toFixed(1) || 'N/A'}</div>
+                                </div>
+                                <div className="bg-[#13161B] border border-[rgba(255,255,255,0.05)] rounded-2xl p-4 min-w-[110px]">
+                                    <div className="text-xs text-[#9CA3AF] mb-1">MFI</div>
+                                    <div className="text-xl font-bold text-[#00E5FF]">{latestMetrics.mfi?.toFixed(1) || 'N/A'}</div>
+                                </div>
+                                <div className="bg-[#13161B] border border-[rgba(255,255,255,0.05)] rounded-2xl p-4 min-w-[110px]">
+                                    <div className="text-xs text-[#9CA3AF] mb-1">SENTIMENT</div>
+                                    <div className={`text - lg font - bold ${getSentiment() === 'EXCELLENT' ? 'text-[#32D74B]' : getSentiment() === 'GREAT' ? 'text-[#00E5FF]' : 'text-[#9CA3AF]'} `}>
+                                        {getSentiment()}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Chart */}
+                    <div className="px-6 py-4">
+                        <div className="bg-[#13161B] rounded-2xl p-6 border border-[rgba(255,255,255,0.05)]">
+                            <div className="flex justify-between items-center mb-4">
+                                <div>
+                                    <div className="text-sm font-medium text-[#E4E8EC]">Price History</div>
+                                    <div className="text-xs text-[#5F6670] mt-1">{chartData.length} data points</div>
+                                </div>
+                                <div className="flex gap-2">
+                                    {['3M', '1Y', 'ALL'].map(r => (
+                                        <button
+                                            key={r}
+                                            onClick={() => setChartRange(r)}
+                                            className={`px - 4 py - 1.5 text - xs font - bold rounded - lg transition - all ${chartRange === r ? 'bg-[#00E5FF] text-black' : 'text-[#9CA3AF] hover:text-white'} `}
+                                        >
+                                            {r}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="h-[400px]">
+                                {!historyData ? (
+                                    <div className="h-full flex items-center justify-center text-[#5F6670]">
+                                        <span className="animate-pulse">Loading...</span>
+                                    </div>
+                                ) : (
+                                    <ResponsiveContainer width="100%" height="100%">
+                                        <LineChart data={chartData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
+                                            <defs>
+                                                <linearGradient id="colorPrice" x1="0" y1="0" x2="0" y2="1">
+                                                    <stop offset="5%" stopColor="#00E5FF" stopOpacity={0.3} />
+                                                    <stop offset="95%" stopColor="#00E5FF" stopOpacity={0} />
+                                                </linearGradient>
+                                            </defs>
+                                            <XAxis
+                                                dataKey="dateStr"
+                                                stroke="#5F6670"
+                                                tick={{ fontSize: 10, fill: '#5F6670' }}
+                                                tickFormatter={(val) => val.substring(5, 10)}
+                                                axisLine={false}
+                                                tickLine={false}
+                                            />
+                                            <YAxis
+                                                domain={['dataMin', 'dataMax']}
+                                                stroke="#5F6670"
+                                                tick={{ fontSize: 10, fill: '#5F6670' }}
+                                                tickFormatter={(val) => val >= 1000 ? `${(val / 1000).toFixed(1)} k` : val.toFixed(2)}
+                                                orientation="right"
+                                                axisLine={false}
+                                                tickLine={false}
+                                                width={60}
+                                            />
+                                            <Tooltip
+                                                contentStyle={{ backgroundColor: '#13161B', borderColor: '#1E2228', color: '#E4E8EC', borderRadius: '12px', padding: '12px' }}
+                                                itemStyle={{ color: '#9CA3AF' }}
+                                                labelStyle={{ color: '#00E5FF', fontWeight: 'bold', marginBottom: '4px' }}
+                                                labelFormatter={(l) => new Date(l).toLocaleDateString()}
+                                            />
+                                            <Area
+                                                type="monotone"
+                                                dataKey="Close"
+                                                stroke="#00E5FF"
+                                                strokeWidth={3}
+                                                fill="url(#colorPrice)"
+                                                dot={false}
+                                                activeDot={{ r: 8, strokeWidth: 2, stroke: '#00E5FF', fill: '#0B0D10' }}
+                                                isAnimationActive={false}
+                                            />
+                                            <Scatter
+                                                data={signalPoints}
+                                                shape={<SignalMarker />}
+                                                legendType="none"
+                                            />
+                                        </LineChart>
+                                    </ResponsiveContainer>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Crosses and Signals Grid */}
+                    <div className="px-6 py-4 grid grid-cols-1 lg:grid-cols-2 gap-6 pb-20">
+
+                        {/* Crosses Section */}
+                        <div>
+                            <div className="text-sm font-bold text-[#E4E8EC] mb-3">Recent Crosses ({currentAssetCrosses.length})</div>
+                            <div className="space-y-3">
+                                {currentAssetCrosses.length === 0 ? (
+                                    <div className="bg-[#13161B] rounded-2xl p-6 border border-[rgba(255,255,255,0.05)] text-center text-[#5F6670] text-sm">
+                                        No recent crosses found
+                                    </div>
+                                ) : (
+                                    currentAssetCrosses.map((cross, idx) => (
+                                        <div key={idx} className="bg-[#13161B] rounded-2xl p-4 border border-[rgba(255,255,255,0.05)]">
+                                            <div className="flex items-center justify-between mb-2">
+                                                <span className={`text - xs font - bold px - 3 py - 1.5 rounded - full uppercase ${cross.type.includes('Golden') ? 'bg-[#32D74B]/10 text-[#32D74B] border border-[#32D74B]/30' : 'bg-[#FF453A]/10 text-[#FF453A] border border-[#FF453A]/30'} `}>
+                                                    {cross.type.replace('Confirmed ', '')}
+                                                </span>
+                                                <span className="text-xs text-[#9CA3AF]">{cross.date.substring(0, 10)}</span>
+                                            </div>
+                                            <div className="text-sm text-[#E4E8EC]">Price: ${formatPrice(cross.price)}</div>
+                                        </div>
+                                    ))
+                                )}
+                            </div>
+                        </div>
+
+                        {/* Signals Section */}
+                        <div>
+                            <div className="text-sm font-bold text-[#E4E8EC] mb-3">Signal History ({signalHistory.length})</div>
+                            <div className="space-y-3">
+                                {signalHistory.length === 0 ? (
+                                    <div className="bg-[#13161B] rounded-2xl p-6 border border-[rgba(255,255,255,0.05)] text-center text-[#5F6670] text-sm">
+                                        No signals generated yet
+                                    </div>
+                                ) : (
+                                    signalHistory.map((row, idx) => (
+                                        <div key={idx} className="bg-[#13161B] rounded-2xl p-4 border border-[rgba(255,255,255,0.05)] flex items-center gap-4">
+                                            <div className={`w - 1 h - 16 rounded - full ${row.signal.includes('Buy') ? 'bg-[#32D74B]' : 'bg-[#FF453A]'} `}></div>
+                                            <div className="flex-1">
+                                                <div className="flex items-center gap-2 mb-1">
+                                                    {row.signal.includes('Buy') ? <ArrowUp className="w-4 h-4 text-[#32D74B]" /> : <ArrowDown className="w-4 h-4 text-[#FF453A]" />}
+                                                    <span className={`font - bold text - sm ${row.signal.includes('Buy') ? 'text-[#32D74B]' : 'text-[#FF453A]'} `}>{row.signal}</span>
+                                                </div>
+                                                <div className="text-xs text-[#9CA3AF]">{row.Date.substring(0, 10)} • ${formatPrice(row.Close)}</div>
+                                            </div>
+                                        </div>
+                                    ))
+                                )}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default ProDashboard;

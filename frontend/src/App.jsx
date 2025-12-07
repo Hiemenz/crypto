@@ -1,10 +1,9 @@
-import ProDashboard from './components/ProDashboard'
-import './index.css'
+import React from 'react';
+import './index.css';
+import ProDashboard from './components/ProDashboard';
 
 function App() {
-  return (
-    <ProDashboard />
-  )
+  return <ProDashboard />;
 }
 
-export default App
+export default App;

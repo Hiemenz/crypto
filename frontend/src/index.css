@@ -3,45 +3,27 @@
 @tailwind utilities;
 
 :root {
-  /* Layered Dark Mode System */
-  --bg-main: #0F0F0F;
-  /* Deepest background layer */
-  --bg-surface: #161616;
-  /* Card/panel surfaces */
-  --bg-elevated: #1F1F1F;
-  /* Section headers, elevated panels */
-  --bg-hover: #242424;
-  /* Hover states */
+  /* Fintech Color System */
+  --bg-primary: #0B0D10;
+  --bg-card: #13161B;
+  --bg-divider: #1E2228;
 
-  --border-subtle: #2a2a2a;
-  --border-accent: #3a3a3a;
+  --text-primary: #E4E8EC;
+  --text-secondary: #9CA3AF;
+  --text-disabled: #5F6670;
 
-  /* Text Hierarchy */
-  --text-primary: #FFFFFF;
-  --text-secondary: #B8B8B8;
-  --text-tertiary: #7A7A7A;
-  --text-muted: #A8A8A8;
-  /* For prices */
+  --accent-cyan: #00E5FF;
+  --accent-cyan-deep: #0097A7;
+  --success-green: #32D74B;
+  --danger-red: #FF453A;
+  --warning-yellow: #FFD60A;
 
-  /* Cyan Accent Theme */
-  --accent-primary: #3AF2FF;
-  --accent-glow: rgba(58, 242, 255, 0.15);
-  --accent-bright: #5FFAFF;
-
-  /* Semantic Colors */
-  --color-green: #10b981;
-  --color-red: #ef4444;
-
-  /* Spacing Tokens (8px base) */
-  --space-1: 8px;
-  --space-2: 16px;
-  --space-3: 24px;
-  --space-4: 32px;
-  --space-6: 48px;
+  --border-card: rgba(255, 255, 255, 0.05);
+  --glow-cyan: 0px 0px 12px rgba(0, 229, 255, 0.35);
 }
 
 body {
-  background-color: var(--bg-main);
+  background-color: var(--bg-primary);
   color: var(--text-primary);
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -50,109 +32,33 @@ body {
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-main);
+  background: var(--bg-primary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 4px;
+  background: var(--bg-divider);
+  border-radius: 3px;
   transition: background 0.2s;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #444;
+  background: #2a2e35;
 }
 
-/* Pro Cards with Enhanced Shadow */
-.pro-card {
-  background-color: var(--bg-surface);
-  border-radius: 16px;
-  border: 1px solid var(--border-subtle);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), 0 0 1px rgba(58, 242, 255, 0.1);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+/* Glass Blur Effect */
+.glass-blur {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
-.pro-card:hover {
-  border-color: var(--border-accent);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4), 0 0 20px var(--accent-glow);
-  transform: translateY(-2px);
-}
-
-/* Pro Table with Zebra Striping */
-.pro-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-}
-
-.pro-table th {
-  text-align: left;
-  padding: var(--space-2);
-  font-size: 0.7rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--text-tertiary);
-  border-bottom: 1px solid var(--border-subtle);
-  background-color: var(--bg-elevated);
-}
-
-.pro-table td {
-  padding: var(--space-2);
-  font-size: 0.9rem;
-  border-bottom: 1px solid var(--border-subtle);
-  color: var(--text-primary);
-  transition: all 0.2s ease;
-}
-
-.pro-table tbody tr:nth-child(even) {
-  background-color: rgba(255, 255, 255, 0.02);
-}
-
-.pro-table tr:hover td {
-  background-color: var(--bg-hover);
-  box-shadow: inset 0 0 0 1px var(--accent-glow);
-}
-
-/* Buttons with Glow */
-.btn-accent {
-  background-color: var(--accent-primary);
-  color: #000;
-  font-weight: 600;
-  border-radius: 8px;
-  padding: 8px 16px;
-  transition: all 0.2s;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 0 20px rgba(58, 242, 255, 0.3);
-}
-
-.btn-accent:hover {
-  background-color: var(--accent-bright);
-  box-shadow: 0 0 30px rgba(58, 242, 255, 0.5);
-  transform: translateY(-1px);
-}
-
-/* Pill Badge */
-.badge-pill {
-  display: inline-block;
-  padding: 4px 12px;
-  border-radius: 12px;
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.badge-hold {
-  background-color: rgba(122, 122, 122, 0.2);
-  color: var(--text-tertiary);
-  border: 1px solid rgba(122, 122, 122, 0.3);
+/* Glow Effect */
+.glow-cyan {
+  box-shadow: var(--glow-cyan);
 }
 
 /* Fade-in Animation */
@@ -170,13 +76,4 @@ body {
 
 .fade-in {
   animation: fadeIn 0.4s ease-out;
-}
-
-/* Glow Effect */
-.glow-on-hover {
-  transition: all 0.3s ease;
-}
-
-.glow-on-hover:hover {
-  box-shadow: 0 0 15px var(--accent-glow);
 }
