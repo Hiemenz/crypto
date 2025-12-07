@@ -135,8 +135,8 @@ const ProDashboard = () => {
 
                 {/* Sidebar (Desktop: Block | Mobile: Conditional) */}
                 <div className={`
-                    fixed inset-y-0 left-0 z-40 bg-[#1c1c1e] border-r border-white/5 flex flex-col transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] h-full pt-[72px] lg:pt-0
-                    lg:relative lg:translate-x-0 w-full lg:w-80
+                    fixed inset-y-0 left-0 right-0 lg:right-auto z-40 bg-[#1c1c1e] border-r border-white/5 flex flex-col transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] h-full pt-[72px] lg:pt-0
+                    lg:relative lg:translate-x-0 lg:w-80
                     ${mobileView === 'list' ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
                     ${sidebarOpen ? 'translate-x-0 shadow-2xl' : ''} 
                 `}>

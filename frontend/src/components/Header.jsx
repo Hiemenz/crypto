@@ -50,7 +50,7 @@ const Header = ({
                 </div>
 
                 {/* Center: Toggle (iOS Segmented Control Style) */}
-                <div className="flex-1 max-w-[280px] sm:max-w-[320px] mx-auto">
+                <div className="flex-1 max-w-[320px] sm:max-w-[360px] mx-auto">
                     <div className="relative flex items-center bg-[#767680]/20 rounded-lg p-[2px]">
                         {/* Animated Background (Thumb) */}
                         <div
