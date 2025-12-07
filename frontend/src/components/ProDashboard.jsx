@@ -35,8 +35,10 @@ const ProDashboard = () => {
         ]).then(([sig, cr]) => {
             setSignals(sig.signals);
             setCrosses(cr.crosses);
-            const first = sig.signals.find(s => s.category === 'crypto');
-            if (first) setSelectedSymbol(first.symbol);
+            const btc = sig.signals.find(s => s.symbol === 'BTC-USD');
+            const firstCrypto = sig.signals.find(s => s.category === 'crypto');
+            if (btc) setSelectedSymbol(btc.symbol);
+            else if (firstCrypto) setSelectedSymbol(firstCrypto.symbol);
             setLoading(false);
         }).catch(err => console.error('Load error:', err));
     }, []);
@@ -135,10 +137,10 @@ const ProDashboard = () => {
 
                 {/* Sidebar (Desktop: Block | Mobile: Conditional) */}
                 <div className={`
-                    fixed inset-y-0 left-0 right-0 lg:right-auto z-40 bg-[#1c1c1e] border-r border-white/5 flex flex-col transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] h-full pt-[72px] lg:pt-0
+                    fixed inset-y-0 inset-x-0 z-40 bg-[#1c1c1e] border-r border-white/5 flex flex-col transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] h-full pt-[72px] lg:pt-0
                     lg:relative lg:translate-x-0 lg:w-80
-                    ${mobileView === 'list' ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
-                    ${sidebarOpen ? 'translate-x-0 shadow-2xl' : ''} 
+                ${mobileView === 'list' ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+                ${sidebarOpen ? 'translate-x-0 shadow-2xl' : ''} 
                 `}>
 
                     {/* Search */}
@@ -374,7 +376,7 @@ const ProDashboard = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 
