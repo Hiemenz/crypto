@@ -1,0 +1,135 @@
+{
+  "date": "2025-09-09",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2025-09-09 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "ADSK       Good Sell       (Price",
+      "details": "$325.19, RSI: 69.5, MFI: 71.7, StochRSI: 0.94)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AVGO       Good Sell       (Price",
+      "details": "$336.09, RSI: 68.1, MFI: 72.0, StochRSI: 0.75)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AZO        Good Sell       (Price",
+      "details": "$4,291.12, RSI: 73.1, MFI: 71.3, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BF-B       Good Buy        (Price",
+      "details": "$27.46, RSI: 37.9, MFI: 19.6, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CMG        Good Buy        (Price",
+      "details": "$39.46, RSI: 23.6, MFI: 21.2, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "DHR        Good Buy        (Price",
+      "details": "$193.99, RSI: 37.6, MFI: 28.1, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GOOGL      Great Sell      (Price",
+      "details": "$239.63, RSI: 85.1, MFI: 82.5, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GOOG       Great Sell      (Price",
+      "details": "$239.94, RSI: 85.2, MFI: 82.9, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HPE        Good Sell       (Price",
+      "details": "$23.75, RSI: 72.3, MFI: 74.5, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "IBM        Good Sell       (Price",
+      "details": "$257.69, RSI: 63.0, MFI: 76.6, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "IVZ        Good Sell       (Price",
+      "details": "$22.04, RSI: 69.2, MFI: 72.8, StochRSI: 0.88)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MPC        Great Sell      (Price",
+      "details": "$182.26, RSI: 73.6, MFI: 80.8, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "STX        Good Sell       (Price",
+      "details": "$190.99, RSI: 79.7, MFI: 77.8, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TGT        Good Buy        (Price",
+      "details": "$89.78, RSI: 32.4, MFI: 22.6, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "VLO        Great Sell      (Price",
+      "details": "$161.83, RSI: 81.6, MFI: 85.2, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "VRSN       Good Sell       (Price",
+      "details": "$284.83, RSI: 65.4, MFI: 82.7, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WDC        Great Sell      (Price",
+      "details": "$94.54, RSI: 84.3, MFI: 86.8, StochRSI: 1.00)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 1 days) ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "ANET       Good Sell       (Price",
+      "details": "$153.04, RSI: 74.3, MFI: 74.7, StochRSI: 0.80)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 6 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 6 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

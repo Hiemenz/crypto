@@ -1,0 +1,64 @@
+{
+  "date": "2024-08-06",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2024-08-06 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "ADBE       Good Buy        (Price",
+      "details": "$514.20, RSI: 39.2, MFI: 28.7, StochRSI: 0.12)"
+    },
+    {
+      "type": "asset",
+      "symbol": "INTC       Great Buy       (Price",
+      "details": "$19.70, RSI: 15.8, MFI: 12.3, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MGM        Good Buy        (Price",
+      "details": "$35.40, RSI: 28.9, MFI: 22.6, StochRSI: 0.18)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 1 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 6 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 13 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

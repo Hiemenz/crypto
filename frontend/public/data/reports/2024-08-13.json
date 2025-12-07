@@ -1,0 +1,225 @@
+{
+  "date": "2024-08-13",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2024-08-13 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "DLTR       Great Buy       (Price",
+      "details": "$92.45, RSI: 24.0, MFI: 16.3, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HCA        Good Sell       (Price",
+      "details": "$365.27, RSI: 70.6, MFI: 81.8, StochRSI: 0.78)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ICE        Good Sell       (Price",
+      "details": "$152.51, RSI: 73.3, MFI: 71.3, StochRSI: 0.92)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MAA        Good Sell       (Price",
+      "details": "$145.43, RSI: 66.5, MFI: 72.0, StochRSI: 0.94)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MCO        Good Sell       (Price",
+      "details": "$460.21, RSI: 61.3, MFI: 74.5, StochRSI: 0.73)"
+    },
+    {
+      "type": "asset",
+      "symbol": "META       Good Sell       (Price",
+      "details": "$526.38, RSI: 62.6, MFI: 72.4, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MSI        Good Sell       (Price",
+      "details": "$407.05, RSI: 65.3, MFI: 79.9, StochRSI: 0.73)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PEG        Good Sell       (Price",
+      "details": "$77.13, RSI: 64.3, MFI: 70.5, StochRSI: 0.75)"
+    },
+    {
+      "type": "asset",
+      "symbol": "SLB        Good Buy        (Price",
+      "details": "$42.22, RSI: 37.5, MFI: 28.3, StochRSI: 0.24)"
+    },
+    {
+      "type": "asset",
+      "symbol": "T          Good Sell       (Price",
+      "details": "$18.45, RSI: 61.0, MFI: 72.1, StochRSI: 0.76)"
+    },
+    {
+      "type": "asset",
+      "symbol": "VTR        Good Sell       (Price",
+      "details": "$57.16, RSI: 78.6, MFI: 74.5, StochRSI: 0.81)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WRB        Good Sell       (Price",
+      "details": "$55.08, RSI: 61.3, MFI: 78.5, StochRSI: 0.74)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 3 days) ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "ABBV       Great Sell      (Price",
+      "details": "$185.39, RSI: 73.9, MFI: 80.7, StochRSI: 0.96)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ADP        Good Sell       (Price",
+      "details": "$256.97, RSI: 65.5, MFI: 73.8, StochRSI: 0.84)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AFL        Great Sell      (Price",
+      "details": "$99.41, RSI: 81.8, MFI: 89.7, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ATO        Good Sell       (Price",
+      "details": "$125.40, RSI: 72.1, MFI: 74.8, StochRSI: 0.77)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AVB        Good Sell       (Price",
+      "details": "$206.00, RSI: 66.9, MFI: 70.1, StochRSI: 0.88)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AZO        Good Sell       (Price",
+      "details": "$3,168.94, RSI: 65.7, MFI: 70.9, StochRSI: 0.88)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CINF       Good Sell       (Price",
+      "details": "$126.13, RSI: 63.6, MFI: 74.5, StochRSI: 0.72)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CMS        Good Sell       (Price",
+      "details": "$63.52, RSI: 70.7, MFI: 73.4, StochRSI: 0.84)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CNA        Good Sell       (Price",
+      "details": "$44.63, RSI: 65.3, MFI: 71.7, StochRSI: 0.71)"
+    },
+    {
+      "type": "asset",
+      "symbol": "COKE       Good Sell       (Price",
+      "details": "$125.77, RSI: 81.4, MFI: 72.3, StochRSI: 0.73)"
+    },
+    {
+      "type": "asset",
+      "symbol": "DUK        Good Sell       (Price",
+      "details": "$107.13, RSI: 75.1, MFI: 74.3, StochRSI: 0.78)"
+    },
+    {
+      "type": "asset",
+      "symbol": "D          Good Sell       (Price",
+      "details": "$52.14, RSI: 65.8, MFI: 75.0, StochRSI: 0.73)"
+    },
+    {
+      "type": "asset",
+      "symbol": "EIX        Great Sell      (Price",
+      "details": "$77.84, RSI: 77.1, MFI: 84.7, StochRSI: 0.97)"
+    },
+    {
+      "type": "asset",
+      "symbol": "FISV       Good Sell       (Price",
+      "details": "$165.72, RSI: 65.7, MFI: 75.4, StochRSI: 0.87)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ICE        Good Sell       (Price",
+      "details": "$153.34, RSI: 76.9, MFI: 73.0, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ISRG       Good Sell       (Price",
+      "details": "$480.17, RSI: 72.3, MFI: 72.8, StochRSI: 0.90)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LMT        Good Sell       (Price",
+      "details": "$541.94, RSI: 84.2, MFI: 73.2, StochRSI: 0.92)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NDAQ       Great Sell      (Price",
+      "details": "$68.70, RSI: 73.8, MFI: 80.1, StochRSI: 0.98)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NOC        Good Sell       (Price",
+      "details": "$493.07, RSI: 73.3, MFI: 72.9, StochRSI: 0.98)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PPL        Great Sell      (Price",
+      "details": "$29.78, RSI: 73.9, MFI: 81.6, StochRSI: 0.94)"
+    },
+    {
+      "type": "asset",
+      "symbol": "REGN       Great Sell      (Price",
+      "details": "$1,170.31, RSI: 73.0, MFI: 80.7, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "RTX        Great Sell      (Price",
+      "details": "$115.42, RSI: 73.0, MFI: 88.3, StochRSI: 0.87)"
+    },
+    {
+      "type": "asset",
+      "symbol": "SHW        Good Sell       (Price",
+      "details": "$351.96, RSI: 71.3, MFI: 76.2, StochRSI: 0.94)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WELL       Great Sell      (Price",
+      "details": "$113.77, RSI: 80.9, MFI: 84.6, StochRSI: 0.91)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 6 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 6 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

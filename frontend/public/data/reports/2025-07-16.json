@@ -1,0 +1,120 @@
+{
+  "date": "2025-07-16",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2025-07-16 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "ACN        Good Buy        (Price",
+      "details": "$279.67, RSI: 34.6, MFI: 29.6, StochRSI: 0.23)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AMD        Great Sell      (Price",
+      "details": "$160.08, RSI: 79.0, MFI: 81.6, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BTI        Good Sell       (Price",
+      "details": "$51.52, RSI: 76.7, MFI: 74.2, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CAG        Great Buy       (Price",
+      "details": "$18.32, RSI: 23.1, MFI: 18.6, StochRSI: 0.11)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GE         Great Sell      (Price",
+      "details": "$265.86, RSI: 71.6, MFI: 83.9, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "JNJ        Good Sell       (Price",
+      "details": "$163.58, RSI: 72.5, MFI: 74.2, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LUV        Great Sell      (Price",
+      "details": "$37.20, RSI: 72.6, MFI: 81.8, StochRSI: 0.84)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NVDA       Good Sell       (Price",
+      "details": "$171.36, RSI: 78.8, MFI: 74.4, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PFGC       Great Sell      (Price",
+      "details": "$99.91, RSI: 79.6, MFI: 93.9, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PPL        Good Sell       (Price",
+      "details": "$34.89, RSI: 63.0, MFI: 84.2, StochRSI: 0.86)"
+    },
+    {
+      "type": "asset",
+      "symbol": "RTX        Good Sell       (Price",
+      "details": "$149.51, RSI: 67.6, MFI: 80.2, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "SNPS       Good Sell       (Price",
+      "details": "$571.20, RSI: 70.6, MFI: 79.5, StochRSI: 0.72)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TPR        Good Sell       (Price",
+      "details": "$100.29, RSI: 78.5, MFI: 78.3, StochRSI: 0.82)"
+    },
+    {
+      "type": "asset",
+      "symbol": "USFD       Great Sell      (Price",
+      "details": "$82.95, RSI: 74.5, MFI: 84.3, StochRSI: 0.91)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 2 days) ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "CFG        Great Sell      (Price",
+      "details": "$47.73, RSI: 73.2, MFI: 81.6, StochRSI: 0.88)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 5 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 5 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

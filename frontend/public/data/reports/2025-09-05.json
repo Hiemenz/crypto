@@ -1,0 +1,105 @@
+{
+  "date": "2025-09-05",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2025-09-05 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "ADSK       Good Sell       (Price",
+      "details": "$326.37, RSI: 71.2, MFI: 75.4, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CMG        Good Buy        (Price",
+      "details": "$41.06, RSI: 29.6, MFI: 22.3, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GOOGL      Good Sell       (Price",
+      "details": "$234.79, RSI: 84.5, MFI: 73.8, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GOOG       Good Sell       (Price",
+      "details": "$234.96, RSI: 84.5, MFI: 74.4, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HST        Good Sell       (Price",
+      "details": "$17.23, RSI: 67.0, MFI: 84.4, StochRSI: 0.74)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MPC        Good Sell       (Price",
+      "details": "$179.38, RSI: 69.8, MFI: 74.5, StochRSI: 0.95)"
+    },
+    {
+      "type": "asset",
+      "symbol": "SPG        Good Sell       (Price",
+      "details": "$180.10, RSI: 71.7, MFI: 79.8, StochRSI: 0.91)"
+    },
+    {
+      "type": "asset",
+      "symbol": "STX        Good Sell       (Price",
+      "details": "$187.57, RSI: 78.1, MFI: 75.7, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "STZ        Good Buy        (Price",
+      "details": "$147.27, RSI: 31.7, MFI: 26.6, StochRSI: 0.23)"
+    },
+    {
+      "type": "asset",
+      "symbol": "VLO        Good Sell       (Price",
+      "details": "$156.77, RSI: 76.9, MFI: 77.7, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WDC        Great Sell      (Price",
+      "details": "$92.04, RSI: 82.3, MFI: 85.7, StochRSI: 1.00)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 2 days) ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "HPE        Great Sell      (Price",
+      "details": "$23.40, RSI: 73.7, MFI: 82.0, StochRSI: 1.00)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 3 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 10 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

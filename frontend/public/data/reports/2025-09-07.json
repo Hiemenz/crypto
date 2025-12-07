@@ -1,0 +1,129 @@
+{
+  "date": "2025-09-07",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2025-09-07 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 3 days) ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "ADI        Good Sell       (Price",
+      "details": "$248.18, RSI: 60.2, MFI: 71.8, StochRSI: 0.72)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ALK        Good Sell       (Price",
+      "details": "$62.29, RSI: 67.2, MFI: 79.5, StochRSI: 0.79)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GOOGL      Great Sell      (Price",
+      "details": "$239.63, RSI: 84.9, MFI: 85.4, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GOOG       Great Sell      (Price",
+      "details": "$239.94, RSI: 84.6, MFI: 86.3, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HCA        Good Sell       (Price",
+      "details": "$412.66, RSI: 65.7, MFI: 86.7, StochRSI: 0.77)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HD         Good Sell       (Price",
+      "details": "$415.34, RSI: 68.7, MFI: 74.0, StochRSI: 0.77)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MSI        Good Sell       (Price",
+      "details": "$476.85, RSI: 74.3, MFI: 78.2, StochRSI: 0.77)"
+    },
+    {
+      "type": "asset",
+      "symbol": "OKE        Good Buy        (Price",
+      "details": "$70.74, RSI: 34.5, MFI: 24.1, StochRSI: 0.01)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ORLY       Good Sell       (Price",
+      "details": "$106.92, RSI: 76.0, MFI: 72.8, StochRSI: 0.91)"
+    },
+    {
+      "type": "asset",
+      "symbol": "STZ        Good Buy        (Price",
+      "details": "$144.84, RSI: 31.0, MFI: 9.7, StochRSI: 0.05)"
+    },
+    {
+      "type": "asset",
+      "symbol": "SYF        Good Sell       (Price",
+      "details": "$75.76, RSI: 67.9, MFI: 70.8, StochRSI: 0.81)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TGT        Good Buy        (Price",
+      "details": "$89.78, RSI: 35.6, MFI: 25.3, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TJX        Great Sell      (Price",
+      "details": "$139.57, RSI: 72.4, MFI: 89.2, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "T          Good Sell       (Price",
+      "details": "$29.11, RSI: 64.5, MFI: 70.5, StochRSI: 0.80)"
+    },
+    {
+      "type": "asset",
+      "symbol": "UAL        Good Sell       (Price",
+      "details": "$105.65, RSI: 72.2, MFI: 70.5, StochRSI: 0.88)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WDC        Great Sell      (Price",
+      "details": "$94.54, RSI: 85.7, MFI: 83.1, StochRSI: 0.95)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 1 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 8 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

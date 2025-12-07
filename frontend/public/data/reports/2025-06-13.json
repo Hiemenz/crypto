@@ -1,0 +1,89 @@
+{
+  "date": "2025-06-13",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2025-06-13 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "BTI        Good Sell       (Price",
+      "details": "$47.35, RSI: 75.5, MFI: 76.9, StochRSI: 0.90)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CLX        Good Buy        (Price",
+      "details": "$120.57, RSI: 27.5, MFI: 29.3, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CVS        Good Sell       (Price",
+      "details": "$66.19, RSI: 64.7, MFI: 80.4, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "EIX        Great Buy       (Price",
+      "details": "$46.84, RSI: 29.4, MFI: 17.1, StochRSI: 0.10)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PVH        Great Buy       (Price",
+      "details": "$62.67, RSI: 28.8, MFI: 16.1, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "RTX        Great Sell      (Price",
+      "details": "$145.05, RSI: 71.8, MFI: 85.1, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "STZ        Good Buy        (Price",
+      "details": "$162.65, RSI: 28.3, MFI: 24.6, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WU         Good Buy        (Price",
+      "details": "$8.16, RSI: 26.1, MFI: 23.3, StochRSI: 0.00)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 2 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 3 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 10 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

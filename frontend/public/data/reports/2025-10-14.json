@@ -1,0 +1,105 @@
+{
+  "date": "2025-10-14",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2025-10-14 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "AEP        Good Sell       (Price",
+      "details": "$117.45, RSI: 72.4, MFI: 73.3, StochRSI: 0.86)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ATO        Great Sell      (Price",
+      "details": "$177.65, RSI: 73.1, MFI: 80.2, StochRSI: 0.91)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AVB        Good Buy        (Price",
+      "details": "$185.42, RSI: 38.9, MFI: 28.6, StochRSI: 0.17)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CAT        Good Sell       (Price",
+      "details": "$525.96, RSI: 76.6, MFI: 73.1, StochRSI: 0.72)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CPT        Good Buy        (Price",
+      "details": "$102.13, RSI: 35.9, MFI: 23.7, StochRSI: 0.19)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LNT        Good Sell       (Price",
+      "details": "$67.82, RSI: 65.6, MFI: 73.9, StochRSI: 0.71)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MAA        Good Buy        (Price",
+      "details": "$132.24, RSI: 30.4, MFI: 29.5, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NEE        Great Sell      (Price",
+      "details": "$84.64, RSI: 79.3, MFI: 87.6, StochRSI: 0.89)"
+    },
+    {
+      "type": "asset",
+      "symbol": "OKE        Good Buy        (Price",
+      "details": "$68.51, RSI: 32.5, MFI: 20.9, StochRSI: 0.17)"
+    },
+    {
+      "type": "asset",
+      "symbol": "SO         Good Sell       (Price",
+      "details": "$98.87, RSI: 75.8, MFI: 79.0, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WRB        Good Sell       (Price",
+      "details": "$78.46, RSI: 71.2, MFI: 77.1, StochRSI: 0.99)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 2 days) ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "DELL       Good Sell       (Price",
+      "details": "$150.77, RSI: 64.5, MFI: 72.8, StochRSI: 0.76)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 6 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 13 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

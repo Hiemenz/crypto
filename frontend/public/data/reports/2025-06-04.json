@@ -1,0 +1,104 @@
+{
+  "date": "2025-06-04",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2025-06-04 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "BKNG       Good Sell       (Price",
+      "details": "$5,537.89, RSI: 69.9, MFI: 73.7, StochRSI: 0.71)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BTI        Good Sell       (Price",
+      "details": "$44.80, RSI: 69.3, MFI: 77.3, StochRSI: 0.92)"
+    },
+    {
+      "type": "asset",
+      "symbol": "COST       Good Sell       (Price",
+      "details": "$1,048.75, RSI: 64.2, MFI: 73.3, StochRSI: 0.83)"
+    },
+    {
+      "type": "asset",
+      "symbol": "DG         Good Sell       (Price",
+      "details": "$110.53, RSI: 73.5, MFI: 71.4, StochRSI: 0.91)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GE         Great Sell      (Price",
+      "details": "$250.21, RSI: 82.9, MFI: 80.7, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "INTU       Good Sell       (Price",
+      "details": "$764.38, RSI: 80.8, MFI: 76.9, StochRSI: 0.98)"
+    },
+    {
+      "type": "asset",
+      "symbol": "IPG        Good Buy        (Price",
+      "details": "$22.67, RSI: 35.5, MFI: 21.0, StochRSI: 0.09)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NDAQ       Good Sell       (Price",
+      "details": "$83.37, RSI: 69.5, MFI: 84.4, StochRSI: 0.87)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NFLX       Good Sell       (Price",
+      "details": "$123.97, RSI: 71.8, MFI: 75.3, StochRSI: 0.94)"
+    },
+    {
+      "type": "asset",
+      "symbol": "REGN       Good Buy        (Price",
+      "details": "$484.19, RSI: 31.8, MFI: 27.7, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "RTX        Good Sell       (Price",
+      "details": "$137.94, RSI: 66.2, MFI: 71.2, StochRSI: 0.92)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 2 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 5 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 5 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

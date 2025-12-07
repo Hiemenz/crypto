@@ -1,0 +1,149 @@
+{
+  "date": "2025-11-11",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2025-11-11 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "AAPL       Good Sell       (Price",
+      "details": "$275.25, RSI: 71.7, MFI: 79.6, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AMGN       Great Sell      (Price",
+      "details": "$338.45, RSI: 78.7, MFI: 83.0, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AXP        Good Sell       (Price",
+      "details": "$370.16, RSI: 71.5, MFI: 75.8, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BK         Good Sell       (Price",
+      "details": "$111.25, RSI: 66.4, MFI: 73.4, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BTI        Great Sell      (Price",
+      "details": "$55.76, RSI: 71.6, MFI: 86.7, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CLX        Good Buy        (Price",
+      "details": "$105.03, RSI: 27.7, MFI: 29.7, StochRSI: 0.11)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CMG        Great Buy       (Price",
+      "details": "$29.81, RSI: 17.4, MFI: 19.5, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "EXPD       Good Sell       (Price",
+      "details": "$139.51, RSI: 72.7, MFI: 79.6, StochRSI: 0.84)"
+    },
+    {
+      "type": "asset",
+      "symbol": "FDX        Good Sell       (Price",
+      "details": "$267.72, RSI: 69.8, MFI: 74.0, StochRSI: 0.83)"
+    },
+    {
+      "type": "asset",
+      "symbol": "FISV       Good Buy        (Price",
+      "details": "$64.26, RSI: 17.0, MFI: 24.4, StochRSI: 0.13)"
+    },
+    {
+      "type": "asset",
+      "symbol": "JPM        Good Sell       (Price",
+      "details": "$315.62, RSI: 62.8, MFI: 70.9, StochRSI: 0.90)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LDOS       Good Sell       (Price",
+      "details": "$198.25, RSI: 61.8, MFI: 73.4, StochRSI: 0.74)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LVS        Great Sell      (Price",
+      "details": "$66.99, RSI: 79.3, MFI: 89.9, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "L          Good Sell       (Price",
+      "details": "$103.74, RSI: 68.1, MFI: 70.3, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MAR        Good Sell       (Price",
+      "details": "$291.90, RSI: 69.7, MFI: 73.3, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ROST       Good Sell       (Price",
+      "details": "$162.73, RSI: 65.1, MFI: 73.8, StochRSI: 0.76)"
+    },
+    {
+      "type": "asset",
+      "symbol": "SNPS       Good Buy        (Price",
+      "details": "$395.60, RSI: 31.5, MFI: 25.1, StochRSI: 0.13)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TMO        Good Sell       (Price",
+      "details": "$586.49, RSI: 74.3, MFI: 75.2, StochRSI: 0.84)"
+    },
+    {
+      "type": "asset",
+      "symbol": "VLO        Good Sell       (Price",
+      "details": "$180.86, RSI: 67.8, MFI: 77.8, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WELL       Great Sell      (Price",
+      "details": "$192.31, RSI: 75.7, MFI: 89.7, StochRSI: 1.00)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 1 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 6 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 13 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

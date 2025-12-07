@@ -1,0 +1,94 @@
+{
+  "date": "2024-10-29",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2024-10-29 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "DLR        Good Sell       (Price",
+      "details": "$177.59, RSI: 84.1, MFI: 72.6, StochRSI: 0.95)"
+    },
+    {
+      "type": "asset",
+      "symbol": "DVN        Good Buy        (Price",
+      "details": "$37.10, RSI: 31.5, MFI: 19.0, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HAL        Good Buy        (Price",
+      "details": "$26.75, RSI: 34.9, MFI: 18.0, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LDOS       Good Sell       (Price",
+      "details": "$183.92, RSI: 85.3, MFI: 75.1, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MRK        Good Buy        (Price",
+      "details": "$100.03, RSI: 26.8, MFI: 25.8, StochRSI: 0.02)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PSX        Good Buy        (Price",
+      "details": "$117.77, RSI: 31.3, MFI: 28.5, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "RCL        Good Sell       (Price",
+      "details": "$207.66, RSI: 75.6, MFI: 80.1, StochRSI: 0.73)"
+    },
+    {
+      "type": "asset",
+      "symbol": "UAL        Great Sell      (Price",
+      "details": "$76.93, RSI: 86.6, MFI: 82.1, StochRSI: 0.84)"
+    },
+    {
+      "type": "asset",
+      "symbol": "VRSN       Good Buy        (Price",
+      "details": "$177.22, RSI: 33.6, MFI: 26.0, StochRSI: 0.00)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 1 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 6 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 13 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

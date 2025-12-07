@@ -1,0 +1,210 @@
+{
+  "date": "2025-02-07",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2025-02-07 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "ABBV       Good Sell       (Price",
+      "details": "$185.90, RSI: 67.4, MFI: 75.4, StochRSI: 0.84)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ALK        Good Sell       (Price",
+      "details": "$75.92, RSI: 71.5, MFI: 73.6, StochRSI: 0.77)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AON        Good Sell       (Price",
+      "details": "$384.89, RSI: 68.4, MFI: 71.3, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BTI        Great Sell      (Price",
+      "details": "$39.78, RSI: 82.6, MFI: 82.6, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "COP        Good Buy        (Price",
+      "details": "$95.07, RSI: 38.7, MFI: 24.9, StochRSI: 0.09)"
+    },
+    {
+      "type": "asset",
+      "symbol": "COST       Good Sell       (Price",
+      "details": "$1,039.54, RSI: 76.4, MFI: 76.7, StochRSI: 0.89)"
+    },
+    {
+      "type": "asset",
+      "symbol": "DHR        Good Buy        (Price",
+      "details": "$205.75, RSI: 25.2, MFI: 26.0, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "DUK        Good Sell       (Price",
+      "details": "$110.98, RSI: 65.4, MFI: 75.0, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "DVN        Good Buy        (Price",
+      "details": "$32.46, RSI: 36.7, MFI: 18.1, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "EIX        Great Buy       (Price",
+      "details": "$47.82, RSI: 19.5, MFI: 10.4, StochRSI: 0.05)"
+    },
+    {
+      "type": "asset",
+      "symbol": "EL         Good Buy        (Price",
+      "details": "$64.14, RSI: 30.1, MFI: 25.6, StochRSI: 0.04)"
+    },
+    {
+      "type": "asset",
+      "symbol": "FISV       Great Sell      (Price",
+      "details": "$230.06, RSI: 73.7, MFI: 82.5, StochRSI: 0.91)"
+    },
+    {
+      "type": "asset",
+      "symbol": "FIS        Good Sell       (Price",
+      "details": "$82.06, RSI: 63.4, MFI: 77.4, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GS         Good Sell       (Price",
+      "details": "$645.97, RSI: 69.7, MFI: 70.5, StochRSI: 0.74)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HAL        Good Buy        (Price",
+      "details": "$24.62, RSI: 33.5, MFI: 16.5, StochRSI: 0.06)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ICE        Good Sell       (Price",
+      "details": "$165.45, RSI: 71.2, MFI: 76.0, StochRSI: 0.87)"
+    },
+    {
+      "type": "asset",
+      "symbol": "INTC       Good Buy        (Price",
+      "details": "$19.10, RSI: 39.2, MFI: 26.1, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "KR         Great Sell      (Price",
+      "details": "$63.71, RSI: 71.0, MFI: 80.2, StochRSI: 0.89)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MAA        Good Sell       (Price",
+      "details": "$153.29, RSI: 62.3, MFI: 72.1, StochRSI: 0.92)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MAR        Good Sell       (Price",
+      "details": "$301.74, RSI: 76.8, MFI: 75.7, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MCO        Good Sell       (Price",
+      "details": "$500.48, RSI: 63.4, MFI: 86.6, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "META       Great Sell      (Price",
+      "details": "$712.85, RSI: 79.6, MFI: 91.4, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MKC        Good Sell       (Price",
+      "details": "$76.89, RSI: 60.7, MFI: 72.2, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MMC        Good Sell       (Price",
+      "details": "$224.66, RSI: 66.4, MFI: 71.5, StochRSI: 0.97)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NFLX       Great Sell      (Price",
+      "details": "$101.39, RSI: 73.7, MFI: 84.2, StochRSI: 0.97)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PM         Great Sell      (Price",
+      "details": "$140.75, RSI: 81.4, MFI: 82.8, StochRSI: 0.91)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PVH        Good Buy        (Price",
+      "details": "$78.74, RSI: 22.1, MFI: 25.4, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "SPG        Good Sell       (Price",
+      "details": "$173.36, RSI: 60.4, MFI: 70.2, StochRSI: 0.96)"
+    },
+    {
+      "type": "asset",
+      "symbol": "T          Good Sell       (Price",
+      "details": "$23.79, RSI: 69.9, MFI: 75.8, StochRSI: 0.78)"
+    },
+    {
+      "type": "asset",
+      "symbol": "V          Good Sell       (Price",
+      "details": "$345.57, RSI: 77.0, MFI: 90.0, StochRSI: 0.75)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WFC        Good Sell       (Price",
+      "details": "$79.34, RSI: 74.1, MFI: 73.0, StochRSI: 0.72)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WYNN       Good Buy        (Price",
+      "details": "$79.80, RSI: 37.6, MFI: 20.7, StochRSI: 0.00)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 2 days) ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "CFG        Good Sell       (Price",
+      "details": "$46.56, RSI: 61.6, MFI: 71.2, StochRSI: 0.88)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 3 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 10 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

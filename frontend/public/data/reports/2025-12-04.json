@@ -1,0 +1,154 @@
+{
+  "date": "2025-12-04",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2025-12-04 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "ADI        Good Sell       (Price",
+      "details": "$277.26, RSI: 74.1, MFI: 78.4, StochRSI: 0.99/1.00, BB: 0.96, MACD: 4.95)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CFG        Good Sell       (Price",
+      "details": "$55.88, RSI: 69.7, MFI: 76.8, StochRSI: 1.00/1.00, BB: 0.97, MACD: 0.41)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CMA        Good Sell       (Price",
+      "details": "$84.24, RSI: 73.6, MFI: 76.8, StochRSI: 0.99/0.99, BB: 1.10, MACD: 0.51)"
+    },
+    {
+      "type": "asset",
+      "symbol": "COF        Good Sell       (Price",
+      "details": "$229.71, RSI: 67.5, MFI: 70.3, StochRSI: 1.00/1.00, BB: 0.94, MACD: 2.38)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CPB        Good Buy        (Price",
+      "details": "$29.36, RSI: 37.2, MFI: 16.2, StochRSI: 0.00/0.08, BB: -0.07, MACD: -0.13)"
+    },
+    {
+      "type": "asset",
+      "symbol": "DAL        Good Sell       (Price",
+      "details": "$67.24, RSI: 68.4, MFI: 75.1, StochRSI: 0.99/0.99, BB: 0.97, MACD: 0.96)"
+    },
+    {
+      "type": "asset",
+      "symbol": "DG         Great Sell      (Price",
+      "details": "$125.29, RSI: 82.5, MFI: 81.9, StochRSI: 0.99/0.99, BB: 1.34, MACD: 1.86)"
+    },
+    {
+      "type": "asset",
+      "symbol": "EL         Good Sell       (Price",
+      "details": "$103.82, RSI: 69.6, MFI: 74.4, StochRSI: 1.00/1.00, BB: 1.11, MACD: 1.67)"
+    },
+    {
+      "type": "asset",
+      "symbol": "EQIX       Good Buy        (Price",
+      "details": "$726.09, RSI: 29.3, MFI: 27.2, StochRSI: 0.15/0.10, BB: 0.15, MACD: -4.40)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HBAN       Great Sell      (Price",
+      "details": "$17.10, RSI: 72.2, MFI: 80.8, StochRSI: 1.00/1.00, BB: 1.04, MACD: 0.18)"
+    },
+    {
+      "type": "asset",
+      "symbol": "JBHT       Good Sell       (Price",
+      "details": "$187.54, RSI: 74.9, MFI: 79.3, StochRSI: 0.99/1.00, BB: 1.00, MACD: 1.91)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PNC        Good Sell       (Price",
+      "details": "$198.27, RSI: 69.4, MFI: 75.1, StochRSI: 0.97/0.93, BB: 1.01, MACD: 1.60)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ROST       Good Sell       (Price",
+      "details": "$177.09, RSI: 75.0, MFI: 80.1, StochRSI: 0.86/0.87, BB: 0.79, MACD: 0.86)"
+    },
+    {
+      "type": "asset",
+      "symbol": "STT        Good Sell       (Price",
+      "details": "$121.87, RSI: 64.5, MFI: 70.9, StochRSI: 0.91/0.80, BB: 0.92, MACD: 0.58)"
+    },
+    {
+      "type": "asset",
+      "symbol": "SYF        Good Sell       (Price",
+      "details": "$80.40, RSI: 70.9, MFI: 78.5, StochRSI: 1.00/1.00, BB: 1.00, MACD: 0.66)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TPR        Good Sell       (Price",
+      "details": "$114.66, RSI: 60.7, MFI: 77.1, StochRSI: 0.89/0.88, BB: 1.02, MACD: 1.33)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TROW       Good Sell       (Price",
+      "details": "$105.79, RSI: 63.1, MFI: 70.4, StochRSI: 0.96/0.89, BB: 0.91, MACD: 0.69)"
+    },
+    {
+      "type": "asset",
+      "symbol": "USB        Great Sell      (Price",
+      "details": "$51.37, RSI: 73.9, MFI: 81.4, StochRSI: 1.00/1.00, BB: 1.06, MACD: 0.44)"
+    },
+    {
+      "type": "asset",
+      "symbol": "VICI       Great Buy       (Price",
+      "details": "$28.00, RSI: 21.8, MFI: 13.4, StochRSI: 0.00/0.01, BB: 0.10, MACD: -0.07)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WMT        Good Sell       (Price",
+      "details": "$114.84, RSI: 73.6, MFI: 70.7, StochRSI: 1.00/1.00, BB: 1.00, MACD: 1.20)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ZION       Good Sell       (Price",
+      "details": "$55.73, RSI: 66.9, MFI: 77.0, StochRSI: 1.00/1.00, BB: 1.02, MACD: 0.56)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 2 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 3 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 3 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

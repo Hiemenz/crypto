@@ -1,0 +1,75 @@
+{
+  "date": "2025-05-21",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2025-05-21 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "ADP        Good Sell       (Price",
+      "details": "$319.37, RSI: 72.1, MFI: 79.2, StochRSI: 0.96)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BUD        Great Sell      (Price",
+      "details": "$68.80, RSI: 71.6, MFI: 80.5, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GE         Good Sell       (Price",
+      "details": "$232.91, RSI: 77.7, MFI: 88.4, StochRSI: 0.79)"
+    },
+    {
+      "type": "asset",
+      "symbol": "KMB        Good Sell       (Price",
+      "details": "$138.39, RSI: 61.4, MFI: 80.2, StochRSI: 0.94)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MNST       Good Sell       (Price",
+      "details": "$63.10, RSI: 67.7, MFI: 79.5, StochRSI: 1.00)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 1 days) ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "USFD       Good Sell       (Price",
+      "details": "$75.83, RSI: 66.9, MFI: 84.9, StochRSI: 0.80)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 5 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 5 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

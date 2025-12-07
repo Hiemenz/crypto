@@ -1,0 +1,115 @@
+{
+  "date": "2025-05-26",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2025-05-26 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 2 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 7 days) ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "BTI        Good Sell       (Price",
+      "details": "$43.88, RSI: 65.4, MFI: 70.6, StochRSI: 0.88)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BUD        Good Sell       (Price",
+      "details": "$69.28, RSI: 71.2, MFI: 70.7, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HCA        Good Sell       (Price",
+      "details": "$375.19, RSI: 60.9, MFI: 72.0, StochRSI: 0.83)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HIG        Good Sell       (Price",
+      "details": "$127.90, RSI: 61.4, MFI: 79.4, StochRSI: 0.78)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MNST       Good Sell       (Price",
+      "details": "$63.36, RSI: 73.3, MFI: 74.3, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TMO        Great Buy       (Price",
+      "details": "$392.90, RSI: 25.4, MFI: 14.4, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "VFC        Good Buy        (Price",
+      "details": "$11.85, RSI: 36.7, MFI: 25.0, StochRSI: 0.23)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 14 days) ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "ARE        Great Buy       (Price",
+      "details": "$65.57, RSI: 26.0, MFI: 19.2, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CAG        Good Buy        (Price",
+      "details": "$21.55, RSI: 29.2, MFI: 21.4, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CME        Good Sell       (Price",
+      "details": "$281.43, RSI: 84.1, MFI: 76.0, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "DXC        Good Buy        (Price",
+      "details": "$14.75, RSI: 35.9, MFI: 17.7, StochRSI: 0.16)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MCK        Great Sell      (Price",
+      "details": "$714.53, RSI: 72.4, MFI: 81.5, StochRSI: 0.99)"
+    },
+    {
+      "type": "asset",
+      "symbol": "VRSN       Good Sell       (Price",
+      "details": "$278.10, RSI: 80.3, MFI: 77.4, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WRB        Good Sell       (Price",
+      "details": "$72.41, RSI: 75.0, MFI: 77.3, StochRSI: 0.94)"
+    }
+  ]
+}

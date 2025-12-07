@@ -1,0 +1,114 @@
+{
+  "date": "2024-11-01",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2024-11-01 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "ALK        Good Sell       (Price",
+      "details": "$49.23, RSI: 76.3, MFI: 73.1, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BKNG       Good Sell       (Price",
+      "details": "$4,715.29, RSI: 83.9, MFI: 79.1, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CVS        Good Buy        (Price",
+      "details": "$53.52, RSI: 34.8, MFI: 27.4, StochRSI: 0.07)"
+    },
+    {
+      "type": "asset",
+      "symbol": "DVN        Good Buy        (Price",
+      "details": "$37.28, RSI: 34.9, MFI: 17.8, StochRSI: 0.21)"
+    },
+    {
+      "type": "asset",
+      "symbol": "EL         Great Buy       (Price",
+      "details": "$65.36, RSI: 16.7, MFI: 16.2, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HAL        Good Buy        (Price",
+      "details": "$26.91, RSI: 37.2, MFI: 19.4, StochRSI: 0.24)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MO         Good Sell       (Price",
+      "details": "$50.21, RSI: 69.8, MFI: 72.3, StochRSI: 0.87)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MPC        Good Buy        (Price",
+      "details": "$139.22, RSI: 26.7, MFI: 25.2, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MRK        Good Buy        (Price",
+      "details": "$98.24, RSI: 26.4, MFI: 29.0, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PSX        Good Buy        (Price",
+      "details": "$114.65, RSI: 26.8, MFI: 24.2, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "SLB        Good Buy        (Price",
+      "details": "$38.60, RSI: 34.3, MFI: 21.3, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "VRSN       Great Buy       (Price",
+      "details": "$175.15, RSI: 29.9, MFI: 9.2, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WU         Good Buy        (Price",
+      "details": "$9.71, RSI: 26.1, MFI: 22.5, StochRSI: 0.00)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 1 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 3 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 10 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

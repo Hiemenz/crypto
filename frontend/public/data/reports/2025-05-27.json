@@ -1,0 +1,85 @@
+{
+  "date": "2025-05-27",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2025-05-27 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "ADP        Good Sell       (Price",
+      "details": "$322.42, RSI: 72.9, MFI: 72.8, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BUD        Good Sell       (Price",
+      "details": "$70.17, RSI: 74.1, MFI: 75.7, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "FISV       Good Buy        (Price",
+      "details": "$160.14, RSI: 32.7, MFI: 26.5, StochRSI: 0.27)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GE         Great Sell      (Price",
+      "details": "$241.13, RSI: 78.4, MFI: 84.2, StochRSI: 0.82)"
+    },
+    {
+      "type": "asset",
+      "symbol": "KMB        Good Sell       (Price",
+      "details": "$140.14, RSI: 63.4, MFI: 73.4, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MNST       Great Sell      (Price",
+      "details": "$64.24, RSI: 71.4, MFI: 80.9, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NDAQ       Good Sell       (Price",
+      "details": "$82.57, RSI: 69.6, MFI: 75.3, StochRSI: 0.91)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 1 days) ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "USFD       Great Sell      (Price",
+      "details": "$78.55, RSI: 70.9, MFI: 85.0, StochRSI: 0.91)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 6 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 13 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "date": "2024-11-07",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2024-11-07 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "BF-B       Great Buy       (Price",
+      "details": "$40.57, RSI: 23.1, MFI: 9.8, StochRSI: 0.01)"
+    },
+    {
+      "type": "asset",
+      "symbol": "DELL       Good Sell       (Price",
+      "details": "$135.41, RSI: 66.4, MFI: 71.0, StochRSI: 0.96)"
+    },
+    {
+      "type": "asset",
+      "symbol": "EL         Good Buy        (Price",
+      "details": "$65.10, RSI: 23.1, MFI: 17.3, StochRSI: 0.30)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GILD       Good Sell       (Price",
+      "details": "$95.07, RSI: 85.9, MFI: 77.6, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HSY        Good Buy        (Price",
+      "details": "$166.02, RSI: 25.5, MFI: 28.1, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ISRG       Good Sell       (Price",
+      "details": "$524.28, RSI: 65.2, MFI: 70.3, StochRSI: 0.94)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MO         Good Sell       (Price",
+      "details": "$49.90, RSI: 64.3, MFI: 72.5, StochRSI: 0.73)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PAYC       Great Sell      (Price",
+      "details": "$225.73, RSI: 85.0, MFI: 87.0, StochRSI: 0.87)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PBI        Good Sell       (Price",
+      "details": "$7.76, RSI: 73.8, MFI: 76.2, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "SHW        Good Sell       (Price",
+      "details": "$379.91, RSI: 61.6, MFI: 73.2, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WMT        Good Sell       (Price",
+      "details": "$83.04, RSI: 64.6, MFI: 77.4, StochRSI: 0.86)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WU         Good Buy        (Price",
+      "details": "$9.69, RSI: 31.2, MFI: 21.9, StochRSI: 0.29)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WYNN       Good Buy        (Price",
+      "details": "$86.10, RSI: 34.3, MFI: 29.2, StochRSI: 0.18)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 1 days) ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "USFD       Good Sell       (Price",
+      "details": "$66.89, RSI: 73.1, MFI: 79.6, StochRSI: 1.00)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 4 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 4 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

@@ -1,0 +1,215 @@
+{
+  "date": "2025-03-11",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2025-03-11 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "AMAT       Good Buy        (Price",
+      "details": "$146.15, RSI: 32.5, MFI: 22.4, StochRSI: 0.05)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AMD        Good Buy        (Price",
+      "details": "$96.76, RSI: 31.8, MFI: 15.6, StochRSI: 0.22)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CDNS       Great Buy       (Price",
+      "details": "$234.25, RSI: 25.9, MFI: 11.2, StochRSI: 0.04)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CME        Good Sell       (Price",
+      "details": "$258.01, RSI: 67.6, MFI: 76.8, StochRSI: 0.71)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CSX        Good Buy        (Price",
+      "details": "$29.28, RSI: 25.8, MFI: 28.0, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "DELL       Good Buy        (Price",
+      "details": "$90.29, RSI: 33.9, MFI: 15.5, StochRSI: 0.07)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HST        Good Buy        (Price",
+      "details": "$14.76, RSI: 34.8, MFI: 26.1, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HUM        Good Buy        (Price",
+      "details": "$247.60, RSI: 39.3, MFI: 27.4, StochRSI: 0.02)"
+    },
+    {
+      "type": "asset",
+      "symbol": "INTC       Good Buy        (Price",
+      "details": "$19.78, RSI: 38.7, MFI: 24.1, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "JBHT       Good Buy        (Price",
+      "details": "$152.81, RSI: 34.5, MFI: 27.6, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LRCX       Good Buy        (Price",
+      "details": "$73.03, RSI: 39.5, MFI: 28.6, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MCK        Good Sell       (Price",
+      "details": "$651.77, RSI: 68.1, MFI: 78.8, StochRSI: 0.80)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MGM        Good Buy        (Price",
+      "details": "$31.29, RSI: 33.5, MFI: 21.9, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MPC        Good Buy        (Price",
+      "details": "$132.55, RSI: 34.3, MFI: 26.6, StochRSI: 0.04)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MSFT       Good Buy        (Price",
+      "details": "$379.13, RSI: 33.1, MFI: 25.1, StochRSI: 0.04)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NTAP       Good Buy        (Price",
+      "details": "$89.51, RSI: 23.1, MFI: 27.3, StochRSI: 0.08)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PVH        Good Buy        (Price",
+      "details": "$67.36, RSI: 23.7, MFI: 29.3, StochRSI: 0.21)"
+    },
+    {
+      "type": "asset",
+      "symbol": "QCOM       Good Buy        (Price",
+      "details": "$151.32, RSI: 39.2, MFI: 19.4, StochRSI: 0.28)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ROST       Good Buy        (Price",
+      "details": "$127.53, RSI: 27.8, MFI: 28.9, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "SNPS       Good Buy        (Price",
+      "details": "$430.68, RSI: 30.5, MFI: 24.7, StochRSI: 0.05)"
+    },
+    {
+      "type": "asset",
+      "symbol": "STX        Good Buy        (Price",
+      "details": "$85.54, RSI: 30.5, MFI: 26.1, StochRSI: 0.10)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TGT        Good Buy        (Price",
+      "details": "$108.92, RSI: 26.9, MFI: 20.8, StochRSI: 0.01)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TROW       Good Buy        (Price",
+      "details": "$92.57, RSI: 26.1, MFI: 28.0, StochRSI: 0.01)"
+    },
+    {
+      "type": "asset",
+      "symbol": "VLO        Good Buy        (Price",
+      "details": "$121.01, RSI: 38.0, MFI: 26.7, StochRSI: 0.19)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WDC        Good Buy        (Price",
+      "details": "$41.67, RSI: 32.9, MFI: 11.8, StochRSI: 0.15)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 3 days) ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "ABBV       Good Sell       (Price",
+      "details": "$206.33, RSI: 70.6, MFI: 79.6, StochRSI: 0.72)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AMT        Good Sell       (Price",
+      "details": "$202.68, RSI: 60.8, MFI: 74.4, StochRSI: 0.71)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GPN        Great Buy       (Price",
+      "details": "$91.37, RSI: 27.2, MFI: 14.1, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HAL        Good Buy        (Price",
+      "details": "$23.96, RSI: 39.1, MFI: 17.2, StochRSI: 0.29)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MO         Good Sell       (Price",
+      "details": "$55.63, RSI: 71.0, MFI: 72.0, StochRSI: 0.89)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PGR        Good Sell       (Price",
+      "details": "$279.08, RSI: 70.8, MFI: 79.7, StochRSI: 0.75)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PVH        Good Buy        (Price",
+      "details": "$63.92, RSI: 22.1, MFI: 28.0, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "SNPS       Good Buy        (Price",
+      "details": "$428.58, RSI: 29.9, MFI: 26.4, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TGT        Good Buy        (Price",
+      "details": "$100.94, RSI: 20.7, MFI: 23.6, StochRSI: 0.00)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 6 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 6 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

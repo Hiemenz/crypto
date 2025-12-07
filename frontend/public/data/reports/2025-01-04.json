@@ -1,0 +1,74 @@
+{
+  "date": "2025-01-04",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2025-01-04 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 3 days) ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "ADBE       Good Buy        (Price",
+      "details": "$431.18, RSI: 33.4, MFI: 21.8, StochRSI: 0.01)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CVS        Good Buy        (Price",
+      "details": "$43.94, RSI: 32.6, MFI: 16.2, StochRSI: 0.24)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MGM        Good Buy        (Price",
+      "details": "$33.94, RSI: 36.9, MFI: 11.9, StochRSI: 0.23)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PEP        Great Buy       (Price",
+      "details": "$142.03, RSI: 26.0, MFI: 18.7, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "STZ        Good Buy        (Price",
+      "details": "$217.41, RSI: 36.0, MFI: 20.0, StochRSI: 0.16)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 2 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 2 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

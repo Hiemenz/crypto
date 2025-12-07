@@ -1,0 +1,94 @@
+{
+  "date": "2025-01-25",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2025-01-25 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 3 days) ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "AEP        Good Sell       (Price",
+      "details": "$99.17, RSI: 69.8, MFI: 76.5, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AES        Great Buy       (Price",
+      "details": "$10.78, RSI: 29.1, MFI: 18.3, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CME        Good Sell       (Price",
+      "details": "$233.59, RSI: 65.1, MFI: 90.8, StochRSI: 0.89)"
+    },
+    {
+      "type": "asset",
+      "symbol": "C          Good Sell       (Price",
+      "details": "$78.88, RSI: 73.4, MFI: 74.0, StochRSI: 0.90)"
+    },
+    {
+      "type": "asset",
+      "symbol": "JPM        Great Sell      (Price",
+      "details": "$261.68, RSI: 73.4, MFI: 81.9, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MDT        Good Sell       (Price",
+      "details": "$90.29, RSI: 70.0, MFI: 76.1, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PVH        Good Buy        (Price",
+      "details": "$90.26, RSI: 35.4, MFI: 27.4, StochRSI: 0.01)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TMO        Good Sell       (Price",
+      "details": "$582.02, RSI: 68.6, MFI: 78.5, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "VFC        Great Sell      (Price",
+      "details": "$25.54, RSI: 75.6, MFI: 80.2, StochRSI: 0.86)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 2 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 9 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

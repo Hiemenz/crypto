@@ -1,0 +1,104 @@
+{
+  "date": "2025-06-11",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2025-06-11 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "BTI        Good Sell       (Price",
+      "details": "$47.33, RSI: 76.7, MFI: 70.5, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CLX        Good Buy        (Price",
+      "details": "$123.69, RSI: 30.9, MFI: 23.0, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "EIX        Good Buy        (Price",
+      "details": "$48.09, RSI: 30.3, MFI: 13.3, StochRSI: 0.13)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MA         Good Sell       (Price",
+      "details": "$589.16, RSI: 64.0, MFI: 73.3, StochRSI: 0.85)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MSFT       Good Sell       (Price",
+      "details": "$471.84, RSI: 74.4, MFI: 75.0, StochRSI: 0.80)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MSI        Good Buy        (Price",
+      "details": "$407.07, RSI: 40.0, MFI: 25.0, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NDAQ       Great Sell      (Price",
+      "details": "$86.28, RSI: 78.5, MFI: 88.3, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PVH        Good Buy        (Price",
+      "details": "$65.77, RSI: 32.2, MFI: 16.3, StochRSI: 0.05)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ROST       Good Buy        (Price",
+      "details": "$136.03, RSI: 39.2, MFI: 24.7, StochRSI: 0.03)"
+    },
+    {
+      "type": "asset",
+      "symbol": "RTX        Good Sell       (Price",
+      "details": "$141.19, RSI: 67.5, MFI: 70.5, StochRSI: 0.80)"
+    },
+    {
+      "type": "asset",
+      "symbol": "STZ        Good Buy        (Price",
+      "details": "$166.75, RSI: 31.6, MFI: 25.1, StochRSI: 0.00)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 1 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 5 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 12 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

@@ -1,0 +1,230 @@
+{
+  "date": "2025-07-15",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2025-07-15 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "ACN        Good Buy        (Price",
+      "details": "$276.07, RSI: 30.3, MFI: 23.3, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AMAT       Good Sell       (Price",
+      "details": "$198.72, RSI: 77.8, MFI: 72.6, StochRSI: 0.94)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AMZN       Good Sell       (Price",
+      "details": "$226.35, RSI: 65.5, MFI: 72.5, StochRSI: 0.80)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CAG        Great Buy       (Price",
+      "details": "$18.28, RSI: 22.2, MFI: 18.3, StochRSI: 0.09)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GE         Great Sell      (Price",
+      "details": "$264.35, RSI: 70.6, MFI: 82.9, StochRSI: 0.95)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LUV        Great Sell      (Price",
+      "details": "$36.92, RSI: 71.6, MFI: 83.4, StochRSI: 0.81)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MKC        Good Buy        (Price",
+      "details": "$70.26, RSI: 37.1, MFI: 20.6, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NVDA       Great Sell      (Price",
+      "details": "$170.69, RSI: 78.3, MFI: 81.6, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PFGC       Great Sell      (Price",
+      "details": "$96.65, RSI: 75.1, MFI: 89.4, StochRSI: 0.90)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PPL        Good Sell       (Price",
+      "details": "$35.08, RSI: 66.1, MFI: 77.6, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "SNPS       Good Sell       (Price",
+      "details": "$569.10, RSI: 70.1, MFI: 73.3, StochRSI: 0.75)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TPR        Good Sell       (Price",
+      "details": "$101.22, RSI: 82.2, MFI: 79.7, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WYNN       Good Sell       (Price",
+      "details": "$110.52, RSI: 78.3, MFI: 78.5, StochRSI: 0.85)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 3 days) ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "ADBE       Good Buy        (Price",
+      "details": "$366.45, RSI: 38.5, MFI: 20.8, StochRSI: 0.10)"
+    },
+    {
+      "type": "asset",
+      "symbol": "APD        Good Sell       (Price",
+      "details": "$291.65, RSI: 62.0, MFI: 74.0, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BK         Great Sell      (Price",
+      "details": "$96.92, RSI: 73.8, MFI: 81.8, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BTI        Great Sell      (Price",
+      "details": "$50.60, RSI: 76.7, MFI: 80.4, StochRSI: 0.99)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CAG        Good Buy        (Price",
+      "details": "$18.25, RSI: 22.7, MFI: 23.1, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CAT        Great Sell      (Price",
+      "details": "$415.35, RSI: 78.0, MFI: 85.0, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "C          Great Sell      (Price",
+      "details": "$91.93, RSI: 75.6, MFI: 81.1, StochRSI: 0.96)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ELV        Great Buy       (Price",
+      "details": "$300.81, RSI: 23.5, MFI: 15.5, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GOOGL      Good Sell       (Price",
+      "details": "$183.42, RSI: 61.4, MFI: 74.7, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GOOG       Good Sell       (Price",
+      "details": "$184.54, RSI: 61.1, MFI: 73.2, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "JNJ        Good Sell       (Price",
+      "details": "$161.79, RSI: 67.6, MFI: 71.9, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MSFT       Great Sell      (Price",
+      "details": "$510.86, RSI: 78.6, MFI: 82.5, StochRSI: 0.82)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NSC        Great Sell      (Price",
+      "details": "$267.21, RSI: 70.3, MFI: 85.2, StochRSI: 0.92)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ORCL       Good Sell       (Price",
+      "details": "$248.32, RSI: 78.9, MFI: 70.9, StochRSI: 0.81)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PFGC       Good Sell       (Price",
+      "details": "$99.13, RSI: 76.0, MFI: 75.5, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PNC        Good Sell       (Price",
+      "details": "$194.21, RSI: 70.7, MFI: 74.4, StochRSI: 0.95)"
+    },
+    {
+      "type": "asset",
+      "symbol": "RCL        Good Sell       (Price",
+      "details": "$347.44, RSI: 79.2, MFI: 79.3, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "SCHW       Good Sell       (Price",
+      "details": "$92.58, RSI: 72.0, MFI: 72.4, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "SO         Good Sell       (Price",
+      "details": "$91.84, RSI: 64.5, MFI: 85.6, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "SYF        Good Sell       (Price",
+      "details": "$69.60, RSI: 69.3, MFI: 77.9, StochRSI: 0.81)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TPR        Great Sell      (Price",
+      "details": "$101.77, RSI: 80.0, MFI: 85.6, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "UAL        Good Sell       (Price",
+      "details": "$91.22, RSI: 67.1, MFI: 73.6, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ZION       Good Sell       (Price",
+      "details": "$55.46, RSI: 70.4, MFI: 77.5, StochRSI: 0.89)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ZTS        Good Buy        (Price",
+      "details": "$149.01, RSI: 35.3, MFI: 20.9, StochRSI: 0.00)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 6 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 6 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

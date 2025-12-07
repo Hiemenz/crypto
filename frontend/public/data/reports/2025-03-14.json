@@ -1,0 +1,125 @@
+{
+  "date": "2025-03-14",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2025-03-14 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "BTI        Good Sell       (Price",
+      "details": "$39.40, RSI: 65.0, MFI: 75.2, StochRSI: 0.99)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HPQ        Good Buy        (Price",
+      "details": "$27.81, RSI: 32.0, MFI: 18.9, StochRSI: 0.25)"
+    },
+    {
+      "type": "asset",
+      "symbol": "JBHT       Good Buy        (Price",
+      "details": "$147.67, RSI: 29.6, MFI: 26.5, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NTAP       Good Buy        (Price",
+      "details": "$90.56, RSI: 27.8, MFI: 24.7, StochRSI: 0.21)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PVH        Good Buy        (Price",
+      "details": "$63.75, RSI: 19.8, MFI: 20.5, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ROST       Good Buy        (Price",
+      "details": "$123.13, RSI: 25.2, MFI: 26.6, StochRSI: 0.12)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TGT        Great Buy       (Price",
+      "details": "$101.13, RSI: 20.5, MFI: 13.3, StochRSI: 0.03)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TXN        Good Buy        (Price",
+      "details": "$172.14, RSI: 37.0, MFI: 21.0, StochRSI: 0.14)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 3 days) ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "ADBE       Good Buy        (Price",
+      "details": "$394.74, RSI: 35.3, MFI: 28.9, StochRSI: 0.30)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AMT        Good Sell       (Price",
+      "details": "$205.76, RSI: 63.1, MFI: 80.5, StochRSI: 0.81)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GPN        Good Buy        (Price",
+      "details": "$93.67, RSI: 32.5, MFI: 12.5, StochRSI: 0.19)"
+    },
+    {
+      "type": "asset",
+      "symbol": "JBHT       Good Buy        (Price",
+      "details": "$147.67, RSI: 31.8, MFI: 29.4, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MO         Great Sell      (Price",
+      "details": "$55.98, RSI: 72.0, MFI: 82.2, StochRSI: 0.92)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PGR        Good Sell       (Price",
+      "details": "$283.36, RSI: 73.3, MFI: 78.3, StochRSI: 0.86)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PVH        Good Buy        (Price",
+      "details": "$63.75, RSI: 22.0, MFI: 20.7, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TGT        Great Buy       (Price",
+      "details": "$101.13, RSI: 21.1, MFI: 18.6, StochRSI: 0.01)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 3 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 3 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

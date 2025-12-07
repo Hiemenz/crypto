@@ -1,0 +1,144 @@
+{
+  "date": "2025-11-09",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2025-11-09 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 3 days) ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "AEP        Good Sell       (Price",
+      "details": "$122.73, RSI: 72.0, MFI: 74.8, StochRSI: 0.89)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AMGN       Great Sell      (Price",
+      "details": "$338.45, RSI: 74.5, MFI: 80.1, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ARE        Good Buy        (Price",
+      "details": "$54.85, RSI: 25.9, MFI: 28.3, StochRSI: 0.08)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BUD        Good Sell       (Price",
+      "details": "$64.76, RSI: 62.9, MFI: 72.2, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CAG        Good Buy        (Price",
+      "details": "$17.30, RSI: 37.2, MFI: 28.9, StochRSI: 0.26)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CLX        Great Buy       (Price",
+      "details": "$105.03, RSI: 23.4, MFI: 8.3, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "COKE       Great Sell      (Price",
+      "details": "$152.28, RSI: 78.4, MFI: 83.6, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "EXPD       Great Sell      (Price",
+      "details": "$139.51, RSI: 73.2, MFI: 82.3, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "FISV       Great Buy       (Price",
+      "details": "$64.26, RSI: 12.5, MFI: 14.5, StochRSI: 0.07)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GIS        Good Buy        (Price",
+      "details": "$46.65, RSI: 39.2, MFI: 21.5, StochRSI: 0.18)"
+    },
+    {
+      "type": "asset",
+      "symbol": "IBM        Good Sell       (Price",
+      "details": "$313.72, RSI: 72.9, MFI: 78.2, StochRSI: 0.85)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ISRG       Good Sell       (Price",
+      "details": "$572.17, RSI: 72.3, MFI: 74.1, StochRSI: 0.99)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LMT        Good Buy        (Price",
+      "details": "$457.07, RSI: 38.1, MFI: 22.6, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MAR        Good Sell       (Price",
+      "details": "$291.90, RSI: 65.3, MFI: 71.1, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MCK        Good Sell       (Price",
+      "details": "$856.44, RSI: 75.0, MFI: 70.4, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MU         Great Sell      (Price",
+      "details": "$241.11, RSI: 84.7, MFI: 85.2, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "VTR        Great Sell      (Price",
+      "details": "$76.17, RSI: 75.3, MFI: 82.0, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WELL       Good Sell       (Price",
+      "details": "$192.31, RSI: 75.9, MFI: 72.7, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WY         Good Buy        (Price",
+      "details": "$22.74, RSI: 36.1, MFI: 23.9, StochRSI: 0.29)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 1 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 1 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

@@ -1,0 +1,214 @@
+{
+  "date": "2025-05-31",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2025-05-31 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 3 days) ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "ADP        Good Sell       (Price",
+      "details": "$322.51, RSI: 67.3, MFI: 88.2, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ALL        Good Sell       (Price",
+      "details": "$210.58, RSI: 63.6, MFI: 78.9, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AVGO       Good Sell       (Price",
+      "details": "$247.70, RSI: 69.5, MFI: 82.2, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BKNG       Good Sell       (Price",
+      "details": "$5,519.86, RSI: 69.8, MFI: 90.7, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CB         Good Sell       (Price",
+      "details": "$298.92, RSI: 62.3, MFI: 77.2, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CINF       Good Sell       (Price",
+      "details": "$149.85, RSI: 61.0, MFI: 73.7, StochRSI: 0.94)"
+    },
+    {
+      "type": "asset",
+      "symbol": "COST       Good Sell       (Price",
+      "details": "$1,053.90, RSI: 65.6, MFI: 71.4, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CSCO       Good Sell       (Price",
+      "details": "$63.09, RSI: 61.5, MFI: 71.5, StochRSI: 0.85)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CTAS       Good Sell       (Price",
+      "details": "$225.69, RSI: 69.5, MFI: 97.2, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "DIS        Good Sell       (Price",
+      "details": "$112.47, RSI: 64.7, MFI: 80.5, StochRSI: 0.89)"
+    },
+    {
+      "type": "asset",
+      "symbol": "D          Good Sell       (Price",
+      "details": "$56.12, RSI: 62.6, MFI: 70.3, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ES         Good Sell       (Price",
+      "details": "$64.19, RSI: 65.6, MFI: 84.8, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GE         Great Sell      (Price",
+      "details": "$246.82, RSI: 74.6, MFI: 92.8, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HCA        Good Sell       (Price",
+      "details": "$380.74, RSI: 64.1, MFI: 75.7, StochRSI: 0.79)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HON        Good Sell       (Price",
+      "details": "$210.19, RSI: 63.9, MFI: 85.9, StochRSI: 0.93)"
+    },
+    {
+      "type": "asset",
+      "symbol": "INTU       Great Sell      (Price",
+      "details": "$762.56, RSI: 76.6, MFI: 83.5, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "META       Good Sell       (Price",
+      "details": "$669.93, RSI: 62.9, MFI: 91.3, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MNST       Good Sell       (Price",
+      "details": "$63.83, RSI: 75.0, MFI: 79.9, StochRSI: 0.78)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MO         Good Sell       (Price",
+      "details": "$58.65, RSI: 62.3, MFI: 76.3, StochRSI: 0.74)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MSFT       Good Sell       (Price",
+      "details": "$461.21, RSI: 69.9, MFI: 94.3, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NDAQ       Good Sell       (Price",
+      "details": "$83.50, RSI: 65.3, MFI: 91.8, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NFLX       Good Sell       (Price",
+      "details": "$121.90, RSI: 70.0, MFI: 74.2, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ORCL       Good Sell       (Price",
+      "details": "$165.93, RSI: 62.3, MFI: 75.3, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PBI        Good Sell       (Price",
+      "details": "$10.10, RSI: 64.4, MFI: 76.5, StochRSI: 0.82)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PFGC       Good Sell       (Price",
+      "details": "$89.22, RSI: 63.2, MFI: 77.8, StochRSI: 0.91)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PGR        Good Sell       (Price",
+      "details": "$288.51, RSI: 60.1, MFI: 76.2, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PM         Great Sell      (Price",
+      "details": "$179.70, RSI: 73.9, MFI: 84.4, StochRSI: 0.91)"
+    },
+    {
+      "type": "asset",
+      "symbol": "RCL        Good Sell       (Price",
+      "details": "$260.39, RSI: 64.2, MFI: 87.5, StochRSI: 0.94)"
+    },
+    {
+      "type": "asset",
+      "symbol": "RTX        Good Sell       (Price",
+      "details": "$136.86, RSI: 62.4, MFI: 71.8, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "STX        Great Sell      (Price",
+      "details": "$118.15, RSI: 73.8, MFI: 90.2, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TRV        Good Sell       (Price",
+      "details": "$274.10, RSI: 65.2, MFI: 77.2, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "V          Good Sell       (Price",
+      "details": "$363.96, RSI: 62.0, MFI: 83.3, StochRSI: 0.82)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WRB        Great Sell      (Price",
+      "details": "$74.48, RSI: 71.1, MFI: 91.2, StochRSI: 1.00)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 2 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 9 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

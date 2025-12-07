@@ -1,0 +1,139 @@
+{
+  "date": "2024-10-22",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2024-10-22 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "APD        Great Sell      (Price",
+      "details": "$322.16, RSI: 77.7, MFI: 83.4, StochRSI: 0.90)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BKNG       Great Sell      (Price",
+      "details": "$4,346.60, RSI: 71.8, MFI: 80.4, StochRSI: 0.91)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CCL        Good Sell       (Price",
+      "details": "$21.45, RSI: 72.7, MFI: 78.8, StochRSI: 0.90)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CSCO       Good Sell       (Price",
+      "details": "$55.18, RSI: 80.9, MFI: 76.7, StochRSI: 0.87)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GM         Great Sell      (Price",
+      "details": "$53.17, RSI: 75.5, MFI: 82.5, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HON        Great Sell      (Price",
+      "details": "$204.08, RSI: 77.0, MFI: 92.2, StochRSI: 0.97)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ICE        Good Sell       (Price",
+      "details": "$164.09, RSI: 62.7, MFI: 74.0, StochRSI: 0.78)"
+    },
+    {
+      "type": "asset",
+      "symbol": "JPM        Good Sell       (Price",
+      "details": "$219.47, RSI: 66.2, MFI: 70.1, StochRSI: 0.85)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LRCX       Good Buy        (Price",
+      "details": "$72.23, RSI: 37.3, MFI: 23.8, StochRSI: 0.02)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MAR        Good Sell       (Price",
+      "details": "$262.96, RSI: 72.8, MFI: 80.0, StochRSI: 0.81)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MA         Good Sell       (Price",
+      "details": "$510.09, RSI: 67.6, MFI: 81.8, StochRSI: 0.71)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MRK        Good Buy        (Price",
+      "details": "$102.83, RSI: 32.5, MFI: 25.1, StochRSI: 0.18)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NVDA       Good Sell       (Price",
+      "details": "$143.55, RSI: 69.9, MFI: 84.7, StochRSI: 0.96)"
+    },
+    {
+      "type": "asset",
+      "symbol": "RCL        Great Sell      (Price",
+      "details": "$200.99, RSI: 75.9, MFI: 88.1, StochRSI: 0.90)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TRV        Good Sell       (Price",
+      "details": "$255.00, RSI: 69.6, MFI: 73.3, StochRSI: 0.76)"
+    },
+    {
+      "type": "asset",
+      "symbol": "UAL        Great Sell      (Price",
+      "details": "$74.49, RSI: 88.5, MFI: 85.8, StochRSI: 0.98)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WFC        Great Sell      (Price",
+      "details": "$63.07, RSI: 76.2, MFI: 86.3, StochRSI: 0.98)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WMB        Good Sell       (Price",
+      "details": "$50.53, RSI: 76.6, MFI: 86.1, StochRSI: 0.72)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 2 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 6 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 6 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

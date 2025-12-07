@@ -1,0 +1,179 @@
+{
+  "date": "2024-12-19",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2024-12-19 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "ADBE       Great Buy       (Price",
+      "details": "$437.39, RSI: 26.9, MFI: 17.1, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ALK        Good Sell       (Price",
+      "details": "$64.97, RSI: 75.1, MFI: 83.0, StochRSI: 0.72)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AMD        Good Buy        (Price",
+      "details": "$118.88, RSI: 26.6, MFI: 29.5, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ARE        Great Buy       (Price",
+      "details": "$91.50, RSI: 28.4, MFI: 8.2, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "COP        Great Buy       (Price",
+      "details": "$92.00, RSI: 22.0, MFI: 14.0, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CVS        Great Buy       (Price",
+      "details": "$41.98, RSI: 24.8, MFI: 14.8, StochRSI: 0.09)"
+    },
+    {
+      "type": "asset",
+      "symbol": "DVN        Excellent Buy   (Price",
+      "details": "$29.88, RSI: 17.0, MFI: 7.4, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ELV        Good Buy        (Price",
+      "details": "$361.38, RSI: 29.4, MFI: 27.9, StochRSI: 0.02)"
+    },
+    {
+      "type": "asset",
+      "symbol": "FANG       Good Buy        (Price",
+      "details": "$148.83, RSI: 26.1, MFI: 24.1, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "FCX        Great Buy       (Price",
+      "details": "$37.67, RSI: 26.2, MFI: 18.5, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GD         Good Buy        (Price",
+      "details": "$255.04, RSI: 25.7, MFI: 22.4, StochRSI: 0.14)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HAL        Great Buy       (Price",
+      "details": "$25.19, RSI: 22.3, MFI: 15.0, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HUM        Great Buy       (Price",
+      "details": "$232.51, RSI: 27.9, MFI: 8.9, StochRSI: 0.11)"
+    },
+    {
+      "type": "asset",
+      "symbol": "INTC       Good Buy        (Price",
+      "details": "$19.06, RSI: 30.3, MFI: 24.7, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LB         Good Buy        (Price",
+      "details": "$54.50, RSI: 36.9, MFI: 5.4, StochRSI: 0.10)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MDLZ       Great Buy       (Price",
+      "details": "$57.53, RSI: 23.5, MFI: 13.6, StochRSI: 0.05)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MGM        Good Buy        (Price",
+      "details": "$33.44, RSI: 25.3, MFI: 28.3, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PLD        Great Buy       (Price",
+      "details": "$98.67, RSI: 25.3, MFI: 16.2, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PSX        Good Buy        (Price",
+      "details": "$106.36, RSI: 20.0, MFI: 23.0, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "SLB        Great Buy       (Price",
+      "details": "$36.06, RSI: 22.5, MFI: 17.6, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "SNPS       Good Buy        (Price",
+      "details": "$493.35, RSI: 38.2, MFI: 26.6, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "STZ        Good Buy        (Price",
+      "details": "$221.43, RSI: 34.0, MFI: 29.6, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "UNP        Good Buy        (Price",
+      "details": "$219.22, RSI: 32.6, MFI: 21.3, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "UPS        Good Buy        (Price",
+      "details": "$114.76, RSI: 32.4, MFI: 23.7, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "VLO        Good Buy        (Price",
+      "details": "$116.03, RSI: 23.9, MFI: 25.6, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WDC        Good Buy        (Price",
+      "details": "$44.93, RSI: 30.0, MFI: 15.5, StochRSI: 0.00)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 1 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 4 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 4 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

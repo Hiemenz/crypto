@@ -1,0 +1,114 @@
+{
+  "date": "2024-11-02",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2024-11-02 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 3 days) ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "AES        Good Buy        (Price",
+      "details": "$14.35, RSI: 35.1, MFI: 23.3, StochRSI: 0.14)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BKNG       Great Sell      (Price",
+      "details": "$4,742.44, RSI: 78.3, MFI: 82.8, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GIS        Good Buy        (Price",
+      "details": "$65.11, RSI: 38.5, MFI: 13.7, StochRSI: 0.04)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HSY        Good Buy        (Price",
+      "details": "$171.93, RSI: 31.3, MFI: 20.1, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LDOS       Good Sell       (Price",
+      "details": "$184.38, RSI: 80.0, MFI: 78.3, StochRSI: 0.79)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MDLZ       Good Buy        (Price",
+      "details": "$66.35, RSI: 36.8, MFI: 12.1, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MO         Good Sell       (Price",
+      "details": "$50.22, RSI: 72.7, MFI: 71.8, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NCLH       Good Sell       (Price",
+      "details": "$25.15, RSI: 73.2, MFI: 71.3, StochRSI: 0.97)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NFLX       Good Sell       (Price",
+      "details": "$75.55, RSI: 63.5, MFI: 74.1, StochRSI: 0.77)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PFE        Good Buy        (Price",
+      "details": "$25.49, RSI: 37.4, MFI: 29.8, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "SLB        Good Buy        (Price",
+      "details": "$39.14, RSI: 39.5, MFI: 26.5, StochRSI: 0.14)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WMB        Good Sell       (Price",
+      "details": "$50.38, RSI: 72.0, MFI: 76.1, StochRSI: 0.74)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ZION       Good Sell       (Price",
+      "details": "$49.12, RSI: 60.0, MFI: 77.7, StochRSI: 0.71)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 2 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 9 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "date": "2024-07-09",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2024-07-09 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "AXP        Good Sell       (Price",
+      "details": "$234.60, RSI: 61.8, MFI: 79.1, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "C          Good Sell       (Price",
+      "details": "$63.57, RSI: 70.6, MFI: 73.9, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "EL         Good Buy        (Price",
+      "details": "$101.56, RSI: 25.4, MFI: 27.2, StochRSI: 0.05)"
+    },
+    {
+      "type": "asset",
+      "symbol": "FDX        Good Sell       (Price",
+      "details": "$284.62, RSI: 70.0, MFI: 73.9, StochRSI: 0.70)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GOOGL      Good Sell       (Price",
+      "details": "$187.90, RSI: 68.4, MFI: 71.6, StochRSI: 0.76)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GOOG       Good Sell       (Price",
+      "details": "$189.36, RSI: 68.4, MFI: 74.5, StochRSI: 0.78)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ICE        Good Sell       (Price",
+      "details": "$140.48, RSI: 72.5, MFI: 71.7, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MCO        Great Sell      (Price",
+      "details": "$431.95, RSI: 72.1, MFI: 83.4, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MO         Good Sell       (Price",
+      "details": "$42.69, RSI: 65.8, MFI: 73.3, StochRSI: 0.79)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MS         Good Sell       (Price",
+      "details": "$98.15, RSI: 69.4, MFI: 70.0, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PBI        Good Sell       (Price",
+      "details": "$6.10, RSI: 74.0, MFI: 79.4, StochRSI: 0.94)"
+    },
+    {
+      "type": "asset",
+      "symbol": "RCL        Good Sell       (Price",
+      "details": "$160.86, RSI: 65.6, MFI: 72.9, StochRSI: 0.91)"
+    },
+    {
+      "type": "asset",
+      "symbol": "SPGI       Great Sell      (Price",
+      "details": "$456.19, RSI: 72.9, MFI: 80.9, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "SYF        Good Sell       (Price",
+      "details": "$47.12, RSI: 64.7, MFI: 71.9, StochRSI: 0.91)"
+    },
+    {
+      "type": "asset",
+      "symbol": "VTR        Good Sell       (Price",
+      "details": "$50.37, RSI: 71.1, MFI: 71.3, StochRSI: 0.70)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 2 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 6 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 13 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

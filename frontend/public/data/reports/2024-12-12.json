@@ -1,0 +1,115 @@
+{
+  "date": "2024-12-12",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2024-12-12 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "AAPL       Great Sell      (Price",
+      "details": "$246.84, RSI: 75.5, MFI: 88.2, StochRSI: 0.89)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ALK        Great Sell      (Price",
+      "details": "$63.42, RSI: 77.7, MFI: 80.7, StochRSI: 0.85)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AMZN       Great Sell      (Price",
+      "details": "$228.97, RSI: 71.3, MFI: 82.2, StochRSI: 0.91)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AZO        Good Sell       (Price",
+      "details": "$3,340.48, RSI: 69.1, MFI: 71.7, StochRSI: 0.95)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CMG        Good Sell       (Price",
+      "details": "$66.16, RSI: 69.4, MFI: 73.4, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "COP        Good Buy        (Price",
+      "details": "$97.54, RSI: 31.7, MFI: 21.3, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "DVN        Good Buy        (Price",
+      "details": "$33.20, RSI: 27.0, MFI: 22.0, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GOOGL      Good Sell       (Price",
+      "details": "$191.34, RSI: 69.6, MFI: 88.5, StochRSI: 0.83)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GOOG       Great Sell      (Price",
+      "details": "$193.00, RSI: 70.1, MFI: 88.9, StochRSI: 0.85)"
+    },
+    {
+      "type": "asset",
+      "symbol": "META       Good Sell       (Price",
+      "details": "$628.81, RSI: 68.3, MFI: 77.2, StochRSI: 0.94)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MSFT       Good Sell       (Price",
+      "details": "$447.10, RSI: 69.6, MFI: 82.0, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TSLA       Good Sell       (Price",
+      "details": "$418.10, RSI: 75.8, MFI: 76.6, StochRSI: 0.81)"
+    },
+    {
+      "type": "asset",
+      "symbol": "VLO        Good Buy        (Price",
+      "details": "$126.51, RSI: 37.1, MFI: 29.6, StochRSI: 0.01)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 2 days) ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "PYPL       Good Sell       (Price",
+      "details": "$90.81, RSI: 74.2, MFI: 73.2, StochRSI: 1.00)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 4 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 11 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

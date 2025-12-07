@@ -1,0 +1,169 @@
+{
+  "date": "2025-05-08",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2025-05-08 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "BKNG       Good Sell       (Price",
+      "details": "$5,147.51, RSI: 66.1, MFI: 88.5, StochRSI: 0.86)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BK         Good Sell       (Price",
+      "details": "$84.63, RSI: 67.4, MFI: 81.0, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CINF       Good Sell       (Price",
+      "details": "$144.98, RSI: 65.0, MFI: 70.2, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CME        Good Sell       (Price",
+      "details": "$279.37, RSI: 68.5, MFI: 74.8, StochRSI: 0.74)"
+    },
+    {
+      "type": "asset",
+      "symbol": "COF        Good Sell       (Price",
+      "details": "$187.67, RSI: 61.8, MFI: 80.8, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "C          Good Sell       (Price",
+      "details": "$70.75, RSI: 62.4, MFI: 78.6, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GE         Good Sell       (Price",
+      "details": "$213.92, RSI: 69.0, MFI: 79.7, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GIS        Good Buy        (Price",
+      "details": "$53.39, RSI: 38.2, MFI: 29.8, StochRSI: 0.15)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HIG        Good Sell       (Price",
+      "details": "$127.19, RSI: 68.9, MFI: 70.2, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "IBM        Good Sell       (Price",
+      "details": "$249.39, RSI: 61.0, MFI: 73.3, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ICE        Great Sell      (Price",
+      "details": "$175.51, RSI: 70.2, MFI: 93.2, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MA         Good Sell       (Price",
+      "details": "$565.61, RSI: 66.4, MFI: 77.9, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PAYC       Good Sell       (Price",
+      "details": "$248.59, RSI: 72.5, MFI: 72.2, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PBI        Good Sell       (Price",
+      "details": "$9.18, RSI: 65.5, MFI: 79.4, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "RCL        Good Sell       (Price",
+      "details": "$231.48, RSI: 65.2, MFI: 76.7, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "RL         Great Sell      (Price",
+      "details": "$249.88, RSI: 70.6, MFI: 81.5, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "SCHW       Good Sell       (Price",
+      "details": "$83.63, RSI: 67.9, MFI: 74.6, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "SYK        Good Sell       (Price",
+      "details": "$380.78, RSI: 62.1, MFI: 79.6, StochRSI: 0.94)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TPR        Great Sell      (Price",
+      "details": "$76.91, RSI: 70.2, MFI: 88.8, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "UNH        Great Buy       (Price",
+      "details": "$380.43, RSI: 24.5, MFI: 18.5, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "USFD       Good Sell       (Price",
+      "details": "$71.81, RSI: 69.6, MFI: 76.6, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "VRSN       Great Sell      (Price",
+      "details": "$282.74, RSI: 72.2, MFI: 81.4, StochRSI: 0.86)"
+    },
+    {
+      "type": "asset",
+      "symbol": "V          Good Sell       (Price",
+      "details": "$349.38, RSI: 61.0, MFI: 73.5, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WFC        Good Sell       (Price",
+      "details": "$72.11, RSI: 62.2, MFI: 72.6, StochRSI: 0.90)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 2 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 4 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 4 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

@@ -1,0 +1,149 @@
+{
+  "date": "2024-09-26",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2024-09-26 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "ANET       Good Sell       (Price",
+      "details": "$96.57, RSI: 68.6, MFI: 83.5, StochRSI: 0.94)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AVGO       Good Sell       (Price",
+      "details": "$176.36, RSI: 65.0, MFI: 90.6, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AXP        Good Sell       (Price",
+      "details": "$264.60, RSI: 63.2, MFI: 71.8, StochRSI: 0.89)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BLK        Good Sell       (Price",
+      "details": "$925.96, RSI: 72.6, MFI: 79.2, StochRSI: 0.92)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CBRE       Good Sell       (Price",
+      "details": "$123.48, RSI: 71.3, MFI: 70.4, StochRSI: 0.70)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CSCO       Great Sell      (Price",
+      "details": "$51.13, RSI: 72.6, MFI: 89.5, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ETN        Great Sell      (Price",
+      "details": "$328.77, RSI: 71.0, MFI: 84.5, StochRSI: 0.98)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GPN        Good Buy        (Price",
+      "details": "$96.60, RSI: 30.7, MFI: 27.8, StochRSI: 0.05)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HPE        Good Sell       (Price",
+      "details": "$19.81, RSI: 68.5, MFI: 74.8, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "IBM        Good Sell       (Price",
+      "details": "$216.10, RSI: 80.0, MFI: 76.9, StochRSI: 0.83)"
+    },
+    {
+      "type": "asset",
+      "symbol": "IVZ        Good Sell       (Price",
+      "details": "$16.79, RSI: 65.4, MFI: 74.2, StochRSI: 0.98)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MCD        Great Sell      (Price",
+      "details": "$296.72, RSI: 76.1, MFI: 80.1, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "META       Good Sell       (Price",
+      "details": "$566.06, RSI: 73.0, MFI: 78.4, StochRSI: 0.98)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MET        Good Sell       (Price",
+      "details": "$78.69, RSI: 69.8, MFI: 80.1, StochRSI: 0.86)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MS         Good Sell       (Price",
+      "details": "$100.95, RSI: 64.7, MFI: 73.0, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PFGC       Good Sell       (Price",
+      "details": "$78.64, RSI: 73.8, MFI: 76.9, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "RCL        Great Sell      (Price",
+      "details": "$180.69, RSI: 71.7, MFI: 80.0, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "RL         Great Sell      (Price",
+      "details": "$194.13, RSI: 78.4, MFI: 81.7, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "STX        Good Sell       (Price",
+      "details": "$108.13, RSI: 69.0, MFI: 82.2, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TSLA       Good Sell       (Price",
+      "details": "$254.22, RSI: 65.1, MFI: 79.9, StochRSI: 0.86)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 1 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 4 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 4 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

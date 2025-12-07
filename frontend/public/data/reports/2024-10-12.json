@@ -1,0 +1,154 @@
+{
+  "date": "2024-10-12",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2024-10-12 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 3 days) ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "ADSK       Good Sell       (Price",
+      "details": "$285.31, RSI: 74.8, MFI: 71.2, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BKNG       Good Sell       (Price",
+      "details": "$4,267.11, RSI: 66.7, MFI: 74.2, StochRSI: 0.86)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BK         Good Sell       (Price",
+      "details": "$74.39, RSI: 78.4, MFI: 75.0, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BLK        Good Sell       (Price",
+      "details": "$971.72, RSI: 77.0, MFI: 79.4, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BXP        Good Sell       (Price",
+      "details": "$80.15, RSI: 78.5, MFI: 77.3, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CAT        Good Sell       (Price",
+      "details": "$386.70, RSI: 64.5, MFI: 75.6, StochRSI: 0.74)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CHRW       Good Sell       (Price",
+      "details": "$107.59, RSI: 77.2, MFI: 72.1, StochRSI: 0.80)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CRM        Good Sell       (Price",
+      "details": "$289.89, RSI: 67.7, MFI: 80.3, StochRSI: 0.94)"
+    },
+    {
+      "type": "asset",
+      "symbol": "DAL        Good Sell       (Price",
+      "details": "$52.55, RSI: 69.7, MFI: 79.3, StochRSI: 0.87)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ETN        Good Sell       (Price",
+      "details": "$341.20, RSI: 66.1, MFI: 72.5, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "FIS        Good Sell       (Price",
+      "details": "$86.00, RSI: 73.1, MFI: 70.2, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HD         Great Sell      (Price",
+      "details": "$405.80, RSI: 73.5, MFI: 80.6, StochRSI: 0.93)"
+    },
+    {
+      "type": "asset",
+      "symbol": "IBM        Great Sell      (Price",
+      "details": "$227.54, RSI: 83.9, MFI: 88.6, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LOW        Great Sell      (Price",
+      "details": "$274.05, RSI: 76.3, MFI: 81.1, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NCLH       Good Sell       (Price",
+      "details": "$23.35, RSI: 71.5, MFI: 77.2, StochRSI: 0.99)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ORCL       Good Sell       (Price",
+      "details": "$174.39, RSI: 79.7, MFI: 79.2, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "RCL        Good Sell       (Price",
+      "details": "$194.50, RSI: 71.5, MFI: 74.1, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "RL         Great Sell      (Price",
+      "details": "$203.32, RSI: 73.0, MFI: 91.3, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "SPG        Good Sell       (Price",
+      "details": "$163.52, RSI: 67.5, MFI: 80.6, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "STX        Good Sell       (Price",
+      "details": "$108.43, RSI: 64.3, MFI: 76.3, StochRSI: 0.90)"
+    },
+    {
+      "type": "asset",
+      "symbol": "UAL        Great Sell      (Price",
+      "details": "$63.53, RSI: 75.0, MFI: 88.6, StochRSI: 1.00)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 2 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 2 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "date": "2024-10-01",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2024-10-01 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "AEE        Good Sell       (Price",
+      "details": "$84.99, RSI: 71.8, MFI: 76.6, StochRSI: 0.88)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AES        Good Sell       (Price",
+      "details": "$18.87, RSI: 73.2, MFI: 75.9, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CAG        Good Sell       (Price",
+      "details": "$30.25, RSI: 62.4, MFI: 72.7, StochRSI: 0.91)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CAT        Good Sell       (Price",
+      "details": "$385.17, RSI: 73.0, MFI: 73.5, StochRSI: 0.92)"
+    },
+    {
+      "type": "asset",
+      "symbol": "EIX        Good Sell       (Price",
+      "details": "$82.12, RSI: 65.3, MFI: 76.8, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GOOGL      Good Sell       (Price",
+      "details": "$166.26, RSI: 62.2, MFI: 80.7, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GOOG       Good Sell       (Price",
+      "details": "$167.69, RSI: 62.4, MFI: 87.4, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HD         Good Sell       (Price",
+      "details": "$399.58, RSI: 79.2, MFI: 73.4, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HPE        Good Sell       (Price",
+      "details": "$19.42, RSI: 61.5, MFI: 78.8, StochRSI: 0.77)"
+    },
+    {
+      "type": "asset",
+      "symbol": "KMI        Good Sell       (Price",
+      "details": "$21.39, RSI: 69.3, MFI: 70.3, StochRSI: 0.93)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LMT        Great Sell      (Price",
+      "details": "$589.28, RSI: 79.5, MFI: 80.1, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LOW        Good Sell       (Price",
+      "details": "$266.16, RSI: 80.2, MFI: 73.0, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "META       Good Sell       (Price",
+      "details": "$574.66, RSI: 75.8, MFI: 79.8, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MET        Good Sell       (Price",
+      "details": "$78.92, RSI: 67.5, MFI: 79.8, StochRSI: 0.70)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MS         Good Sell       (Price",
+      "details": "$100.78, RSI: 63.4, MFI: 84.0, StochRSI: 0.94)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PEG        Good Sell       (Price",
+      "details": "$87.99, RSI: 79.3, MFI: 73.7, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PFGC       Good Sell       (Price",
+      "details": "$78.16, RSI: 69.3, MFI: 84.4, StochRSI: 0.72)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TSLA       Good Sell       (Price",
+      "details": "$258.02, RSI: 64.9, MFI: 77.8, StochRSI: 0.76)"
+    },
+    {
+      "type": "asset",
+      "symbol": "XOM        Good Sell       (Price",
+      "details": "$114.74, RSI: 61.2, MFI: 70.1, StochRSI: 1.00)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 2 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 6 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 13 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

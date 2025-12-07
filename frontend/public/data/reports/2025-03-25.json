@@ -1,0 +1,84 @@
+{
+  "date": "2025-03-25",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2025-03-25 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "CVX        Good Sell       (Price",
+      "details": "$160.35, RSI: 68.1, MFI: 85.9, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GM         Good Sell       (Price",
+      "details": "$52.29, RSI: 65.3, MFI: 77.3, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LUV        Good Sell       (Price",
+      "details": "$34.28, RSI: 70.5, MFI: 73.7, StochRSI: 0.96)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MNST       Good Sell       (Price",
+      "details": "$57.84, RSI: 73.0, MFI: 77.3, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NKE        Good Buy        (Price",
+      "details": "$65.76, RSI: 28.4, MFI: 27.1, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "T          Good Sell       (Price",
+      "details": "$26.47, RSI: 62.0, MFI: 78.9, StochRSI: 0.73)"
+    },
+    {
+      "type": "asset",
+      "symbol": "VRSN       Good Sell       (Price",
+      "details": "$243.68, RSI: 71.6, MFI: 73.1, StochRSI: 1.00)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 1 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 6 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 6 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

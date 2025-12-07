@@ -1,0 +1,135 @@
+{
+  "date": "2025-03-24",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2025-03-24 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "CVX        Good Sell       (Price",
+      "details": "$159.46, RSI: 66.7, MFI: 79.7, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GM         Good Sell       (Price",
+      "details": "$51.16, RSI: 62.0, MFI: 78.3, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LUV        Good Sell       (Price",
+      "details": "$34.45, RSI: 72.2, MFI: 73.6, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MNST       Good Sell       (Price",
+      "details": "$57.83, RSI: 73.0, MFI: 77.9, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NKE        Good Buy        (Price",
+      "details": "$66.60, RSI: 29.9, MFI: 27.7, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "VRSN       Good Sell       (Price",
+      "details": "$243.24, RSI: 71.1, MFI: 73.3, StochRSI: 0.89)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 2 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 7 days) ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "AAL        Good Buy        (Price",
+      "details": "$11.83, RSI: 36.1, MFI: 26.2, StochRSI: 0.08)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ABBV       Good Sell       (Price",
+      "details": "$204.01, RSI: 63.7, MFI: 70.9, StochRSI: 0.73)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AIG        Good Sell       (Price",
+      "details": "$83.27, RSI: 68.2, MFI: 78.4, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CME        Great Sell      (Price",
+      "details": "$260.50, RSI: 84.0, MFI: 89.4, StochRSI: 0.95)"
+    },
+    {
+      "type": "asset",
+      "symbol": "DXC        Good Buy        (Price",
+      "details": "$16.98, RSI: 35.4, MFI: 13.4, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ED         Good Sell       (Price",
+      "details": "$104.19, RSI: 67.3, MFI: 75.8, StochRSI: 0.94)"
+    },
+    {
+      "type": "asset",
+      "symbol": "JBHT       Good Buy        (Price",
+      "details": "$150.67, RSI: 36.9, MFI: 15.7, StochRSI: 0.14)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MCK        Good Sell       (Price",
+      "details": "$659.42, RSI: 69.6, MFI: 79.4, StochRSI: 0.98)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MMC        Good Sell       (Price",
+      "details": "$231.79, RSI: 61.0, MFI: 72.1, StochRSI: 0.77)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TGT        Good Buy        (Price",
+      "details": "$104.66, RSI: 31.6, MFI: 20.1, StochRSI: 0.13)"
+    },
+    {
+      "type": "asset",
+      "symbol": "VRTX       Good Sell       (Price",
+      "details": "$511.74, RSI: 63.2, MFI: 73.6, StochRSI: 0.98)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WPP        Good Buy        (Price",
+      "details": "$37.28, RSI: 33.9, MFI: 19.5, StochRSI: 0.05)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 7 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

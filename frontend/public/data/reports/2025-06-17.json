@@ -1,0 +1,109 @@
+{
+  "date": "2025-06-17",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2025-06-17 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "BF-B       Good Buy        (Price",
+      "details": "$25.61, RSI: 20.0, MFI: 27.9, StochRSI: 0.06)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BTI        Good Sell       (Price",
+      "details": "$47.33, RSI: 73.5, MFI: 77.6, StochRSI: 0.75)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CVS        Good Sell       (Price",
+      "details": "$65.83, RSI: 61.8, MFI: 73.5, StochRSI: 0.80)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HD         Good Buy        (Price",
+      "details": "$346.81, RSI: 34.6, MFI: 29.9, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "IBM        Good Sell       (Price",
+      "details": "$279.61, RSI: 71.7, MFI: 71.9, StochRSI: 0.82)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LRCX       Good Sell       (Price",
+      "details": "$92.25, RSI: 69.2, MFI: 80.1, StochRSI: 0.77)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MSI        Good Buy        (Price",
+      "details": "$405.49, RSI: 39.8, MFI: 23.0, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PVH        Good Buy        (Price",
+      "details": "$64.09, RSI: 33.6, MFI: 12.7, StochRSI: 0.15)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ROST       Good Buy        (Price",
+      "details": "$128.71, RSI: 30.1, MFI: 17.4, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "RTX        Great Sell      (Price",
+      "details": "$147.83, RSI: 75.1, MFI: 92.4, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "STZ        Great Buy       (Price",
+      "details": "$158.39, RSI: 24.6, MFI: 19.0, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "VRSN       Good Sell       (Price",
+      "details": "$282.27, RSI: 60.4, MFI: 72.7, StochRSI: 0.79)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 1 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 6 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 6 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

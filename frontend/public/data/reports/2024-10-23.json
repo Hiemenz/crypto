@@ -1,0 +1,89 @@
+{
+  "date": "2024-10-23",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2024-10-23 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "DLR        Good Sell       (Price",
+      "details": "$161.07, RSI: 69.3, MFI: 71.1, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ED         Good Sell       (Price",
+      "details": "$102.93, RSI: 64.2, MFI: 74.1, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "FISV       Good Sell       (Price",
+      "details": "$202.36, RSI: 84.9, MFI: 80.7, StochRSI: 0.79)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GM         Great Sell      (Price",
+      "details": "$52.36, RSI: 70.5, MFI: 87.7, StochRSI: 0.83)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HON        Good Sell       (Price",
+      "details": "$202.24, RSI: 69.7, MFI: 84.2, StochRSI: 0.73)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MA         Good Sell       (Price",
+      "details": "$510.80, RSI: 68.2, MFI: 82.0, StochRSI: 0.74)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NTRS       Good Sell       (Price",
+      "details": "$99.68, RSI: 81.5, MFI: 75.7, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WFC        Great Sell      (Price",
+      "details": "$62.82, RSI: 74.4, MFI: 82.5, StochRSI: 0.88)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 1 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 5 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 5 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

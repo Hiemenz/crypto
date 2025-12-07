@@ -1,0 +1,104 @@
+{
+  "date": "2024-12-24",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2024-12-24 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "ADBE       Good Buy        (Price",
+      "details": "$447.94, RSI: 32.5, MFI: 24.8, StochRSI: 0.13)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ALK        Great Sell      (Price",
+      "details": "$67.60, RSI: 78.7, MFI: 85.1, StochRSI: 0.90)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CVS        Good Buy        (Price",
+      "details": "$42.44, RSI: 27.2, MFI: 20.1, StochRSI: 0.22)"
+    },
+    {
+      "type": "asset",
+      "symbol": "EXPD       Good Buy        (Price",
+      "details": "$110.43, RSI: 26.2, MFI: 28.1, StochRSI: 0.12)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GIS        Good Buy        (Price",
+      "details": "$60.95, RSI: 39.0, MFI: 29.0, StochRSI: 0.09)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PSX        Good Buy        (Price",
+      "details": "$107.54, RSI: 24.4, MFI: 27.1, StochRSI: 0.15)"
+    },
+    {
+      "type": "asset",
+      "symbol": "STZ        Good Buy        (Price",
+      "details": "$219.82, RSI: 32.7, MFI: 22.4, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "VLO        Great Buy       (Price",
+      "details": "$115.94, RSI: 24.4, MFI: 14.5, StochRSI: 0.04)"
+    },
+    {
+      "type": "asset",
+      "symbol": "VRSN       Good Sell       (Price",
+      "details": "$199.74, RSI: 64.0, MFI: 70.8, StochRSI: 0.79)"
+    },
+    {
+      "type": "asset",
+      "symbol": "V          Good Sell       (Price",
+      "details": "$318.39, RSI: 63.7, MFI: 71.1, StochRSI: 0.78)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WDC        Good Buy        (Price",
+      "details": "$46.50, RSI: 37.3, MFI: 14.4, StochRSI: 0.24)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 2 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 6 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 13 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

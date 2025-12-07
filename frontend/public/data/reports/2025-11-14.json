@@ -1,0 +1,124 @@
+{
+  "date": "2025-11-14",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2025-11-14 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "AFL        Good Sell       (Price",
+      "details": "$113.75, RSI: 65.7, MFI: 71.1, StochRSI: 0.88)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ALL        Good Sell       (Price",
+      "details": "$214.30, RSI: 72.5, MFI: 73.9, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AMGN       Great Sell      (Price",
+      "details": "$336.74, RSI: 76.0, MFI: 87.3, StochRSI: 0.91)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CME        Good Sell       (Price",
+      "details": "$285.04, RSI: 72.6, MFI: 72.5, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "COKE       Good Sell       (Price",
+      "details": "$159.54, RSI: 84.4, MFI: 77.2, StochRSI: 0.83)"
+    },
+    {
+      "type": "asset",
+      "symbol": "EXPD       Good Sell       (Price",
+      "details": "$138.42, RSI: 68.3, MFI: 74.1, StochRSI: 0.71)"
+    },
+    {
+      "type": "asset",
+      "symbol": "FISV       Good Buy        (Price",
+      "details": "$63.42, RSI: 17.1, MFI: 25.2, StochRSI: 0.13)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GPN        Good Buy        (Price",
+      "details": "$74.11, RSI: 32.6, MFI: 27.5, StochRSI: 0.04)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NOW        Good Buy        (Price",
+      "details": "$850.43, RSI: 35.0, MFI: 22.4, StochRSI: 0.02)"
+    },
+    {
+      "type": "asset",
+      "symbol": "REGN       Good Sell       (Price",
+      "details": "$693.50, RSI: 74.1, MFI: 77.2, StochRSI: 0.94)"
+    },
+    {
+      "type": "asset",
+      "symbol": "SNPS       Good Buy        (Price",
+      "details": "$389.83, RSI: 30.8, MFI: 15.5, StochRSI: 0.11)"
+    },
+    {
+      "type": "asset",
+      "symbol": "VTR        Good Sell       (Price",
+      "details": "$78.00, RSI: 77.1, MFI: 73.1, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WELL       Great Sell      (Price",
+      "details": "$193.82, RSI: 75.0, MFI: 83.6, StochRSI: 0.97)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WRB        Good Sell       (Price",
+      "details": "$77.00, RSI: 62.6, MFI: 73.0, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WY         Good Buy        (Price",
+      "details": "$22.13, RSI: 32.6, MFI: 26.0, StochRSI: 0.11)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 1 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 3 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 10 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

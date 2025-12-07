@@ -1,0 +1,105 @@
+{
+  "date": "2024-10-10",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2024-10-10 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "ANET       Great Sell      (Price",
+      "details": "$102.44, RSI: 73.8, MFI: 82.2, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "APD        Good Sell       (Price",
+      "details": "$306.79, RSI: 72.6, MFI: 71.5, StochRSI: 0.92)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AVGO       Good Sell       (Price",
+      "details": "$183.89, RSI: 66.7, MFI: 79.3, StochRSI: 0.98)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CSCO       Good Sell       (Price",
+      "details": "$52.19, RSI: 72.1, MFI: 75.8, StochRSI: 0.73)"
+    },
+    {
+      "type": "asset",
+      "symbol": "FISV       Great Sell      (Price",
+      "details": "$187.99, RSI: 78.7, MFI: 85.7, StochRSI: 0.97)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HON        Good Sell       (Price",
+      "details": "$196.05, RSI: 68.5, MFI: 72.5, StochRSI: 0.99)"
+    },
+    {
+      "type": "asset",
+      "symbol": "IBM        Good Sell       (Price",
+      "details": "$225.37, RSI: 78.5, MFI: 71.4, StochRSI: 0.75)"
+    },
+    {
+      "type": "asset",
+      "symbol": "KMI        Good Sell       (Price",
+      "details": "$22.46, RSI: 74.6, MFI: 73.1, StochRSI: 0.83)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MSI        Good Sell       (Price",
+      "details": "$460.07, RSI: 74.6, MFI: 74.0, StochRSI: 0.75)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ORLY       Good Sell       (Price",
+      "details": "$78.09, RSI: 62.3, MFI: 81.6, StochRSI: 0.80)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WMB        Good Sell       (Price",
+      "details": "$47.80, RSI: 70.5, MFI: 76.4, StochRSI: 0.78)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 2 days) ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "DELL       Good Sell       (Price",
+      "details": "$125.00, RSI: 60.0, MFI: 74.0, StochRSI: 1.00)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 4 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 4 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "date": "2025-04-13",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2025-04-13 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 3 days) ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "ARE        Good Buy        (Price",
+      "details": "$76.48, RSI: 27.5, MFI: 24.8, StochRSI: 0.17)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BTI        Good Sell       (Price",
+      "details": "$41.06, RSI: 64.4, MFI: 73.7, StochRSI: 0.73)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LVS        Great Buy       (Price",
+      "details": "$32.17, RSI: 26.3, MFI: 15.8, StochRSI: 0.10)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MRK        Good Buy        (Price",
+      "details": "$76.85, RSI: 27.0, MFI: 23.0, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NKE        Good Buy        (Price",
+      "details": "$54.19, RSI: 29.7, MFI: 25.3, StochRSI: 0.15)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NOC        Good Sell       (Price",
+      "details": "$524.77, RSI: 62.7, MFI: 74.9, StochRSI: 0.86)"
+    },
+    {
+      "type": "asset",
+      "symbol": "REGN       Good Buy        (Price",
+      "details": "$556.24, RSI: 28.2, MFI: 27.3, StochRSI: 0.04)"
+    },
+    {
+      "type": "asset",
+      "symbol": "UNH        Good Sell       (Price",
+      "details": "$575.84, RSI: 64.7, MFI: 78.6, StochRSI: 0.82)"
+    },
+    {
+      "type": "asset",
+      "symbol": "UPS        Good Buy        (Price",
+      "details": "$91.59, RSI: 27.8, MFI: 25.8, StochRSI: 0.05)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WY         Great Buy       (Price",
+      "details": "$25.43, RSI: 29.5, MFI: 19.0, StochRSI: 0.02)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ZTS        Good Buy        (Price",
+      "details": "$147.71, RSI: 33.9, MFI: 28.0, StochRSI: 0.00)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 1 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 1 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

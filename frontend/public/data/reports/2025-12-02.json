@@ -1,0 +1,114 @@
+{
+  "date": "2025-12-02",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2025-12-02 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "AAPL       Good Sell       (Price",
+      "details": "$286.19, RSI: 75.2, MFI: 71.6, StochRSI: 0.95/0.86, BB: 1.12, MACD: 0.85)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ADI        Good Sell       (Price",
+      "details": "$272.97, RSI: 73.1, MFI: 71.7, StochRSI: 1.00/1.00, BB: 1.08, MACD: 4.68)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CMA        Good Sell       (Price",
+      "details": "$80.86, RSI: 64.4, MFI: 71.5, StochRSI: 0.99/0.98, BB: 0.89, MACD: 0.24)"
+    },
+    {
+      "type": "asset",
+      "symbol": "DAL        Good Sell       (Price",
+      "details": "$65.14, RSI: 65.1, MFI: 74.3, StochRSI: 0.98/0.99, BB: 0.98, MACD: 0.83)"
+    },
+    {
+      "type": "asset",
+      "symbol": "EQIX       Great Buy       (Price",
+      "details": "$727.38, RSI: 27.8, MFI: 16.5, StochRSI: 0.06/0.08, BB: 0.09, MACD: -5.40)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HBAN       Good Sell       (Price",
+      "details": "$16.56, RSI: 64.8, MFI: 74.2, StochRSI: 1.00/1.00, BB: 0.97, MACD: 0.15)"
+    },
+    {
+      "type": "asset",
+      "symbol": "JBHT       Good Sell       (Price",
+      "details": "$185.73, RSI: 74.3, MFI: 72.5, StochRSI: 1.00/0.96, BB: 1.16, MACD: 1.34)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PNC        Good Sell       (Price",
+      "details": "$192.05, RSI: 60.9, MFI: 70.3, StochRSI: 0.89/0.90, BB: 0.88, MACD: 1.24)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ROST       Good Sell       (Price",
+      "details": "$177.57, RSI: 78.0, MFI: 76.8, StochRSI: 0.87/0.91, BB: 0.88, MACD: 1.29)"
+    },
+    {
+      "type": "asset",
+      "symbol": "SYF        Good Sell       (Price",
+      "details": "$78.88, RSI: 67.1, MFI: 71.0, StochRSI: 1.00/1.00, BB: 1.01, MACD: 0.58)"
+    },
+    {
+      "type": "asset",
+      "symbol": "USB        Good Sell       (Price",
+      "details": "$49.68, RSI: 66.3, MFI: 74.4, StochRSI: 1.00/1.00, BB: 0.97, MACD: 0.32)"
+    },
+    {
+      "type": "asset",
+      "symbol": "VFC        Good Sell       (Price",
+      "details": "$17.72, RSI: 67.9, MFI: 87.9, StochRSI: 0.94/0.98, BB: 0.91, MACD: 0.32)"
+    },
+    {
+      "type": "asset",
+      "symbol": "VICI       Great Buy       (Price",
+      "details": "$28.45, RSI: 25.8, MFI: 17.8, StochRSI: 0.04/0.07, BB: 0.14, MACD: -0.06)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 1 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 5 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 5 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

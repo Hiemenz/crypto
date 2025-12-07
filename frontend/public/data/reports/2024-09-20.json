@@ -1,0 +1,110 @@
+{
+  "date": "2024-09-20",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2024-09-20 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "BK         Great Sell      (Price",
+      "details": "$69.83, RSI: 75.1, MFI: 84.7, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CCL        Good Sell       (Price",
+      "details": "$19.00, RSI: 74.6, MFI: 77.3, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CMA        Good Sell       (Price",
+      "details": "$58.74, RSI: 74.0, MFI: 75.5, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "EQIX       Good Sell       (Price",
+      "details": "$853.49, RSI: 67.6, MFI: 71.4, StochRSI: 0.78)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ETN        Good Sell       (Price",
+      "details": "$326.38, RSI: 71.7, MFI: 70.5, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GD         Good Sell       (Price",
+      "details": "$299.25, RSI: 61.8, MFI: 71.5, StochRSI: 0.79)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GE         Good Sell       (Price",
+      "details": "$186.00, RSI: 71.2, MFI: 72.7, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HUM        Great Buy       (Price",
+      "details": "$305.26, RSI: 27.5, MFI: 18.5, StochRSI: 0.04)"
+    },
+    {
+      "type": "asset",
+      "symbol": "META       Good Sell       (Price",
+      "details": "$559.59, RSI: 71.7, MFI: 73.1, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MET        Good Sell       (Price",
+      "details": "$78.03, RSI: 71.3, MFI: 75.3, StochRSI: 0.94)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MTB        Good Sell       (Price",
+      "details": "$174.58, RSI: 72.3, MFI: 70.6, StochRSI: 0.96)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NOW        Good Sell       (Price",
+      "details": "$937.36, RSI: 74.5, MFI: 71.4, StochRSI: 1.00)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 1 days) ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "USFD       Good Sell       (Price",
+      "details": "$61.58, RSI: 67.7, MFI: 79.1, StochRSI: 0.86)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 3 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 10 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

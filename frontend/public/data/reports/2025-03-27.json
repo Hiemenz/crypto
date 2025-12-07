@@ -1,0 +1,89 @@
+{
+  "date": "2025-03-27",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2025-03-27 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "CVX        Good Sell       (Price",
+      "details": "$161.03, RSI: 66.8, MFI: 81.1, StochRSI: 0.83)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LUV        Good Sell       (Price",
+      "details": "$33.55, RSI: 63.5, MFI: 78.0, StochRSI: 0.79)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MNST       Great Sell      (Price",
+      "details": "$58.58, RSI: 75.3, MFI: 84.7, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MRK        Good Buy        (Price",
+      "details": "$85.88, RSI: 35.9, MFI: 27.7, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NKE        Good Buy        (Price",
+      "details": "$65.03, RSI: 27.3, MFI: 24.0, StochRSI: 0.01)"
+    },
+    {
+      "type": "asset",
+      "symbol": "REGN       Good Buy        (Price",
+      "details": "$633.93, RSI: 36.9, MFI: 25.5, StochRSI: 0.04)"
+    },
+    {
+      "type": "asset",
+      "symbol": "T          Good Sell       (Price",
+      "details": "$27.33, RSI: 69.1, MFI: 79.6, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "VRSN       Good Sell       (Price",
+      "details": "$252.54, RSI: 80.2, MFI: 78.9, StochRSI: 1.00)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 2 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 4 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 4 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

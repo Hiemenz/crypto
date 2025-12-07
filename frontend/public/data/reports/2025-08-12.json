@@ -1,0 +1,154 @@
+{
+  "date": "2025-08-12",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2025-08-12 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "ACN        Great Buy       (Price",
+      "details": "$237.87, RSI: 20.5, MFI: 9.4, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ANET       Good Sell       (Price",
+      "details": "$141.25, RSI: 77.5, MFI: 78.5, StochRSI: 0.91)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BLK        Good Sell       (Price",
+      "details": "$1,154.16, RSI: 68.6, MFI: 73.1, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BTI        Good Sell       (Price",
+      "details": "$57.09, RSI: 81.3, MFI: 82.6, StochRSI: 0.79)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CHRW       Good Sell       (Price",
+      "details": "$118.19, RSI: 73.1, MFI: 73.6, StochRSI: 0.94)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CPT        Good Buy        (Price",
+      "details": "$103.82, RSI: 33.7, MFI: 17.1, StochRSI: 0.18)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CRM        Great Buy       (Price",
+      "details": "$231.26, RSI: 23.0, MFI: 16.5, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "DELL       Good Sell       (Price",
+      "details": "$141.14, RSI: 69.8, MFI: 70.4, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "EQR        Good Buy        (Price",
+      "details": "$62.03, RSI: 35.9, MFI: 28.4, StochRSI: 0.22)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ESS        Good Buy        (Price",
+      "details": "$251.54, RSI: 32.9, MFI: 19.0, StochRSI: 0.16)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HCA        Good Sell       (Price",
+      "details": "$389.61, RSI: 68.6, MFI: 75.8, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HIG        Good Sell       (Price",
+      "details": "$128.51, RSI: 61.7, MFI: 71.0, StochRSI: 0.94)"
+    },
+    {
+      "type": "asset",
+      "symbol": "KDP        Good Sell       (Price",
+      "details": "$34.50, RSI: 63.8, MFI: 71.9, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LVS        Good Sell       (Price",
+      "details": "$53.67, RSI: 75.1, MFI: 73.0, StochRSI: 0.82)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MAA        Good Buy        (Price",
+      "details": "$136.81, RSI: 32.6, MFI: 17.5, StochRSI: 0.07)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MO         Great Sell      (Price",
+      "details": "$64.96, RSI: 79.1, MFI: 94.2, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MU         Good Sell       (Price",
+      "details": "$127.67, RSI: 67.9, MFI: 73.0, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "OKE        Good Buy        (Price",
+      "details": "$72.91, RSI: 33.8, MFI: 29.7, StochRSI: 0.07)"
+    },
+    {
+      "type": "asset",
+      "symbol": "UDR        Good Buy        (Price",
+      "details": "$37.38, RSI: 36.2, MFI: 24.2, StochRSI: 0.30)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WMT        Good Sell       (Price",
+      "details": "$103.38, RSI: 73.2, MFI: 79.0, StochRSI: 0.90)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WPP        Great Buy       (Price",
+      "details": "$24.02, RSI: 20.5, MFI: 14.0, StochRSI: 0.00)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 2 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 6 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 6 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

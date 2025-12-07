@@ -1,0 +1,164 @@
+{
+  "date": "2025-09-18",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2025-09-18 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "ACN        Good Buy        (Price",
+      "details": "$239.55, RSI: 35.5, MFI: 19.5, StochRSI: 0.28)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AMAT       Good Sell       (Price",
+      "details": "$189.76, RSI: 71.0, MFI: 75.4, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BF-B       Good Buy        (Price",
+      "details": "$27.48, RSI: 39.7, MFI: 27.8, StochRSI: 0.23)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CAT        Good Sell       (Price",
+      "details": "$465.62, RSI: 75.8, MFI: 73.7, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "C          Good Sell       (Price",
+      "details": "$101.80, RSI: 72.8, MFI: 72.0, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GOOGL      Great Sell      (Price",
+      "details": "$252.03, RSI: 85.0, MFI: 87.1, StochRSI: 0.81)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GOOG       Great Sell      (Price",
+      "details": "$252.33, RSI: 85.4, MFI: 87.5, StochRSI: 0.83)"
+    },
+    {
+      "type": "asset",
+      "symbol": "INTC       Good Sell       (Price",
+      "details": "$30.57, RSI: 78.5, MFI: 76.4, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "JBHT       Good Buy        (Price",
+      "details": "$134.71, RSI: 39.2, MFI: 26.0, StochRSI: 0.10)"
+    },
+    {
+      "type": "asset",
+      "symbol": "JPM        Good Sell       (Price",
+      "details": "$311.71, RSI: 69.7, MFI: 77.5, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LRCX       Great Sell      (Price",
+      "details": "$126.07, RSI: 81.2, MFI: 80.4, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MDT        Good Sell       (Price",
+      "details": "$94.87, RSI: 62.3, MFI: 76.6, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MU         Excellent Sell  (Price",
+      "details": "$168.78, RSI: 86.4, MFI: 92.2, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NTAP       Good Sell       (Price",
+      "details": "$125.81, RSI: 74.1, MFI: 70.9, StochRSI: 0.88)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PFGC       Good Sell       (Price",
+      "details": "$108.04, RSI: 65.3, MFI: 82.5, StochRSI: 0.75)"
+    },
+    {
+      "type": "asset",
+      "symbol": "QCOM       Good Sell       (Price",
+      "details": "$168.13, RSI: 71.1, MFI: 72.8, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "STX        Good Sell       (Price",
+      "details": "$215.96, RSI: 87.5, MFI: 77.0, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "STZ        Great Buy       (Price",
+      "details": "$131.98, RSI: 20.3, MFI: 19.1, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TAP        Good Buy        (Price",
+      "details": "$46.90, RSI: 33.0, MFI: 17.9, StochRSI: 0.02)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TPR        Good Sell       (Price",
+      "details": "$113.30, RSI: 69.0, MFI: 75.2, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TSLA       Great Sell      (Price",
+      "details": "$416.85, RSI: 74.5, MFI: 81.7, StochRSI: 0.81)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WDC        Good Sell       (Price",
+      "details": "$105.15, RSI: 84.3, MFI: 86.2, StochRSI: 0.77)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WMT        Good Sell       (Price",
+      "details": "$103.60, RSI: 61.6, MFI: 71.5, StochRSI: 0.84)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 1 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 4 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 11 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

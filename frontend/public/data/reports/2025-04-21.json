@@ -1,0 +1,115 @@
+{
+  "date": "2025-04-21",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2025-04-21 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "BTI        Good Sell       (Price",
+      "details": "$41.29, RSI: 63.2, MFI: 70.3, StochRSI: 0.89)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GPN        Great Buy       (Price",
+      "details": "$67.06, RSI: 25.0, MFI: 19.3, StochRSI: 0.14)"
+    },
+    {
+      "type": "asset",
+      "symbol": "KR         Good Sell       (Price",
+      "details": "$71.22, RSI: 66.7, MFI: 72.4, StochRSI: 0.91)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 1 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 7 days) ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "AAL        Good Buy        (Price",
+      "details": "$9.07, RSI: 27.3, MFI: 23.9, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "DXC        Great Buy       (Price",
+      "details": "$14.03, RSI: 27.0, MFI: 19.4, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ED         Good Sell       (Price",
+      "details": "$108.22, RSI: 65.1, MFI: 84.4, StochRSI: 0.73)"
+    },
+    {
+      "type": "asset",
+      "symbol": "EL         Good Buy        (Price",
+      "details": "$53.91, RSI: 32.2, MFI: 25.6, StochRSI: 0.13)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GPN        Good Buy        (Price",
+      "details": "$67.06, RSI: 21.7, MFI: 29.0, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "JBHT       Great Buy       (Price",
+      "details": "$125.99, RSI: 28.8, MFI: 6.1, StochRSI: 0.05)"
+    },
+    {
+      "type": "asset",
+      "symbol": "KR         Good Sell       (Price",
+      "details": "$71.22, RSI: 70.9, MFI: 76.6, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LVS        Good Buy        (Price",
+      "details": "$32.06, RSI: 28.1, MFI: 28.3, StochRSI: 0.07)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MCK        Good Sell       (Price",
+      "details": "$681.00, RSI: 68.2, MFI: 81.2, StochRSI: 0.73)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NKE        Good Buy        (Price",
+      "details": "$55.46, RSI: 29.5, MFI: 25.1, StochRSI: 0.05)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TGT        Great Buy       (Price",
+      "details": "$90.58, RSI: 25.5, MFI: 6.4, StochRSI: 0.00)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 7 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

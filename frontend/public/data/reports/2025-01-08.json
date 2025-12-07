@@ -1,0 +1,79 @@
+{
+  "date": "2025-01-08",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2025-01-08 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "BF-B       Great Buy       (Price",
+      "details": "$35.20, RSI: 25.9, MFI: 12.2, StochRSI: 0.13)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CL         Great Buy       (Price",
+      "details": "$85.40, RSI: 24.4, MFI: 6.0, StochRSI: 0.03)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CPB        Good Buy        (Price",
+      "details": "$37.90, RSI: 27.7, MFI: 20.8, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HSY        Good Buy        (Price",
+      "details": "$157.07, RSI: 34.5, MFI: 29.8, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NKE        Great Buy       (Price",
+      "details": "$70.10, RSI: 28.9, MFI: 15.2, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TPR        Great Sell      (Price",
+      "details": "$67.68, RSI: 73.6, MFI: 86.8, StochRSI: 1.00)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 2 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 5 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 12 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

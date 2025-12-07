@@ -1,0 +1,220 @@
+{
+  "date": "2024-10-07",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2024-10-07 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "ARE        Good Buy        (Price",
+      "details": "$106.80, RSI: 34.7, MFI: 16.7, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "FISV       Good Sell       (Price",
+      "details": "$184.98, RSI: 75.4, MFI: 70.7, StochRSI: 0.87)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GPN        Good Buy        (Price",
+      "details": "$96.51, RSI: 36.1, MFI: 25.0, StochRSI: 0.19)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HPE        Good Sell       (Price",
+      "details": "$20.31, RSI: 67.0, MFI: 74.3, StochRSI: 0.91)"
+    },
+    {
+      "type": "asset",
+      "symbol": "KMI        Good Sell       (Price",
+      "details": "$22.32, RSI: 77.4, MFI: 73.3, StochRSI: 0.95)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LDOS       Good Sell       (Price",
+      "details": "$164.92, RSI: 76.8, MFI: 75.7, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LMT        Great Sell      (Price",
+      "details": "$588.97, RSI: 76.4, MFI: 82.4, StochRSI: 0.86)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MRK        Good Buy        (Price",
+      "details": "$104.71, RSI: 29.8, MFI: 21.3, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MS         Good Sell       (Price",
+      "details": "$103.89, RSI: 71.2, MFI: 77.9, StochRSI: 0.94)"
+    },
+    {
+      "type": "asset",
+      "symbol": "XOM        Good Sell       (Price",
+      "details": "$119.95, RSI: 69.9, MFI: 73.2, StochRSI: 1.00)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 2 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 7 days) ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "ADP        Good Sell       (Price",
+      "details": "$276.35, RSI: 74.5, MFI: 70.8, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AFL        Great Sell      (Price",
+      "details": "$108.94, RSI: 84.3, MFI: 89.0, StochRSI: 0.92)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AON        Good Sell       (Price",
+      "details": "$341.22, RSI: 65.6, MFI: 74.5, StochRSI: 0.74)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ATO        Great Sell      (Price",
+      "details": "$134.62, RSI: 73.8, MFI: 86.6, StochRSI: 0.86)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AXP        Good Sell       (Price",
+      "details": "$270.87, RSI: 70.7, MFI: 75.1, StochRSI: 0.93)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BK         Good Sell       (Price",
+      "details": "$70.44, RSI: 75.3, MFI: 76.4, StochRSI: 0.89)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BLK        Good Sell       (Price",
+      "details": "$921.70, RSI: 71.0, MFI: 75.9, StochRSI: 0.86)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CAT        Good Sell       (Price",
+      "details": "$390.92, RSI: 68.0, MFI: 72.3, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CME        Good Sell       (Price",
+      "details": "$212.26, RSI: 66.6, MFI: 78.6, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CMS        Great Sell      (Price",
+      "details": "$67.19, RSI: 70.7, MFI: 96.1, StochRSI: 0.82)"
+    },
+    {
+      "type": "asset",
+      "symbol": "DLTR       Good Buy        (Price",
+      "details": "$69.46, RSI: 25.5, MFI: 28.8, StochRSI: 0.23)"
+    },
+    {
+      "type": "asset",
+      "symbol": "EXC        Good Sell       (Price",
+      "details": "$37.77, RSI: 61.6, MFI: 82.3, StochRSI: 0.75)"
+    },
+    {
+      "type": "asset",
+      "symbol": "FISV       Great Sell      (Price",
+      "details": "$184.98, RSI: 76.5, MFI: 85.2, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GILD       Good Sell       (Price",
+      "details": "$81.99, RSI: 69.7, MFI: 81.1, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "IBM        Excellent Sell  (Price",
+      "details": "$219.67, RSI: 81.2, MFI: 91.6, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "KMI        Good Sell       (Price",
+      "details": "$22.32, RSI: 74.8, MFI: 75.4, StochRSI: 0.89)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LMT        Great Sell      (Price",
+      "details": "$588.97, RSI: 87.1, MFI: 81.4, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LOW        Good Sell       (Price",
+      "details": "$262.15, RSI: 68.0, MFI: 74.7, StochRSI: 0.92)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MCD        Good Sell       (Price",
+      "details": "$293.99, RSI: 68.6, MFI: 74.7, StochRSI: 0.89)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MET        Good Sell       (Price",
+      "details": "$80.10, RSI: 68.2, MFI: 71.2, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MSI        Great Sell      (Price",
+      "details": "$444.78, RSI: 87.0, MFI: 94.7, StochRSI: 0.82)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NOC        Great Sell      (Price",
+      "details": "$524.77, RSI: 71.9, MFI: 84.2, StochRSI: 0.95)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ORCL       Good Sell       (Price",
+      "details": "$167.92, RSI: 72.6, MFI: 71.0, StochRSI: 0.87)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PEG        Great Sell      (Price",
+      "details": "$87.27, RSI: 88.6, MFI: 88.0, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "UNH        Good Sell       (Price",
+      "details": "$571.17, RSI: 65.8, MFI: 73.7, StochRSI: 0.72)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 7 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

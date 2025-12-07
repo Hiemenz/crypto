@@ -1,0 +1,124 @@
+{
+  "date": "2024-08-14",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2024-08-14 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "DLTR       Great Buy       (Price",
+      "details": "$92.37, RSI: 23.9, MFI: 16.4, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "FISV       Good Sell       (Price",
+      "details": "$164.03, RSI: 61.9, MFI: 71.3, StochRSI: 0.76)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HCA        Great Sell      (Price",
+      "details": "$367.96, RSI: 72.0, MFI: 80.5, StochRSI: 0.87)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ICE        Good Sell       (Price",
+      "details": "$153.95, RSI: 76.1, MFI: 70.6, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MAA        Good Sell       (Price",
+      "details": "$145.74, RSI: 67.0, MFI: 73.0, StochRSI: 0.97)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MCO        Good Sell       (Price",
+      "details": "$461.87, RSI: 62.2, MFI: 74.1, StochRSI: 0.78)"
+    },
+    {
+      "type": "asset",
+      "symbol": "META       Good Sell       (Price",
+      "details": "$524.61, RSI: 61.8, MFI: 78.5, StochRSI: 0.96)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MSI        Good Sell       (Price",
+      "details": "$413.56, RSI: 69.8, MFI: 87.5, StochRSI: 0.86)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NFLX       Good Sell       (Price",
+      "details": "$66.17, RSI: 61.3, MFI: 70.8, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "OKE        Good Sell       (Price",
+      "details": "$81.18, RSI: 65.6, MFI: 72.7, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PEG        Good Sell       (Price",
+      "details": "$77.50, RSI: 65.6, MFI: 76.5, StochRSI: 0.71)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PGR        Good Sell       (Price",
+      "details": "$229.56, RSI: 71.4, MFI: 72.1, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PYPL       Good Sell       (Price",
+      "details": "$65.99, RSI: 61.8, MFI: 79.1, StochRSI: 0.79)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WELL       Good Sell       (Price",
+      "details": "$114.91, RSI: 76.4, MFI: 70.4, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WRB        Good Sell       (Price",
+      "details": "$55.85, RSI: 64.8, MFI: 78.3, StochRSI: 0.88)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 2 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 5 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 5 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

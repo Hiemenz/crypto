@@ -1,0 +1,165 @@
+{
+  "date": "2025-07-23",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2025-07-23 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "BK         Good Sell       (Price",
+      "details": "$98.62, RSI: 79.3, MFI: 79.4, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BTI        Good Sell       (Price",
+      "details": "$51.62, RSI: 72.2, MFI: 72.0, StochRSI: 0.75)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CAT        Good Sell       (Price",
+      "details": "$426.37, RSI: 78.3, MFI: 73.5, StochRSI: 0.82)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CCI        Good Sell       (Price",
+      "details": "$108.51, RSI: 71.5, MFI: 73.8, StochRSI: 0.89)"
+    },
+    {
+      "type": "asset",
+      "symbol": "DLR        Good Sell       (Price",
+      "details": "$177.98, RSI: 64.8, MFI: 72.6, StochRSI: 0.99)"
+    },
+    {
+      "type": "asset",
+      "symbol": "DLTR       Good Sell       (Price",
+      "details": "$114.92, RSI: 77.0, MFI: 72.2, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "FISV       Good Buy        (Price",
+      "details": "$143.00, RSI: 22.3, MFI: 25.7, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GOOGL      Good Sell       (Price",
+      "details": "$190.06, RSI: 70.5, MFI: 79.9, StochRSI: 0.86)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LMT        Good Buy        (Price",
+      "details": "$416.35, RSI: 29.6, MFI: 21.1, StochRSI: 0.20)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NOC        Good Sell       (Price",
+      "details": "$566.27, RSI: 77.4, MFI: 71.0, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NSC        Good Sell       (Price",
+      "details": "$277.57, RSI: 76.0, MFI: 78.4, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ORLY       Good Sell       (Price",
+      "details": "$95.42, RSI: 64.1, MFI: 74.2, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PFGC       Great Sell      (Price",
+      "details": "$99.53, RSI: 75.3, MFI: 92.3, StochRSI: 0.82)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PPL        Good Sell       (Price",
+      "details": "$36.21, RSI: 70.0, MFI: 89.2, StochRSI: 0.82)"
+    },
+    {
+      "type": "asset",
+      "symbol": "RF         Good Sell       (Price",
+      "details": "$26.11, RSI: 77.8, MFI: 74.3, StochRSI: 0.91)"
+    },
+    {
+      "type": "asset",
+      "symbol": "RL         Good Sell       (Price",
+      "details": "$293.44, RSI: 67.1, MFI: 73.6, StochRSI: 0.87)"
+    },
+    {
+      "type": "asset",
+      "symbol": "RTX        Good Sell       (Price",
+      "details": "$155.80, RSI: 72.8, MFI: 78.9, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "SNPS       Great Sell      (Price",
+      "details": "$614.42, RSI: 77.6, MFI: 84.1, StochRSI: 0.97)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TPR        Excellent Sell  (Price",
+      "details": "$108.76, RSI: 85.5, MFI: 94.1, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "USFD       Good Sell       (Price",
+      "details": "$83.98, RSI: 73.5, MFI: 81.9, StochRSI: 0.76)"
+    },
+    {
+      "type": "asset",
+      "symbol": "VTR        Great Sell      (Price",
+      "details": "$66.99, RSI: 75.0, MFI: 83.8, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WEC        Good Sell       (Price",
+      "details": "$107.28, RSI: 63.4, MFI: 78.6, StochRSI: 0.75)"
+    },
+    {
+      "type": "asset",
+      "symbol": "XEL        Good Sell       (Price",
+      "details": "$71.94, RSI: 68.1, MFI: 82.3, StochRSI: 0.83)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 1 days) ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "ANET       Good Sell       (Price",
+      "details": "$114.28, RSI: 67.3, MFI: 71.5, StochRSI: 1.00)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 5 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 12 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "date": "2025-10-23",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2025-10-23 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "CBRE       Good Sell       (Price",
+      "details": "$164.20, RSI: 64.2, MFI: 74.2, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "DLTR       Good Sell       (Price",
+      "details": "$100.62, RSI: 60.7, MFI: 80.8, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PEP        Good Sell       (Price",
+      "details": "$151.51, RSI: 61.4, MFI: 75.8, StochRSI: 0.74)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PGR        Good Buy        (Price",
+      "details": "$220.59, RSI: 32.7, MFI: 26.9, StochRSI: 0.23)"
+    },
+    {
+      "type": "asset",
+      "symbol": "XOM        Good Sell       (Price",
+      "details": "$114.97, RSI: 61.2, MFI: 71.1, StochRSI: 1.00)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 2 days) ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "DELL       Good Sell       (Price",
+      "details": "$158.64, RSI: 68.7, MFI: 79.2, StochRSI: 0.95)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 4 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 4 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}

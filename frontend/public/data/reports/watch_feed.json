@@ -1,0 +1,2473 @@
+{
+  "date": "watch_feed",
+  "content": [
+    {
+      "type": "text",
+      "content": "Watch List - Assets Near Signals"
+    },
+    {
+      "type": "asset",
+      "symbol": "Generated",
+      "details": "2025-12-06 20:53:01"
+    },
+    {
+      "type": "text",
+      "content": "================================================================================"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- CRYPTO ---"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "[1d]"
+    },
+    {
+      "type": "asset",
+      "symbol": "DOGE-USD   Near Buy        (Price",
+      "details": "$0.14, RSI: 39.1, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ADA-USD    Near Buy        (Price",
+      "details": "$0.42, RSI: 39.1, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HBAR-USD   Near Buy        (Price",
+      "details": "$0.13, RSI: 38.9, Market: Bear)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "[2wk]"
+    },
+    {
+      "type": "asset",
+      "symbol": "LTC-USD    Near Buy        (Price",
+      "details": "$82.56, RSI: 44.0, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "SOL-USD    Near Buy        (Price",
+      "details": "$133.56, RSI: 42.4, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HBAR-USD   Near Buy        (Price",
+      "details": "$0.15, RSI: 44.7, Market: Bear)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- STOCKS ---"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "[1d]"
+    },
+    {
+      "type": "asset",
+      "symbol": "UAL        Near Sell       (Price",
+      "details": "$104.95, RSI: 59.7, StochRSI: 0.74, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PM         Near Buy        (Price",
+      "details": "$148.58, RSI: 39.3, MFI: 33.1, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MCO        Near Sell       (Price",
+      "details": "$496.50, RSI: 60.1, MFI: 67.4, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CLX        Near Buy        (Price",
+      "details": "$104.90, RSI: 42.5, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "QCOM       Near Sell       (Price",
+      "details": "$174.18, RSI: 56.6, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "DLR        Near Sell       (Price",
+      "details": "$164.73, MFI: 68.9, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "FISV       Near Buy        (Price",
+      "details": "$66.28, RSI: 35.7, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PG         Near Buy        (Price",
+      "details": "$143.45, RSI: 37.1, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HUM        Near Sell       (Price",
+      "details": "$257.85, RSI: 55.5, MFI: 68.4, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PYPL       Near Buy        (Price",
+      "details": "$62.28, RSI: 44.8, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "IBM        Near Sell       (Price",
+      "details": "$307.94, RSI: 57.4, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CSCO       Near Sell       (Price",
+      "details": "$77.97, RSI: 63.9, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "STX        Near Sell       (Price",
+      "details": "$278.79, RSI: 58.7, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WYNN       Near Sell       (Price",
+      "details": "$131.53, RSI: 60.8, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NCLH       Near Sell       (Price",
+      "details": "$18.92, MFI: 68.5, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AMZN       Near Sell       (Price",
+      "details": "$229.53, StochRSI: 0.68, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LMT        Near Sell       (Price",
+      "details": "$452.20, StochRSI: 0.64, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "XOM        Near Sell       (Price",
+      "details": "$117.80, RSI: 57.1, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ISRG       Near Sell       (Price",
+      "details": "$575.34, RSI: 63.5, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PLD        Near Sell       (Price",
+      "details": "$127.98, RSI: 61.3, StochRSI: 0.65, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AMT        Near Buy        (Price",
+      "details": "$178.86, RSI: 44.9, MFI: 33.4, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "FANG       Near Sell       (Price",
+      "details": "$158.60, RSI: 68.9, MFI: 67.5, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NFLX       Near Buy        (Price",
+      "details": "$100.24, RSI: 34.0, MFI: 33.6, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AXP        Near Sell       (Price",
+      "details": "$370.35, RSI: 62.2, MFI: 65.7, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "DLTR       Near Sell       (Price",
+      "details": "$115.87, RSI: 69.5, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CHRW       Near Sell       (Price",
+      "details": "$157.22, RSI: 62.8, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CB         Near Sell       (Price",
+      "details": "$295.00, RSI: 58.0, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "RCL        Near Sell       (Price",
+      "details": "$257.66, StochRSI: 0.70, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "DVN        Near Sell       (Price",
+      "details": "$37.47, RSI: 65.7, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ESS        Near Buy        (Price",
+      "details": "$255.37, RSI: 44.1, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NDAQ       Near Sell       (Price",
+      "details": "$90.22, RSI: 58.6, StochRSI: 0.76, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BK         Near Sell       (Price",
+      "details": "$114.02, RSI: 67.7, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HSY        Near Sell       (Price",
+      "details": "$182.30, MFI: 74.1, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AMD        Near Sell       (Price",
+      "details": "$217.97, StochRSI: 0.63, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "COST       Near Buy        (Price",
+      "details": "$894.68, RSI: 41.7, StochRSI: 0.36, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "FDX        Near Sell       (Price",
+      "details": "$270.45, RSI: 61.3, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WMB        Near Sell       (Price",
+      "details": "$62.81, RSI: 60.7, StochRSI: 0.76, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NSC        Near Sell       (Price",
+      "details": "$294.19, RSI: 62.2, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MET        Near Sell       (Price",
+      "details": "$78.66, RSI: 57.5, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PAYC       Near Buy        (Price",
+      "details": "$165.72, RSI: 41.9, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MRK        Near Sell       (Price",
+      "details": "$99.72, RSI: 60.2, MFI: 67.5, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PFE        Near Sell       (Price",
+      "details": "$26.03, RSI: 61.5, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PSA        Near Buy        (Price",
+      "details": "$272.06, RSI: 43.6, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "EQIX       Near Buy        (Price",
+      "details": "$741.58, RSI: 38.4, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "KR         Near Buy        (Price",
+      "details": "$63.14, RSI: 38.4, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "T          Near Buy        (Price",
+      "details": "$25.28, RSI: 44.6, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "DHR        Near Sell       (Price",
+      "details": "$226.25, RSI: 58.1, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "UPS        Near Buy        (Price",
+      "details": "$94.87, StochRSI: 0.30, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MSI        Near Buy        (Price",
+      "details": "$374.39, RSI: 34.2, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ZTS        Near Buy        (Price",
+      "details": "$118.65, RSI: 34.0, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WELL       Near Sell       (Price",
+      "details": "$201.92, RSI: 66.1, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HPE        Near Sell       (Price",
+      "details": "$23.33, RSI: 58.5, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "O          Near Sell       (Price",
+      "details": "$58.48, RSI: 59.4, MFI: 69.3, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "UNP        Near Sell       (Price",
+      "details": "$235.31, RSI: 68.4, MFI: 65.4, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "RF         Near Sell       (Price",
+      "details": "$26.20, RSI: 67.2, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CSX        Near Sell       (Price",
+      "details": "$36.30, RSI: 63.1, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CL         Near Buy        (Price",
+      "details": "$78.07, MFI: 32.4, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "DE         Near Buy        (Price",
+      "details": "$475.11, StochRSI: 0.25, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MS         Near Sell       (Price",
+      "details": "$176.51, RSI: 69.5, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ARE        Near Buy        (Price",
+      "details": "$45.48, MFI: 30.6, StochRSI: 0.25, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BEN        Near Sell       (Price",
+      "details": "$23.40, RSI: 61.7, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GM         Near Sell       (Price",
+      "details": "$76.05, MFI: 68.2, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "RL         Near Sell       (Price",
+      "details": "$358.15, RSI: 61.4, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CI         Near Buy        (Price",
+      "details": "$265.44, RSI: 41.5, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GOOGL      Near Sell       (Price",
+      "details": "$321.27, MFI: 71.5, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MU         Near Sell       (Price",
+      "details": "$237.22, RSI: 55.8, StochRSI: 0.72, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AES        Near Sell       (Price",
+      "details": "$13.92, StochRSI: 0.73, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MNST       Near Sell       (Price",
+      "details": "$73.26, RSI: 56.7, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NTAP       Near Sell       (Price",
+      "details": "$117.27, RSI: 59.7, MFI: 71.0, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HAL        Near Sell       (Price",
+      "details": "$28.45, RSI: 68.5, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WDC        Near Sell       (Price",
+      "details": "$168.89, RSI: 62.2, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BAC        Near Sell       (Price",
+      "details": "$53.95, RSI: 59.6, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "VRSN       Near Buy        (Price",
+      "details": "$249.54, MFI: 32.7, StochRSI: 0.37, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "JPM        Near Sell       (Price",
+      "details": "$315.04, RSI: 58.8, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ADSK       Near Sell       (Price",
+      "details": "$307.24, RSI: 57.4, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "KO         Near Buy        (Price",
+      "details": "$70.00, RSI: 44.7, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MDLZ       Near Buy        (Price",
+      "details": "$54.91, RSI: 35.5, StochRSI: 0.20, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "FCX        Near Sell       (Price",
+      "details": "$44.53, RSI: 64.6, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GIS        Near Buy        (Price",
+      "details": "$45.93, RSI: 39.9, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ED         Near Buy        (Price",
+      "details": "$96.45, RSI: 40.2, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CAG        Near Buy        (Price",
+      "details": "$17.05, RSI: 41.7, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CPB        Near Buy        (Price",
+      "details": "$29.60, RSI: 40.3, MFI: 25.2, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "KMB        Near Buy        (Price",
+      "details": "$103.68, RSI: 40.4, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LVS        Near Sell       (Price",
+      "details": "$66.25, RSI: 58.9, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LRCX       Near Sell       (Price",
+      "details": "$158.70, RSI: 56.7, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CNA        Near Buy        (Price",
+      "details": "$44.25, RSI: 34.9, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PSX        Near Sell       (Price",
+      "details": "$139.36, RSI: 57.1, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LB         Near Buy        (Price",
+      "details": "$59.58, MFI: 29.2, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WY         Near Buy        (Price",
+      "details": "$21.69, RSI: 41.2, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MTB        Near Sell       (Price",
+      "details": "$195.11, RSI: 64.2, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ABT        Near Buy        (Price",
+      "details": "$125.08, RSI: 42.2, StochRSI: 0.21, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "JNJ        Near Sell       (Price",
+      "details": "$205.33, MFI: 73.8, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "FITB       Near Sell       (Price",
+      "details": "$44.93, RSI: 67.8, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CDNS       Near Sell       (Price",
+      "details": "$337.53, RSI: 63.4, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WPP        Near Buy        (Price",
+      "details": "$18.89, RSI: 41.0, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CCI        Near Buy        (Price",
+      "details": "$88.33, RSI: 39.0, MFI: 30.9, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MDT        Near Sell       (Price",
+      "details": "$101.36, RSI: 58.6, MFI: 74.1, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BTI        Near Sell       (Price",
+      "details": "$57.01, RSI: 59.3, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AVGO       Near Sell       (Price",
+      "details": "$390.24, RSI: 60.8, MFI: 66.4, StochRSI: 0.69, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CCL        Near Sell       (Price",
+      "details": "$25.87, MFI: 66.3, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AAPL       Near Sell       (Price",
+      "details": "$278.78, RSI: 59.5, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "SHW        Near Buy        (Price",
+      "details": "$333.11, RSI: 44.7, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CBRE       Near Sell       (Price",
+      "details": "$160.86, RSI: 58.3, MFI: 66.4, StochRSI: 0.77, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ROP        Near Buy        (Price",
+      "details": "$447.56, RSI: 44.1, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TAP        Near Buy        (Price",
+      "details": "$45.13, RSI: 44.0, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PBI        Near Sell       (Price",
+      "details": "$9.77, MFI: 67.5, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MKC        Near Buy        (Price",
+      "details": "$64.12, RSI: 40.3, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "KMI        Near Sell       (Price",
+      "details": "$27.77, RSI: 61.0, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LOW        Near Sell       (Price",
+      "details": "$248.47, RSI: 61.5, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TJX        Near Sell       (Price",
+      "details": "$150.06, RSI: 58.9, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "UDR        Near Buy        (Price",
+      "details": "$35.20, StochRSI: 0.21, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BUD        Near Buy        (Price",
+      "details": "$61.16, RSI: 44.9, MFI: 28.6, StochRSI: 0.28, Market: Bear)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "[3d]"
+    },
+    {
+      "type": "asset",
+      "symbol": "MCO        Near Sell       (Price",
+      "details": "$496.50, RSI: 55.8, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CLX        Near Buy        (Price",
+      "details": "$104.90, RSI: 36.2, MFI: 20.3, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "QCOM       Near Buy        (Price",
+      "details": "$170.70, StochRSI: 0.36, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "EL         Near Sell       (Price",
+      "details": "$105.13, RSI: 65.9, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "FISV       Near Buy        (Price",
+      "details": "$66.28, MFI: 24.6, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HCA        Near Sell       (Price",
+      "details": "$486.70, RSI: 61.9, MFI: 71.2, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HUM        Near Buy        (Price",
+      "details": "$257.85, MFI: 28.4, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GILD       Near Sell       (Price",
+      "details": "$123.91, RSI: 57.1, MFI: 66.8, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PYPL       Near Buy        (Price",
+      "details": "$61.24, RSI: 39.1, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "IBM        Near Sell       (Price",
+      "details": "$307.94, RSI: 60.6, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CSCO       Near Sell       (Price",
+      "details": "$77.97, RSI: 68.7, StochRSI: 0.69, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "STX        Near Sell       (Price",
+      "details": "$278.79, RSI: 61.5, MFI: 72.4, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WYNN       Near Sell       (Price",
+      "details": "$133.09, RSI: 64.2, MFI: 69.2, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "VLO        Near Sell       (Price",
+      "details": "$178.53, RSI: 61.6, MFI: 67.0, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TROW       Near Sell       (Price",
+      "details": "$106.58, RSI: 59.3, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WU         Near Buy        (Price",
+      "details": "$8.71, StochRSI: 0.32, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "SPGI       Near Sell       (Price",
+      "details": "$498.52, MFI: 70.5, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LMT        Near Buy        (Price",
+      "details": "$452.20, RSI: 41.3, StochRSI: 0.29, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PLD        Near Sell       (Price",
+      "details": "$127.98, RSI: 64.3, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AMT        Near Buy        (Price",
+      "details": "$178.86, RSI: 38.8, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AXP        Near Sell       (Price",
+      "details": "$370.35, RSI: 62.9, StochRSI: 0.60, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "DLTR       Near Sell       (Price",
+      "details": "$115.87, RSI: 66.9, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TRV        Near Sell       (Price",
+      "details": "$280.89, MFI: 75.0, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CHRW       Near Sell       (Price",
+      "details": "$157.22, RSI: 67.5, MFI: 68.4, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CB         Near Sell       (Price",
+      "details": "$295.00, RSI: 62.1, StochRSI: 0.69, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CAT        Near Sell       (Price",
+      "details": "$603.17, StochRSI: 0.65, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "EQR        Near Buy        (Price",
+      "details": "$61.06, MFI: 34.4, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ESS        Near Buy        (Price",
+      "details": "$255.37, RSI: 44.5, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BK         Near Sell       (Price",
+      "details": "$114.02, RSI: 67.9, MFI: 67.4, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HSY        Near Sell       (Price",
+      "details": "$182.30, StochRSI: 0.68, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WMB        Near Sell       (Price",
+      "details": "$62.81, RSI: 60.0, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NSC        Near Sell       (Price",
+      "details": "$294.19, RSI: 62.6, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MET        Near Sell       (Price",
+      "details": "$78.66, MFI: 67.9, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TPR        Near Sell       (Price",
+      "details": "$116.30, RSI: 62.4, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GS         Near Sell       (Price",
+      "details": "$854.56, RSI: 68.6, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PAYC       Near Sell       (Price",
+      "details": "$164.56, StochRSI: 0.63, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NTRS       Near Sell       (Price",
+      "details": "$133.21, RSI: 58.5, MFI: 79.3, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PSA        Near Buy        (Price",
+      "details": "$272.06, RSI: 39.6, MFI: 28.5, StochRSI: 0.33, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TSLA       Near Sell       (Price",
+      "details": "$455.00, RSI: 60.0, StochRSI: 0.75, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "EQIX       Near Buy        (Price",
+      "details": "$741.58, RSI: 36.7, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "T          Near Sell       (Price",
+      "details": "$25.28, StochRSI: 0.61, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BRK-B      Near Sell       (Price",
+      "details": "$504.34, StochRSI: 0.67, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ORLY       Near Sell       (Price",
+      "details": "$98.89, StochRSI: 0.60, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BDX        Near Buy        (Price",
+      "details": "$190.47, MFI: 34.1, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HD         Near Sell       (Price",
+      "details": "$354.61, StochRSI: 0.79, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "META       Near Sell       (Price",
+      "details": "$647.10, StochRSI: 0.62, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MAA        Near Buy        (Price",
+      "details": "$131.67, RSI: 42.5, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "UPS        Near Buy        (Price",
+      "details": "$94.87, StochRSI: 0.39, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ZTS        Near Buy        (Price",
+      "details": "$118.65, RSI: 33.0, MFI: 34.2, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AMGN       Near Sell       (Price",
+      "details": "$329.89, RSI: 59.0, MFI: 70.5, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "O          Near Sell       (Price",
+      "details": "$58.48, StochRSI: 0.74, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CSX        Near Sell       (Price",
+      "details": "$36.30, RSI: 59.9, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CL         Near Buy        (Price",
+      "details": "$78.07, RSI: 43.5, MFI: 22.8, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BEN        Near Sell       (Price",
+      "details": "$23.40, RSI: 55.1, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PVH        Near Buy        (Price",
+      "details": "$78.49, MFI: 28.0, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "RL         Near Sell       (Price",
+      "details": "$355.89, RSI: 63.5, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CI         Near Buy        (Price",
+      "details": "$265.44, RSI: 41.2, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AON        Near Sell       (Price",
+      "details": "$345.20, StochRSI: 0.68, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CRM        Near Buy        (Price",
+      "details": "$234.71, RSI: 43.8, StochRSI: 0.37, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MU         Near Sell       (Price",
+      "details": "$237.22, RSI: 64.4, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AES        Near Buy        (Price",
+      "details": "$13.92, StochRSI: 0.38, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AVB        Near Buy        (Price",
+      "details": "$181.12, RSI: 44.7, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MNST       Near Sell       (Price",
+      "details": "$73.26, RSI: 63.4, MFI: 77.9, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MMC        Near Buy        (Price",
+      "details": "$181.82, RSI: 37.3, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NTAP       Near Sell       (Price",
+      "details": "$117.27, RSI: 56.1, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "COF        Near Sell       (Price",
+      "details": "$230.68, RSI: 61.6, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "KEY        Near Sell       (Price",
+      "details": "$19.26, RSI: 63.7, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WDC        Near Sell       (Price",
+      "details": "$168.89, RSI: 66.7, MFI: 75.3, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BAC        Near Sell       (Price",
+      "details": "$53.95, RSI: 60.8, StochRSI: 0.75, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "L          Near Sell       (Price",
+      "details": "$102.82, MFI: 71.0, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "JPM        Near Sell       (Price",
+      "details": "$315.04, RSI: 59.1, StochRSI: 0.73, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PEP        Near Buy        (Price",
+      "details": "$145.02, MFI: 32.5, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ADSK       Near Sell       (Price",
+      "details": "$310.25, RSI: 55.4, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "EIX        Near Buy        (Price",
+      "details": "$58.09, StochRSI: 0.39, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MDLZ       Near Buy        (Price",
+      "details": "$54.91, RSI: 32.5, MFI: 34.6, StochRSI: 0.25, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HBAN       Near Sell       (Price",
+      "details": "$16.90, RSI: 59.7, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GIS        Near Buy        (Price",
+      "details": "$45.93, RSI: 38.8, MFI: 32.0, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MA         Near Sell       (Price",
+      "details": "$545.52, StochRSI: 0.65, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CAG        Near Buy        (Price",
+      "details": "$17.05, RSI: 38.1, MFI: 30.1, StochRSI: 0.32, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CPB        Near Buy        (Price",
+      "details": "$29.60, RSI: 40.3, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CTAS       Near Sell       (Price",
+      "details": "$184.19, StochRSI: 0.78, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "KMB        Near Buy        (Price",
+      "details": "$103.68, RSI: 34.2, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LVS        Near Sell       (Price",
+      "details": "$66.25, RSI: 65.1, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "IPG        Near Buy        (Price",
+      "details": "$24.57, RSI: 42.1, MFI: 20.0, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WFC        Near Sell       (Price",
+      "details": "$89.83, RSI: 65.4, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NOW        Near Sell       (Price",
+      "details": "$854.36, StochRSI: 0.64, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LRCX       Near Sell       (Price",
+      "details": "$158.70, RSI: 62.5, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PSX        Near Sell       (Price",
+      "details": "$139.36, RSI: 60.3, MFI: 67.8, StochRSI: 0.62, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WY         Near Buy        (Price",
+      "details": "$21.69, RSI: 34.8, MFI: 24.0, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MTB        Near Sell       (Price",
+      "details": "$195.11, RSI: 60.4, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "OMC        Near Buy        (Price",
+      "details": "$72.47, RSI: 44.1, MFI: 30.8, StochRSI: 0.32, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ALK        Near Sell       (Price",
+      "details": "$49.65, RSI: 57.7, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CHD        Near Buy        (Price",
+      "details": "$84.52, RSI: 43.9, MFI: 28.8, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "JNJ        Near Sell       (Price",
+      "details": "$205.42, StochRSI: 0.75, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ZION       Near Sell       (Price",
+      "details": "$55.45, RSI: 58.4, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "FITB       Near Sell       (Price",
+      "details": "$43.73, RSI: 55.6, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CDNS       Near Sell       (Price",
+      "details": "$337.53, RSI: 55.2, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WPP        Near Buy        (Price",
+      "details": "$18.88, RSI: 37.0, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "USFD       Near Sell       (Price",
+      "details": "$77.52, RSI: 57.1, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MDT        Near Sell       (Price",
+      "details": "$101.36, RSI: 62.1, MFI: 66.7, StochRSI: 0.62, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BTI        Near Sell       (Price",
+      "details": "$57.01, RSI: 61.2, StochRSI: 0.65, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AVGO       Near Sell       (Price",
+      "details": "$390.24, RSI: 62.3, StochRSI: 0.64, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AAPL       Near Sell       (Price",
+      "details": "$278.78, RSI: 64.9, MFI: 76.9, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CBRE       Near Sell       (Price",
+      "details": "$160.86, RSI: 56.4, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AIG        Near Sell       (Price",
+      "details": "$77.03, StochRSI: 0.73, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ROP        Near Buy        (Price",
+      "details": "$447.56, RSI: 34.0, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TAP        Near Buy        (Price",
+      "details": "$45.13, RSI: 42.6, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WM         Near Sell       (Price",
+      "details": "$213.58, StochRSI: 0.79, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MAR        Near Sell       (Price",
+      "details": "$292.59, RSI: 57.8, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CMG        Near Buy        (Price",
+      "details": "$33.94, RSI: 42.3, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "SYF        Near Sell       (Price",
+      "details": "$80.36, RSI: 67.0, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "SLB        Near Buy        (Price",
+      "details": "$36.36, StochRSI: 0.37, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MKC        Near Buy        (Price",
+      "details": "$65.44, RSI: 44.9, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "KMI        Near Sell       (Price",
+      "details": "$27.77, RSI: 58.2, MFI: 66.3, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LOW        Near Sell       (Price",
+      "details": "$248.47, RSI: 58.4, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TJX        Near Sell       (Price",
+      "details": "$150.02, RSI: 63.1, MFI: 70.3, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "REGN       Near Buy        (Price",
+      "details": "$718.36, StochRSI: 0.27, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "UDR        Near Buy        (Price",
+      "details": "$35.20, RSI: 44.2, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "STT        Near Sell       (Price",
+      "details": "$123.61, RSI: 66.0, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "USB        Near Sell       (Price",
+      "details": "$51.26, RSI: 66.9, MFI: 69.5, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AWK        Near Sell       (Price",
+      "details": "$129.50, StochRSI: 0.76, Market: Bull)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "[1wk]"
+    },
+    {
+      "type": "asset",
+      "symbol": "AEE        Near Sell       (Price",
+      "details": "$106.35, RSI: 65.2, MFI: 68.1, StochRSI: 0.70, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CMA        Near Sell       (Price",
+      "details": "$80.38, MFI: 66.4, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "UAL        Near Sell       (Price",
+      "details": "$101.96, RSI: 58.2, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PM         Near Sell       (Price",
+      "details": "$157.48, StochRSI: 0.73, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WEC        Near Sell       (Price",
+      "details": "$112.07, RSI: 59.3, MFI: 66.9, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CLX        Near Buy        (Price",
+      "details": "$107.94, RSI: 34.6, MFI: 26.9, StochRSI: 0.40, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "EL         Near Buy        (Price",
+      "details": "$94.07, StochRSI: 0.33, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "COP        Near Buy        (Price",
+      "details": "$88.69, StochRSI: 0.36, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HUM        Near Buy        (Price",
+      "details": "$245.77, StochRSI: 0.22, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GILD       Near Sell       (Price",
+      "details": "$125.84, RSI: 66.1, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PYPL       Near Buy        (Price",
+      "details": "$62.69, RSI: 40.8, StochRSI: 0.33, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "STX        Near Sell       (Price",
+      "details": "$276.69, RSI: 69.2, MFI: 69.7, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WYNN       Near Sell       (Price",
+      "details": "$128.68, RSI: 61.9, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "VLO        Near Sell       (Price",
+      "details": "$176.76, RSI: 63.6, MFI: 65.0, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TROW       Near Buy        (Price",
+      "details": "$102.38, StochRSI: 0.32, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ATO        Near Sell       (Price",
+      "details": "$176.37, RSI: 67.6, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WRB        Near Sell       (Price",
+      "details": "$77.69, RSI: 62.1, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "SPG        Near Sell       (Price",
+      "details": "$186.32, RSI: 63.4, StochRSI: 0.68, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AMZN       Near Sell       (Price",
+      "details": "$233.22, RSI: 55.2, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "D          Near Sell       (Price",
+      "details": "$62.77, RSI: 62.6, StochRSI: 0.78, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "XOM        Near Sell       (Price",
+      "details": "$115.92, RSI: 55.9, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ISRG       Near Sell       (Price",
+      "details": "$573.48, RSI: 63.3, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NKE        Near Buy        (Price",
+      "details": "$64.22, RSI: 44.4, StochRSI: 0.26, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "FANG       Near Sell       (Price",
+      "details": "$152.59, RSI: 57.0, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AXP        Near Sell       (Price",
+      "details": "$365.27, RSI: 63.7, StochRSI: 0.74, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ICE        Near Sell       (Price",
+      "details": "$157.30, StochRSI: 0.60, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ACN        Near Buy        (Price",
+      "details": "$250.00, RSI: 42.2, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TRV        Near Sell       (Price",
+      "details": "$292.86, RSI: 64.5, MFI: 68.3, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CB         Near Sell       (Price",
+      "details": "$296.18, RSI: 59.6, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ABBV       Near Sell       (Price",
+      "details": "$227.70, RSI: 61.3, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CAT        Near Sell       (Price",
+      "details": "$575.76, MFI: 69.9, StochRSI: 0.70, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "EQR        Near Sell       (Price",
+      "details": "$61.75, StochRSI: 0.62, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ESS        Near Sell       (Price",
+      "details": "$263.62, MFI: 71.3, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NDAQ       Near Sell       (Price",
+      "details": "$90.92, RSI: 58.4, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BK         Near Sell       (Price",
+      "details": "$112.10, RSI: 67.6, MFI: 74.1, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AMD        Near Sell       (Price",
+      "details": "$217.53, RSI: 59.6, MFI: 68.0, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MCD        Near Sell       (Price",
+      "details": "$311.82, RSI: 57.0, StochRSI: 0.74, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HPQ        Near Buy        (Price",
+      "details": "$24.42, RSI: 41.4, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "XEL        Near Sell       (Price",
+      "details": "$82.11, StochRSI: 0.79, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NSC        Near Sell       (Price",
+      "details": "$292.09, RSI: 63.6, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PEG        Near Sell       (Price",
+      "details": "$83.52, StochRSI: 0.67, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TPR        Near Sell       (Price",
+      "details": "$109.28, RSI: 58.0, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GS         Near Sell       (Price",
+      "details": "$826.04, RSI: 68.9, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LDOS       Near Sell       (Price",
+      "details": "$191.10, RSI: 61.4, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AFL        Near Sell       (Price",
+      "details": "$110.31, RSI: 55.7, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PPL        Near Sell       (Price",
+      "details": "$36.90, RSI: 58.3, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NTRS       Near Sell       (Price",
+      "details": "$131.34, RSI: 61.7, MFI: 72.3, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CFG        Near Sell       (Price",
+      "details": "$54.10, RSI: 66.0, StochRSI: 0.67, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TSLA       Near Sell       (Price",
+      "details": "$430.17, RSI: 59.6, MFI: 69.7, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CME        Near Sell       (Price",
+      "details": "$281.46, RSI: 58.4, StochRSI: 0.71, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NEE        Near Sell       (Price",
+      "details": "$86.29, RSI: 66.6, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BRK-B      Near Sell       (Price",
+      "details": "$513.81, RSI: 59.0, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ORLY       Near Sell       (Price",
+      "details": "$101.70, RSI: 57.0, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "RTX        Near Sell       (Price",
+      "details": "$174.91, RSI: 66.2, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TSN        Near Buy        (Price",
+      "details": "$57.54, MFI: 34.5, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ZTS        Near Buy        (Price",
+      "details": "$128.18, RSI: 35.8, MFI: 25.8, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AMGN       Near Sell       (Price",
+      "details": "$345.46, RSI: 68.5, MFI: 67.0, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "UNP        Near Sell       (Price",
+      "details": "$231.83, RSI: 55.6, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CSX        Near Sell       (Price",
+      "details": "$35.36, RSI: 56.4, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ALL        Near Sell       (Price",
+      "details": "$211.98, RSI: 58.5, StochRSI: 0.76, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MS         Near Sell       (Price",
+      "details": "$169.66, RSI: 68.3, MFI: 66.8, StochRSI: 0.68, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ARE        Near Buy        (Price",
+      "details": "$53.67, RSI: 30.6, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ADI        Near Sell       (Price",
+      "details": "$265.34, RSI: 63.6, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BEN        Near Buy        (Price",
+      "details": "$22.59, MFI: 31.3, StochRSI: 0.25, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GPN        Near Buy        (Price",
+      "details": "$75.76, RSI: 41.5, StochRSI: 0.22, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AON        Near Sell       (Price",
+      "details": "$353.92, StochRSI: 0.64, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MU         Near Sell       (Price",
+      "details": "$236.48, RSI: 70.0, MFI: 79.0, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AES        Near Buy        (Price",
+      "details": "$14.06, StochRSI: 0.40, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AVB        Near Sell       (Price",
+      "details": "$181.94, StochRSI: 0.71, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "C          Near Sell       (Price",
+      "details": "$103.60, RSI: 66.2, MFI: 66.0, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "DUK        Near Sell       (Price",
+      "details": "$123.94, RSI: 58.9, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "COF        Near Sell       (Price",
+      "details": "$219.07, RSI: 55.6, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "KEY        Near Sell       (Price",
+      "details": "$18.38, RSI: 56.0, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HLT        Near Sell       (Price",
+      "details": "$285.03, RSI: 62.4, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BAC        Near Sell       (Price",
+      "details": "$53.65, RSI: 62.7, MFI: 65.8, StochRSI: 0.68, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "JPM        Near Sell       (Price",
+      "details": "$313.08, RSI: 61.1, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "EXC        Near Sell       (Price",
+      "details": "$47.12, RSI: 64.9, StochRSI: 0.62, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LNT        Near Sell       (Price",
+      "details": "$69.47, RSI: 68.7, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GD         Near Sell       (Price",
+      "details": "$341.63, RSI: 65.0, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "KO         Near Sell       (Price",
+      "details": "$73.12, RSI: 66.4, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "SRE        Near Sell       (Price",
+      "details": "$94.72, MFI: 68.6, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MDLZ       Near Buy        (Price",
+      "details": "$57.57, RSI: 37.2, StochRSI: 0.21, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "FCX        Near Sell       (Price",
+      "details": "$42.98, StochRSI: 0.68, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GIS        Near Buy        (Price",
+      "details": "$47.35, RSI: 38.3, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HRL        Near Buy        (Price",
+      "details": "$23.21, RSI: 36.0, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CAG        Near Buy        (Price",
+      "details": "$17.85, RSI: 38.0, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CPB        Near Buy        (Price",
+      "details": "$30.48, RSI: 40.8, StochRSI: 0.31, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "STZ        Near Buy        (Price",
+      "details": "$136.38, RSI: 37.6, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "IPG        Near Buy        (Price",
+      "details": "$24.57, RSI: 44.9, MFI: 31.1, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WFC        Near Sell       (Price",
+      "details": "$85.85, RSI: 58.5, MFI: 68.9, StochRSI: 0.75, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CINF       Near Sell       (Price",
+      "details": "$167.59, RSI: 65.7, MFI: 69.2, StochRSI: 0.77, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LRCX       Near Sell       (Price",
+      "details": "$156.00, RSI: 69.1, MFI: 70.5, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PSX        Near Sell       (Price",
+      "details": "$136.96, RSI: 57.7, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LB         Near Buy        (Price",
+      "details": "$56.95, StochRSI: 0.35, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MPC        Near Sell       (Price",
+      "details": "$193.73, RSI: 60.3, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WMT        Near Sell       (Price",
+      "details": "$110.51, RSI: 65.0, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "OMC        Near Buy        (Price",
+      "details": "$71.62, RSI: 43.0, MFI: 34.9, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GE         Near Sell       (Price",
+      "details": "$298.45, RSI: 62.1, MFI: 66.8, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TGT        Near Buy        (Price",
+      "details": "$90.62, RSI: 44.3, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "JNJ        Near Sell       (Price",
+      "details": "$206.92, MFI: 67.4, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WPP        Near Buy        (Price",
+      "details": "$20.07, RSI: 31.8, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CCI        Near Buy        (Price",
+      "details": "$91.28, RSI: 42.0, StochRSI: 0.34, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "USFD       Near Sell       (Price",
+      "details": "$78.67, RSI: 57.5, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HIG        Near Sell       (Price",
+      "details": "$137.03, RSI: 64.7, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MDT        Near Sell       (Price",
+      "details": "$105.33, MFI: 68.6, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BTI        Near Sell       (Price",
+      "details": "$58.66, StochRSI: 0.73, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ADBE       Near Buy        (Price",
+      "details": "$320.13, RSI: 36.1, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "DG         Near Buy        (Price",
+      "details": "$109.49, MFI: 32.2, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CMS        Near Sell       (Price",
+      "details": "$75.44, RSI: 66.0, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CBRE       Near Sell       (Price",
+      "details": "$161.83, RSI: 60.4, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "DAL        Near Sell       (Price",
+      "details": "$64.10, RSI: 63.8, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "DXC        Near Buy        (Price",
+      "details": "$13.20, RSI: 43.1, MFI: 33.6, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PRU        Near Sell       (Price",
+      "details": "$108.25, RSI: 58.0, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "KDP        Near Buy        (Price",
+      "details": "$27.90, RSI: 43.5, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TAP        Near Buy        (Price",
+      "details": "$46.51, RSI: 43.9, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CVS        Near Buy        (Price",
+      "details": "$80.36, StochRSI: 0.31, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MAR        Near Sell       (Price",
+      "details": "$304.79, RSI: 64.6, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CMG        Near Sell       (Price",
+      "details": "$34.52, StochRSI: 0.68, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "SYF        Near Sell       (Price",
+      "details": "$77.36, RSI: 63.7, StochRSI: 0.72, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "KMI        Near Sell       (Price",
+      "details": "$27.32, StochRSI: 0.64, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "STT        Near Sell       (Price",
+      "details": "$119.02, RSI: 63.8, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "USB        Near Sell       (Price",
+      "details": "$49.05, RSI: 58.5, StochRSI: 0.62, Market: Bull)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "[2wk]"
+    },
+    {
+      "type": "asset",
+      "symbol": "LUV        Near Buy        (Price",
+      "details": "$32.80, StochRSI: 0.39, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BXP        Near Buy        (Price",
+      "details": "$70.04, StochRSI: 0.37, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WEC        Near Sell       (Price",
+      "details": "$111.14, RSI: 65.4, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "QCOM       Near Sell       (Price",
+      "details": "$163.30, MFI: 72.4, StochRSI: 0.64, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HUM        Near Buy        (Price",
+      "details": "$227.10, RSI: 41.8, StochRSI: 0.28, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GILD       Near Sell       (Price",
+      "details": "$126.64, RSI: 68.9, MFI: 65.4, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PYPL       Near Buy        (Price",
+      "details": "$62.69, RSI: 42.0, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "IBM        Near Sell       (Price",
+      "details": "$297.44, RSI: 64.8, MFI: 68.1, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NCLH       Near Buy        (Price",
+      "details": "$18.20, RSI: 41.7, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ATO        Near Sell       (Price",
+      "details": "$175.16, StochRSI: 0.76, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WU         Near Buy        (Price",
+      "details": "$8.42, RSI: 43.9, MFI: 33.4, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WRB        Near Sell       (Price",
+      "details": "$78.10, StochRSI: 0.65, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "SPG        Near Sell       (Price",
+      "details": "$183.08, RSI: 61.2, StochRSI: 0.76, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NVDA       Near Sell       (Price",
+      "details": "$178.88, RSI: 65.7, MFI: 69.4, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AMZN       Near Sell       (Price",
+      "details": "$220.69, MFI: 68.2, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ELV        Near Sell       (Price",
+      "details": "$321.73, StochRSI: 0.75, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "XOM        Near Sell       (Price",
+      "details": "$117.08, RSI: 57.2, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ISRG       Near Sell       (Price",
+      "details": "$561.61, RSI: 59.6, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PLD        Near Sell       (Price",
+      "details": "$125.79, RSI: 63.0, MFI: 67.1, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NKE        Near Buy        (Price",
+      "details": "$62.80, RSI: 42.9, StochRSI: 0.36, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AXP        Near Sell       (Price",
+      "details": "$352.89, RSI: 62.0, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "DLTR       Near Buy        (Price",
+      "details": "$101.82, StochRSI: 0.39, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TRV        Near Sell       (Price",
+      "details": "$290.07, RSI: 68.4, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CB         Near Sell       (Price",
+      "details": "$298.29, RSI: 63.9, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NDAQ       Near Sell       (Price",
+      "details": "$87.66, RSI: 58.0, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HSY        Near Sell       (Price",
+      "details": "$186.00, RSI: 55.5, StochRSI: 0.78, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AMD        Near Sell       (Price",
+      "details": "$203.78, RSI: 60.8, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MCD        Near Sell       (Price",
+      "details": "$309.35, RSI: 56.6, StochRSI: 0.62, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "XEL        Near Sell       (Price",
+      "details": "$79.67, StochRSI: 0.76, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "FDX        Near Sell       (Price",
+      "details": "$269.43, RSI: 60.8, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WMB        Near Sell       (Price",
+      "details": "$59.61, RSI: 56.9, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NSC        Near Sell       (Price",
+      "details": "$286.29, RSI: 63.0, MFI: 73.7, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "SCHW       Near Sell       (Price",
+      "details": "$90.51, RSI: 57.2, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TPR        Near Sell       (Price",
+      "details": "$105.24, RSI: 65.3, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GS         Near Sell       (Price",
+      "details": "$774.03, RSI: 67.7, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LDOS       Near Sell       (Price",
+      "details": "$186.49, RSI: 63.4, MFI: 72.0, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AFL        Near Sell       (Price",
+      "details": "$110.98, RSI: 58.9, StochRSI: 0.78, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PPL        Near Sell       (Price",
+      "details": "$36.12, RSI: 61.3, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MRK        Near Sell       (Price",
+      "details": "$97.76, RSI: 59.8, MFI: 66.0, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ROST       Near Sell       (Price",
+      "details": "$174.00, RSI: 68.8, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "VTR        Near Sell       (Price",
+      "details": "$79.24, MFI: 69.1, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NTRS       Near Sell       (Price",
+      "details": "$127.13, RSI: 62.0, MFI: 70.0, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TSLA       Near Sell       (Price",
+      "details": "$391.09, RSI: 56.8, MFI: 71.9, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CME        Near Sell       (Price",
+      "details": "$273.09, RSI: 63.2, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NEE        Near Sell       (Price",
+      "details": "$83.48, RSI: 63.5, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "DHR        Near Sell       (Price",
+      "details": "$227.39, RSI: 55.9, MFI: 67.4, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BRK-B      Near Sell       (Price",
+      "details": "$504.04, RSI: 59.1, StochRSI: 0.74, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ORLY       Near Sell       (Price",
+      "details": "$100.43, RSI: 61.7, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "RTX        Near Sell       (Price",
+      "details": "$169.68, RSI: 68.1, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AMGN       Near Sell       (Price",
+      "details": "$337.54, RSI: 66.9, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "UNP        Near Sell       (Price",
+      "details": "$226.22, StochRSI: 0.61, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "RF         Near Sell       (Price",
+      "details": "$24.91, RSI: 55.9, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CSX        Near Sell       (Price",
+      "details": "$34.28, MFI: 70.4, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ALL        Near Sell       (Price",
+      "details": "$214.32, RSI: 60.6, StochRSI: 0.69, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ETN        Near Sell       (Price",
+      "details": "$331.71, MFI: 68.5, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "DE         Near Sell       (Price",
+      "details": "$487.24, RSI: 57.2, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MS         Near Sell       (Price",
+      "details": "$158.17, RSI: 65.9, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AZO        Near Sell       (Price",
+      "details": "$3,897.88, RSI: 56.3, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ADI        Near Sell       (Price",
+      "details": "$232.32, MFI: 78.0, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PVH        Near Sell       (Price",
+      "details": "$76.62, StochRSI: 0.62, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GPN        Near Buy        (Price",
+      "details": "$73.49, RSI: 37.8, StochRSI: 0.32, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AEP        Near Sell       (Price",
+      "details": "$120.84, MFI: 67.8, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MU         Near Sell       (Price",
+      "details": "$207.37, RSI: 68.4, MFI: 75.3, StochRSI: 0.61, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MNST       Near Sell       (Price",
+      "details": "$72.04, MFI: 66.5, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "C          Near Sell       (Price",
+      "details": "$98.70, RSI: 64.6, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NTAP       Near Sell       (Price",
+      "details": "$107.30, MFI: 73.3, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "DUK        Near Sell       (Price",
+      "details": "$122.80, RSI: 64.9, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "COF        Near Sell       (Price",
+      "details": "$207.87, MFI: 74.9, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "JBHT       Near Sell       (Price",
+      "details": "$166.43, RSI: 57.5, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HAL        Near Sell       (Price",
+      "details": "$25.82, MFI: 68.2, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NOC        Near Sell       (Price",
+      "details": "$566.70, RSI: 56.9, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HLT        Near Sell       (Price",
+      "details": "$274.48, RSI: 61.2, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BAC        Near Sell       (Price",
+      "details": "$51.56, RSI: 60.7, MFI: 65.7, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "JPM        Near Sell       (Price",
+      "details": "$298.02, RSI: 61.4, MFI: 70.2, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "EXC        Near Sell       (Price",
+      "details": "$45.75, RSI: 62.8, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GD         Near Sell       (Price",
+      "details": "$340.34, StochRSI: 0.69, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PEP        Near Sell       (Price",
+      "details": "$146.33, MFI: 67.5, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "SYY        Near Sell       (Price",
+      "details": "$76.63, MFI: 71.0, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "KO         Near Sell       (Price",
+      "details": "$72.95, RSI: 63.6, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "UNH        Near Sell       (Price",
+      "details": "$319.97, StochRSI: 0.73, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PFGC       Near Sell       (Price",
+      "details": "$97.07, RSI: 58.0, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CAG        Near Buy        (Price",
+      "details": "$17.77, MFI: 31.7, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WFC        Near Sell       (Price",
+      "details": "$83.11, RSI: 58.8, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LRCX       Near Sell       (Price",
+      "details": "$142.65, RSI: 70.0, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PSX        Near Sell       (Price",
+      "details": "$133.72, RSI: 55.9, MFI: 69.6, StochRSI: 0.67, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LB         Near Buy        (Price",
+      "details": "$56.95, StochRSI: 0.25, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MPC        Near Sell       (Price",
+      "details": "$190.62, RSI: 60.1, MFI: 74.4, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BF-B       Near Buy        (Price",
+      "details": "$28.45, RSI: 40.2, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WMT        Near Sell       (Price",
+      "details": "$105.32, RSI: 63.8, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MTB        Near Sell       (Price",
+      "details": "$188.60, MFI: 67.4, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "OMC        Near Sell       (Price",
+      "details": "$74.87, StochRSI: 0.70, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ALK        Near Buy        (Price",
+      "details": "$39.53, RSI: 39.6, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GE         Near Sell       (Price",
+      "details": "$287.44, RSI: 67.9, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TGT        Near Buy        (Price",
+      "details": "$87.62, RSI: 37.3, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CCI        Near Buy        (Price",
+      "details": "$90.01, RSI: 41.9, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "USFD       Near Sell       (Price",
+      "details": "$78.67, RSI: 61.0, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "FIS        Near Buy        (Price",
+      "details": "$64.07, RSI: 37.0, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HIG        Near Sell       (Price",
+      "details": "$136.45, RSI: 67.0, StochRSI: 0.74, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BTI        Near Sell       (Price",
+      "details": "$55.25, MFI: 69.4, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "AVGO       Near Sell       (Price",
+      "details": "$340.20, RSI: 67.8, MFI: 78.8, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CMS        Near Sell       (Price",
+      "details": "$74.04, RSI: 63.4, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ORCL       Near Sell       (Price",
+      "details": "$198.76, MFI: 71.1, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "CBRE       Near Sell       (Price",
+      "details": "$156.79, RSI: 59.6, MFI: 65.9, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "DAL        Near Sell       (Price",
+      "details": "$58.57, RSI: 55.3, MFI: 68.5, StochRSI: 0.66, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "DXC        Near Buy        (Price",
+      "details": "$12.59, RSI: 37.3, StochRSI: 0.23, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "PRU        Near Sell       (Price",
+      "details": "$106.75, MFI: 65.3, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MAR        Near Sell       (Price",
+      "details": "$295.84, RSI: 63.5, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "SYF        Near Sell       (Price",
+      "details": "$74.62, RSI: 62.5, MFI: 66.6, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "HST        Near Sell       (Price",
+      "details": "$17.42, RSI: 57.6, MFI: 78.4, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MKC        Near Buy        (Price",
+      "details": "$68.16, RSI: 44.9, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "KMI        Near Sell       (Price",
+      "details": "$26.98, RSI: 55.7, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "VRTX       Near Sell       (Price",
+      "details": "$426.76, StochRSI: 0.77, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TJX        Near Sell       (Price",
+      "details": "$151.43, MFI: 67.7, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BLK        Near Sell       (Price",
+      "details": "$1,014.72, MFI: 67.3, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "STT        Near Sell       (Price",
+      "details": "$114.36, RSI: 63.6, MFI: 76.5, Market: Bull)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BUD        Near Buy        (Price",
+      "details": "$62.47, StochRSI: 0.32, Market: Bear)"
+    },
+    {
+      "type": "asset",
+      "symbol": "USB        Near Sell       (Price",
+      "details": "$47.78, RSI: 56.0, Market: Bull)"
+    },
+    {
+      "type": "empty"
+    }
+  ]
+}

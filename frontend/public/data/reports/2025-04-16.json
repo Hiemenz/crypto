@@ -1,0 +1,115 @@
+{
+  "date": "2025-04-16",
+  "content": [
+    {
+      "type": "text",
+      "content": "Report for 2025-04-16 (Stocks)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1d Timeframe ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "ATO        Good Sell       (Price",
+      "details": "$154.64, RSI: 62.5, MFI: 72.4, StochRSI: 0.87)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 3d Timeframe (Next print in 3 days) ---"
+    },
+    {
+      "type": "asset",
+      "symbol": "ARE        Great Buy       (Price",
+      "details": "$75.24, RSI: 26.4, MFI: 17.9, StochRSI: 0.13)"
+    },
+    {
+      "type": "asset",
+      "symbol": "BTI        Good Sell       (Price",
+      "details": "$41.11, RSI: 64.5, MFI: 73.4, StochRSI: 0.75)"
+    },
+    {
+      "type": "asset",
+      "symbol": "GPN        Good Buy        (Price",
+      "details": "$69.04, RSI: 23.3, MFI: 28.6, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "JBHT       Good Buy        (Price",
+      "details": "$128.08, RSI: 29.8, MFI: 25.9, StochRSI: 0.26)"
+    },
+    {
+      "type": "asset",
+      "symbol": "LVS        Good Buy        (Price",
+      "details": "$32.27, RSI: 26.8, MFI: 21.4, StochRSI: 0.12)"
+    },
+    {
+      "type": "asset",
+      "symbol": "MRK        Great Buy       (Price",
+      "details": "$76.47, RSI: 26.5, MFI: 13.9, StochRSI: 0.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NKE        Good Buy        (Price",
+      "details": "$55.11, RSI: 31.7, MFI: 25.4, StochRSI: 0.25)"
+    },
+    {
+      "type": "asset",
+      "symbol": "NOC        Good Sell       (Price",
+      "details": "$535.71, RSI: 65.5, MFI: 74.7, StochRSI: 1.00)"
+    },
+    {
+      "type": "asset",
+      "symbol": "REGN       Great Buy       (Price",
+      "details": "$561.48, RSI: 29.9, MFI: 18.8, StochRSI: 0.10)"
+    },
+    {
+      "type": "asset",
+      "symbol": "TMO        Good Buy        (Price",
+      "details": "$426.67, RSI: 25.9, MFI: 24.8, StochRSI: 0.18)"
+    },
+    {
+      "type": "asset",
+      "symbol": "UPS        Great Buy       (Price",
+      "details": "$91.52, RSI: 27.7, MFI: 16.6, StochRSI: 0.05)"
+    },
+    {
+      "type": "asset",
+      "symbol": "WY         Good Buy        (Price",
+      "details": "$25.39, RSI: 29.3, MFI: 20.4, StochRSI: 0.01)"
+    },
+    {
+      "type": "asset",
+      "symbol": "ZTS        Good Buy        (Price",
+      "details": "$147.16, RSI: 33.4, MFI: 29.6, StochRSI: 0.00)"
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 1wk Timeframe (Next print in 5 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    },
+    {
+      "type": "empty"
+    },
+    {
+      "type": "text",
+      "content": "--- 2wk Timeframe (Next print in 12 days) ---"
+    },
+    {
+      "type": "text",
+      "content": "No recommendations."
+    }
+  ]
+}
