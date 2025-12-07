@@ -194,7 +194,7 @@ const ProDashboard = () => {
                     <div className="flex-1 overflow-y-auto pt-4 lg:pt-0 p-4 lg:p-8 space-y-6 lg:space-y-8">
 
                         {/* Chart */}
-                        <div className="bg-[#1c1c1e] rounded-[18px] p-6 lg:p-8 shadow-sm ring-1 ring-white/5">
+                        <div className="bg-[#1c1c1e] rounded-[18px] p-6 lg:p-8">
                             <div className="flex justify-between items-center mb-6">
                                 <div>
                                     <div className="text-[22px] font-bold text-white tracking-tight">{selectedSymbol}</div>
@@ -265,7 +265,7 @@ const ProDashboard = () => {
                         </div>
 
                         {/* Content Toggle: Token vs Market */}
-                        <div className="bg-[#1c1c1e] rounded-[18px] p-6 lg:p-8 min-h-[400px] ring-1 ring-white/5">
+                        <div className="bg-[#1c1c1e] rounded-[18px] p-6 lg:p-8 min-h-[400px]">
                             <div className="flex items-center gap-6 mb-6 border-b border-[#1E2228]">
                                 <button
                                     onClick={() => setContentTab('token')}
