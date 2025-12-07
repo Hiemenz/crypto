@@ -25,6 +25,8 @@ const ProDashboard = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [chartRange, setChartRange] = useState('ALL');
 
+
+
     // Mobile Master-Detail State
     const [mobileView, setMobileView] = useState('list'); // 'list' | 'detail'
 
@@ -116,9 +118,6 @@ const ProDashboard = () => {
             {/* Header with Slider */}
             {/* Header with Slider */}
             <Header
-                activeTab={activeTab}
-                setActiveTab={setActiveTab}
-                signals={signals}
                 sidebarOpen={sidebarOpen}
                 setSidebarOpen={setSidebarOpen}
                 mobileView={mobileView}
@@ -143,8 +142,41 @@ const ProDashboard = () => {
                 ${sidebarOpen ? 'translate-x-0 shadow-2xl' : ''} 
                 `}>
 
+                    {/* Sidebar Toggle */}
+                    <div className="px-5 pt-5 pb-1">
+                        <div className="relative flex items-center bg-[#767680]/20 rounded-lg p-[2px] w-full h-[40px]">
+                            {/* Animated Background (Thumb) */}
+                            <div
+                                className="absolute top-[2px] bottom-[2px] rounded-[6px] transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] bg-[#636366] shadow-[0_2px_4px_rgba(0,0,0,0.2)]"
+                                style={{
+                                    left: '2px',
+                                    width: 'calc(50% - 2px)',
+                                    transform: activeTab === 'stocks' ? 'translateX(0)' : 'translateX(100%)'
+                                }}
+                            />
+
+                            {/* Stocks Button */}
+                            <button
+                                onClick={() => setActiveTab('stocks')}
+                                className={`relative z-10 flex-1 h-full text-[13px] font-medium transition-colors duration-200 flex items-center justify-center rounded-[6px] ${activeTab === 'stocks' ? 'text-white' : 'text-[#86868b] hover:text-white'
+                                    }`}
+                            >
+                                <span>Stocks</span>
+                            </button>
+
+                            {/* Crypto Button */}
+                            <button
+                                onClick={() => setActiveTab('crypto')}
+                                className={`relative z-10 flex-1 h-full text-[13px] font-medium transition-colors duration-200 flex items-center justify-center rounded-[6px] ${activeTab === 'crypto' ? 'text-white' : 'text-[#86868b] hover:text-white'
+                                    }`}
+                            >
+                                <span>Crypto</span>
+                            </button>
+                        </div>
+                    </div>
+
                     {/* Search */}
-                    <div className="p-5 border-b border-white/5">
+                    <div className="p-5 border-b border-white/5 pt-2">
                         <div className="relative bg-[#2c2c2e] rounded-[10px]">
                             <Search className="absolute left-3 top-3 w-4 h-4 text-[#86868b]" />
                             <input
