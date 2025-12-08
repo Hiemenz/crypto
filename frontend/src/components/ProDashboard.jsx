@@ -13,7 +13,7 @@ const CustomDot = (props) => {
     return <circle cx={cx} cy={cy} r={5} fill={color} stroke="#fff" strokeWidth={2} />;
 };
 
-const ProDashboard = () => {
+const ProDashboard = ({ onLogout }) => {
     const [signals, setSignals] = useState([]);
     const [crosses, setCrosses] = useState([]);
     const [historyData, setHistoryData] = useState(null);
@@ -153,6 +153,7 @@ const ProDashboard = () => {
                 setSidebarOpen={setSidebarOpen}
                 mobileView={mobileView}
                 onBack={() => setMobileView('list')}
+                onLogout={onLogout}
             />
 
             <div className="flex flex-1 overflow-hidden relative">

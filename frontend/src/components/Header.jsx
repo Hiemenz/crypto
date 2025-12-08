@@ -5,7 +5,8 @@ const Header = ({
     sidebarOpen,
     setSidebarOpen,
     mobileView, // New prop
-    onBack      // New prop
+    onBack,      // New prop
+    onLogout    // New prop
 }) => {
 
     return (
@@ -35,11 +36,18 @@ const Header = ({
                 </div>
 
                 {/* Right Side - Status (Hidden on very small screens to save space) */}
-                <div className="hidden sm:flex items-center gap-4">
-                    <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#1E2228]/50 border border-[#1E2228]">
+                <div className="flex items-center gap-4">
+                    <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#1E2228]/50 border border-[#1E2228]">
                         <div className="w-1.5 h-1.5 rounded-full bg-[#00E5FF] shadow-[0_0_8px_#00E5FF]"></div>
                         <span className="text-xs font-medium text-[#E4E8EC]">Live</span>
                     </div>
+
+                    <button
+                        onClick={onLogout}
+                        className="text-[#9CA3AF] hover:text-[#E4E8EC] text-sm font-medium transition-colors"
+                    >
+                        Sign Out
+                    </button>
                 </div>
             </div>
         </header>
