@@ -31,7 +31,7 @@ with open("crypto_signal_station/cryptos.yml", "r") as f:
 
 
 # Pi-Optimization: Limit concurrent downloads to save RAM
-MAX_WORKERS = 4
+MAX_WORKERS = 1
 
 def _process_single_symbol(symbol, base_output_folder, timeframes, fetch_start_override=None):
     """
