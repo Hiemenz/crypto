@@ -19,7 +19,7 @@ const ProDashboard = () => {
     const [historyData, setHistoryData] = useState(null);
     const [activeTab, setActiveTab] = useState('crypto');
     const [contentTab, setContentTab] = useState('token'); // 'token' or 'market'
-    const [selectedSymbol, setSelectedSymbol] = useState(null);
+    const [selectedSymbol, setSelectedSymbol] = useState('BTC-USD');
     const [searchTerm, setSearchTerm] = useState('');
     const [loading, setLoading] = useState(true);
     const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -28,7 +28,7 @@ const ProDashboard = () => {
 
 
     // Mobile Master-Detail State
-    const [mobileView, setMobileView] = useState('list'); // 'list' | 'detail'
+    const [mobileView, setMobileView] = useState('detail'); // 'list' | 'detail'
 
     useEffect(() => {
         Promise.all([
@@ -37,10 +37,20 @@ const ProDashboard = () => {
         ]).then(([sig, cr]) => {
             setSignals(sig.signals);
             setCrosses(cr.crosses);
+
+            // Default to BTC-USD
+            // We already initialized state to BTC-USD, so only override if BTC is missing
             const btc = sig.signals.find(s => s.symbol === 'BTC-USD');
-            const firstCrypto = sig.signals.find(s => s.category === 'crypto');
-            if (btc) setSelectedSymbol(btc.symbol);
-            else if (firstCrypto) setSelectedSymbol(firstCrypto.symbol);
+            if (btc) {
+                if (selectedSymbol !== 'BTC-USD') setSelectedSymbol('BTC-USD');
+                if (btc.category) setActiveTab(btc.category);
+            } else {
+                const firstCrypto = sig.signals.find(s => s.category === 'crypto');
+                if (firstCrypto) {
+                    setSelectedSymbol(firstCrypto.symbol);
+                    setActiveTab('crypto');
+                }
+            }
             setLoading(false);
         }).catch(err => console.error('Load error:', err));
     }, []);
@@ -48,17 +58,27 @@ const ProDashboard = () => {
     useEffect(() => {
         if (!selectedSymbol) return;
         setHistoryData(null);
+        console.log(`Fetching history for ${selectedSymbol}...`);
+
         fetch(`/data/history/${selectedSymbol}.json`)
-            .then(r => r.json())
+            .then(res => {
+                if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+                return res.json();
+            })
             .then(json => {
+                if (!json.data || !Array.isArray(json.data)) throw new Error('Invalid data format');
                 const processed = json.data.map(d => ({
                     date: d.Date,
                     price: parseFloat(d.Close),
                     signalType: (d.signal && d.signal.includes('Buy')) ? 'buy' : (d.signal && d.signal.includes('Sell')) ? 'sell' : null
                 }));
+                console.log(`Loaded ${processed.length} points for ${selectedSymbol}`);
                 setHistoryData(processed);
             })
-            .catch(err => console.error('History error:', err));
+            .catch(err => {
+                console.error('History error:', err);
+                // Optional: setHistoryError(err.message);
+            });
     }, [selectedSymbol]);
 
     const assetList = useMemo(() =>
@@ -69,6 +89,16 @@ const ProDashboard = () => {
     );
 
     const currentSignal = useMemo(() => signals.find(s => s.symbol === selectedSymbol), [signals, selectedSymbol]);
+
+    // Auto-scroll to selected item
+    useEffect(() => {
+        if (!loading && selectedSymbol) {
+            const el = document.getElementById(`asset-${selectedSymbol}`);
+            if (el) {
+                el.scrollIntoView({ block: 'center', behavior: 'smooth' });
+            }
+        }
+    }, [loading, selectedSymbol, activeTab]);
 
     // TOKEN SPECIFIC DATA
     const tokenCrosses = useMemo(() =>
@@ -113,6 +143,7 @@ const ProDashboard = () => {
         </div>
     );
 
+
     return (
         <div className="flex flex-col h-screen overflow-hidden bg-[#0B0D10] text-[#E4E8EC]">
             {/* Header with Slider */}
@@ -129,16 +160,16 @@ const ProDashboard = () => {
                 {/* Sidebar Overlay (Mobile) */}
                 {sidebarOpen && (
                     <div
-                        className="fixed inset-0 bg-black/60 z-30 lg:hidden backdrop-blur-sm transition-opacity"
+                        className="fixed inset-0 bg-black/60 z-30 md:hidden backdrop-blur-sm transition-opacity"
                         onClick={() => setSidebarOpen(false)}
                     />
                 )}
 
                 {/* Sidebar (Desktop: Block | Mobile: Conditional) */}
                 <div className={`
-                    fixed inset-y-0 inset-x-0 z-40 bg-[#1c1c1e] border-r border-white/5 flex flex-col transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] h-full pt-[72px] lg:pt-0
-                    lg:relative lg:translate-x-0 lg:w-80 lg:inset-auto
-                ${mobileView === 'list' ? 'translate-x-0' : '-translate-x-full lg:translate-x-0 invisible lg:visible'}
+                    fixed inset-y-0 inset-x-0 z-40 bg-[#1c1c1e] border-r border-white/5 flex flex-col transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] h-full pt-[72px] md:pt-0
+                    md:relative md:translate-x-0 md:w-80 md:inset-auto
+                ${mobileView === 'list' ? 'translate-x-0' : '-translate-x-full md:translate-x-0 invisible md:visible'}
                 ${sidebarOpen ? 'translate-x-0 shadow-2xl' : ''} 
                 `}>
 
@@ -194,6 +225,7 @@ const ProDashboard = () => {
                     <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3">
                         {assetList.map(item => (
                             <div key={item.symbol}
+                                id={`asset-${item.symbol}`}
                                 onClick={() => {
                                     setSelectedSymbol(item.symbol);
                                     setMobileView('detail'); // Switch to detail view on mobile
@@ -221,14 +253,14 @@ const ProDashboard = () => {
                 {/* Main Content (Desktop: Block | Mobile: Conditional) */}
                 <div className={`
                     flex-1 flex flex-col min-w-0 overflow-hidden relative bg-[#0B0D10]
-                    absolute lg:static inset-0 z-50 lg:z-auto
+                    absolute md:static inset-0 z-50 md:z-auto
                     transition-transform duration-300 ease-in-out
-                    ${mobileView === 'detail' ? 'translate-x-0' : 'translate-x-full lg:translate-x-0'}
+                    ${mobileView === 'detail' ? 'translate-x-0' : 'translate-x-full md:translate-x-0'}
                 `}>
-                    <div className="flex-1 overflow-y-auto pt-4 lg:pt-0 p-4 lg:p-8 space-y-6 lg:space-y-8">
+                    <div className="flex-1 overflow-y-auto pt-4 md:pt-0 p-4 md:p-8 space-y-6 md:space-y-8">
 
                         {/* Chart */}
-                        <div className="bg-[#1c1c1e] rounded-[18px] p-6 lg:p-8">
+                        <div className="bg-[#1c1c1e] rounded-[18px] p-6 md:p-8">
                             <div className="flex justify-between items-center mb-6">
                                 <div>
                                     <div className="text-[22px] font-bold text-white tracking-tight">{selectedSymbol}</div>
@@ -250,14 +282,14 @@ const ProDashboard = () => {
                                 </div>
                             </div>
 
-                            <div className="h-[300px] lg:h-[450px] w-full">
+                            <div className="h-[300px] md:h-[450px] w-full relative">
                                 {!historyData ? (
                                     <div className="h-full flex flex-col items-center justify-center text-[#86868b] gap-2">
                                         <div className="w-5 h-5 rounded-full border-2 border-[#2c2c2e] border-t-[#0A84FF] animate-spin" />
                                         <span className="text-[13px]">Loading chart data...</span>
                                     </div>
                                 ) : (
-                                    <ResponsiveContainer width="100%" height="100%">
+                                    <ResponsiveContainer width="100%" height="100%" key={selectedSymbol}>
                                         <LineChart data={chartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
                                             <XAxis
                                                 dataKey="date"
@@ -299,11 +331,11 @@ const ProDashboard = () => {
                         </div>
 
                         {/* Content Toggle: Token vs Market */}
-                        <div className="bg-[#1c1c1e] rounded-[18px] p-6 lg:p-8 min-h-[400px]">
+                        <div className="bg-[#1c1c1e] rounded-[18px] p-6 md:p-8 min-h-[400px]">
                             <div className="flex items-center gap-6 mb-6 border-b border-[#1E2228]">
                                 <button
                                     onClick={() => setContentTab('token')}
-                                    className={`text-sm lg:text-base font-bold pb-4 border-b-2 transition-colors ${contentTab === 'token'
+                                    className={`text-sm md:text-base font-bold pb-4 border-b-2 transition-colors ${contentTab === 'token'
                                         ? 'text-[#00E5FF] border-[#00E5FF]'
                                         : 'text-[#5F6670] border-transparent hover:text-[#E4E8EC]'
                                         }`}
@@ -312,7 +344,7 @@ const ProDashboard = () => {
                                 </button>
                                 <button
                                     onClick={() => setContentTab('market')}
-                                    className={`text-sm lg:text-base font-bold pb-4 border-b-2 transition-colors ${contentTab === 'market'
+                                    className={`text-sm md:text-base font-bold pb-4 border-b-2 transition-colors ${contentTab === 'market'
                                         ? 'text-[#00E5FF] border-[#00E5FF]'
                                         : 'text-[#5F6670] border-transparent hover:text-[#E4E8EC]'
                                         }`}
@@ -325,7 +357,7 @@ const ProDashboard = () => {
                                 {contentTab === 'token' ? (
                                     <>
                                         {/* Token Specific View */}
-                                        <div className="grid lg:grid-cols-2 gap-6">
+                                        <div className="grid md:grid-cols-2 gap-6">
                                             {/* Token Crosses */}
                                             <div>
                                                 <h3 className="text-xs font-bold text-[#9CA3AF] uppercase mb-3">Latest Crosses</h3>
@@ -367,7 +399,7 @@ const ProDashboard = () => {
                                 ) : (
                                     <>
                                         {/* Market Pulse View */}
-                                        <div className="grid lg:grid-cols-2 gap-6">
+                                        <div className="grid md:grid-cols-2 gap-6">
                                             <div>
                                                 <h3 className="text-xs font-bold text-[#9CA3AF] uppercase mb-3">Latest Market Crosses</h3>
                                                 <div className="space-y-2">
