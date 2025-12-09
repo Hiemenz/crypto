@@ -60,8 +60,10 @@ const ProDashboard = ({ onLogout }) => {
         setHistoryData(null);
         console.log(`Fetching history for ${selectedSymbol}...`);
 
+        console.log(`[DEBUG] Fetching /data/history/${selectedSymbol}.json`);
         fetch(`/data/history/${selectedSymbol}.json`)
             .then(res => {
+                console.log('[DEBUG] Response status:', res.status);
                 if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
                 return res.json();
             })
@@ -290,43 +292,45 @@ const ProDashboard = ({ onLogout }) => {
                                         <span className="text-[13px]">Loading chart data...</span>
                                     </div>
                                 ) : (
-                                    <ResponsiveContainer width="100%" height="100%" key={selectedSymbol}>
-                                        <LineChart data={chartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                                            <XAxis
-                                                dataKey="date"
-                                                stroke="#48484a"
-                                                tick={{ fontSize: 11, fill: '#86868b', fontWeight: 500 }}
-                                                tickFormatter={v => v.substring(5, 10)}
-                                                axisLine={false}
-                                                tickLine={false}
-                                                dy={10}
-                                            />
-                                            <YAxis
-                                                dataKey="price"
-                                                stroke="#48484a"
-                                                tick={{ fontSize: 11, fill: '#86868b', fontWeight: 500 }}
-                                                orientation="right"
-                                                width={50}
-                                                domain={['auto', 'auto']}
-                                                axisLine={false}
-                                                tickLine={false}
-                                            />
-                                            <Tooltip
-                                                contentStyle={{ backgroundColor: 'rgba(28, 28, 30, 0.8)', borderColor: 'rgba(255,255,255,0.1)', borderRadius: '12px', backdropFilter: 'blur(16px)', boxShadow: '0 4px 20px rgba(0,0,0,0.4)', padding: '12px' }}
-                                                itemStyle={{ color: '#fff', fontSize: '13px', fontWeight: 500 }}
-                                                labelStyle={{ color: '#86868b', fontSize: '11px', marginBottom: '4px', fontWeight: 600 }}
-                                            />
-                                            <Line
-                                                type="monotone"
-                                                dataKey="price"
-                                                stroke="#0A84FF"
-                                                strokeWidth={2}
-                                                dot={<CustomDot />}
-                                                activeDot={{ r: 6, strokeWidth: 0, fill: '#FFFFFF' }}
-                                                isAnimationActive={false}
-                                            />
-                                        </LineChart>
-                                    </ResponsiveContainer>
+                                    <div style={{ width: '100%', height: '100%' }}>
+                                        <ResponsiveContainer width="99%" height="100%" key={selectedSymbol}>
+                                            <LineChart data={chartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                                                <XAxis
+                                                    dataKey="date"
+                                                    stroke="#48484a"
+                                                    tick={{ fontSize: 11, fill: '#86868b', fontWeight: 500 }}
+                                                    tickFormatter={v => v.substring(5, 10)}
+                                                    axisLine={false}
+                                                    tickLine={false}
+                                                    dy={10}
+                                                />
+                                                <YAxis
+                                                    dataKey="price"
+                                                    stroke="#48484a"
+                                                    tick={{ fontSize: 11, fill: '#86868b', fontWeight: 500 }}
+                                                    orientation="right"
+                                                    width={50}
+                                                    domain={['auto', 'auto']}
+                                                    axisLine={false}
+                                                    tickLine={false}
+                                                />
+                                                <Tooltip
+                                                    contentStyle={{ backgroundColor: 'rgba(28, 28, 30, 0.8)', borderColor: 'rgba(255,255,255,0.1)', borderRadius: '12px', backdropFilter: 'blur(16px)', boxShadow: '0 4px 20px rgba(0,0,0,0.4)', padding: '12px' }}
+                                                    itemStyle={{ color: '#fff', fontSize: '13px', fontWeight: 500 }}
+                                                    labelStyle={{ color: '#86868b', fontSize: '11px', marginBottom: '4px', fontWeight: 600 }}
+                                                />
+                                                <Line
+                                                    type="monotone"
+                                                    dataKey="price"
+                                                    stroke="#0A84FF"
+                                                    strokeWidth={2}
+                                                    dot={<CustomDot />}
+                                                    activeDot={{ r: 6, strokeWidth: 0, fill: '#FFFFFF' }}
+                                                    isAnimationActive={false}
+                                                />
+                                            </LineChart>
+                                        </ResponsiveContainer>
+                                    </div>
                                 )}
                             </div>
                         </div>
