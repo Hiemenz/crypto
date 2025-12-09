@@ -1,5 +1,5 @@
 {
-  "updated": "2025-12-08 18:47:57.632862",
+  "updated": "2025-12-08 23:19:16.145861",
   "crosses": [
     {
       "category": "crypto",
@@ -4757,703 +4757,748 @@
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Golden Cross",
-      "price": 0.14538900554180145,
-      "k": 0.05,
-      "d": 0.04,
-      "date": "2018-07-08 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "ETH-USD",
-      "type": "Golden Cross",
-      "price": 0.10443200170993805,
-      "k": 0.06,
-      "d": 0.02,
+      "price": 294.3710021972656,
+      "k": 0.04,
+      "d": 0.01,
       "date": "2018-09-02 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Confirmed Golden Cross",
-      "price": 0.07622899860143661,
-      "k": 0.28,
-      "d": 0.22,
+      "price": 207.48599243164062,
+      "k": 0.25,
+      "d": 0.21,
       "date": "2018-11-04 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
+      "type": "Golden Cross",
+      "price": 130.7652587890625,
+      "k": 0.26,
+      "d": 0.09,
+      "date": "2018-12-23 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "ETH-USD",
       "type": "Confirmed Golden Cross",
-      "price": 0.042830001562833786,
-      "k": 0.77,
-      "d": 0.75,
+      "price": 124.80648803710938,
+      "k": 0.73,
+      "d": 0.69,
       "date": "2019-02-10 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Confirmed Golden Cross",
-      "price": 0.08699599653482437,
-      "k": 0.66,
-      "d": 0.6,
-      "date": "2019-05-19 00:00:00"
+      "price": 187.3253173828125,
+      "k": 0.87,
+      "d": 0.86,
+      "date": "2019-05-12 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "ETH-USD",
+      "type": "Confirmed Golden Cross",
+      "price": 290.69598388671875,
+      "k": 0.9,
+      "d": 0.86,
+      "date": "2019-06-30 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Golden Cross",
-      "price": 0.04132499918341637,
-      "k": 0.14,
-      "d": 0.1,
+      "price": 181.35552978515625,
+      "k": 0.03,
+      "d": 0.01,
+      "date": "2019-09-08 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "ETH-USD",
+      "type": "Golden Cross",
+      "price": 182.0751495361328,
+      "k": 0.18,
+      "d": 0.17,
       "date": "2019-10-13 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
-      "type": "Confirmed Golden Cross",
-      "price": 0.036653000861406326,
-      "k": 0.56,
-      "d": 0.55,
-      "date": "2019-12-15 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "ETH-USD",
-      "type": "Confirmed Golden Cross",
-      "price": 0.037689998745918274,
-      "k": 0.35,
-      "d": 0.27,
-      "date": "2020-01-12 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "ETH-USD",
       "type": "Golden Cross",
-      "price": 0.032003000378608704,
+      "price": 136.2767791748047,
       "k": 0.07,
       "d": 0.06,
-      "date": "2020-04-05 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "ETH-USD",
-      "type": "Confirmed Golden Cross",
-      "price": 0.09821099787950516,
-      "k": 0.86,
-      "d": 0.84,
-      "date": "2020-07-05 00:00:00"
+      "date": "2020-01-05 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Golden Cross",
-      "price": 0.10128699988126755,
-      "k": 0.05,
-      "d": 0.02,
-      "date": "2020-09-27 00:00:00"
+      "price": 161.14242553710938,
+      "k": 0.16,
+      "d": 0.11,
+      "date": "2020-04-12 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Confirmed Golden Cross",
-      "price": 0.14475999772548676,
-      "k": 0.44,
-      "d": 0.25,
-      "date": "2020-11-22 00:00:00"
+      "price": 230.9757080078125,
+      "k": 0.66,
+      "d": 0.53,
+      "date": "2020-05-31 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Confirmed Golden Cross",
-      "price": 0.20499500632286072,
-      "k": 0.82,
-      "d": 0.78,
-      "date": "2021-01-03 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "ETH-USD",
-      "type": "Confirmed Golden Cross",
-      "price": 0.8484190106391907,
-      "k": 0.91,
-      "d": 0.87,
-      "date": "2021-02-14 00:00:00"
+      "price": 242.13169860839844,
+      "k": 0.81,
+      "d": 0.8,
+      "date": "2020-07-12 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Golden Cross",
-      "price": 1.7705620527267456,
-      "k": 0.23,
+      "price": 406.2177734375,
+      "k": 0.19,
+      "d": 0.14,
+      "date": "2020-10-25 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "ETH-USD",
+      "type": "Confirmed Golden Cross",
+      "price": 1935.60107421875,
+      "k": 0.85,
+      "d": 0.82,
+      "date": "2021-02-21 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "ETH-USD",
+      "type": "Golden Cross",
+      "price": 2157.656982421875,
+      "k": 0.21,
       "d": 0.18,
-      "date": "2021-05-09 00:00:00"
+      "date": "2021-04-11 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Golden Cross",
-      "price": 1.3177299499511719,
-      "k": 0.04,
-      "d": 0.02,
+      "price": 2139.664794921875,
+      "k": 0.05,
+      "d": 0.04,
+      "date": "2021-07-11 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "ETH-USD",
+      "type": "Golden Cross",
+      "price": 2561.85205078125,
+      "k": 0.1,
+      "d": 0.06,
       "date": "2021-08-01 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
+      "type": "Confirmed Golden Cross",
+      "price": 3847.1044921875,
+      "k": 0.61,
+      "d": 0.52,
+      "date": "2021-10-17 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "ETH-USD",
       "type": "Golden Cross",
-      "price": 0.8770920038223267,
-      "k": 0.1,
-      "d": 0.03,
+      "price": 2603.466552734375,
+      "k": 0.05,
+      "d": 0.04,
+      "date": "2022-01-30 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "ETH-USD",
+      "type": "Golden Cross",
+      "price": 2860.459228515625,
+      "k": 0.18,
+      "d": 0.13,
       "date": "2022-03-20 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
-      "type": "Golden Cross",
-      "price": 0.5670899748802185,
-      "k": 0.08,
-      "d": 0.05,
-      "date": "2022-06-05 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "ETH-USD",
-      "type": "Golden Cross",
-      "price": 0.4473530054092407,
-      "k": 0.12,
-      "d": 0.12,
-      "date": "2022-07-17 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "ETH-USD",
       "type": "Confirmed Golden Cross",
-      "price": 0.5097519755363464,
-      "k": 0.76,
-      "d": 0.67,
+      "price": 1761.800048828125,
+      "k": 0.77,
+      "d": 0.75,
       "date": "2022-09-11 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Confirmed Golden Cross",
-      "price": 0.4030050039291382,
-      "k": 0.4,
-      "d": 0.3,
-      "date": "2022-11-06 00:00:00"
+      "price": 1590.7833251953125,
+      "k": 0.58,
+      "d": 0.52,
+      "date": "2022-10-30 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
-      "type": "Golden Cross",
-      "price": 0.30771100521087646,
-      "k": 0.07,
-      "d": 0.04,
+      "type": "Confirmed Golden Cross",
+      "price": 1263.8685302734375,
+      "k": 0.35,
+      "d": 0.22,
       "date": "2022-12-11 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
-      "type": "Golden Cross",
-      "price": 0.29521799087524414,
-      "k": 0.26,
-      "d": 0.09,
+      "type": "Confirmed Golden Cross",
+      "price": 1287.3594970703125,
+      "k": 0.43,
+      "d": 0.35,
       "date": "2023-01-08 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Confirmed Golden Cross",
-      "price": 0.3562450110912323,
-      "k": 0.73,
-      "d": 0.71,
+      "price": 1775.6767578125,
+      "k": 0.92,
+      "d": 0.85,
       "date": "2023-03-26 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Confirmed Golden Cross",
-      "price": 0.3776929974555969,
-      "k": 0.38,
-      "d": 0.35,
+      "price": 1890.5135498046875,
+      "k": 0.32,
+      "d": 0.29,
       "date": "2023-06-04 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Golden Cross",
-      "price": 0.29205501079559326,
-      "k": 0.15,
-      "d": 0.12,
+      "price": 1937.4383544921875,
+      "k": 0.28,
+      "d": 0.18,
       "date": "2023-07-02 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Golden Cross",
-      "price": 0.2658950090408325,
-      "k": 0.21,
-      "d": 0.08,
-      "date": "2023-10-01 00:00:00"
+      "price": 1622.896728515625,
+      "k": 0.01,
+      "d": 0.0,
+      "date": "2023-09-17 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Confirmed Golden Cross",
-      "price": 0.6187340021133423,
-      "k": 0.25,
-      "d": 0.23,
+      "price": 1795.5460205078125,
+      "k": 0.52,
+      "d": 0.37,
+      "date": "2023-10-29 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "ETH-USD",
+      "type": "Confirmed Golden Cross",
+      "price": 2352.462646484375,
+      "k": 1.0,
+      "d": 0.98,
+      "date": "2023-12-10 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "ETH-USD",
+      "type": "Confirmed Golden Cross",
+      "price": 2472.2412109375,
+      "k": 0.8,
+      "d": 0.78,
+      "date": "2024-01-14 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "ETH-USD",
+      "type": "Confirmed Golden Cross",
+      "price": 2878.998046875,
+      "k": 0.55,
+      "d": 0.42,
       "date": "2024-02-18 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Golden Cross",
-      "price": 0.467602014541626,
+      "price": 3071.843017578125,
       "k": 0.03,
-      "d": 0.02,
+      "d": 0.03,
       "date": "2024-05-19 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
-      "type": "Golden Cross",
-      "price": 0.392192006111145,
-      "k": 0.02,
-      "d": 0.02,
-      "date": "2024-06-30 00:00:00"
+      "type": "Confirmed Golden Cross",
+      "price": 3536.60546875,
+      "k": 0.27,
+      "d": 0.2,
+      "date": "2024-07-21 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
-      "type": "Confirmed Golden Cross",
-      "price": 0.3849790096282959,
-      "k": 0.38,
-      "d": 0.33,
+      "type": "Golden Cross",
+      "price": 2749.15771484375,
+      "k": 0.06,
+      "d": 0.06,
       "date": "2024-08-25 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
-      "type": "Confirmed Golden Cross",
-      "price": 0.3517720103263855,
-      "k": 0.49,
-      "d": 0.47,
+      "type": "Golden Cross",
+      "price": 2582.862548828125,
+      "k": 0.12,
+      "d": 0.06,
       "date": "2024-09-22 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
-      "type": "Confirmed Golden Cross",
-      "price": 0.5903090238571167,
-      "k": 0.64,
-      "d": 0.59,
-      "date": "2024-11-10 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "ETH-USD",
-      "type": "Confirmed Golden Cross",
-      "price": 0.991191029548645,
-      "k": 0.51,
-      "d": 0.51,
-      "date": "2025-01-19 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "ETH-USD",
       "type": "Golden Cross",
-      "price": 1.1295030117034912,
-      "k": 0.21,
-      "d": 0.13,
+      "price": 2519.694580078125,
+      "k": 0.06,
+      "d": 0.05,
       "date": "2025-03-02 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Golden Cross",
-      "price": 0.6380749940872192,
-      "k": 0.04,
-      "d": 0.02,
-      "date": "2025-04-13 00:00:00"
+      "price": 2005.2991943359375,
+      "k": 0.03,
+      "d": 0.03,
+      "date": "2025-03-23 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "ETH-USD",
+      "type": "Golden Cross",
+      "price": 1792.864990234375,
+      "k": 0.11,
+      "d": 0.04,
+      "date": "2025-04-27 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Confirmed Golden Cross",
-      "price": 0.7372530102729797,
-      "k": 0.44,
-      "d": 0.23,
+      "price": 2973.35888671875,
+      "k": 0.98,
+      "d": 0.91,
       "date": "2025-07-13 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Confirmed Golden Cross",
-      "price": 0.9096069931983948,
-      "k": 0.88,
-      "d": 0.8,
+      "price": 4779.6474609375,
+      "k": 0.99,
+      "d": 0.94,
       "date": "2025-08-24 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
-      "type": "Confirmed Golden Cross",
-      "price": 0.8852750062942505,
-      "k": 0.72,
-      "d": 0.69,
-      "date": "2025-09-21 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "ETH-USD",
       "type": "Golden Cross",
-      "price": 0.41588500142097473,
-      "k": 0.01,
-      "d": 0.0,
+      "price": 2992.112548828125,
+      "k": 0.03,
+      "d": 0.01,
       "date": "2025-11-30 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.11297000199556351,
-      "k": 0.08,
-      "d": 0.15,
-      "date": "2018-08-12 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "ETH-USD",
-      "type": "Confirmed Death Cross",
-      "price": 0.07129299640655518,
-      "k": 0.25,
-      "d": 0.27,
+      "price": 195.71499633789062,
+      "k": 0.22,
+      "d": 0.26,
       "date": "2018-10-14 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.03772500157356262,
-      "k": 0.21,
-      "d": 0.33,
+      "price": 116.44999694824219,
+      "k": 0.3,
+      "d": 0.37,
       "date": "2018-11-25 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
-      "type": "Confirmed Death Cross",
-      "price": 0.04116800054907799,
-      "k": 0.75,
-      "d": 0.76,
-      "date": "2019-01-27 00:00:00"
+      "type": "Death Cross",
+      "price": 119.4748306274414,
+      "k": 0.8,
+      "d": 0.87,
+      "date": "2019-01-20 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Death Cross",
-      "price": 0.07947000116109848,
-      "k": 0.82,
-      "d": 0.84,
+      "price": 233.08670043945312,
+      "k": 0.88,
+      "d": 0.96,
       "date": "2019-06-09 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
+      "type": "Death Cross",
+      "price": 227.57806396484375,
+      "k": 0.67,
+      "d": 0.83,
+      "date": "2019-07-14 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "ETH-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.03932400047779083,
-      "k": 0.08,
-      "d": 0.09,
+      "price": 173.05914306640625,
+      "k": 0.15,
+      "d": 0.17,
       "date": "2019-10-06 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.03558799996972084,
-      "k": 0.7,
-      "d": 0.76,
+      "price": 142.83470153808594,
+      "k": 0.43,
+      "d": 0.54,
       "date": "2019-11-24 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.03446599841117859,
-      "k": 0.41,
-      "d": 0.49,
-      "date": "2019-12-22 00:00:00"
+      "price": 202.37034606933594,
+      "k": 0.46,
+      "d": 0.47,
+      "date": "2020-05-24 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Death Cross",
-      "price": 0.0784749984741211,
-      "k": 0.86,
-      "d": 0.91,
-      "date": "2020-06-21 00:00:00"
+      "price": 225.34716796875,
+      "k": 0.82,
+      "d": 0.89,
+      "date": "2020-06-28 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Death Cross",
-      "price": 0.13350500166416168,
+      "price": 391.3844909667969,
       "k": 0.87,
-      "d": 0.94,
-      "date": "2020-08-02 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "ETH-USD",
-      "type": "Confirmed Death Cross",
-      "price": 0.09819699823856354,
-      "k": 0.15,
-      "d": 0.16,
-      "date": "2020-11-01 00:00:00"
+      "d": 0.96,
+      "date": "2020-08-23 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Death Cross",
-      "price": 0.1619880050420761,
-      "k": 0.8,
-      "d": 0.87,
+      "price": 638.2908325195312,
+      "k": 0.96,
+      "d": 0.97,
       "date": "2020-12-20 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Death Cross",
-      "price": 0.35388100147247314,
-      "k": 0.94,
-      "d": 0.94,
-      "date": "2021-01-24 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "ETH-USD",
-      "type": "Death Cross",
-      "price": 1.1333669424057007,
-      "k": 0.85,
-      "d": 0.95,
-      "date": "2021-03-07 00:00:00"
+      "price": 1230.1722412109375,
+      "k": 0.96,
+      "d": 0.99,
+      "date": "2021-01-17 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Confirmed Death Cross",
-      "price": 1.577278971672058,
-      "k": 0.25,
-      "d": 0.36,
-      "date": "2021-05-30 00:00:00"
+      "price": 1416.0489501953125,
+      "k": 0.58,
+      "d": 0.74,
+      "date": "2021-02-28 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "ETH-USD",
+      "type": "Confirmed Death Cross",
+      "price": 2109.579833984375,
+      "k": 0.47,
+      "d": 0.6,
+      "date": "2021-05-23 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "ETH-USD",
+      "type": "Confirmed Death Cross",
+      "price": 2191.373779296875,
+      "k": 0.05,
+      "d": 0.05,
+      "date": "2021-07-25 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Death Cross",
-      "price": 2.5817270278930664,
-      "k": 0.89,
-      "d": 0.91,
+      "price": 3410.134521484375,
+      "k": 0.84,
+      "d": 0.86,
       "date": "2021-09-12 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
-      "type": "Confirmed Death Cross",
-      "price": 1.122370958328247,
-      "k": 0.16,
-      "d": 0.17,
-      "date": "2022-01-23 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "ETH-USD",
       "type": "Death Cross",
-      "price": 0.9174659848213196,
-      "k": 0.73,
-      "d": 0.8,
-      "date": "2022-04-17 00:00:00"
+      "price": 4269.73291015625,
+      "k": 0.85,
+      "d": 0.91,
+      "date": "2021-11-21 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.48965299129486084,
-      "k": 0.13,
-      "d": 0.14,
-      "date": "2022-06-26 00:00:00"
+      "price": 2621.8017578125,
+      "k": 0.14,
+      "d": 0.16,
+      "date": "2022-02-27 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "ETH-USD",
+      "type": "Confirmed Death Cross",
+      "price": 2922.732666015625,
+      "k": 0.59,
+      "d": 0.72,
+      "date": "2022-04-24 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Death Cross",
-      "price": 0.4635460078716278,
-      "k": 0.84,
+      "price": 1430.54736328125,
+      "k": 0.78,
       "d": 0.87,
-      "date": "2022-08-21 00:00:00"
+      "date": "2022-08-28 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.4461880028247833,
-      "k": 0.74,
-      "d": 0.78,
+      "price": 1294.216796875,
+      "k": 0.73,
+      "d": 0.76,
       "date": "2022-09-25 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.3123070001602173,
-      "k": 0.2,
-      "d": 0.34,
+      "price": 1142.4666748046875,
+      "k": 0.36,
+      "d": 0.6,
       "date": "2022-11-20 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.2592700123786926,
-      "k": 0.01,
-      "d": 0.05,
+      "price": 1218.9620361328125,
+      "k": 0.33,
+      "d": 0.35,
       "date": "2022-12-25 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Death Cross",
-      "price": 0.36429598927497864,
-      "k": 0.93,
-      "d": 0.98,
+      "price": 1515.03369140625,
+      "k": 0.9,
+      "d": 0.96,
       "date": "2023-02-12 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Death Cross",
-      "price": 0.3889999985694885,
-      "k": 0.83,
-      "d": 0.92,
+      "price": 1862.06201171875,
+      "k": 0.79,
+      "d": 0.93,
       "date": "2023-04-23 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.2726300060749054,
-      "k": 0.29,
-      "d": 0.34,
+      "price": 1753.415283203125,
+      "k": 0.26,
+      "d": 0.28,
       "date": "2023-06-11 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.28953099250793457,
-      "k": 0.49,
-      "d": 0.53,
-      "date": "2023-08-13 00:00:00"
+      "price": 1827.4620361328125,
+      "k": 0.46,
+      "d": 0.46,
+      "date": "2023-08-06 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.6461570262908936,
-      "k": 0.4,
-      "d": 0.5,
-      "date": "2024-03-24 00:00:00"
+      "price": 1663.429931640625,
+      "k": 0.28,
+      "d": 0.29,
+      "date": "2023-10-22 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "ETH-USD",
+      "type": "Death Cross",
+      "price": 2063.2861328125,
+      "k": 0.97,
+      "d": 0.98,
+      "date": "2023-11-26 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "ETH-USD",
+      "type": "Death Cross",
+      "price": 2196.481201171875,
+      "k": 0.91,
+      "d": 0.96,
+      "date": "2023-12-17 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.44410601258277893,
-      "k": 0.05,
-      "d": 0.06,
-      "date": "2024-06-09 00:00:00"
+      "price": 2257.208740234375,
+      "k": 0.68,
+      "d": 0.77,
+      "date": "2024-01-28 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "ETH-USD",
+      "type": "Death Cross",
+      "price": 3642.4130859375,
+      "k": 0.89,
+      "d": 0.96,
+      "date": "2024-03-17 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.3439379930496216,
-      "k": 0.65,
-      "d": 0.72,
+      "price": 3418.61181640625,
+      "k": 0.33,
+      "d": 0.38,
+      "date": "2024-06-23 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "ETH-USD",
+      "type": "Confirmed Death Cross",
+      "price": 2686.39892578125,
+      "k": 0.27,
+      "d": 0.3,
       "date": "2024-08-04 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.3385230004787445,
-      "k": 0.42,
-      "d": 0.46,
-      "date": "2024-09-15 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "ETH-USD",
-      "type": "Confirmed Death Cross",
-      "price": 0.3648410141468048,
-      "k": 0.64,
-      "d": 0.71,
-      "date": "2024-10-20 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "ETH-USD",
-      "type": "Confirmed Death Cross",
-      "price": 0.9548559784889221,
-      "k": 0.45,
-      "d": 0.49,
-      "date": "2025-01-26 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "ETH-USD",
-      "type": "Confirmed Death Cross",
-      "price": 0.7057639956474304,
-      "k": 0.15,
-      "d": 0.18,
-      "date": "2025-03-16 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "ETH-USD",
-      "type": "Confirmed Death Cross",
-      "price": 0.6849740147590637,
-      "k": 0.33,
-      "d": 0.37,
-      "date": "2025-06-01 00:00:00"
+      "price": 2297.29296875,
+      "k": 0.05,
+      "d": 0.06,
+      "date": "2024-09-08 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Death Cross",
-      "price": 0.7269759774208069,
-      "k": 0.82,
-      "d": 0.83,
+      "price": 3277.53515625,
+      "k": 0.8,
+      "d": 0.93,
+      "date": "2024-12-22 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "ETH-USD",
+      "type": "Confirmed Death Cross",
+      "price": 2015.5091552734375,
+      "k": 0.05,
+      "d": 0.06,
+      "date": "2025-03-09 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "ETH-USD",
+      "type": "Confirmed Death Cross",
+      "price": 1596.685791015625,
+      "k": 0.01,
+      "d": 0.03,
+      "date": "2025-04-13 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "ETH-USD",
+      "type": "Death Cross",
+      "price": 2510.787109375,
+      "k": 0.98,
+      "d": 0.99,
+      "date": "2025-06-08 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "ETH-USD",
+      "type": "Death Cross",
+      "price": 3497.379150390625,
+      "k": 0.92,
+      "d": 0.97,
       "date": "2025-08-03 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Death Cross",
-      "price": 0.8113610148429871,
-      "k": 0.81,
-      "d": 0.82,
+      "price": 4390.01904296875,
+      "k": 0.91,
+      "d": 0.94,
       "date": "2025-08-31 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "ETH-USD",
-      "type": "Confirmed Death Cross",
-      "price": 0.8081660270690918,
-      "k": 0.66,
-      "d": 0.68,
-      "date": "2025-09-28 00:00:00"
     },
     {
       "category": "crypto",
