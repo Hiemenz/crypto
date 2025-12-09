@@ -1,4 +1,6 @@
 #!/bin/bash
+export PATH="$HOME/.local/bin:$PATH"
+
 
 # Daily Update Script for SignalStack
 # 1. Fetches latest market data
