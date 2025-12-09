@@ -1,5 +1,5 @@
 {
-  "updated": "2025-12-08 23:19:16.145861",
+  "updated": "2025-12-08 23:30:50.514456",
   "crosses": [
     {
       "category": "crypto",
@@ -1760,703 +1760,775 @@
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Golden Cross",
-      "price": 0.14538900554180145,
-      "k": 0.05,
-      "d": 0.04,
-      "date": "2018-07-08 00:00:00"
+      "price": 0.4458940029144287,
+      "k": 0.02,
+      "d": 0.01,
+      "date": "2018-07-15 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Golden Cross",
-      "price": 0.10443200170993805,
-      "k": 0.06,
-      "d": 0.02,
-      "date": "2018-09-02 00:00:00"
+      "price": 0.34397798776626587,
+      "k": 0.07,
+      "d": 0.03,
+      "date": "2018-08-19 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Confirmed Golden Cross",
-      "price": 0.07622899860143661,
-      "k": 0.28,
-      "d": 0.22,
+      "price": 0.5706890225410461,
+      "k": 0.36,
+      "d": 0.21,
+      "date": "2018-09-23 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XRP-USD",
+      "type": "Confirmed Golden Cross",
+      "price": 0.4626910090446472,
+      "k": 0.67,
+      "d": 0.64,
       "date": "2018-11-04 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Confirmed Golden Cross",
-      "price": 0.042830001562833786,
-      "k": 0.77,
-      "d": 0.75,
-      "date": "2019-02-10 00:00:00"
+      "price": 0.369581013917923,
+      "k": 0.31,
+      "d": 0.25,
+      "date": "2018-12-30 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XRP-USD",
+      "type": "Golden Cross",
+      "price": 0.3014430105686188,
+      "k": 0.23,
+      "d": 0.19,
+      "date": "2019-02-24 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Confirmed Golden Cross",
-      "price": 0.08699599653482437,
-      "k": 0.66,
-      "d": 0.6,
+      "price": 0.3598560094833374,
+      "k": 0.53,
+      "d": 0.48,
+      "date": "2019-04-07 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XRP-USD",
+      "type": "Confirmed Golden Cross",
+      "price": 0.41769999265670776,
+      "k": 0.52,
+      "d": 0.33,
       "date": "2019-05-19 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Golden Cross",
-      "price": 0.04132499918341637,
-      "k": 0.14,
-      "d": 0.1,
-      "date": "2019-10-13 00:00:00"
+      "price": 0.2630839943885803,
+      "k": 0.01,
+      "d": 0.0,
+      "date": "2019-09-08 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
-      "type": "Confirmed Golden Cross",
-      "price": 0.036653000861406326,
-      "k": 0.56,
-      "d": 0.55,
-      "date": "2019-12-15 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "XRP-USD",
-      "type": "Confirmed Golden Cross",
-      "price": 0.037689998745918274,
-      "k": 0.35,
-      "d": 0.27,
+      "type": "Golden Cross",
+      "price": 0.21563300490379333,
+      "k": 0.13,
+      "d": 0.04,
       "date": "2020-01-12 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Golden Cross",
-      "price": 0.032003000378608704,
-      "k": 0.07,
-      "d": 0.06,
+      "price": 0.17940600216388702,
+      "k": 0.14,
+      "d": 0.09,
       "date": "2020-04-05 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Confirmed Golden Cross",
-      "price": 0.09821099787950516,
-      "k": 0.86,
-      "d": 0.84,
-      "date": "2020-07-05 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "XRP-USD",
-      "type": "Golden Cross",
-      "price": 0.10128699988126755,
-      "k": 0.05,
-      "d": 0.02,
-      "date": "2020-09-27 00:00:00"
+      "price": 0.20290599763393402,
+      "k": 0.63,
+      "d": 0.56,
+      "date": "2020-05-31 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Confirmed Golden Cross",
-      "price": 0.14475999772548676,
-      "k": 0.44,
-      "d": 0.25,
-      "date": "2020-11-22 00:00:00"
+      "price": 0.20053799450397491,
+      "k": 0.43,
+      "d": 0.43,
+      "date": "2020-07-12 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Confirmed Golden Cross",
-      "price": 0.20499500632286072,
-      "k": 0.82,
-      "d": 0.78,
-      "date": "2021-01-03 00:00:00"
+      "price": 0.2476850003004074,
+      "k": 0.43,
+      "d": 0.42,
+      "date": "2020-10-04 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XRP-USD",
+      "type": "Golden Cross",
+      "price": 0.2696419954299927,
+      "k": 0.2,
+      "d": 0.14,
+      "date": "2020-11-15 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XRP-USD",
+      "type": "Golden Cross",
+      "price": 0.2735089957714081,
+      "k": 0.11,
+      "d": 0.08,
+      "date": "2021-01-24 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Confirmed Golden Cross",
-      "price": 0.8484190106391907,
-      "k": 0.91,
-      "d": 0.87,
-      "date": "2021-02-14 00:00:00"
+      "price": 0.5198349952697754,
+      "k": 0.37,
+      "d": 0.31,
+      "date": "2021-03-21 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Golden Cross",
-      "price": 1.7705620527267456,
-      "k": 0.23,
-      "d": 0.18,
-      "date": "2021-05-09 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "XRP-USD",
-      "type": "Golden Cross",
-      "price": 1.3177299499511719,
-      "k": 0.04,
-      "d": 0.02,
+      "price": 0.7259219884872437,
+      "k": 0.06,
+      "d": 0.03,
       "date": "2021-08-01 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
-      "type": "Golden Cross",
-      "price": 0.8770920038223267,
-      "k": 0.1,
-      "d": 0.03,
-      "date": "2022-03-20 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "XRP-USD",
-      "type": "Golden Cross",
-      "price": 0.5670899748802185,
-      "k": 0.08,
-      "d": 0.05,
-      "date": "2022-06-05 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "XRP-USD",
-      "type": "Golden Cross",
-      "price": 0.4473530054092407,
-      "k": 0.12,
-      "d": 0.12,
-      "date": "2022-07-17 00:00:00"
+      "type": "Confirmed Golden Cross",
+      "price": 1.1384530067443848,
+      "k": 0.48,
+      "d": 0.47,
+      "date": "2021-10-10 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Confirmed Golden Cross",
-      "price": 0.5097519755363464,
-      "k": 0.76,
-      "d": 0.67,
+      "price": 1.1885969638824463,
+      "k": 0.51,
+      "d": 0.5,
+      "date": "2021-11-14 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XRP-USD",
+      "type": "Golden Cross",
+      "price": 0.8350329995155334,
+      "k": 0.06,
+      "d": 0.04,
+      "date": "2021-12-19 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XRP-USD",
+      "type": "Golden Cross",
+      "price": 0.6836469769477844,
+      "k": 0.07,
+      "d": 0.04,
+      "date": "2022-02-06 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XRP-USD",
+      "type": "Golden Cross",
+      "price": 0.3953799903392792,
+      "k": 0.01,
+      "d": 0.0,
+      "date": "2022-06-05 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XRP-USD",
+      "type": "Confirmed Golden Cross",
+      "price": 0.355118989944458,
+      "k": 0.74,
+      "d": 0.72,
       "date": "2022-09-11 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Confirmed Golden Cross",
-      "price": 0.4030050039291382,
-      "k": 0.4,
-      "d": 0.3,
-      "date": "2022-11-06 00:00:00"
+      "price": 0.390735000371933,
+      "k": 0.48,
+      "d": 0.46,
+      "date": "2022-12-04 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Golden Cross",
-      "price": 0.30771100521087646,
-      "k": 0.07,
-      "d": 0.04,
-      "date": "2022-12-11 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "XRP-USD",
-      "type": "Golden Cross",
-      "price": 0.29521799087524414,
-      "k": 0.26,
-      "d": 0.09,
-      "date": "2023-01-08 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "XRP-USD",
-      "type": "Confirmed Golden Cross",
-      "price": 0.3562450110912323,
-      "k": 0.73,
-      "d": 0.71,
-      "date": "2023-03-26 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "XRP-USD",
-      "type": "Confirmed Golden Cross",
-      "price": 0.3776929974555969,
-      "k": 0.38,
-      "d": 0.35,
-      "date": "2023-06-04 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "XRP-USD",
-      "type": "Golden Cross",
-      "price": 0.29205501079559326,
-      "k": 0.15,
-      "d": 0.12,
-      "date": "2023-07-02 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "XRP-USD",
-      "type": "Golden Cross",
-      "price": 0.2658950090408325,
-      "k": 0.21,
-      "d": 0.08,
-      "date": "2023-10-01 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "XRP-USD",
-      "type": "Confirmed Golden Cross",
-      "price": 0.6187340021133423,
+      "price": 0.38488098978996277,
       "k": 0.25,
-      "d": 0.23,
-      "date": "2024-02-18 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "XRP-USD",
-      "type": "Golden Cross",
-      "price": 0.467602014541626,
-      "k": 0.03,
-      "d": 0.02,
-      "date": "2024-05-19 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "XRP-USD",
-      "type": "Golden Cross",
-      "price": 0.392192006111145,
-      "k": 0.02,
-      "d": 0.02,
-      "date": "2024-06-30 00:00:00"
+      "d": 0.15,
+      "date": "2023-01-15 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Confirmed Golden Cross",
-      "price": 0.3849790096282959,
-      "k": 0.38,
-      "d": 0.33,
+      "price": 0.3884649872779846,
+      "k": 0.57,
+      "d": 0.54,
+      "date": "2023-03-19 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XRP-USD",
+      "type": "Confirmed Golden Cross",
+      "price": 0.48288899660110474,
+      "k": 0.42,
+      "d": 0.39,
+      "date": "2023-05-28 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XRP-USD",
+      "type": "Confirmed Golden Cross",
+      "price": 0.7468600273132324,
+      "k": 0.5,
+      "d": 0.39,
+      "date": "2023-07-16 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XRP-USD",
+      "type": "Confirmed Golden Cross",
+      "price": 0.6615779995918274,
+      "k": 0.75,
+      "d": 0.75,
+      "date": "2023-12-10 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XRP-USD",
+      "type": "Golden Cross",
+      "price": 0.5260840058326721,
+      "k": 0.05,
+      "d": 0.04,
+      "date": "2024-02-11 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XRP-USD",
+      "type": "Golden Cross",
+      "price": 0.5282109975814819,
+      "k": 0.15,
+      "d": 0.14,
+      "date": "2024-05-26 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XRP-USD",
+      "type": "Golden Cross",
+      "price": 0.52286297082901,
+      "k": 0.33,
+      "d": 0.11,
+      "date": "2024-07-14 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XRP-USD",
+      "type": "Confirmed Golden Cross",
+      "price": 0.6001840233802795,
+      "k": 0.83,
+      "d": 0.78,
       "date": "2024-08-25 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Confirmed Golden Cross",
-      "price": 0.3517720103263855,
-      "k": 0.49,
-      "d": 0.47,
+      "price": 0.5876209735870361,
+      "k": 0.76,
+      "d": 0.74,
       "date": "2024-09-22 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
-      "type": "Confirmed Golden Cross",
-      "price": 0.5903090238571167,
-      "k": 0.64,
-      "d": 0.59,
+      "type": "Golden Cross",
+      "price": 0.589381992816925,
+      "k": 0.21,
+      "d": 0.1,
       "date": "2024-11-10 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Confirmed Golden Cross",
-      "price": 0.991191029548645,
-      "k": 0.51,
-      "d": 0.51,
+      "price": 2.954716920852661,
+      "k": 0.7,
+      "d": 0.66,
       "date": "2025-01-19 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Golden Cross",
-      "price": 1.1295030117034912,
-      "k": 0.21,
-      "d": 0.13,
-      "date": "2025-03-02 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "XRP-USD",
-      "type": "Golden Cross",
-      "price": 0.6380749940872192,
-      "k": 0.04,
-      "d": 0.02,
-      "date": "2025-04-13 00:00:00"
+      "price": 2.0770010948181152,
+      "k": 0.06,
+      "d": 0.04,
+      "date": "2025-04-20 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Confirmed Golden Cross",
-      "price": 0.7372530102729797,
-      "k": 0.44,
-      "d": 0.23,
-      "date": "2025-07-13 00:00:00"
+      "price": 2.2654950618743896,
+      "k": 0.31,
+      "d": 0.31,
+      "date": "2025-06-08 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Confirmed Golden Cross",
-      "price": 0.9096069931983948,
-      "k": 0.88,
-      "d": 0.8,
-      "date": "2025-08-24 00:00:00"
+      "price": 2.272541046142578,
+      "k": 0.35,
+      "d": 0.28,
+      "date": "2025-07-06 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Confirmed Golden Cross",
-      "price": 0.8852750062942505,
-      "k": 0.72,
-      "d": 0.69,
+      "price": 2.9734089374542236,
+      "k": 0.41,
+      "d": 0.39,
       "date": "2025-09-21 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Golden Cross",
-      "price": 0.41588500142097473,
-      "k": 0.01,
-      "d": 0.0,
+      "price": 2.529094934463501,
+      "k": 0.14,
+      "d": 0.1,
+      "date": "2025-11-02 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XRP-USD",
+      "type": "Golden Cross",
+      "price": 2.1609671115875244,
+      "k": 0.05,
+      "d": 0.03,
       "date": "2025-11-30 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.11297000199556351,
-      "k": 0.08,
-      "d": 0.15,
-      "date": "2018-08-12 00:00:00"
+      "price": 0.4533059895038605,
+      "k": 0.02,
+      "d": 0.02,
+      "date": "2018-07-29 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.07129299640655518,
-      "k": 0.25,
-      "d": 0.27,
+      "price": 0.2786799967288971,
+      "k": 0.15,
+      "d": 0.16,
+      "date": "2018-09-09 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XRP-USD",
+      "type": "Confirmed Death Cross",
+      "price": 0.40328601002693176,
+      "k": 0.73,
+      "d": 0.77,
       "date": "2018-10-14 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.03772500157356262,
-      "k": 0.21,
-      "d": 0.33,
+      "price": 0.374550998210907,
+      "k": 0.69,
+      "d": 0.74,
       "date": "2018-11-25 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.04116800054907799,
-      "k": 0.75,
-      "d": 0.76,
-      "date": "2019-01-27 00:00:00"
+      "price": 0.32117700576782227,
+      "k": 0.33,
+      "d": 0.38,
+      "date": "2019-01-20 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XRP-USD",
+      "type": "Confirmed Death Cross",
+      "price": 0.3089919984340668,
+      "k": 0.5,
+      "d": 0.51,
+      "date": "2019-03-24 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XRP-USD",
+      "type": "Confirmed Death Cross",
+      "price": 0.2974259853363037,
+      "k": 0.37,
+      "d": 0.56,
+      "date": "2019-04-28 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Death Cross",
-      "price": 0.07947000116109848,
-      "k": 0.82,
-      "d": 0.84,
+      "price": 0.388265997171402,
+      "k": 0.83,
+      "d": 0.86,
       "date": "2019-06-09 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
-      "type": "Confirmed Death Cross",
-      "price": 0.03932400047779083,
-      "k": 0.08,
-      "d": 0.09,
-      "date": "2019-10-06 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "XRP-USD",
-      "type": "Confirmed Death Cross",
-      "price": 0.03558799996972084,
-      "k": 0.7,
-      "d": 0.76,
-      "date": "2019-11-24 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "XRP-USD",
-      "type": "Confirmed Death Cross",
-      "price": 0.03446599841117859,
-      "k": 0.41,
-      "d": 0.49,
-      "date": "2019-12-22 00:00:00"
+      "type": "Death Cross",
+      "price": 0.28020399808883667,
+      "k": 0.86,
+      "d": 0.92,
+      "date": "2019-11-10 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Death Cross",
-      "price": 0.0784749984741211,
-      "k": 0.86,
+      "price": 0.2288459986448288,
+      "k": 0.77,
       "d": 0.91,
+      "date": "2020-03-01 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XRP-USD",
+      "type": "Confirmed Death Cross",
+      "price": 0.19543099403381348,
+      "k": 0.51,
+      "d": 0.53,
+      "date": "2020-05-24 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XRP-USD",
+      "type": "Confirmed Death Cross",
+      "price": 0.18560999631881714,
+      "k": 0.7,
+      "d": 0.74,
       "date": "2020-06-21 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Death Cross",
-      "price": 0.13350500166416168,
-      "k": 0.87,
-      "d": 0.94,
-      "date": "2020-08-02 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "XRP-USD",
-      "type": "Confirmed Death Cross",
-      "price": 0.09819699823856354,
-      "k": 0.15,
-      "d": 0.16,
-      "date": "2020-11-01 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "XRP-USD",
-      "type": "Death Cross",
-      "price": 0.1619880050420761,
-      "k": 0.8,
-      "d": 0.87,
-      "date": "2020-12-20 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "XRP-USD",
-      "type": "Death Cross",
-      "price": 0.35388100147247314,
+      "price": 0.28538599610328674,
       "k": 0.94,
-      "d": 0.94,
-      "date": "2021-01-24 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "XRP-USD",
-      "type": "Death Cross",
-      "price": 1.1333669424057007,
-      "k": 0.85,
-      "d": 0.95,
-      "date": "2021-03-07 00:00:00"
+      "d": 0.98,
+      "date": "2020-08-23 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Confirmed Death Cross",
-      "price": 1.577278971672058,
-      "k": 0.25,
-      "d": 0.36,
-      "date": "2021-05-30 00:00:00"
+      "price": 0.25571900606155396,
+      "k": 0.4,
+      "d": 0.42,
+      "date": "2020-10-11 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Death Cross",
-      "price": 2.5817270278930664,
-      "k": 0.89,
-      "d": 0.91,
+      "price": 0.51146399974823,
+      "k": 0.84,
+      "d": 0.88,
+      "date": "2020-12-13 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XRP-USD",
+      "type": "Confirmed Death Cross",
+      "price": 0.41495299339294434,
+      "k": 0.35,
+      "d": 0.36,
+      "date": "2021-02-28 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XRP-USD",
+      "type": "Death Cross",
+      "price": 1.032256007194519,
+      "k": 0.83,
+      "d": 0.92,
+      "date": "2021-04-25 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XRP-USD",
+      "type": "Death Cross",
+      "price": 1.119636058807373,
+      "k": 0.76,
+      "d": 0.81,
       "date": "2021-09-12 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Confirmed Death Cross",
-      "price": 1.122370958328247,
+      "price": 1.113247036933899,
+      "k": 0.48,
+      "d": 0.53,
+      "date": "2021-10-31 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XRP-USD",
+      "type": "Confirmed Death Cross",
+      "price": 1.0601730346679688,
+      "k": 0.4,
+      "d": 0.47,
+      "date": "2021-11-21 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XRP-USD",
+      "type": "Confirmed Death Cross",
+      "price": 0.7545049786567688,
       "k": 0.16,
       "d": 0.17,
-      "date": "2022-01-23 00:00:00"
+      "date": "2022-01-09 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Death Cross",
-      "price": 0.9174659848213196,
-      "k": 0.73,
-      "d": 0.8,
-      "date": "2022-04-17 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "XRP-USD",
-      "type": "Confirmed Death Cross",
-      "price": 0.48965299129486084,
-      "k": 0.13,
-      "d": 0.14,
-      "date": "2022-06-26 00:00:00"
+      "price": 0.7566140294075012,
+      "k": 0.85,
+      "d": 0.92,
+      "date": "2022-04-10 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Death Cross",
-      "price": 0.4635460078716278,
-      "k": 0.84,
-      "d": 0.87,
-      "date": "2022-08-21 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "XRP-USD",
-      "type": "Confirmed Death Cross",
-      "price": 0.4461880028247833,
-      "k": 0.74,
-      "d": 0.78,
-      "date": "2022-09-25 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "XRP-USD",
-      "type": "Confirmed Death Cross",
-      "price": 0.3123070001602173,
-      "k": 0.2,
-      "d": 0.34,
-      "date": "2022-11-20 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "XRP-USD",
-      "type": "Confirmed Death Cross",
-      "price": 0.2592700123786926,
-      "k": 0.01,
-      "d": 0.05,
-      "date": "2022-12-25 00:00:00"
+      "price": 0.3230949938297272,
+      "k": 0.75,
+      "d": 0.83,
+      "date": "2022-08-28 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Death Cross",
-      "price": 0.36429598927497864,
-      "k": 0.93,
-      "d": 0.98,
+      "price": 0.44885000586509705,
+      "k": 0.94,
+      "d": 0.95,
+      "date": "2022-10-02 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XRP-USD",
+      "type": "Confirmed Death Cross",
+      "price": 0.35027000308036804,
+      "k": 0.36,
+      "d": 0.44,
+      "date": "2022-12-18 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XRP-USD",
+      "type": "Death Cross",
+      "price": 0.3752819895744324,
+      "k": 0.78,
+      "d": 0.83,
       "date": "2023-02-12 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Death Cross",
-      "price": 0.3889999985694885,
-      "k": 0.83,
-      "d": 0.92,
+      "price": 0.4650160074234009,
+      "k": 0.8,
+      "d": 0.91,
       "date": "2023-04-23 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.2726300060749054,
-      "k": 0.29,
-      "d": 0.34,
-      "date": "2023-06-11 00:00:00"
+      "price": 0.4875729978084564,
+      "k": 0.68,
+      "d": 0.69,
+      "date": "2023-06-18 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.28953099250793457,
-      "k": 0.49,
-      "d": 0.53,
-      "date": "2023-08-13 00:00:00"
+      "price": 0.6230869889259338,
+      "k": 0.71,
+      "d": 0.78,
+      "date": "2023-08-06 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XRP-USD",
+      "type": "Death Cross",
+      "price": 0.6168190240859985,
+      "k": 0.8,
+      "d": 0.83,
+      "date": "2023-11-26 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.6461570262908936,
-      "k": 0.4,
-      "d": 0.5,
-      "date": "2024-03-24 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "XRP-USD",
-      "type": "Confirmed Death Cross",
-      "price": 0.44410601258277893,
-      "k": 0.05,
-      "d": 0.06,
-      "date": "2024-06-09 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "XRP-USD",
-      "type": "Confirmed Death Cross",
-      "price": 0.3439379930496216,
-      "k": 0.65,
+      "price": 0.6104180216789246,
+      "k": 0.7,
       "d": 0.72,
-      "date": "2024-08-04 00:00:00"
+      "date": "2023-12-17 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XRP-USD",
+      "type": "Death Cross",
+      "price": 0.59483402967453,
+      "k": 0.87,
+      "d": 0.89,
+      "date": "2024-04-07 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.3385230004787445,
-      "k": 0.42,
-      "d": 0.46,
-      "date": "2024-09-15 00:00:00"
+      "price": 0.4888319969177246,
+      "k": 0.09,
+      "d": 0.16,
+      "date": "2024-06-16 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XRP-USD",
+      "type": "Death Cross",
+      "price": 0.5529320240020752,
+      "k": 0.79,
+      "d": 0.89,
+      "date": "2024-08-11 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.3648410141468048,
-      "k": 0.64,
+      "price": 0.5292909741401672,
+      "k": 0.75,
+      "d": 0.8,
+      "date": "2024-09-08 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XRP-USD",
+      "type": "Death Cross",
+      "price": 0.5335919857025146,
+      "k": 0.81,
+      "d": 0.82,
+      "date": "2024-10-06 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XRP-USD",
+      "type": "Death Cross",
+      "price": 2.4469499588012695,
+      "k": 0.95,
+      "d": 0.98,
+      "date": "2024-12-15 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XRP-USD",
+      "type": "Confirmed Death Cross",
+      "price": 2.5797948837280273,
+      "k": 0.68,
       "d": 0.71,
-      "date": "2024-10-20 00:00:00"
+      "date": "2025-02-02 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.9548559784889221,
-      "k": 0.45,
-      "d": 0.49,
-      "date": "2025-01-26 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "XRP-USD",
-      "type": "Confirmed Death Cross",
-      "price": 0.7057639956474304,
-      "k": 0.15,
-      "d": 0.18,
-      "date": "2025-03-16 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "XRP-USD",
-      "type": "Confirmed Death Cross",
-      "price": 0.6849740147590637,
-      "k": 0.33,
-      "d": 0.37,
+      "price": 2.1791839599609375,
+      "k": 0.27,
+      "d": 0.31,
       "date": "2025-06-01 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
+      "type": "Confirmed Death Cross",
+      "price": 2.0140280723571777,
+      "k": 0.25,
+      "d": 0.29,
+      "date": "2025-06-22 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XRP-USD",
       "type": "Death Cross",
-      "price": 0.7269759774208069,
-      "k": 0.82,
-      "d": 0.83,
+      "price": 2.9495439529418945,
+      "k": 0.77,
+      "d": 0.85,
       "date": "2025-08-03 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
-      "type": "Death Cross",
-      "price": 0.8113610148429871,
-      "k": 0.81,
-      "d": 0.82,
-      "date": "2025-08-31 00:00:00"
+      "type": "Confirmed Death Cross",
+      "price": 2.8665859699249268,
+      "k": 0.34,
+      "d": 0.37,
+      "date": "2025-09-28 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.8081660270690918,
-      "k": 0.66,
-      "d": 0.68,
-      "date": "2025-09-28 00:00:00"
+      "price": 2.216609001159668,
+      "k": 0.06,
+      "d": 0.11,
+      "date": "2025-11-16 00:00:00"
     },
     {
       "category": "crypto",
@@ -5503,731 +5575,578 @@
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
-      "type": "Golden Cross",
-      "price": 0.0026110000908374786,
-      "k": 0.02,
-      "d": 0.01,
-      "date": "2018-07-08 00:00:00"
+      "type": "Confirmed Golden Cross",
+      "price": 0.04365500062704086,
+      "k": 0.36,
+      "d": 0.33,
+      "date": "2020-05-31 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
       "type": "Confirmed Golden Cross",
-      "price": 0.004999000113457441,
-      "k": 0.45,
-      "d": 0.27,
-      "date": "2018-09-02 00:00:00"
+      "price": 0.04101800173521042,
+      "k": 0.44,
+      "d": 0.43,
+      "date": "2020-07-26 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
       "type": "Golden Cross",
-      "price": 0.0021250001154839993,
-      "k": 0.01,
-      "d": 0.0,
-      "date": "2018-12-16 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "HBAR-USD",
-      "type": "Golden Cross",
-      "price": 0.0019920000340789557,
-      "k": 0.13,
-      "d": 0.08,
-      "date": "2019-02-17 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "HBAR-USD",
-      "type": "Confirmed Golden Cross",
-      "price": 0.00317799998447299,
-      "k": 0.64,
-      "d": 0.57,
-      "date": "2019-05-19 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "HBAR-USD",
-      "type": "Confirmed Golden Cross",
-      "price": 0.0032579998951405287,
-      "k": 0.78,
-      "d": 0.77,
-      "date": "2019-06-30 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "HBAR-USD",
-      "type": "Golden Cross",
-      "price": 0.002460000105202198,
-      "k": 0.0,
-      "d": 0.0,
-      "date": "2019-09-15 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "HBAR-USD",
-      "type": "Golden Cross",
-      "price": 0.0024190000258386135,
-      "k": 0.24,
+      "price": 0.033661000430583954,
+      "k": 0.17,
       "d": 0.09,
-      "date": "2020-01-05 00:00:00"
+      "date": "2020-11-22 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "HBAR-USD",
+      "type": "Confirmed Golden Cross",
+      "price": 0.06131799891591072,
+      "k": 0.84,
+      "d": 0.7,
+      "date": "2021-01-17 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "HBAR-USD",
+      "type": "Confirmed Golden Cross",
+      "price": 0.14720499515533447,
+      "k": 0.94,
+      "d": 0.89,
+      "date": "2021-02-21 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "HBAR-USD",
+      "type": "Confirmed Golden Cross",
+      "price": 0.34411001205444336,
+      "k": 0.87,
+      "d": 0.8,
+      "date": "2021-03-21 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
       "type": "Golden Cross",
-      "price": 0.0018649999983608723,
-      "k": 0.07,
-      "d": 0.06,
-      "date": "2020-04-05 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "HBAR-USD",
-      "type": "Confirmed Golden Cross",
-      "price": 0.0036299999337643385,
-      "k": 0.69,
-      "d": 0.68,
-      "date": "2020-07-12 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "HBAR-USD",
-      "type": "Confirmed Golden Cross",
-      "price": 0.003524000057950616,
-      "k": 0.73,
-      "d": 0.69,
-      "date": "2020-08-16 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "HBAR-USD",
-      "type": "Golden Cross",
-      "price": 0.002652999944984913,
-      "k": 0.04,
-      "d": 0.02,
-      "date": "2020-10-25 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "HBAR-USD",
-      "type": "Confirmed Golden Cross",
-      "price": 0.004548000171780586,
-      "k": 0.88,
-      "d": 0.88,
-      "date": "2020-12-27 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "HBAR-USD",
-      "type": "Confirmed Golden Cross",
-      "price": 0.07878199964761734,
-      "k": 0.91,
-      "d": 0.86,
-      "date": "2021-02-07 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "HBAR-USD",
-      "type": "Golden Cross",
-      "price": 0.07464899867773056,
-      "k": 0.1,
-      "d": 0.09,
-      "date": "2021-04-11 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "HBAR-USD",
-      "type": "Confirmed Golden Cross",
-      "price": 0.5148950219154358,
-      "k": 0.57,
-      "d": 0.54,
+      "price": 0.3292210102081299,
+      "k": 0.17,
+      "d": 0.15,
       "date": "2021-05-16 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
       "type": "Golden Cross",
-      "price": 0.23789800703525543,
-      "k": 0.18,
-      "d": 0.13,
-      "date": "2021-10-17 00:00:00"
+      "price": 0.19421499967575073,
+      "k": 0.02,
+      "d": 0.01,
+      "date": "2021-07-04 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "HBAR-USD",
+      "type": "Confirmed Golden Cross",
+      "price": 0.40703099966049194,
+      "k": 0.51,
+      "d": 0.51,
+      "date": "2021-10-31 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
       "type": "Golden Cross",
-      "price": 0.19001999497413635,
-      "k": 0.09,
-      "d": 0.03,
-      "date": "2021-12-26 00:00:00"
+      "price": 0.32359299063682556,
+      "k": 0.1,
+      "d": 0.05,
+      "date": "2021-12-19 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
       "type": "Golden Cross",
-      "price": 0.14894799888134003,
-      "k": 0.12,
-      "d": 0.1,
-      "date": "2022-02-13 00:00:00"
+      "price": 0.2580380141735077,
+      "k": 0.07,
+      "d": 0.06,
+      "date": "2022-02-06 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
       "type": "Golden Cross",
-      "price": 0.11915399879217148,
-      "k": 0.08,
+      "price": 0.20876899361610413,
+      "k": 0.05,
       "d": 0.03,
       "date": "2022-03-20 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
+      "type": "Golden Cross",
+      "price": 0.06503500044345856,
+      "k": 0.03,
+      "d": 0.02,
+      "date": "2022-07-10 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "HBAR-USD",
       "type": "Confirmed Golden Cross",
-      "price": 0.06215599924325943,
+      "price": 0.0590520016849041,
       "k": 0.51,
       "d": 0.49,
+      "date": "2022-09-25 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "HBAR-USD",
+      "type": "Confirmed Golden Cross",
+      "price": 0.060088999569416046,
+      "k": 0.56,
+      "d": 0.5,
       "date": "2022-10-09 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
       "type": "Confirmed Golden Cross",
-      "price": 0.10428600013256073,
-      "k": 0.63,
-      "d": 0.61,
+      "price": 0.04815499857068062,
+      "k": 0.41,
+      "d": 0.3,
       "date": "2022-12-04 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
       "type": "Confirmed Golden Cross",
-      "price": 0.08613099902868271,
-      "k": 0.4,
-      "d": 0.38,
-      "date": "2023-01-15 00:00:00"
+      "price": 0.0418660007417202,
+      "k": 0.26,
+      "d": 0.22,
+      "date": "2023-01-08 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
       "type": "Confirmed Golden Cross",
-      "price": 0.08696600049734116,
-      "k": 0.47,
-      "d": 0.46,
-      "date": "2023-02-19 00:00:00"
+      "price": 0.07287099957466125,
+      "k": 0.63,
+      "d": 0.59,
+      "date": "2023-04-02 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
       "type": "Golden Cross",
-      "price": 0.07441700249910355,
-      "k": 0.14,
-      "d": 0.13,
-      "date": "2023-03-26 00:00:00"
+      "price": 0.05341000109910965,
+      "k": 0.04,
+      "d": 0.03,
+      "date": "2023-05-28 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
       "type": "Golden Cross",
-      "price": 0.0667639970779419,
-      "k": 0.1,
-      "d": 0.08,
+      "price": 0.05174100026488304,
+      "k": 0.16,
+      "d": 0.07,
       "date": "2023-06-25 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
-      "type": "Golden Cross",
-      "price": 0.06319300085306168,
-      "k": 0.11,
-      "d": 0.11,
+      "type": "Confirmed Golden Cross",
+      "price": 0.05078100040555,
+      "k": 0.32,
+      "d": 0.32,
       "date": "2023-10-01 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
-      "type": "Golden Cross",
-      "price": 0.06935899704694748,
-      "k": 0.38,
-      "d": 0.2,
+      "type": "Confirmed Golden Cross",
+      "price": 0.0524899996817112,
+      "k": 0.3,
+      "d": 0.21,
       "date": "2023-10-29 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
-      "type": "Golden Cross",
-      "price": 0.08516599982976913,
-      "k": 0.11,
-      "d": 0.1,
+      "type": "Confirmed Golden Cross",
+      "price": 0.08974699676036835,
+      "k": 0.28,
+      "d": 0.24,
       "date": "2024-02-18 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
-      "type": "Confirmed Golden Cross",
-      "price": 0.19910800457000732,
-      "k": 0.85,
-      "d": 0.85,
-      "date": "2024-04-07 00:00:00"
+      "type": "Golden Cross",
+      "price": 0.1103219985961914,
+      "k": 0.25,
+      "d": 0.17,
+      "date": "2024-05-05 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
       "type": "Golden Cross",
-      "price": 0.15720100700855255,
-      "k": 0.12,
-      "d": 0.11,
-      "date": "2024-06-02 00:00:00"
+      "price": 0.07210300117731094,
+      "k": 0.07,
+      "d": 0.03,
+      "date": "2024-07-14 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
       "type": "Golden Cross",
-      "price": 0.10423199832439423,
-      "k": 0.01,
-      "d": 0.0,
-      "date": "2024-07-07 00:00:00"
+      "price": 0.05900299921631813,
+      "k": 0.07,
+      "d": 0.04,
+      "date": "2024-08-25 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
       "type": "Golden Cross",
-      "price": 0.09535399824380875,
-      "k": 0.08,
-      "d": 0.07,
-      "date": "2024-09-01 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "HBAR-USD",
-      "type": "Golden Cross",
-      "price": 0.10293299704790115,
-      "k": 0.09,
-      "d": 0.08,
-      "date": "2024-09-15 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "HBAR-USD",
-      "type": "Golden Cross",
-      "price": 0.24302299320697784,
-      "k": 0.02,
-      "d": 0.01,
-      "date": "2025-02-23 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "HBAR-USD",
-      "type": "Golden Cross",
-      "price": 0.17225299775600433,
-      "k": 0.01,
-      "d": 0.0,
-      "date": "2025-03-23 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "HBAR-USD",
-      "type": "Golden Cross",
-      "price": 0.16279199719429016,
-      "k": 0.04,
-      "d": 0.02,
-      "date": "2025-04-13 00:00:00"
+      "price": 0.05384499952197075,
+      "k": 0.25,
+      "d": 0.14,
+      "date": "2024-09-22 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
       "type": "Confirmed Golden Cross",
-      "price": 0.17198599874973297,
-      "k": 0.33,
-      "d": 0.33,
+      "price": 0.05495399981737137,
+      "k": 0.56,
+      "d": 0.55,
+      "date": "2024-11-10 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "HBAR-USD",
+      "type": "Confirmed Golden Cross",
+      "price": 0.1595340073108673,
+      "k": 0.27,
+      "d": 0.21,
       "date": "2025-07-06 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
       "type": "Confirmed Golden Cross",
-      "price": 0.231797993183136,
-      "k": 0.65,
-      "d": 0.61,
-      "date": "2025-08-24 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "HBAR-USD",
-      "type": "Confirmed Golden Cross",
-      "price": 0.27858999371528625,
-      "k": 0.68,
-      "d": 0.62,
-      "date": "2025-09-14 00:00:00"
+      "price": 0.23420299589633942,
+      "k": 0.51,
+      "d": 0.49,
+      "date": "2025-09-21 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
       "type": "Golden Cross",
-      "price": 0.14666900038719177,
-      "k": 0.01,
-      "d": 0.0,
-      "date": "2025-11-30 00:00:00"
+      "price": 0.19487500190734863,
+      "k": 0.14,
+      "d": 0.08,
+      "date": "2025-11-02 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.002403999911621213,
-      "k": 0.32,
-      "d": 0.38,
-      "date": "2018-08-12 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "HBAR-USD",
-      "type": "Death Cross",
-      "price": 0.005905999802052975,
-      "k": 0.88,
-      "d": 0.94,
-      "date": "2018-09-30 00:00:00"
+      "price": 0.03436199948191643,
+      "k": 0.53,
+      "d": 0.59,
+      "date": "2020-05-10 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.0020940001122653484,
-      "k": 0.11,
-      "d": 0.12,
-      "date": "2019-01-13 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "HBAR-USD",
-      "type": "Death Cross",
-      "price": 0.0027600000612437725,
-      "k": 0.76,
-      "d": 0.83,
-      "date": "2019-04-21 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "HBAR-USD",
-      "type": "Death Cross",
-      "price": 0.003186000045388937,
-      "k": 0.78,
-      "d": 0.81,
-      "date": "2019-06-16 00:00:00"
+      "price": 0.03829700127243996,
+      "k": 0.62,
+      "d": 0.67,
+      "date": "2020-06-28 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.0030139998998492956,
-      "k": 0.66,
-      "d": 0.77,
-      "date": "2019-07-14 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "HBAR-USD",
-      "type": "Death Cross",
-      "price": 0.002647999906912446,
-      "k": 0.87,
-      "d": 0.87,
-      "date": "2019-11-17 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "HBAR-USD",
-      "type": "Confirmed Death Cross",
-      "price": 0.00267999991774559,
-      "k": 0.72,
-      "d": 0.78,
-      "date": "2020-02-23 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "HBAR-USD",
-      "type": "Death Cross",
-      "price": 0.0025110000278800726,
-      "k": 0.96,
-      "d": 0.96,
-      "date": "2020-06-14 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "HBAR-USD",
-      "type": "Confirmed Death Cross",
-      "price": 0.0033360000234097242,
-      "k": 0.68,
-      "d": 0.74,
-      "date": "2020-08-02 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "HBAR-USD",
-      "type": "Confirmed Death Cross",
-      "price": 0.0032999999821186066,
+      "price": 0.047022998332977295,
       "k": 0.65,
-      "d": 0.7,
+      "d": 0.78,
       "date": "2020-08-30 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
-      "type": "Death Cross",
-      "price": 0.004625000059604645,
-      "k": 0.87,
-      "d": 0.9,
-      "date": "2020-12-20 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "HBAR-USD",
-      "type": "Death Cross",
-      "price": 0.009066999889910221,
-      "k": 0.93,
-      "d": 0.96,
-      "date": "2021-01-17 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "HBAR-USD",
-      "type": "Death Cross",
-      "price": 0.06253699958324432,
-      "k": 0.87,
-      "d": 0.87,
-      "date": "2021-02-14 00:00:00"
+      "type": "Confirmed Death Cross",
+      "price": 0.029322000220417976,
+      "k": 0.07,
+      "d": 0.1,
+      "date": "2020-11-01 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.5700700283050537,
-      "k": 0.5,
-      "d": 0.51,
-      "date": "2021-05-09 00:00:00"
+      "price": 0.031814999878406525,
+      "k": 0.71,
+      "d": 0.78,
+      "date": "2020-12-27 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "HBAR-USD",
+      "type": "Death Cross",
+      "price": 0.08212199807167053,
+      "k": 0.92,
+      "d": 0.92,
+      "date": "2021-01-31 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "HBAR-USD",
+      "type": "Death Cross",
+      "price": 0.11542099714279175,
+      "k": 0.85,
+      "d": 0.88,
+      "date": "2021-02-28 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "HBAR-USD",
+      "type": "Death Cross",
+      "price": 0.33306699991226196,
+      "k": 0.85,
+      "d": 0.88,
+      "date": "2021-04-04 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.30807098746299744,
-      "k": 0.4,
-      "d": 0.49,
+      "price": 0.23295900225639343,
+      "k": 0.08,
+      "d": 0.12,
       "date": "2021-05-23 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
-      "type": "Confirmed Death Cross",
-      "price": 0.25061699748039246,
-      "k": 0.44,
-      "d": 0.5,
-      "date": "2021-09-12 00:00:00"
+      "type": "Death Cross",
+      "price": 0.3960709869861603,
+      "k": 0.95,
+      "d": 0.96,
+      "date": "2021-09-19 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.26291200518608093,
-      "k": 0.47,
-      "d": 0.48,
-      "date": "2021-11-14 00:00:00"
+      "price": 0.38554298877716064,
+      "k": 0.38,
+      "d": 0.47,
+      "date": "2021-11-21 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.14186300337314606,
-      "k": 0.11,
-      "d": 0.12,
-      "date": "2022-01-23 00:00:00"
+      "price": 0.272504985332489,
+      "k": 0.22,
+      "d": 0.24,
+      "date": "2022-01-09 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.12311100214719772,
-      "k": 0.06,
-      "d": 0.1,
+      "price": 0.2100670039653778,
+      "k": 0.05,
+      "d": 0.09,
       "date": "2022-02-27 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
+      "type": "Confirmed Death Cross",
+      "price": 0.19259800016880035,
+      "k": 0.4,
+      "d": 0.51,
+      "date": "2022-04-17 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "HBAR-USD",
+      "type": "Confirmed Death Cross",
+      "price": 0.06252399832010269,
+      "k": 0.71,
+      "d": 0.79,
+      "date": "2022-08-28 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "HBAR-USD",
+      "type": "Confirmed Death Cross",
+      "price": 0.056391000747680664,
+      "k": 0.44,
+      "d": 0.47,
+      "date": "2022-10-02 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "HBAR-USD",
       "type": "Death Cross",
-      "price": 0.13194699585437775,
-      "k": 0.79,
-      "d": 0.9,
-      "date": "2022-04-24 00:00:00"
+      "price": 0.059238001704216,
+      "k": 0.76,
+      "d": 0.8,
+      "date": "2022-11-06 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.06322599947452545,
-      "k": 0.59,
-      "d": 0.69,
-      "date": "2022-09-04 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "HBAR-USD",
-      "type": "Confirmed Death Cross",
-      "price": 0.07717400044202805,
-      "k": 0.64,
-      "d": 0.76,
-      "date": "2022-11-20 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "HBAR-USD",
-      "type": "Confirmed Death Cross",
-      "price": 0.07864099740982056,
-      "k": 0.6,
-      "d": 0.64,
+      "price": 0.043894000351428986,
+      "k": 0.4,
+      "d": 0.45,
       "date": "2022-12-18 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.09209500253200531,
-      "k": 0.48,
-      "d": 0.49,
-      "date": "2023-02-05 00:00:00"
+      "price": 0.06920900195837021,
+      "k": 0.6,
+      "d": 0.62,
+      "date": "2023-04-16 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.0822020024061203,
-      "k": 0.42,
-      "d": 0.44,
-      "date": "2023-02-26 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "HBAR-USD",
-      "type": "Confirmed Death Cross",
-      "price": 0.07976900041103363,
-      "k": 0.61,
-      "d": 0.69,
-      "date": "2023-04-30 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "HBAR-USD",
-      "type": "Confirmed Death Cross",
-      "price": 0.06383000314235687,
-      "k": 0.61,
-      "d": 0.79,
-      "date": "2023-08-20 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "HBAR-USD",
-      "type": "Confirmed Death Cross",
-      "price": 0.05934999883174896,
-      "k": 0.11,
-      "d": 0.11,
-      "date": "2023-10-15 00:00:00"
+      "price": 0.04438700154423714,
+      "k": 0.04,
+      "d": 0.04,
+      "date": "2023-06-11 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
       "type": "Death Cross",
-      "price": 0.07870399951934814,
-      "k": 0.96,
+      "price": 0.05820399895310402,
+      "k": 0.93,
+      "d": 0.95,
+      "date": "2023-08-27 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "HBAR-USD",
+      "type": "Confirmed Death Cross",
+      "price": 0.04805900156497955,
+      "k": 0.25,
+      "d": 0.29,
+      "date": "2023-10-08 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "HBAR-USD",
+      "type": "Death Cross",
+      "price": 0.06228699907660484,
+      "k": 0.98,
       "d": 0.98,
-      "date": "2023-11-26 00:00:00"
+      "date": "2023-12-03 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
       "type": "Death Cross",
-      "price": 0.22006399929523468,
-      "k": 0.85,
-      "d": 0.87,
-      "date": "2024-03-31 00:00:00"
+      "price": 0.08591599762439728,
+      "k": 0.95,
+      "d": 0.98,
+      "date": "2023-12-31 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "HBAR-USD",
+      "type": "Death Cross",
+      "price": 0.10986299812793732,
+      "k": 0.73,
+      "d": 0.84,
+      "date": "2024-03-24 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.1622850000858307,
-      "k": 0.68,
-      "d": 0.79,
-      "date": "2024-04-14 00:00:00"
+      "price": 0.10676699876785278,
+      "k": 0.34,
+      "d": 0.35,
+      "date": "2024-05-26 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.14677399396896362,
-      "k": 0.1,
-      "d": 0.1,
-      "date": "2024-06-09 00:00:00"
+      "price": 0.055243998765945435,
+      "k": 0.14,
+      "d": 0.17,
+      "date": "2024-08-04 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.10056599974632263,
-      "k": 0.18,
-      "d": 0.32,
-      "date": "2024-08-11 00:00:00"
-    },
-    {
-      "category": "crypto",
-      "symbol": "HBAR-USD",
-      "type": "Confirmed Death Cross",
-      "price": 0.0960799977183342,
+      "price": 0.05013899877667427,
       "k": 0.08,
       "d": 0.08,
-      "date": "2024-09-08 00:00:00"
+      "date": "2024-09-15 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.14884500205516815,
-      "k": 0.01,
-      "d": 0.01,
-      "date": "2025-04-06 00:00:00"
+      "price": 0.0558909997344017,
+      "k": 0.65,
+      "d": 0.69,
+      "date": "2024-10-20 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
-      "type": "Death Cross",
-      "price": 0.19363200664520264,
-      "k": 0.82,
-      "d": 0.86,
+      "type": "Confirmed Death Cross",
+      "price": 0.16862499713897705,
+      "k": 0.4,
+      "d": 0.47,
       "date": "2025-06-01 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
-      "type": "Confirmed Death Cross",
-      "price": 0.19886399805545807,
-      "k": 0.71,
-      "d": 0.76,
+      "type": "Death Cross",
+      "price": 0.24877199530601501,
+      "k": 0.89,
+      "d": 0.9,
       "date": "2025-08-03 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.21381500363349915,
-      "k": 0.59,
-      "d": 0.61,
-      "date": "2025-08-31 00:00:00"
+      "price": 0.21615299582481384,
+      "k": 0.45,
+      "d": 0.48,
+      "date": "2025-09-28 00:00:00"
     },
     {
       "category": "crypto",
       "symbol": "HBAR-USD",
       "type": "Confirmed Death Cross",
-      "price": 0.25295400619506836,
-      "k": 0.65,
-      "d": 0.73,
-      "date": "2025-10-05 00:00:00"
+      "price": 0.1466670036315918,
+      "k": 0.15,
+      "d": 0.15,
+      "date": "2025-11-16 00:00:00"
     },
     {
       "category": "crypto",
