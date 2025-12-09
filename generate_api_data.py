@@ -63,11 +63,22 @@ def generate_history_json():
     parquet_files = glob.glob(os.path.join(DATA_DIR, "*", "1d", "*_with_signals.parquet"))
     
     for file_path in parquet_files:
+        output_path = None
+        temp_path = None
         try:
             filename = os.path.basename(file_path)
             symbol = filename.replace("_with_signals.parquet", "")
             
             df = pd.read_parquet(file_path)
+            
+            # Validate data before processing
+            if df.empty:
+                print(f"Warning: {symbol} has empty data, skipping")
+                continue
+            
+            if "Date" not in df.columns:
+                print(f"Warning: {symbol} missing Date column, skipping")
+                continue
             
             # Ensure Date is string for JSON
             if "Date" in df.columns:
@@ -79,12 +90,30 @@ def generate_history_json():
             # Convert to list of dicts
             data = df.to_dict(orient="records")
             
+            # Validate we have data
+            if not data:
+                print(f"Warning: {symbol} has no data after conversion, skipping")
+                continue
+            
+            # Use atomic write: write to temp file first, then rename
             output_path = os.path.join(OUTPUT_DIR, "history", f"{symbol}.json")
-            with open(output_path, "w") as f:
+            temp_path = output_path + ".tmp"
+            
+            with open(temp_path, "w") as f:
                 json.dump({"symbol": symbol, "data": data}, f, indent=2)
+            
+            # Atomic rename - this prevents partial writes from corrupting the file
+            os.replace(temp_path, output_path)
+            temp_path = None  # Mark as successfully moved
                 
         except Exception as e:
             print(f"Error processing {file_path}: {e}")
+            # Clean up temp file if it exists
+            if temp_path and os.path.exists(temp_path):
+                try:
+                    os.remove(temp_path)
+                except:
+                    pass
 
     print("History JSON generation complete.")
 

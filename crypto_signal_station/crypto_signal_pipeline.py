@@ -128,7 +128,10 @@ def _process_single_symbol(symbol, base_output_folder, timeframes, fetch_start_o
                         if last_date >= today_date:
                             df_combined = df_combined.iloc[:-1]
 
-                    df_combined.to_parquet(output_path_1d, index=False)
+                    # Atomic write to prevent corruption
+                    temp_path = output_path_1d + ".tmp"
+                    df_combined.to_parquet(temp_path, index=False)
+                    os.replace(temp_path, output_path_1d)
                     df_1d = df_combined
                     is_new_data = True
                     # print(f"Updated {symbol}")
@@ -150,7 +153,10 @@ def _process_single_symbol(symbol, base_output_folder, timeframes, fetch_start_o
                     if "Date" not in df.columns and df.index.name == "Date":
                          df = df.reset_index()
                     
-                    df.to_parquet(output_path_1d, index=False)
+                    # Atomic write to prevent corruption
+                    temp_path = output_path_1d + ".tmp"
+                    df.to_parquet(temp_path, index=False)
+                    os.replace(temp_path, output_path_1d)
                     df_1d = df
                     is_new_data = True
             except Exception as e:
@@ -277,7 +283,10 @@ def _process_single_symbol(symbol, base_output_folder, timeframes, fetch_start_o
             df_tf["signal"] = df_tf.apply(label_signal, axis=1)
 
             df_tf = df_tf.reset_index()
-            df_tf.to_parquet(enhanced_output, index=False)
+            # Atomic write to prevent corruption
+            temp_output = enhanced_output + ".tmp"
+            df_tf.to_parquet(temp_output, index=False)
+            os.replace(temp_output, enhanced_output)
             
             # Chart generation
             fig, ax = plt.subplots(figsize=(10, 6))
