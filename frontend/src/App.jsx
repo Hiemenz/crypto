@@ -4,6 +4,7 @@ import './index.css';
 import ProDashboard from './components/ProDashboard';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import Home from './components/Home';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -34,13 +35,13 @@ function App() {
 
   return (
     <Routes>
+      <Route path="/" element={isAuthenticated ? <Navigate to="/dashboard" /> : <Home />} />
       <Route path="/login" element={!isAuthenticated ? <Login onLogin={handleLogin} /> : <Navigate to="/dashboard" />} />
       <Route path="/signup" element={!isAuthenticated ? <Signup onLogin={handleLogin} /> : <Navigate to="/dashboard" />} />
       <Route
         path="/dashboard"
-        element={isAuthenticated ? <ProDashboard onLogout={handleLogout} /> : <Navigate to="/signup" />}
+        element={isAuthenticated ? <ProDashboard onLogout={handleLogout} /> : <Navigate to="/" />}
       />
-      <Route path="/" element={<Navigate to={isAuthenticated ? "/dashboard" : "/signup"} />} />
     </Routes>
   );
 }
