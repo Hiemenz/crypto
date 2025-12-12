@@ -1,126 +1,398 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { TrendingUp, Brain, Shield, Zap } from 'lucide-react';
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, ReferenceDot } from 'recharts';
+import { TrendingUp, Brain, Shield, Zap, ArrowRight, Sparkles, CheckCircle2, Target, BarChart3 } from 'lucide-react';
+
+// Sample demo data showing a realistic price chart with buy/sell signals
+const generateDemoData = () => {
+    const basePrice = 45000;
+    const data = [];
+    let price = basePrice;
+
+    for (let i = 0; i < 60; i++) {
+        // Simulate realistic price movement
+        const change = (Math.random() - 0.48) * 2000;
+        price = Math.max(price + change, basePrice * 0.7);
+
+        const point = {
+            date: `Day ${i + 1}`,
+            price: Math.round(price),
+        };
+
+        // Add buy signals at low points (contrarian)
+        if (i === 12 || i === 28 || i === 45) {
+            point.signal = 'buy';
+            point.signalPrice = point.price;
+        }
+
+        // Add sell signals at high points (contrarian)
+        if (i === 20 || i === 38 || i === 55) {
+            point.signal = 'sell';
+            point.signalPrice = point.price;
+        }
+
+        data.push(point);
+    }
+
+    return data;
+};
+
+const CustomDot = (props) => {
+    const { cx, cy, payload } = props;
+    if (!payload.signal) return null;
+
+    const isBuy = payload.signal === 'buy';
+    const color = isBuy ? '#32D74B' : '#FF453A';
+
+    return (
+        <g>
+            <circle cx={cx} cy={cy} r={8} fill={color} opacity={0.2} />
+            <circle cx={cx} cy={cy} r={5} fill={color} />
+        </g>
+    );
+};
+
+const CustomTooltip = ({ active, payload }) => {
+    if (!active || !payload || !payload[0]) return null;
+
+    const data = payload[0].payload;
+
+    return (
+        <div className="bg-[#1c1c1e]/95 backdrop-blur-xl border border-white/10 rounded-xl p-3 shadow-xl">
+            <p className="text-xs text-[#86868b] mb-1">{data.date}</p>
+            <p className="text-sm font-semibold text-white mb-2">${data.price.toLocaleString()}</p>
+            {data.signal && (
+                <div className={`text-xs font-bold px-2 py-1 rounded-full inline-block ${data.signal === 'buy'
+                        ? 'bg-[#32D74B]/20 text-[#32D74B]'
+                        : 'bg-[#FF453A]/20 text-[#FF453A]'
+                    }`}>
+                    {data.signal === 'buy' ? '🟢 BUY SIGNAL' : '🔴 SELL SIGNAL'}
+                </div>
+            )}
+        </div>
+    );
+};
 
 const Home = () => {
+    const [demoData] = useState(generateDemoData());
+
     return (
         <div className="min-h-screen w-full relative overflow-hidden bg-[#0a0a0a] text-white font-sans selection:bg-cyan-500/30">
 
-            {/* Sophisticated Ambient Background */}
+            {/* Enhanced Ambient Background */}
             <div className="absolute inset-0 z-0">
-                {/* Deep, subtle mesh gradients */}
-                <div className="absolute top-[-20%] left-[-10%] w-[80vw] h-[80vw] bg-[#1a103c] rounded-full blur-[180px] opacity-40 animate-pulse duration-[10s]"></div>
-                <div className="absolute bottom-[-20%] right-[-10%] w-[60vw] h-[60vw] bg-[#0f2e2e] rounded-full blur-[140px] opacity-30 animate-pulse duration-[12s] delay-1000"></div>
-                <div className="absolute top-[40%] left-[30%] w-[40vw] h-[40vw] bg-[#101015] rounded-full blur-[100px] opacity-80"></div>
-
-                {/* Fine grain noise for texture */}
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-overlay"></div>
+                <div className="absolute top-[-20%] left-[-10%] w-[80vw] h-[80vw] bg-gradient-to-br from-[#1a103c] via-[#0f1a3c] to-transparent rounded-full blur-[180px] opacity-50 animate-pulse-slow"></div>
+                <div className="absolute bottom-[-20%] right-[-10%] w-[60vw] h-[60vw] bg-gradient-to-tl from-[#0f2e2e] via-[#0a1f2e] to-transparent rounded-full blur-[140px] opacity-40 animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:100px_100px] opacity-20"></div>
             </div>
 
             <div className="relative z-10 flex flex-col items-center justify-center min-h-screen p-4 md:p-8">
 
                 {/* Hero Section */}
-                <div className="w-full max-w-5xl mx-auto text-center mb-12">
-
-                    {/* Logo/Brand */}
+                <div className="w-full max-w-6xl mx-auto text-center mb-12 fade-in">
                     <div className="mb-8">
-                        <h1 className="text-6xl md:text-8xl font-bold mb-4 tracking-tight bg-gradient-to-br from-white via-gray-200 to-gray-500 bg-clip-text text-transparent">
+                        <div className="inline-flex items-center gap-3 mb-6 px-4 py-2 rounded-full bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-purple-500/10 border border-white/10">
+                            <Sparkles className="w-4 h-4 text-cyan-400" />
+                            <span className="text-sm font-semibold text-gray-300 tracking-wide">AI-Powered Trading Signals</span>
+                        </div>
+                        <h1 className="text-5xl md:text-7xl font-bold mb-4 tracking-tight bg-gradient-to-br from-white via-gray-100 to-gray-400 bg-clip-text text-transparent">
                             SignalStack
                         </h1>
-                        <p className="text-xl md:text-2xl text-gray-400 font-light tracking-wide">
-                            Professional Trading Signals
+                        <p className="text-xl md:text-2xl text-gray-400 font-light tracking-wide mb-8">
+                            Know Exactly When to Buy & Sell
+                        </p>
+                    </div>
+                </div>
+
+                {/* Interactive Demo Chart Section */}
+                <div className="w-full max-w-6xl mx-auto mb-16 fade-in-scale">
+                    <div className="backdrop-blur-xl bg-[#121212]/60 border border-white/[0.08] rounded-3xl p-6 md:p-10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.6)] hover:border-white/[0.12] transition-all duration-500">
+
+                        <div className="mb-6 text-center">
+                            <h2 className="text-2xl md:text-3xl font-bold mb-3">See It In Action</h2>
+                            <p className="text-gray-400 text-sm md:text-base max-w-2xl mx-auto">
+                                Our system analyzes market data and shows you clear buy (🟢) and sell (🔴) signals on the chart
+                            </p>
+                        </div>
+
+                        {/* Chart */}
+                        <div className="bg-[#0d0d0f]/60 rounded-2xl p-4 md:p-6 border border-white/5">
+                            <div className="h-[300px] md:h-[400px] w-full">
+                                <ResponsiveContainer width="100%" height="100%">
+                                    <LineChart data={demoData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                                        <defs>
+                                            <linearGradient id="demoLineGradient" x1="0" y1="0" x2="1" y2="0">
+                                                <stop offset="0%" stopColor="#00E5FF" stopOpacity={1} />
+                                                <stop offset="50%" stopColor="#0A84FF" stopOpacity={1} />
+                                                <stop offset="100%" stopColor="#BF5AF2" stopOpacity={0.8} />
+                                            </linearGradient>
+                                        </defs>
+                                        <XAxis
+                                            dataKey="date"
+                                            stroke="#48484a"
+                                            tick={{ fontSize: 11, fill: '#86868b' }}
+                                            tickFormatter={(v) => v.replace('Day ', '')}
+                                            axisLine={false}
+                                            tickLine={false}
+                                        />
+                                        <YAxis
+                                            stroke="#48484a"
+                                            tick={{ fontSize: 11, fill: '#86868b' }}
+                                            tickFormatter={(v) => `$${(v / 1000).toFixed(0)}k`}
+                                            axisLine={false}
+                                            tickLine={false}
+                                            orientation="right"
+                                        />
+                                        <Tooltip content={<CustomTooltip />} />
+                                        <Line
+                                            type="monotone"
+                                            dataKey="price"
+                                            stroke="url(#demoLineGradient)"
+                                            strokeWidth={2.5}
+                                            dot={<CustomDot />}
+                                            activeDot={{ r: 6, fill: '#00E5FF' }}
+                                            isAnimationActive={true}
+                                            animationDuration={1500}
+                                        />
+                                    </LineChart>
+                                </ResponsiveContainer>
+                            </div>
+
+                            {/* Legend */}
+                            <div className="flex items-center justify-center gap-6 mt-4 text-sm">
+                                <div className="flex items-center gap-2">
+                                    <div className="w-3 h-3 rounded-full bg-[#32D74B]"></div>
+                                    <span className="text-gray-400">Buy Signal</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <div className="w-3 h-3 rounded-full bg-[#FF453A]"></div>
+                                    <span className="text-gray-400">Sell Signal</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* How It Works Section */}
+                <div className="w-full max-w-6xl mx-auto mb-16">
+                    <div className="text-center mb-10">
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4">How It Works</h2>
+                        <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+                            Our proprietary system combines multiple technical indicators to identify high-probability trading opportunities
                         </p>
                     </div>
 
-                    {/* Main Value Proposition */}
-                    <div className="backdrop-blur-3xl bg-[#121212]/60 border border-white/[0.06] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.6)] rounded-3xl p-8 md:p-12 mb-8 relative overflow-hidden">
-
-                        {/* Subtle top sheen */}
-                        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
-
-                        <div className="relative z-20">
-                            <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight leading-tight">
-                                Trade Against the Herd.<br />
-                                <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                                    Remove Emotion.
-                                </span>
-                            </h2>
-
-                            <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-6 max-w-3xl mx-auto">
-                                Our proprietary strategy is built on a sophisticated combination of technical indicators
-                                specifically designed to position you <span className="text-white font-semibold">against the herd</span>.
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        {/* Step 1 */}
+                        <div className="backdrop-blur-xl bg-[#121212]/40 border border-white/[0.06] rounded-2xl p-6 hover:border-white/[0.12] transition-all duration-300 group">
+                            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                <BarChart3 className="text-cyan-400" size={24} />
+                            </div>
+                            <div className="text-cyan-400 font-bold text-sm mb-2">STEP 1</div>
+                            <h3 className="text-xl font-bold mb-3">Data Analysis</h3>
+                            <p className="text-gray-400 leading-relaxed">
+                                We continuously analyze price movements, volume, momentum, and market sentiment across multiple timeframes
                             </p>
+                        </div>
 
-                            <p className="text-base md:text-lg text-gray-400 leading-relaxed max-w-2xl mx-auto">
-                                While others chase trends driven by fear and greed, our system identifies
-                                contrarian opportunities with mathematical precision. No emotion. No guesswork.
-                                Just data-driven signals that give you an edge.
+                        {/* Step 2 */}
+                        <div className="backdrop-blur-xl bg-[#121212]/40 border border-white/[0.06] rounded-2xl p-6 hover:border-white/[0.12] transition-all duration-300 group">
+                            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                <Target className="text-purple-400" size={24} />
+                            </div>
+                            <div className="text-purple-400 font-bold text-sm mb-2">STEP 2</div>
+                            <h3 className="text-xl font-bold mb-3">Signal Generation</h3>
+                            <p className="text-gray-400 leading-relaxed">
+                                When all indicators align, we generate a clear buy or sell signal with precise entry points
+                            </p>
+                        </div>
+
+                        {/* Step 3 */}
+                        <div className="backdrop-blur-xl bg-[#121212]/40 border border-white/[0.06] rounded-2xl p-6 hover:border-white/[0.12] transition-all duration-300 group">
+                            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500/20 to-emerald-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                <CheckCircle2 className="text-green-400" size={24} />
+                            </div>
+                            <div className="text-green-400 font-bold text-sm mb-2">STEP 3</div>
+                            <h3 className="text-xl font-bold mb-3">Take Action</h3>
+                            <p className="text-gray-400 leading-relaxed">
+                                You receive instant notifications and can execute trades with confidence, knowing the data supports your decision
                             </p>
                         </div>
                     </div>
+                </div>
 
-                    {/* Feature Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+                {/* Understanding Signals Section */}
+                <div className="w-full max-w-6xl mx-auto mb-16">
+                    <div className="backdrop-blur-xl bg-[#121212]/60 border border-white/[0.08] rounded-3xl p-8 md:p-12">
+                        <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">Understanding the Signals</h2>
 
-                        {/* Feature 1 */}
-                        <div className="backdrop-blur-xl bg-[#121212]/40 border border-white/[0.04] rounded-xl p-6 hover:border-white/[0.08] transition-all duration-300 group">
-                            <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            {/* Buy Signals */}
+                            <div className="space-y-4">
+                                <div className="flex items-center gap-3 mb-4">
+                                    <div className="w-10 h-10 rounded-full bg-[#32D74B]/20 flex items-center justify-center">
+                                        <div className="w-5 h-5 rounded-full bg-[#32D74B]"></div>
+                                    </div>
+                                    <h3 className="text-2xl font-bold text-[#32D74B]">Buy Signals</h3>
+                                </div>
+                                <p className="text-gray-300 leading-relaxed">
+                                    Green dots appear when our system identifies oversold conditions and bullish momentum building. This is when the crowd is fearful, but the data shows opportunity.
+                                </p>
+                                <ul className="space-y-2 text-gray-400">
+                                    <li className="flex items-start gap-2">
+                                        <CheckCircle2 className="w-5 h-5 text-[#32D74B] mt-0.5 flex-shrink-0" />
+                                        <span>Multiple indicators confirm upward potential</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <CheckCircle2 className="w-5 h-5 text-[#32D74B] mt-0.5 flex-shrink-0" />
+                                        <span>Price has reached support levels</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <CheckCircle2 className="w-5 h-5 text-[#32D74B] mt-0.5 flex-shrink-0" />
+                                        <span>Market sentiment is overly negative</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            {/* Sell Signals */}
+                            <div className="space-y-4">
+                                <div className="flex items-center gap-3 mb-4">
+                                    <div className="w-10 h-10 rounded-full bg-[#FF453A]/20 flex items-center justify-center">
+                                        <div className="w-5 h-5 rounded-full bg-[#FF453A]"></div>
+                                    </div>
+                                    <h3 className="text-2xl font-bold text-[#FF453A]">Sell Signals</h3>
+                                </div>
+                                <p className="text-gray-300 leading-relaxed">
+                                    Red dots appear when our system identifies overbought conditions and bearish momentum. This is when the crowd is greedy, but the data suggests caution.
+                                </p>
+                                <ul className="space-y-2 text-gray-400">
+                                    <li className="flex items-start gap-2">
+                                        <CheckCircle2 className="w-5 h-5 text-[#FF453A] mt-0.5 flex-shrink-0" />
+                                        <span>Multiple indicators signal downward pressure</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <CheckCircle2 className="w-5 h-5 text-[#FF453A] mt-0.5 flex-shrink-0" />
+                                        <span>Price has reached resistance levels</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <CheckCircle2 className="w-5 h-5 text-[#FF453A] mt-0.5 flex-shrink-0" />
+                                        <span>Market sentiment is overly positive</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Why It Works Section */}
+                <div className="w-full max-w-6xl mx-auto mb-16">
+                    <div className="backdrop-blur-xl bg-gradient-to-br from-[#121212]/60 to-[#1a1a1a]/60 border border-white/[0.08] rounded-3xl p-8 md:p-12 relative overflow-hidden">
+                        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent"></div>
+
+                        <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center">
+                            <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+                                The Contrarian Advantage
+                            </span>
+                        </h2>
+
+                        <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto text-center mb-8">
+                            Most traders lose money because they buy when everyone is buying (high prices) and sell when everyone is selling (low prices). Our system does the opposite.
+                        </p>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="bg-[#0d0d0f]/60 rounded-2xl p-6 border border-red-500/20">
+                                <div className="text-red-400 font-bold text-sm mb-2">❌ EMOTIONAL TRADING</div>
+                                <h3 className="text-xl font-bold mb-3 text-red-400">Following the Crowd</h3>
+                                <ul className="space-y-2 text-gray-400 text-sm">
+                                    <li>• Buy when prices are high (FOMO)</li>
+                                    <li>• Sell when prices are low (panic)</li>
+                                    <li>• Decisions driven by fear and greed</li>
+                                    <li>• No clear strategy or plan</li>
+                                </ul>
+                            </div>
+
+                            <div className="bg-[#0d0d0f]/60 rounded-2xl p-6 border border-green-500/20">
+                                <div className="text-green-400 font-bold text-sm mb-2">✓ DATA-DRIVEN TRADING</div>
+                                <h3 className="text-xl font-bold mb-3 text-green-400">Going Against the Herd</h3>
+                                <ul className="space-y-2 text-gray-400 text-sm">
+                                    <li>• Buy when prices are low (opportunity)</li>
+                                    <li>• Sell when prices are high (profit)</li>
+                                    <li>• Decisions based on technical analysis</li>
+                                    <li>• Clear signals with defined entry/exit</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Feature Grid */}
+                <div className="w-full max-w-6xl mx-auto mb-16">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div className="backdrop-blur-xl bg-[#121212]/40 border border-white/[0.06] rounded-2xl p-6 hover:border-white/[0.12] transition-all duration-300 group">
+                            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                                 <Brain className="text-cyan-400" size={24} />
                             </div>
                             <h3 className="text-lg font-bold mb-2">Multi-Indicator System</h3>
-                            <p className="text-sm text-gray-400">
+                            <p className="text-sm text-gray-400 leading-relaxed">
                                 Advanced combination of technical indicators working in harmony
                             </p>
                         </div>
 
-                        {/* Feature 2 */}
-                        <div className="backdrop-blur-xl bg-[#121212]/40 border border-white/[0.04] rounded-xl p-6 hover:border-white/[0.08] transition-all duration-300 group">
-                            <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <div className="backdrop-blur-xl bg-[#121212]/40 border border-white/[0.06] rounded-2xl p-6 hover:border-white/[0.12] transition-all duration-300 group">
+                            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                                 <TrendingUp className="text-purple-400" size={24} />
                             </div>
                             <h3 className="text-lg font-bold mb-2">Contrarian Edge</h3>
-                            <p className="text-sm text-gray-400">
+                            <p className="text-sm text-gray-400 leading-relaxed">
                                 Identify opportunities when the crowd is wrong
                             </p>
                         </div>
 
-                        {/* Feature 3 */}
-                        <div className="backdrop-blur-xl bg-[#121212]/40 border border-white/[0.04] rounded-xl p-6 hover:border-white/[0.08] transition-all duration-300 group">
-                            <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-green-500/20 to-emerald-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <div className="backdrop-blur-xl bg-[#121212]/40 border border-white/[0.06] rounded-2xl p-6 hover:border-white/[0.12] transition-all duration-300 group">
+                            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500/20 to-emerald-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                                 <Shield className="text-green-400" size={24} />
                             </div>
                             <h3 className="text-lg font-bold mb-2">Emotion-Free Trading</h3>
-                            <p className="text-sm text-gray-400">
+                            <p className="text-sm text-gray-400 leading-relaxed">
                                 Remove fear and greed from your decision-making
                             </p>
                         </div>
 
-                        {/* Feature 4 */}
-                        <div className="backdrop-blur-xl bg-[#121212]/40 border border-white/[0.04] rounded-xl p-6 hover:border-white/[0.08] transition-all duration-300 group">
-                            <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-orange-500/20 to-red-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <div className="backdrop-blur-xl bg-[#121212]/40 border border-white/[0.06] rounded-2xl p-6 hover:border-white/[0.12] transition-all duration-300 group">
+                            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500/20 to-red-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                                 <Zap className="text-orange-400" size={24} />
                             </div>
                             <h3 className="text-lg font-bold mb-2">Real-Time Signals</h3>
-                            <p className="text-sm text-gray-400">
+                            <p className="text-sm text-gray-400 leading-relaxed">
                                 Get actionable insights when opportunities emerge
                             </p>
                         </div>
                     </div>
+                </div>
 
-                    {/* CTA Buttons */}
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                        <Link
-                            to="/signup"
-                            className="w-full sm:w-auto bg-white text-black hover:bg-gray-100 font-bold text-base px-8 py-4 rounded-lg transition-all duration-200 shadow-lg shadow-white/10 hover:shadow-white/20 hover:scale-105"
-                        >
-                            Get Started
-                        </Link>
-                        <Link
-                            to="/login"
-                            className="w-full sm:w-auto bg-transparent border border-white/20 hover:border-white/40 text-white font-semibold text-base px-8 py-4 rounded-lg transition-all duration-200 hover:bg-white/5"
-                        >
-                            Sign In
-                        </Link>
+                {/* CTA Section */}
+                <div className="w-full max-w-4xl mx-auto mb-8">
+                    <div className="backdrop-blur-xl bg-gradient-to-br from-cyan-500/10 via-blue-500/10 to-purple-500/10 border border-white/[0.12] rounded-3xl p-8 md:p-12 text-center">
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Start Trading Smarter?</h2>
+                        <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
+                            Join thousands of traders who have removed emotion from their trading and started following the data
+                        </p>
+
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                            <Link
+                                to="/signup"
+                                className="w-full sm:w-auto btn-primary flex items-center justify-center gap-2 group text-base px-8 py-4"
+                            >
+                                <span>Get Started Free</span>
+                                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                            </Link>
+                            <Link
+                                to="/login"
+                                className="w-full sm:w-auto btn-secondary flex items-center justify-center gap-2 text-base px-8 py-4"
+                            >
+                                Sign In
+                            </Link>
+                        </div>
                     </div>
                 </div>
 

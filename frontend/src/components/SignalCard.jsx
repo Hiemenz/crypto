@@ -6,21 +6,25 @@ const SignalCard = ({ symbol, signal, score, price, change, onAction, actionLabe
     const isSell = signal.toLowerCase().includes('sell');
 
     let statusColor = "text-slate-400";
-    let statusBg = "bg-slate-800";
+    let statusBg = "bg-slate-800/50";
     let Icon = Minus;
+    let gradientClass = "from-slate-500/20 to-slate-600/20";
 
     if (isBuy) {
-        statusColor = "text-green-400";
-        statusBg = "bg-green-500/10";
+        statusColor = "text-[#32D74B]";
+        statusBg = "bg-[#32D74B]/10";
         Icon = TrendingUp;
+        gradientClass = "from-green-500/20 to-emerald-500/20";
     } else if (isSell) {
-        statusColor = "text-red-400";
-        statusBg = "bg-red-500/10";
+        statusColor = "text-[#FF453A]";
+        statusBg = "bg-[#FF453A]/10";
         Icon = TrendingDown;
+        gradientClass = "from-red-500/20 to-orange-500/20";
     } else {
         // Hold / Neutral
-        statusColor = "text-blue-400";
-        statusBg = "bg-blue-500/10";
+        statusColor = "text-[#0A84FF]";
+        statusBg = "bg-[#0A84FF]/10";
+        gradientClass = "from-blue-500/20 to-cyan-500/20";
     }
 
     // Format price
@@ -29,53 +33,60 @@ const SignalCard = ({ symbol, signal, score, price, change, onAction, actionLabe
         : 'N/A';
 
     return (
-        <div className="glass-card rounded-xl p-5 hover:border-slate-600 transition-all duration-300">
-            <div className="flex justify-between items-start mb-4">
-                <div>
-                    <h3 className="text-xl font-bold tracking-tight text-white">{symbol}</h3>
-                    <div className="flex items-center gap-2 mt-1">
-                        <span className="text-2xl font-semibold">${formattedPrice}</span>
-                        {/* Change would be here if available in JSON */}
+        <div className="card-elevated p-6 group transition-all duration-300 hover:scale-[1.02]">
+            {/* Gradient overlay on hover */}
+            <div className={`absolute inset-0 bg-gradient-to-br ${gradientClass} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl pointer-events-none`}></div>
+
+            <div className="relative z-10">
+                <div className="flex justify-between items-start mb-4">
+                    <div>
+                        <h3 className="text-xl font-bold tracking-tight text-white mb-2">{symbol}</h3>
+                        <div className="flex items-center gap-2">
+                            <span className="text-2xl font-semibold text-white">${formattedPrice}</span>
+                        </div>
+                    </div>
+                    <div className={`rounded-xl p-2.5 ${statusBg} transition-all duration-300 group-hover:scale-110`}>
+                        <Icon className={`w-6 h-6 ${statusColor}`} />
                     </div>
                 </div>
-                <div className={`rounded-full p-2 ${statusBg}`}>
-                    <Icon className={`w-6 h-6 ${statusColor}`} />
+
+                <div className="space-y-4">
+                    {/* Signal Badge */}
+                    <div className="flex justify-between items-center">
+                        <span className="text-sm text-gray-400 font-medium">Signal</span>
+                        <span className={`font-semibold px-3 py-1.5 rounded-lg text-sm ${statusColor} ${statusBg} border border-white/5`}>
+                            {signal || "Neutral"}
+                        </span>
+                    </div>
+
+                    {/* Score Bar */}
+                    <div>
+                        <div className="flex justify-between text-sm mb-2">
+                            <span className="text-gray-400 font-medium">Confidence</span>
+                            <span className="font-bold text-white">{score}%</span>
+                        </div>
+                        <div className="h-2 w-full bg-[#1E2228] rounded-full overflow-hidden">
+                            <div
+                                className={`h-full rounded-full transition-all duration-500 ${isBuy ? 'bg-gradient-to-r from-[#32D74B] to-emerald-400' :
+                                        (isSell ? 'bg-gradient-to-r from-[#FF453A] to-orange-400' :
+                                            'bg-gradient-to-r from-[#0A84FF] to-cyan-400')
+                                    }`}
+                                style={{ width: `${score}%` }}
+                            />
+                        </div>
+                    </div>
                 </div>
+
+                {/* Action Button */}
+                {onAction && (
+                    <button
+                        onClick={() => onAction(symbol)}
+                        className="btn-secondary mt-5 w-full py-2.5 text-sm font-medium"
+                    >
+                        {actionLabel}
+                    </button>
+                )}
             </div>
-
-            <div className="space-y-3">
-                {/* Signal Badge */}
-                <div className="flex justify-between items-center">
-                    <span className="text-sm text-slate-400">Signal</span>
-                    <span className={`font-medium px-2 py-0.5 rounded text-sm border ${statusColor} border-opacity-20 ${statusBg}`}>
-                        {signal || "Neutral"}
-                    </span>
-                </div>
-
-                {/* Score Bar */}
-                <div>
-                    <div className="flex justify-between text-sm mb-1">
-                        <span className="text-slate-400">Score</span>
-                        <span className="font-bold text-white">{score}</span>
-                    </div>
-                    <div className="h-1.5 w-full bg-slate-700 rounded-full overflow-hidden">
-                        <div
-                            className={`h-full rounded-full transition-all duration-500 ${isBuy ? 'bg-gradient-to-r from-green-500 to-emerald-400' : (isSell ? 'bg-gradient-to-r from-red-500 to-orange-400' : 'bg-blue-500')}`}
-                            style={{ width: `${score}%` }}
-                        />
-                    </div>
-                </div>
-            </div>
-
-            {/* Action Button */}
-            {onAction && (
-                <button
-                    onClick={() => onAction(symbol)}
-                    className="mt-5 w-full py-2 bg-slate-700 hover:bg-slate-600 active:bg-slate-700 text-white text-sm font-medium rounded-lg transition-colors border border-transparent hover:border-slate-500"
-                >
-                    {actionLabel}
-                </button>
-            )}
         </div>
     );
 };

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import { Search, TrendingUp, Menu, X, Zap } from 'lucide-react';
 import Header from './Header';
 
@@ -9,8 +9,20 @@ const CustomDot = (props) => {
     const { cx, cy, payload } = props;
     if (!payload.signalType) return null;
     const isBuy = payload.signalType === 'buy';
-    const color = isBuy ? '#32D74B' : '#FF453A';
-    return <circle cx={cx} cy={cy} r={5} fill={color} stroke="#fff" strokeWidth={2} />;
+    const color = isBuy ? '#10B981' : '#F59E0B';
+
+    return (
+        <g className="signal-dot">
+            {/* Outer glow */}
+            <circle cx={cx} cy={cy} r={8} fill={color} opacity={0.1} className="animate-pulse-slow" />
+            {/* Middle ring */}
+            <circle cx={cx} cy={cy} r={5} fill={color} opacity={0.25} />
+            {/* Inner ring with border */}
+            <circle cx={cx} cy={cy} r={4} fill="#0B0D10" stroke={color} strokeWidth={1.5} />
+            {/* Center dot */}
+            <circle cx={cx} cy={cy} r={2} fill={color} />
+        </g>
+    );
 };
 
 const ProDashboard = ({ onLogout }) => {
@@ -134,14 +146,16 @@ const ProDashboard = ({ onLogout }) => {
         if (chartRange === 'ALL') return historyData;
         const cutoff = new Date();
         if (chartRange === '1Y') cutoff.setFullYear(cutoff.getFullYear() - 1);
+        if (chartRange === '3Y') cutoff.setFullYear(cutoff.getFullYear() - 3);
+        if (chartRange === '5Y') cutoff.setFullYear(cutoff.getFullYear() - 5);
         if (chartRange === '3M') cutoff.setMonth(cutoff.getMonth() - 3);
         return historyData.filter(d => new Date(d.date) >= cutoff);
     }, [historyData, chartRange]);
 
     if (loading) return (
         <div className="h-screen flex flex-col items-center justify-center bg-[#0B0D10] text-[#E4E8EC] gap-4">
-            <div className="w-8 h-8 rounded-full border-2 border-[#1E2228] border-t-[#00E5FF] animate-spin"></div>
-            <div className="text-sm font-medium text-[#5F6670] animate-pulse">Initializing Signal Pro...</div>
+            <div className="w-10 h-10 rounded-full border-3 border-[#1E2228] border-t-[#00E5FF] animate-spin"></div>
+            <div className="text-sm font-semibold text-[#5F6670] animate-pulse">Initializing SignalStack...</div>
         </div>
     );
 
@@ -225,28 +239,33 @@ const ProDashboard = ({ onLogout }) => {
                     </div>
 
                     {/* Asset List */}
-                    <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3">
-                        {assetList.map(item => (
+                    <div className="flex-1 overflow-y-auto px-4 py-4 space-y-2">
+                        {assetList.map((item, index) => (
                             <div key={item.symbol}
                                 id={`asset-${item.symbol}`}
                                 onClick={() => {
                                     setSelectedSymbol(item.symbol);
                                     setMobileView('detail'); // Switch to detail view on mobile
                                 }}
-                                className={`p-4 rounded-[14px] cursor-pointer transition-colors ${selectedSymbol === item.symbol ? 'bg-[#0A84FF] text-white' : 'hover:bg-[#2c2c2e] text-white'}`}>
+                                className={`p-4 rounded-2xl cursor-pointer transition-all duration-300 fade-in ${selectedSymbol === item.symbol
+                                    ? 'bg-gradient-to-r from-[#8B5CF6] to-[#06B6D4] text-white shadow-lg scale-[1.02]'
+                                    : 'hover:bg-[#2c2c2e] text-white hover:scale-[1.01]'
+                                    }`}
+                                style={{ animationDelay: `${index * 0.02}s` }}
+                            >
                                 <div className="flex justify-between items-center mb-1">
                                     <span className="font-semibold text-[17px]">{item.symbol}</span>
-                                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide ${selectedSymbol === item.symbol ? 'bg-white/20 text-white' :
+                                    <span className={`text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wide ${selectedSymbol === item.symbol ? 'bg-white/20 text-white' :
                                         item.side === 'buy' ? 'bg-[#30d158]/10 text-[#30d158]' :
                                             item.side === 'sell' ? 'bg-[#ff453a]/10 text-[#ff453a]' :
-                                                'bg-[#86868b]/10 text-[#86868b]' // styling for Hold
+                                                'bg-[#86868b]/10 text-[#86868b]'
                                         }`}>
                                         {item.side}
                                     </span>
                                 </div>
                                 <div className="flex justify-between items-center text-[13px]">
-                                    <span className={selectedSymbol === item.symbol ? 'text-white/80' : 'text-[#86868b]'}>${formatPrice(item.Close)}</span>
-                                    <span className={`font-medium ${selectedSymbol === item.symbol ? 'text-white' : 'text-[#0A84FF]'}`}>{item.score}</span>
+                                    <span className={selectedSymbol === item.symbol ? 'text-white/90' : 'text-[#86868b]'}>${formatPrice(item.Close)}</span>
+                                    <span className={`font-semibold ${selectedSymbol === item.symbol ? 'text-white' : 'text-[#8B5CF6]'}`}>{item.score}</span>
                                 </div>
                             </div>
                         ))}
@@ -262,96 +281,183 @@ const ProDashboard = ({ onLogout }) => {
                 `}>
                     <div className="flex-1 overflow-y-auto pt-4 md:pt-0 p-4 md:p-8 space-y-6 md:space-y-8">
 
-                        {/* Chart */}
-                        <div className="bg-[#1c1c1e] rounded-[18px] p-6 md:p-8">
-                            <div className="flex justify-between items-center mb-6">
-                                <div>
-                                    <div className="text-[22px] font-bold text-white tracking-tight">{selectedSymbol}</div>
-                                    <div className="text-[13px] font-medium text-[#86868b]">{chartData.length} data points</div>
-                                </div>
-                                <div className="flex bg-[#2c2c2e] p-0.5 rounded-[9px]">
-                                    {['3M', '1Y', 'ALL'].map(r => (
-                                        <button
-                                            key={r}
-                                            onClick={() => setChartRange(r)}
-                                            aria-label={`Set chart range to ${r}`}
-                                            className={`px-3 py-1 text-[11px] font-semibold rounded-[7px] transition-all min-w-[40px] ${chartRange === r
-                                                ? 'bg-[#636366] text-white shadow-sm'
-                                                : 'text-[#86868b] hover:text-white'
-                                                }`}>
-                                            {r}
-                                        </button>
-                                    ))}
-                                </div>
-                            </div>
+                        {/* Chart - Meta-Inspired Premium Design */}
+                        <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl transition-all duration-500 hover:border-white/15 group">
+                            {/* Multi-layer gradient overlays for depth */}
+                            <div className="absolute inset-0 bg-gradient-to-br from-[#0f1318] via-[#0d1015] to-[#0a0c0f] opacity-95"></div>
+                            <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/5 via-transparent to-teal-500/5"></div>
+                            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(139,92,246,0.08),transparent_50%)]"></div>
 
-                            <div className="h-[300px] md:h-[450px] w-full relative">
-                                {!historyData ? (
-                                    <div className="h-full flex flex-col items-center justify-center text-[#86868b] gap-2">
-                                        <div className="w-5 h-5 rounded-full border-2 border-[#2c2c2e] border-t-[#0A84FF] animate-spin" />
-                                        <span className="text-[13px]">Loading chart data...</span>
+                            {/* Noise texture for premium feel */}
+                            <div className="chart-noise"></div>
+
+                            {/* Content */}
+                            <div className="relative z-10 p-6 md:p-10">
+                                {/* Enhanced Header */}
+                                <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-6 mb-8">
+                                    <div className="space-y-3">
+                                        <div className="flex items-baseline gap-3">
+                                            <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight font-display">
+                                                {selectedSymbol}
+                                            </h2>
+                                            {currentSignal && (
+                                                <span className={`text-sm font-semibold px-3 py-1 rounded-full ${currentSignal.side === 'buy'
+                                                    ? 'bg-[#10B981]/15 text-[#10B981] border border-[#10B981]/30'
+                                                    : currentSignal.side === 'sell'
+                                                        ? 'bg-[#F59E0B]/15 text-[#F59E0B] border border-[#F59E0B]/30'
+                                                        : 'bg-[#8B5CF6]/15 text-[#8B5CF6] border border-[#8B5CF6]/30'
+                                                    }`}>
+                                                    {currentSignal.side.toUpperCase()}
+                                                </span>
+                                            )}
+                                        </div>
+                                        {currentSignal && (
+                                            <div className="flex items-baseline gap-3">
+                                                <span className="text-2xl md:text-3xl font-bold text-white">
+                                                    ${formatPrice(currentSignal.Close)}
+                                                </span>
+                                                <span className={`text-sm font-semibold ${currentSignal.change >= 0 ? 'text-[#10B981]' : 'text-[#F59E0B]'
+                                                    }`}>
+                                                    {currentSignal.change >= 0 ? '+' : ''}{currentSignal.change?.toFixed(2)}%
+                                                </span>
+                                            </div>
+                                        )}
+                                        <p className="text-sm text-[#86868b] font-medium">
+                                            {chartData.length.toLocaleString()} data points • {chartRange === 'ALL' ? 'All time' : chartRange}
+                                        </p>
                                     </div>
-                                ) : (
-                                    <div style={{ width: '100%', height: '100%' }}>
-                                        <ResponsiveContainer width="99%" height="100%" key={selectedSymbol}>
-                                            <LineChart data={chartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                                                <XAxis
-                                                    dataKey="date"
-                                                    stroke="#48484a"
-                                                    tick={{ fontSize: 11, fill: '#86868b', fontWeight: 500 }}
-                                                    tickFormatter={v => v.substring(5, 10)}
-                                                    axisLine={false}
-                                                    tickLine={false}
-                                                    dy={10}
-                                                />
-                                                <YAxis
-                                                    dataKey="price"
-                                                    stroke="#48484a"
-                                                    tick={{ fontSize: 11, fill: '#86868b', fontWeight: 500 }}
-                                                    orientation="right"
-                                                    width={50}
-                                                    domain={['auto', 'auto']}
-                                                    axisLine={false}
-                                                    tickLine={false}
-                                                />
-                                                <Tooltip
-                                                    contentStyle={{ backgroundColor: 'rgba(28, 28, 30, 0.8)', borderColor: 'rgba(255,255,255,0.1)', borderRadius: '12px', backdropFilter: 'blur(16px)', boxShadow: '0 4px 20px rgba(0,0,0,0.4)', padding: '12px' }}
-                                                    itemStyle={{ color: '#fff', fontSize: '13px', fontWeight: 500 }}
-                                                    labelStyle={{ color: '#86868b', fontSize: '11px', marginBottom: '4px', fontWeight: 600 }}
-                                                />
-                                                <Line
-                                                    type="monotone"
-                                                    dataKey="price"
-                                                    stroke="#0A84FF"
-                                                    strokeWidth={2}
-                                                    dot={<CustomDot />}
-                                                    activeDot={{ r: 6, strokeWidth: 0, fill: '#FFFFFF' }}
-                                                    isAnimationActive={false}
-                                                />
-                                            </LineChart>
-                                        </ResponsiveContainer>
+
+                                    {/* Modern Range Selector */}
+                                    <div className="flex gap-2 bg-white/5 backdrop-blur-xl p-1.5 rounded-2xl border border-white/10 shadow-lg">
+                                        {['3M', '1Y', '3Y', '5Y', 'ALL'].map(r => (
+                                            <button
+                                                key={r}
+                                                onClick={() => setChartRange(r)}
+                                                aria-label={`Set chart range to ${r}`}
+                                                className={`px-4 py-2.5 text-xs font-bold rounded-xl transition-all duration-300 min-w-[50px] ${chartRange === r
+                                                    ? 'bg-gradient-to-r from-[#8B5CF6] to-[#06B6D4] text-white shadow-lg shadow-purple-500/30 scale-105'
+                                                    : 'text-[#86868b] hover:text-white hover:bg-white/10'
+                                                    }`}
+                                            >
+                                                {r}
+                                            </button>
+                                        ))}
                                     </div>
-                                )}
+                                </div>
+
+                                {/* Chart Area */}
+                                <div className="h-[320px] md:h-[480px] w-full relative">
+                                    {!historyData ? (
+                                        <div className="h-full flex flex-col items-center justify-center text-[#86868b] gap-2">
+                                            <div className="w-5 h-5 rounded-full border-2 border-[#2c2c2e] border-t-[#0A84FF] animate-spin" />
+                                            <span className="text-[13px]">Loading chart data...</span>
+                                        </div>
+                                    ) : (
+                                        <div style={{ width: '100%', height: '100%' }}>
+                                            <ResponsiveContainer width="99%" height="100%" key={selectedSymbol}>
+                                                <LineChart data={chartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                                                    {/* Enhanced gradients for premium look */}
+                                                    <defs>
+                                                        <linearGradient id="chartLineGradient" x1="0" y1="0" x2="1" y2="0">
+                                                            <stop offset="0%" stopColor="#06B6D4" stopOpacity={1} />
+                                                            <stop offset="30%" stopColor="#14B8A6" stopOpacity={1} />
+                                                            <stop offset="60%" stopColor="#8B5CF6" stopOpacity={1} />
+                                                            <stop offset="100%" stopColor="#A78BFA" stopOpacity={0.9} />
+                                                        </linearGradient>
+                                                        <linearGradient id="chartAreaGradient" x1="0" y1="0" x2="0" y2="1">
+                                                            <stop offset="0%" stopColor="#8B5CF6" stopOpacity={0.25} />
+                                                            <stop offset="40%" stopColor="#06B6D4" stopOpacity={0.12} />
+                                                            <stop offset="100%" stopColor="#06B6D4" stopOpacity={0} />
+                                                        </linearGradient>
+                                                        {/* Glow filter for line */}
+                                                        <filter id="lineGlow" x="-50%" y="-50%" width="200%" height="200%">
+                                                            <feGaussianBlur stdDeviation="2" result="coloredBlur" />
+                                                            <feMerge>
+                                                                <feMergeNode in="coloredBlur" />
+                                                                <feMergeNode in="SourceGraphic" />
+                                                            </feMerge>
+                                                        </filter>
+                                                    </defs>
+
+                                                    <XAxis
+                                                        dataKey="date"
+                                                        stroke="#2c2c2e"
+                                                        tick={{ fontSize: 11, fill: '#5F6670', fontWeight: 600 }}
+                                                        tickFormatter={v => v.substring(5, 10)}
+                                                        axisLine={false}
+                                                        tickLine={false}
+                                                        dy={10}
+                                                    />
+                                                    <YAxis
+                                                        dataKey="price"
+                                                        stroke="#2c2c2e"
+                                                        tick={{ fontSize: 11, fill: '#5F6670', fontWeight: 600 }}
+                                                        orientation="right"
+                                                        width={60}
+                                                        domain={['auto', 'auto']}
+                                                        axisLine={false}
+                                                        tickLine={false}
+                                                    />
+                                                    <Tooltip
+                                                        wrapperClassName="chart-tooltip-glass"
+                                                        contentStyle={{
+                                                            backgroundColor: 'rgba(28, 28, 30, 0.85)',
+                                                            borderColor: 'rgba(255,255,255,0.1)',
+                                                            borderRadius: '12px',
+                                                            padding: '12px',
+                                                            backdropFilter: 'blur(20px)'
+                                                        }}
+                                                        itemStyle={{ color: '#fff', fontSize: '13px', fontWeight: 600 }}
+                                                        labelStyle={{ color: '#86868b', fontSize: '11px', marginBottom: '6px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.5px' }}
+                                                    />
+
+                                                    <Area
+                                                        type="monotone"
+                                                        dataKey="price"
+                                                        stroke="none"
+                                                        fill="url(#chartAreaGradient)"
+                                                        isAnimationActive={true}
+                                                        animationDuration={1000}
+                                                    />
+
+                                                    {/* Line with enhanced gradient and glow */}
+                                                    <Line
+                                                        type="monotone"
+                                                        dataKey="price"
+                                                        stroke="url(#chartLineGradient)"
+                                                        strokeWidth={3}
+                                                        dot={<CustomDot />}
+                                                        activeDot={{ r: 8, fill: '#8B5CF6', stroke: '#fff', strokeWidth: 2, strokeOpacity: 0.3 }}
+                                                        isAnimationActive={true}
+                                                        animationDuration={1200}
+                                                        animationEasing="ease-in-out"
+                                                        filter="url(#lineGlow)"
+                                                    />
+                                                </LineChart>
+                                            </ResponsiveContainer>
+                                        </div>
+                                    )}
+                                </div>
                             </div>
                         </div>
 
                         {/* Content Toggle: Token vs Market */}
-                        <div className="bg-[#1c1c1e] rounded-[18px] p-6 md:p-8 min-h-[400px]">
-                            <div className="flex items-center gap-6 mb-6 border-b border-[#1E2228]">
+                        <div className="bg-[#1c1c1e] rounded-2xl p-6 md:p-8 min-h-[400px] border border-white/5 shadow-xl transition-all duration-300 hover:border-white/10 fade-in">
+                            <div className="flex items-center gap-6 mb-6 border-b border-[#2c2c2e]">
                                 <button
                                     onClick={() => setContentTab('token')}
-                                    className={`text-sm md:text-base font-bold pb-4 border-b-2 transition-colors ${contentTab === 'token'
-                                        ? 'text-[#00E5FF] border-[#00E5FF]'
-                                        : 'text-[#5F6670] border-transparent hover:text-[#E4E8EC]'
+                                    className={`text-sm md:text-base font-bold pb-4 border-b-2 transition-all duration-300 ${contentTab === 'token'
+                                        ? 'text-[#8B5CF6] border-[#8B5CF6] scale-105'
+                                        : 'text-[#5F6670] border-transparent hover:text-[#E4E8EC] hover:border-[#5F6670]'
                                         }`}
                                 >
                                     {selectedSymbol} Events
                                 </button>
                                 <button
                                     onClick={() => setContentTab('market')}
-                                    className={`text-sm md:text-base font-bold pb-4 border-b-2 transition-colors ${contentTab === 'market'
-                                        ? 'text-[#00E5FF] border-[#00E5FF]'
-                                        : 'text-[#5F6670] border-transparent hover:text-[#E4E8EC]'
+                                    className={`text-sm md:text-base font-bold pb-4 border-b-2 transition-all duration-300 ${contentTab === 'market'
+                                        ? 'text-[#8B5CF6] border-[#8B5CF6] scale-105'
+                                        : 'text-[#5F6670] border-transparent hover:text-[#E4E8EC] hover:border-[#5F6670]'
                                         }`}
                                 >
                                     Market Pulse
@@ -370,7 +476,7 @@ const ProDashboard = ({ onLogout }) => {
                                                     <div className="space-y-2">
                                                         {tokenCrosses.slice(0, 10).map((c, i) => (
                                                             <div key={i} className="flex justify-between items-center py-2 border-b border-[#1E2228]/50">
-                                                                <span className={`text-xs font-bold px-2 py-1 rounded-full ${c.type.includes('Golden') ? 'bg-[#32D74B]/10 text-[#32D74B]' : 'bg-[#FF453A]/10 text-[#FF453A]'}`}>
+                                                                <span className={`text-xs font-bold px-2 py-1 rounded-full ${c.type.includes('Golden') ? 'bg-[#10B981]/10 text-[#10B981]' : 'bg-[#F59E0B]/10 text-[#F59E0B]'}`}>
                                                                     {c.type.replace('Confirmed ', '')}
                                                                 </span>
                                                                 <span className="text-xs text-[#5F6670]">{c.date?.substring(0, 10)}</span>
@@ -387,8 +493,8 @@ const ProDashboard = ({ onLogout }) => {
                                                     <div className="space-y-2">
                                                         {tokenRecommendations.slice(0, 10).map((s, i) => (
                                                             <div key={i} className="flex justify-between items-center py-2 border-b border-[#1E2228]/50">
-                                                                <span className={`text-xs font-bold px-2 py-1 rounded-full uppercase ${s.signalType === 'buy' ? 'bg-[#32D74B]/10 text-[#32D74B]' :
-                                                                    s.signalType === 'sell' ? 'bg-[#FF453A]/10 text-[#FF453A]' :
+                                                                <span className={`text-xs font-bold px-2 py-1 rounded-full uppercase ${s.signalType === 'buy' ? 'bg-[#10B981]/10 text-[#10B981]' :
+                                                                    s.signalType === 'sell' ? 'bg-[#F59E0B]/10 text-[#F59E0B]' :
                                                                         'bg-[#5F6670]/10 text-[#5F6670]'
                                                                     }`}>
                                                                     {s.signalType}
@@ -411,7 +517,7 @@ const ProDashboard = ({ onLogout }) => {
                                                     {marketCrosses.slice(0, 15).map((c, i) => (
                                                         <div key={i} onClick={() => { setSelectedSymbol(c.symbol); setContentTab('token'); }} className="flex justify-between items-center py-2 border-b border-[#1E2228]/50 cursor-pointer hover:bg-[#1E2228] px-2 rounded -mx-2">
                                                             <span className="font-bold text-sm w-16">{c.symbol}</span>
-                                                            <span className={`text-xs font-bold px-2 py-1 rounded-full ${c.type.includes('Golden') ? 'bg-[#32D74B]/10 text-[#32D74B]' : 'bg-[#FF453A]/10 text-[#FF453A]'}`}>
+                                                            <span className={`text-xs font-bold px-2 py-1 rounded-full ${c.type.includes('Golden') ? 'bg-[#10B981]/10 text-[#10B981]' : 'bg-[#F59E0B]/10 text-[#F59E0B]'}`}>
                                                                 {c.type.replace('Confirmed ', '')}
                                                             </span>
                                                             <span className="text-xs text-[#5F6670]">{c.date?.substring(0, 10)}</span>
@@ -426,13 +532,13 @@ const ProDashboard = ({ onLogout }) => {
                                                     {marketRecommendations.slice(0, 15).map((s, i) => (
                                                         <div key={i} onClick={() => { setSelectedSymbol(s.symbol); setContentTab('token'); }} className="flex justify-between items-center py-2 border-b border-[#1E2228]/50 cursor-pointer hover:bg-[#1E2228] px-2 rounded -mx-2">
                                                             <span className="font-bold text-sm w-16">{s.symbol}</span>
-                                                            <span className={`text-xs font-bold px-2 py-1 rounded-full uppercase ${s.side === 'buy' ? 'bg-[#32D74B]/10 text-[#32D74B]' :
-                                                                s.side === 'sell' ? 'bg-[#FF453A]/10 text-[#FF453A]' :
+                                                            <span className={`text-xs font-bold px-2 py-1 rounded-full uppercase ${s.side === 'buy' ? 'bg-[#10B981]/10 text-[#10B981]' :
+                                                                s.side === 'sell' ? 'bg-[#F59E0B]/10 text-[#F59E0B]' :
                                                                     'bg-[#5F6670]/10 text-[#5F6670]'
                                                                 }`}>
                                                                 {s.side}
                                                             </span>
-                                                            <span className="text-xs font-bold text-[#00E5FF]">{s.score}</span>
+                                                            <span className="text-xs font-bold text-[#8B5CF6]">{s.score}</span>
                                                         </div>
                                                     ))}
                                                 </div>
@@ -445,7 +551,7 @@ const ProDashboard = ({ onLogout }) => {
                     </div>
                 </div>
             </div>
-        </div >
+        </div>
     );
 };
 

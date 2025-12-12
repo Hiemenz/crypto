@@ -37,7 +37,7 @@ const Login = ({ onLogin }) => {
                     <input
                         type="email"
                         required
-                        className="w-full bg-[#1A1A1A]/80 border border-white/5 rounded-lg px-4 py-3.5 text-white placeholder-gray-600 focus:outline-none focus:bg-[#202020] focus:ring-1 focus:ring-gray-500/50 transition-all font-medium text-sm"
+                        className="input-modern w-full text-sm font-medium"
                         placeholder="name@company.com"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
@@ -49,7 +49,7 @@ const Login = ({ onLogin }) => {
                     <input
                         type="password"
                         required
-                        className="w-full bg-[#1A1A1A]/80 border border-white/5 rounded-lg px-4 py-3.5 text-white placeholder-gray-600 focus:outline-none focus:bg-[#202020] focus:ring-1 focus:ring-gray-500/50 transition-all font-medium text-sm"
+                        className="input-modern w-full text-sm font-medium"
                         placeholder="••••••••"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
@@ -58,10 +58,10 @@ const Login = ({ onLogin }) => {
 
                 <button
                     type="submit"
-                    className="w-full bg-white text-black hover:bg-gray-100 font-bold text-sm py-4 rounded-lg transition-all duration-200 shadow-lg shadow-white/5 flex items-center justify-center gap-2 mt-2 group"
+                    className="btn-primary w-full flex items-center justify-center gap-2 mt-2 group text-sm py-4"
                 >
                     <span>Sign In</span>
-                    <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
+                    <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </button>
             </form>
 
@@ -75,7 +75,7 @@ const Login = ({ onLogin }) => {
 
                 <button
                     onClick={onLogin}
-                    className="text-xs font-medium text-gray-500 hover:text-gray-300 transition-colors uppercase tracking-wide border-b border-transparent hover:border-gray-700 pb-0.5"
+                    className="btn-ghost text-xs py-2 px-4 uppercase tracking-wide"
                 >
                     Skip authentication
                 </button>
