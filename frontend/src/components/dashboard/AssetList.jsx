@@ -9,8 +9,8 @@ const AssetList = ({ assets, selectedSymbol, onSelect }) => {
         <div className="flex-1 overflow-y-auto">
             {assets.map((item) => {
                 const isSelected = selectedSymbol === item.symbol;
-                const isBuy = item.side === 'buy';
-                const isSell = item.side === 'sell';
+                const isBuy = item.side?.toString().trim().toLowerCase() === 'buy';
+                const isSell = item.side?.toString().trim().toLowerCase() === 'sell';
 
                 return (
                     <div
@@ -29,9 +29,9 @@ const AssetList = ({ assets, selectedSymbol, onSelect }) => {
                                     {item.symbol}
                                 </h3>
                                 <div className="flex items-center gap-1.5 mt-0.5">
-                                    <span className={`text-[11px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-sm ${isBuy ? 'bg-trade-up/20 text-trade-up' :
-                                        isSell ? 'bg-trade-down/20 text-trade-down' :
-                                            'bg-muted/20 text-muted'
+                                    <span className={`text-[11px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-sm ${isBuy ? 'bg-emerald-500/20 text-emerald-500' :
+                                        isSell ? 'bg-rose-500/20 text-rose-500' :
+                                            'bg-slate-500/20 text-slate-400'
                                         }`}>
                                         {item.side}
                                     </span>

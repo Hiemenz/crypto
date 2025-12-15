@@ -7,20 +7,20 @@ export default {
     theme: {
         extend: {
             colors: {
-                app: 'var(--bg-app)',
-                panel: 'var(--bg-panel)',
-                hover: 'var(--bg-hover)',
-                active: 'var(--bg-active)',
-                primary: 'var(--text-primary)',
-                secondary: 'var(--text-secondary)',
-                muted: 'var(--text-muted)',
+                app: '#0B0F14',
+                panel: '#121826',
+                hover: '#1C2533',
+                active: '#2A3441',
+                primary: '#FFFFFF',
+                secondary: '#9CA3AF',
+                muted: '#6B7280',
                 trade: {
-                    up: 'var(--trade-up)',
-                    down: 'var(--trade-down)',
-                    accent: 'var(--trade-accent)',
+                    up: '#2ABD85',
+                    down: '#F23645',
+                    accent: '#2962FF',
                 },
                 border: {
-                    subtle: 'var(--border-subtle)',
+                    subtle: '#1E2838',
                 }
             },
             fontFamily: {

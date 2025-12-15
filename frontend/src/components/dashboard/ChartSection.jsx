@@ -121,12 +121,20 @@ const ChartSection = ({ data, symbol, range, onRangeChange, currentSignal }) => 
                     <h2 className="text-3xl font-display font-bold text-primary flex items-center gap-3">
                         {symbol}
                         {currentSignal && (
-                            <span className={`text-xs px-2 py-1 rounded-full border ${currentSignal.side === 'buy' ? 'border-trade-up/30 text-trade-up bg-trade-up/10' :
-                                currentSignal.side === 'sell' ? 'border-trade-down/30 text-trade-down bg-trade-down/10' :
-                                    'border-trade-accent/30 text-trade-accent bg-trade-accent/10'
-                                }`}>
-                                {currentSignal.side.toUpperCase()}
-                            </span>
+                            (() => {
+                                const side = currentSignal.side?.toString().trim().toLowerCase();
+                                const isBuy = side === 'buy';
+                                const isSell = side === 'sell';
+
+                                return (
+                                    <span className={`text-xs px-2 py-1 rounded-sm font-bold uppercase tracking-wider ${isBuy ? 'bg-emerald-500/20 text-emerald-500' :
+                                            isSell ? 'bg-rose-500/20 text-rose-500' :
+                                                'bg-slate-500/20 text-slate-400'
+                                        }`}>
+                                        {currentSignal.side}
+                                    </span>
+                                );
+                            })()
                         )}
                     </h2>
                     <div className="flex items-center gap-4 mt-2">
