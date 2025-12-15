@@ -88,3 +88,21 @@ body {
   scrollbar-width: none;
   /* Firefox */
 }
+
+/* Chart Dot Animation */
+.slide-in-dot {
+  opacity: 0;
+  animation: slideInDot 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes slideInDot {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

@@ -38,14 +38,17 @@ const generateDemoData = () => {
 };
 
 const CustomDot = (props) => {
-    const { cx, cy, payload } = props;
+    const { cx, cy, payload, index = 0 } = props;
     if (!payload.signal) return null;
 
     const isBuy = payload.signal === 'buy';
     const color = isBuy ? '#32D74B' : '#FF453A';
 
+    // Fixed delay to appear after chart
+    const delay = 1.6;
+
     return (
-        <g>
+        <g className="slide-in-dot" style={{ animationDelay: `${delay}s` }}>
             <circle cx={cx} cy={cy} r={8} fill={color} opacity={0.2} />
             <circle cx={cx} cy={cy} r={5} fill={color} />
         </g>
@@ -63,8 +66,8 @@ const CustomTooltip = ({ active, payload }) => {
             <p className="text-sm font-semibold text-white mb-2">${data.price.toLocaleString()}</p>
             {data.signal && (
                 <div className={`text-xs font-bold px-2 py-1 rounded-full inline-block ${data.signal === 'buy'
-                        ? 'bg-[#32D74B]/20 text-[#32D74B]'
-                        : 'bg-[#FF453A]/20 text-[#FF453A]'
+                    ? 'bg-[#32D74B]/20 text-[#32D74B]'
+                    : 'bg-[#FF453A]/20 text-[#FF453A]'
                     }`}>
                     {data.signal === 'buy' ? '🟢 BUY SIGNAL' : '🔴 SELL SIGNAL'}
                 </div>

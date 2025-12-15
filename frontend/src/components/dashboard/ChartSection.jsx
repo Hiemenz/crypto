@@ -1,5 +1,5 @@
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, BarChart, Bar, Cell, ComposedChart, Line } from 'recharts';
 import { CandlestickChart, LineChart as LineChartIcon, Maximize2, ChevronDown } from 'lucide-react';
 
@@ -55,8 +55,34 @@ const prepareCandleData = (data) => {
     }))
 }
 
+const AnimatedDot = (props) => {
+    const { cx, cy, payload, visible, index = 0 } = props;
+    if (!visible || !payload.signalType) return null;
+    const isBuy = payload.signalType === 'buy';
+    const color = isBuy ? 'var(--trade-up)' : 'var(--trade-down)';
+
+    // No stagger, they appear together
+    const delay = 0;
+
+    return (
+        <g className="slide-in-dot" style={{ transformOrigin: `${cx}px ${cy}px`, animationDelay: `${delay}s` }}>
+            <circle cx={cx} cy={cy} r={4} fill={color} stroke="#0B0F14" strokeWidth={2} />
+        </g>
+    );
+};
+
 const ChartSection = ({ data, symbol, range, onRangeChange, currentSignal }) => {
     const [showMobileRange, setShowMobileRange] = useState(false);
+    const [showDots, setShowDots] = useState(false);
+
+    // Reset and trigger dot animation on data change
+    useEffect(() => {
+        setShowDots(false);
+        const timer = setTimeout(() => {
+            setShowDots(true);
+        }, 1600); // Wait for chart animation (1500ms) + buffer
+        return () => clearTimeout(timer);
+    }, [data, symbol, range]);
 
     // Process data to ensure numbers
     const processedData = useMemo(() => {
@@ -196,21 +222,14 @@ const ChartSection = ({ data, symbol, range, onRangeChange, currentSignal }) => 
                             strokeWidth={2}
                             fillOpacity={1}
                             fill="url(#colorPrice)"
+                            animationDuration={1500}
                         />
 
                         {/* Signal Markers */}
                         <Line
                             dataKey="Close"
                             stroke="none"
-                            dot={(props) => {
-                                const { cx, cy, payload } = props;
-                                if (!payload.signalType) return null;
-                                const isBuy = payload.signalType === 'buy';
-                                const color = isBuy ? 'var(--trade-up)' : 'var(--trade-down)';
-                                return (
-                                    <circle cx={cx} cy={cy} r={4} fill={color} stroke="#0B0F14" strokeWidth={2} />
-                                );
-                            }}
+                            dot={<AnimatedDot visible={showDots} />}
                             activeDot={false}
                             legendType="none"
                             isAnimationActive={false}
