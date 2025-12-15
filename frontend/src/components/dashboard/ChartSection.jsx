@@ -1,7 +1,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, BarChart, Bar, Cell, ComposedChart, Line } from 'recharts';
-import { CandlestickChart, LineChart as LineChartIcon, Maximize2 } from 'lucide-react';
+import { CandlestickChart, LineChart as LineChartIcon, Maximize2, ChevronDown } from 'lucide-react';
 
 // Custom Candle Shape
 const CandleStick = (props) => {
@@ -56,6 +56,8 @@ const prepareCandleData = (data) => {
 }
 
 const ChartSection = ({ data, symbol, range, onRangeChange, currentSignal }) => {
+    const [showMobileRange, setShowMobileRange] = useState(false);
+
     // Process data to ensure numbers
     const processedData = useMemo(() => {
         if (!data) return [];
@@ -109,9 +111,9 @@ const ChartSection = ({ data, symbol, range, onRangeChange, currentSignal }) => 
                 </div>
 
                 {/* Controls */}
-                <div className="flex flex-col items-end gap-3">
-                    {/* Range Selector */}
-                    <div className="flex bg-panel border border-border-subtle rounded-lg p-1">
+                <div className="flex flex-col items-end gap-3 w-full sm:w-auto">
+                    {/* Desktop Range Selector */}
+                    <div className="hidden sm:flex bg-panel border border-border-subtle rounded-lg p-1">
                         {['1M', '3M', '1Y', '3Y', '5Y', 'ALL'].map(r => (
                             <button
                                 key={r}
@@ -122,6 +124,38 @@ const ChartSection = ({ data, symbol, range, onRangeChange, currentSignal }) => 
                                 {r}
                             </button>
                         ))}
+                    </div>
+
+                    {/* Mobile Range Dropdown */}
+                    <div className="sm:hidden relative">
+                        <button
+                            onClick={() => setShowMobileRange(!showMobileRange)}
+                            className="flex items-center gap-2 bg-panel border border-border-subtle text-white text-xs font-bold px-3 py-1.5 rounded-lg"
+                        >
+                            <span>{range}</span>
+                            <ChevronDown size={14} className={`transition-transformDuration-200 ${showMobileRange ? 'rotate-180' : ''}`} />
+                        </button>
+
+                        {showMobileRange && (
+                            <>
+                                <div className="fixed inset-0 z-10" onClick={() => setShowMobileRange(false)} />
+                                <div className="absolute top-full right-0 mt-2 w-32 bg-panel border border-border-subtle rounded-lg shadow-xl z-20 overflow-hidden flex flex-col p-1">
+                                    {['1M', '3M', '1Y', '3Y', '5Y', 'ALL'].map(r => (
+                                        <button
+                                            key={r}
+                                            onClick={() => {
+                                                onRangeChange(r);
+                                                setShowMobileRange(false);
+                                            }}
+                                            className={`px-3 py-2 text-xs font-bold rounded-md text-left transition-colors ${range === r ? 'bg-bg-active text-trade-accent' : 'text-muted hover:text-white hover:bg-hover'
+                                                }`}
+                                        >
+                                            {r}
+                                        </button>
+                                    ))}
+                                </div>
+                            </>
+                        )}
                     </div>
                 </div>
             </div>
