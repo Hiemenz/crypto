@@ -1,5 +1,5 @@
 {
-  "updated": "2025-12-22 00:33:10.234058",
+  "updated": "2025-12-22 06:32:49.574665",
   "crosses": [
     {
       "category": "crypto",
@@ -702,6 +702,15 @@
       "k": 0.66,
       "d": 0.68,
       "date": "2025-09-28 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "ADA-USD",
+      "type": "Confirmed Death Cross",
+      "price": 0.3658910095691681,
+      "k": 0.01,
+      "d": 0.01,
+      "date": "2025-12-21 00:00:00"
     },
     {
       "category": "crypto",
@@ -2532,6 +2541,15 @@
     },
     {
       "category": "crypto",
+      "symbol": "XRP-USD",
+      "type": "Confirmed Death Cross",
+      "price": 1.9220119714736938,
+      "k": 0.01,
+      "d": 0.05,
+      "date": "2025-12-21 00:00:00"
+    },
+    {
+      "category": "crypto",
       "symbol": "XLM-USD",
       "type": "Golden Cross",
       "price": 0.20978300273418427,
@@ -3816,6 +3834,15 @@
       "k": 0.81,
       "d": 0.92,
       "date": "2025-09-28 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "SOL-USD",
+      "type": "Confirmed Death Cross",
+      "price": 125.99150085449219,
+      "k": 0.01,
+      "d": 0.01,
+      "date": "2025-12-21 00:00:00"
     },
     {
       "category": "crypto",
