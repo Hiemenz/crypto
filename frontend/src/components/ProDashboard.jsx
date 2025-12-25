@@ -2,7 +2,8 @@ import React, { useState, useEffect, useMemo } from 'react';
 import DashboardLayout from './dashboard/DashboardLayout';
 import AssetList from './dashboard/AssetList';
 import ChartSection from './dashboard/ChartSection';
-import { Search } from 'lucide-react';
+import StrategySimulator from './StrategySimulator';
+import { Search, BarChart3, Calculator } from 'lucide-react';
 
 const ProDashboard = ({ onLogout }) => {
     const [signals, setSignals] = useState([]);
@@ -14,6 +15,7 @@ const ProDashboard = ({ onLogout }) => {
     const [loading, setLoading] = useState(true);
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [chartRange, setChartRange] = useState('ALL');
+    const [currentView, setCurrentView] = useState('market'); // 'market' | 'lab'
 
     // Initial Data Load
     useEffect(() => {
@@ -99,9 +101,28 @@ const ProDashboard = ({ onLogout }) => {
 
     const SidebarContent = (
         <div className="flex flex-col h-full">
+            {/* View Switching */}
+            <div className="p-4 pb-0 grid grid-cols-2 gap-2">
+                <button
+                    onClick={() => setCurrentView('market')}
+                    className={`flex items-center justify-center gap-2 py-2 rounded-lg text-sm font-bold transition-all ${currentView === 'market' ? 'bg-primary text-app' : 'text-muted hover:bg-white/5'}`}
+                >
+                    <BarChart3 size={16} />
+                    <span>Market</span>
+                </button>
+                <button
+                    onClick={() => setCurrentView('lab')}
+                    className={`flex items-center justify-center gap-2 py-2 rounded-lg text-sm font-bold transition-all ${currentView === 'lab' ? 'bg-primary text-app' : 'text-muted hover:bg-white/5'}`}
+                >
+                    <Calculator size={16} />
+                    <span>Lab</span>
+                </button>
+            </div>
+
+            <div className="h-px bg-border-subtle mx-4 my-4"></div>
+
             {/* Tabs & Search */}
-            <div className="p-4 space-y-4 border-b border-border-subtle">
-                {/* Type Toggle */}
+            <div className="px-4 space-y-4">
                 {/* Type Toggle */}
                 <div className="flex bg-panel border border-border-subtle rounded-lg p-1">
                     <button
@@ -133,14 +154,24 @@ const ProDashboard = ({ onLogout }) => {
             </div>
 
             {/* List */}
-            <AssetList
-                assets={assetList}
-                selectedSymbol={selectedSymbol}
-                onSelect={(item) => {
-                    setSelectedSymbol(item.symbol);
-                    setSidebarOpen(false); // Close mobile drawer on select
-                }}
-            />
+            {/* We keep the list visible even in Lab mode, though it primarily affects the 'Market' view selection. 
+                 Ideally, clicking an asset here could switch the lab asset too, but for now we keep them decoupled or 'Market' focused. 
+             */}
+            <div className="flex-1 overflow-hidden mt-4 flex flex-col min-h-0">
+                <AssetList
+                    assets={assetList}
+                    selectedSymbol={selectedSymbol}
+                    onSelect={(item) => {
+                        setSelectedSymbol(item.symbol);
+                        setSidebarOpen(false); // Close mobile drawer on select
+                        if (currentView === 'lab') {
+                            // Optional: switch back to market or just select it?
+                            // Let's stay in lab, but maybe the lab should listen to selectedSymbol?
+                            // For this iteration, Lab is independent.
+                        }
+                    }}
+                />
+            </div>
         </div>
     );
 
@@ -151,14 +182,20 @@ const ProDashboard = ({ onLogout }) => {
             setSidebarOpen={setSidebarOpen}
             onLogout={onLogout}
         >
-            <div className="relative flex-1 h-full flex flex-col">
-                <ChartSection
-                    data={chartData}
-                    symbol={selectedSymbol}
-                    range={chartRange}
-                    onRangeChange={setChartRange}
-                    currentSignal={currentSignal}
-                />
+            <div className="relative flex-1 h-full flex flex-col bg-app">
+                {currentView === 'market' ? (
+                    <ChartSection
+                        data={chartData}
+                        symbol={selectedSymbol}
+                        range={chartRange}
+                        onRangeChange={setChartRange}
+                        currentSignal={currentSignal}
+                    />
+                ) : (
+                    <div className="flex-1 overflow-y-auto p-4 md:p-8">
+                        <StrategySimulator mode="pro" />
+                    </div>
+                )}
             </div>
         </DashboardLayout>
     );

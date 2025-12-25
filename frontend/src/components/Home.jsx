@@ -1,84 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, ReferenceDot } from 'recharts';
 import { TrendingUp, Brain, Shield, Zap, ArrowRight, Sparkles, CheckCircle2, Target, BarChart3 } from 'lucide-react';
-
-// Sample demo data showing a realistic price chart with buy/sell signals
-const generateDemoData = () => {
-    const basePrice = 45000;
-    const data = [];
-    let price = basePrice;
-
-    for (let i = 0; i < 60; i++) {
-        // Simulate realistic price movement
-        const change = (Math.random() - 0.48) * 2000;
-        price = Math.max(price + change, basePrice * 0.7);
-
-        const point = {
-            date: `Day ${i + 1}`,
-            price: Math.round(price),
-        };
-
-        // Add buy signals at low points (contrarian)
-        if (i === 12 || i === 28 || i === 45) {
-            point.signal = 'buy';
-            point.signalPrice = point.price;
-        }
-
-        // Add sell signals at high points (contrarian)
-        if (i === 20 || i === 38 || i === 55) {
-            point.signal = 'sell';
-            point.signalPrice = point.price;
-        }
-
-        data.push(point);
-    }
-
-    return data;
-};
-
-const CustomDot = (props) => {
-    const { cx, cy, payload, index = 0 } = props;
-    if (!payload.signal) return null;
-
-    const isBuy = payload.signal === 'buy';
-    const color = isBuy ? '#32D74B' : '#FF453A';
-
-    // Fixed delay to appear after chart
-    const delay = 1.6;
-
-    return (
-        <g className="slide-in-dot" style={{ animationDelay: `${delay}s` }}>
-            <circle cx={cx} cy={cy} r={8} fill={color} opacity={0.2} />
-            <circle cx={cx} cy={cy} r={5} fill={color} />
-        </g>
-    );
-};
-
-const CustomTooltip = ({ active, payload }) => {
-    if (!active || !payload || !payload[0]) return null;
-
-    const data = payload[0].payload;
-
-    return (
-        <div className="bg-[#1c1c1e]/95 backdrop-blur-xl border border-white/10 rounded-xl p-3 shadow-xl">
-            <p className="text-xs text-[#86868b] mb-1">{data.date}</p>
-            <p className="text-sm font-semibold text-white mb-2">${data.price.toLocaleString()}</p>
-            {data.signal && (
-                <div className={`text-xs font-bold px-2 py-1 rounded-full inline-block ${data.signal === 'buy'
-                    ? 'bg-[#32D74B]/20 text-[#32D74B]'
-                    : 'bg-[#FF453A]/20 text-[#FF453A]'
-                    }`}>
-                    {data.signal === 'buy' ? '🟢 BUY SIGNAL' : '🔴 SELL SIGNAL'}
-                </div>
-            )}
-        </div>
-    );
-};
+import StrategySimulator from './StrategySimulator';
 
 const Home = () => {
-    const [demoData] = useState(generateDemoData());
-
     return (
         <div className="min-h-screen w-full relative overflow-hidden bg-[#0a0a0a] text-white font-sans selection:bg-cyan-500/30">
 
@@ -107,73 +32,9 @@ const Home = () => {
                     </div>
                 </div>
 
-                {/* Interactive Demo Chart Section */}
-                <div className="w-full max-w-6xl mx-auto mb-16 fade-in-scale">
-                    <div className="backdrop-blur-xl bg-[#121212]/60 border border-white/[0.08] rounded-3xl p-6 md:p-10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.6)] hover:border-white/[0.12] transition-all duration-500">
-
-                        <div className="mb-6 text-center">
-                            <h2 className="text-2xl md:text-3xl font-bold mb-3">See It In Action</h2>
-                            <p className="text-gray-400 text-sm md:text-base max-w-2xl mx-auto">
-                                Our system analyzes market data and shows you clear buy (🟢) and sell (🔴) signals on the chart
-                            </p>
-                        </div>
-
-                        {/* Chart */}
-                        <div className="bg-[#0d0d0f]/60 rounded-2xl p-4 md:p-6 border border-white/5">
-                            <div className="h-[300px] md:h-[400px] w-full">
-                                <ResponsiveContainer width="100%" height="100%">
-                                    <LineChart data={demoData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                                        <defs>
-                                            <linearGradient id="demoLineGradient" x1="0" y1="0" x2="1" y2="0">
-                                                <stop offset="0%" stopColor="#00E5FF" stopOpacity={1} />
-                                                <stop offset="50%" stopColor="#0A84FF" stopOpacity={1} />
-                                                <stop offset="100%" stopColor="#BF5AF2" stopOpacity={0.8} />
-                                            </linearGradient>
-                                        </defs>
-                                        <XAxis
-                                            dataKey="date"
-                                            stroke="#48484a"
-                                            tick={{ fontSize: 11, fill: '#86868b' }}
-                                            tickFormatter={(v) => v.replace('Day ', '')}
-                                            axisLine={false}
-                                            tickLine={false}
-                                        />
-                                        <YAxis
-                                            stroke="#48484a"
-                                            tick={{ fontSize: 11, fill: '#86868b' }}
-                                            tickFormatter={(v) => `$${(v / 1000).toFixed(0)}k`}
-                                            axisLine={false}
-                                            tickLine={false}
-                                            orientation="right"
-                                        />
-                                        <Tooltip content={<CustomTooltip />} />
-                                        <Line
-                                            type="monotone"
-                                            dataKey="price"
-                                            stroke="url(#demoLineGradient)"
-                                            strokeWidth={2.5}
-                                            dot={<CustomDot />}
-                                            activeDot={{ r: 6, fill: '#00E5FF' }}
-                                            isAnimationActive={true}
-                                            animationDuration={1500}
-                                        />
-                                    </LineChart>
-                                </ResponsiveContainer>
-                            </div>
-
-                            {/* Legend */}
-                            <div className="flex items-center justify-center gap-6 mt-4 text-sm">
-                                <div className="flex items-center gap-2">
-                                    <div className="w-3 h-3 rounded-full bg-[#32D74B]"></div>
-                                    <span className="text-gray-400">Buy Signal</span>
-                                </div>
-                                <div className="flex items-center gap-2">
-                                    <div className="w-3 h-3 rounded-full bg-[#FF453A]"></div>
-                                    <span className="text-gray-400">Sell Signal</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                {/* Interactive Simulator Section */}
+                <div className="w-full max-w-6xl mx-auto mb-16 fade-in-scale px-4">
+                    <StrategySimulator mode="demo" />
                 </div>
 
                 {/* How It Works Section */}
