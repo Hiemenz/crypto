@@ -183,6 +183,17 @@ const ProDashboard = ({ onLogout }) => {
             onLogout={onLogout}
         >
             <div className="relative flex-1 h-full flex flex-col bg-app">
+                {/* Mode Indicator Header */}
+                <div className="h-14 flex items-center px-6 border-b border-border-subtle bg-panel/50 backdrop-blur-sm z-10">
+                    <div className="flex items-center gap-2 text-sm">
+                        <span className="text-muted">Current View:</span>
+                        <div className="flex items-center gap-2 font-bold text-white bg-white/10 px-3 py-1 rounded-full">
+                            {currentView === 'market' ? <BarChart3 size={14} /> : <Calculator size={14} />}
+                            <span className="uppercase tracking-wider text-xs">{currentView}</span>
+                        </div>
+                    </div>
+                </div>
+
                 {currentView === 'market' ? (
                     <ChartSection
                         data={chartData}
