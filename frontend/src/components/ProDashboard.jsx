@@ -102,21 +102,23 @@ const ProDashboard = ({ onLogout }) => {
     const SidebarContent = (
         <div className="flex flex-col h-full">
             {/* View Switching */}
-            <div className="p-4 pb-0 grid grid-cols-2 gap-2">
-                <button
-                    onClick={() => setCurrentView('market')}
-                    className={`flex items-center justify-center gap-2 py-2 rounded-lg text-sm font-bold transition-all ${currentView === 'market' ? 'bg-primary text-app' : 'text-muted hover:bg-white/5'}`}
-                >
-                    <BarChart3 size={16} />
-                    <span>Market</span>
-                </button>
-                <button
-                    onClick={() => setCurrentView('lab')}
-                    className={`flex items-center justify-center gap-2 py-2 rounded-lg text-sm font-bold transition-all ${currentView === 'lab' ? 'bg-primary text-app' : 'text-muted hover:bg-white/5'}`}
-                >
-                    <Calculator size={16} />
-                    <span>Lab</span>
-                </button>
+            <div className="px-4 pt-4">
+                <div className="flex bg-panel border border-border-subtle rounded-lg p-1">
+                    <button
+                        onClick={() => setCurrentView('market')}
+                        className={`flex-1 flex items-center justify-center gap-2 text-sm font-bold py-1.5 rounded-md transition-all ${currentView === 'market' ? 'bg-white text-black shadow-sm' : 'text-muted hover:text-white'}`}
+                    >
+                        <BarChart3 size={16} />
+                        <span>Market</span>
+                    </button>
+                    <button
+                        onClick={() => setCurrentView('lab')}
+                        className={`flex-1 flex items-center justify-center gap-2 text-sm font-bold py-1.5 rounded-md transition-all ${currentView === 'lab' ? 'bg-white text-black shadow-sm' : 'text-muted hover:text-white'}`}
+                    >
+                        <Calculator size={16} />
+                        <span>Lab</span>
+                    </button>
+                </div>
             </div>
 
             <div className="h-px bg-border-subtle mx-4 my-4"></div>
@@ -183,17 +185,6 @@ const ProDashboard = ({ onLogout }) => {
             onLogout={onLogout}
         >
             <div className="relative flex-1 h-full flex flex-col bg-app">
-                {/* Mode Indicator Header */}
-                <div className="h-14 flex items-center px-6 border-b border-border-subtle bg-panel/50 backdrop-blur-sm z-10">
-                    <div className="flex items-center gap-2 text-sm">
-                        <span className="text-muted">Current View:</span>
-                        <div className="flex items-center gap-2 font-bold text-white bg-white/10 px-3 py-1 rounded-full">
-                            {currentView === 'market' ? <BarChart3 size={14} /> : <Calculator size={14} />}
-                            <span className="uppercase tracking-wider text-xs">{currentView}</span>
-                        </div>
-                    </div>
-                </div>
-
                 {currentView === 'market' ? (
                     <ChartSection
                         data={chartData}
