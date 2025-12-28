@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { TrendingUp, Brain, Shield, Zap, ArrowRight, Sparkles, CheckCircle2, Target, BarChart3 } from 'lucide-react';
 import StrategySimulator from './StrategySimulator';

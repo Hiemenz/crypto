@@ -1,7 +1,7 @@
 import React from 'react';
 import { TrendingUp, TrendingDown, Minus } from 'lucide-react';
 
-const SignalCard = ({ symbol, signal, score, price, change, onAction, actionLabel }) => {
+const SignalCard = ({ symbol, signal, score, price, onAction, actionLabel }) => {
     const isBuy = signal.toLowerCase().includes('buy');
     const isSell = signal.toLowerCase().includes('sell');
 
@@ -68,8 +68,8 @@ const SignalCard = ({ symbol, signal, score, price, change, onAction, actionLabe
                         <div className="h-2 w-full bg-[#1E2228] rounded-full overflow-hidden">
                             <div
                                 className={`h-full rounded-full transition-all duration-500 ${isBuy ? 'bg-gradient-to-r from-[#32D74B] to-emerald-400' :
-                                        (isSell ? 'bg-gradient-to-r from-[#FF453A] to-orange-400' :
-                                            'bg-gradient-to-r from-[#0A84FF] to-cyan-400')
+                                    (isSell ? 'bg-gradient-to-r from-[#FF453A] to-orange-400' :
+                                        'bg-gradient-to-r from-[#0A84FF] to-cyan-400')
                                     }`}
                                 style={{ width: `${score}%` }}
                             />

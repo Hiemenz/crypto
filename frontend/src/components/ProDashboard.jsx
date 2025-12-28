@@ -7,6 +7,7 @@ import { Search, BarChart3, Calculator } from 'lucide-react';
 
 const ProDashboard = ({ onLogout }) => {
     const [signals, setSignals] = useState([]);
+    // eslint-disable-next-line no-unused-vars
     const [crosses, setCrosses] = useState([]);
     const [historyData, setHistoryData] = useState(null);
     const [activeTab, setActiveTab] = useState('crypto'); // 'crypto' | 'stocks'
@@ -40,11 +41,13 @@ const ProDashboard = ({ onLogout }) => {
             }
             setLoading(false);
         }).catch(err => console.error('Load error:', err));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     // History Data Fetch
     useEffect(() => {
         if (!selectedSymbol) return;
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setHistoryData(null);
 
         // Construct path - handle both crypto and stock symbols if needed, assuming flat structure based on previous file

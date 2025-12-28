@@ -5,10 +5,9 @@ import { CandlestickChart, LineChart as LineChartIcon, Maximize2, ChevronDown } 
 
 // Custom Candle Shape
 const CandleStick = (props) => {
-    const { x, y, width, height, low, high, open, close } = props;
+    const { x, width, open, close } = props;
     const isUp = close >= open;
     const color = isUp ? 'var(--trade-up)' : 'var(--trade-down)';
-    const ratio = Math.abs(height / (open - close));
 
     // Calculate strict pixel positions
     // This is tricky in Recharts custom shapes as 'y' and 'height' are pre-calculated for the 'value' (often close or max)
@@ -45,18 +44,10 @@ const CandleStick = (props) => {
 // Plan B: Use a standard implementation pattern for Recharts Candlesticks.
 // Data needs: { high, low, open, close }
 
-const prepareCandleData = (data) => {
-    return data.map(d => ({
-        ...d,
-        // For the body (Bar), we need [min(Open, Close), max(Open, Close)]
-        // Recharts Bar can take [min, max]
-        body: [Math.min(d.Open, d.Close), Math.max(d.Open, d.Close)],
-        // For wicks, we might need separate lines or use the custom shape approach passing pure values
-    }))
-}
+
 
 const AnimatedDot = (props) => {
-    const { cx, cy, payload, visible, index = 0 } = props;
+    const { cx, cy, payload, visible } = props;
     if (!visible || !payload.signalType) return null;
     const isBuy = payload.signalType === 'buy';
     const color = isBuy ? 'var(--trade-up)' : 'var(--trade-down)';
@@ -71,11 +62,27 @@ const AnimatedDot = (props) => {
     );
 };
 
+const CustomTooltip = ({ active, payload, label }) => {
+    if (active && payload && payload.length) {
+        const d = payload[0].payload;
+        return (
+            <div className="bg-panel border border-border-subtle p-3 rounded-lg shadow-xl backdrop-blur-md bg-opacity-90">
+                <p className="text-muted text-xs font-semibold mb-2">{label}</p>
+                <div className="space-y-1 text-sm font-mono">
+                    <div className="flex justify-between gap-4"><span className="text-muted">C:</span> <span className="text-white font-bold">{d.Close?.toFixed(2)}</span></div>
+                </div>
+            </div>
+        );
+    }
+    return null;
+};
+
 const ChartSection = ({ data, symbol, range, onRangeChange, currentSignal }) => {
     const [showMobileRange, setShowMobileRange] = useState(false);
     const [showDots, setShowDots] = useState(false);
 
     // Reset and trigger dot animation on data change
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     useEffect(() => {
         setShowDots(false);
         const timer = setTimeout(() => {
@@ -97,21 +104,7 @@ const ChartSection = ({ data, symbol, range, onRangeChange, currentSignal }) => 
         }));
     }, [data]);
 
-    const CustomTooltip = ({ active, payload, label }) => {
-        if (active && payload && payload.length) {
-            const d = payload[0].payload;
-            return (
-                <div className="bg-panel border border-border-subtle p-3 rounded-lg shadow-xl backdrop-blur-md bg-opacity-90">
-                    <p className="text-muted text-xs font-semibold mb-2">{label}</p>
-                    <div className="space-y-1 text-sm font-mono">
-                        <div className="flex justify-between gap-4"><span className="text-muted">C:</span> <span className="text-white font-bold">{d.Close?.toFixed(2)}</span></div>
-                        {/* Removed OHLC values for simpler tooltip if just Area, but keeping them is fine too if data exists */}
-                    </div>
-                </div>
-            );
-        }
-        return null;
-    };
+
 
     return (
         <div className="flex flex-col h-full bg-app relative">
@@ -128,8 +121,8 @@ const ChartSection = ({ data, symbol, range, onRangeChange, currentSignal }) => 
 
                                 return (
                                     <span className={`text-xs px-2 py-1 rounded-sm font-bold uppercase tracking-wider ${isBuy ? 'bg-emerald-500/20 text-emerald-500' :
-                                            isSell ? 'bg-rose-500/20 text-rose-500' :
-                                                'bg-slate-500/20 text-slate-400'
+                                        isSell ? 'bg-rose-500/20 text-rose-500' :
+                                            'bg-slate-500/20 text-slate-400'
                                         }`}>
                                         {currentSignal.side}
                                     </span>
@@ -221,6 +214,7 @@ const ChartSection = ({ data, symbol, range, onRangeChange, currentSignal }) => 
                             tickLine={false}
                             width={50}
                         />
+
                         <Tooltip content={<CustomTooltip />} />
 
                         <Area

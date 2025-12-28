@@ -14,6 +14,7 @@ function App() {
     // Check if user has skipped or is logged in
     const authStatus = localStorage.getItem('isAuthenticated');
     if (authStatus === 'true') {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsAuthenticated(true);
     }
     setLoading(false);

@@ -2,8 +2,6 @@ import React from 'react';
 import { TrendingUp, Zap, Menu, X, ChevronLeft } from 'lucide-react';
 
 const Header = ({
-    sidebarOpen,
-    setSidebarOpen,
     mobileView, // New prop
     onBack,      // New prop
     onLogout    // New prop
