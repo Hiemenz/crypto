@@ -1,5 +1,5 @@
 {
-  "updated": "2026-01-05 00:33:05.981585",
+  "updated": "2026-01-05 06:33:23.251841",
   "crosses": [
     {
       "category": "crypto",
@@ -360,6 +360,15 @@
       "k": 0.01,
       "d": 0.0,
       "date": "2025-11-30 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "ADA-USD",
+      "type": "Golden Cross",
+      "price": 0.4000909924507141,
+      "k": 0.06,
+      "d": 0.02,
+      "date": "2026-01-04 00:00:00"
     },
     {
       "category": "crypto",
@@ -2155,6 +2164,15 @@
     {
       "category": "crypto",
       "symbol": "XRP-USD",
+      "type": "Golden Cross",
+      "price": 2.0900208950042725,
+      "k": 0.11,
+      "d": 0.04,
+      "date": "2026-01-04 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XRP-USD",
       "type": "Confirmed Death Cross",
       "price": 0.4533059895038605,
       "k": 0.02,
@@ -3604,6 +3622,15 @@
     {
       "category": "crypto",
       "symbol": "SOL-USD",
+      "type": "Golden Cross",
+      "price": 133.8996124267578,
+      "k": 0.05,
+      "d": 0.02,
+      "date": "2026-01-04 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "SOL-USD",
       "type": "Confirmed Death Cross",
       "price": 1.8542490005493164,
       "k": 0.11,
@@ -4365,6 +4392,15 @@
       "k": 0.04,
       "d": 0.02,
       "date": "2025-11-30 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "BTC-USD",
+      "type": "Golden Cross",
+      "price": 91413.4921875,
+      "k": 0.12,
+      "d": 0.09,
+      "date": "2026-01-04 00:00:00"
     },
     {
       "category": "crypto",
@@ -5247,6 +5283,15 @@
       "k": 0.03,
       "d": 0.01,
       "date": "2025-11-30 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "ETH-USD",
+      "type": "Golden Cross",
+      "price": 3140.71044921875,
+      "k": 0.16,
+      "d": 0.14,
+      "date": "2026-01-04 00:00:00"
     },
     {
       "category": "crypto",
@@ -6579,6 +6624,15 @@
       "k": 0.01,
       "d": 0.0,
       "date": "2025-11-30 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "DOGE-USD",
+      "type": "Golden Cross",
+      "price": 0.1493079960346222,
+      "k": 0.12,
+      "d": 0.04,
+      "date": "2026-01-04 00:00:00"
     },
     {
       "category": "crypto",
