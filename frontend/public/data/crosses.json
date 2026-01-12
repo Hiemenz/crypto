@@ -1,5 +1,5 @@
 {
-  "updated": "2026-01-11 18:52:10.914849",
+  "updated": "2026-01-12 00:33:27.084369",
   "crosses": [
     {
       "category": "crypto",
@@ -8166,6 +8166,15 @@
     },
     {
       "category": "stocks",
+      "symbol": "AON",
+      "type": "Confirmed Death Cross",
+      "price": 350.79998779296875,
+      "k": 0.75,
+      "d": 0.76,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
       "symbol": "NOW",
       "type": "Confirmed Golden Cross",
       "price": 61.130001068115234,
@@ -10782,6 +10791,15 @@
       "k": 0.28,
       "d": 0.37,
       "date": "2025-12-07 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "PEG",
+      "type": "Confirmed Death Cross",
+      "price": 78.68000030517578,
+      "k": 0.23,
+      "d": 0.23,
+      "date": "2026-01-11 00:00:00"
     },
     {
       "category": "stocks",
@@ -16839,6 +16857,15 @@
       "k": 0.6,
       "d": 0.62,
       "date": "2025-12-07 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "GIS",
+      "type": "Confirmed Death Cross",
+      "price": 44.599998474121094,
+      "k": 0.42,
+      "d": 0.64,
+      "date": "2026-01-11 00:00:00"
     },
     {
       "category": "stocks",
@@ -26751,6 +26778,15 @@
     },
     {
       "category": "stocks",
+      "symbol": "NTRS",
+      "type": "Death Cross",
+      "price": 145.74000549316406,
+      "k": 0.96,
+      "d": 0.97,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
       "symbol": "ES",
       "type": "Golden Cross",
       "price": 30.14811897277832,
@@ -31737,6 +31773,15 @@
     },
     {
       "category": "stocks",
+      "symbol": "ANET",
+      "type": "Confirmed Death Cross",
+      "price": 122.88999938964844,
+      "k": 0.22,
+      "d": 0.24,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
       "symbol": "LOW",
       "type": "Confirmed Golden Cross",
       "price": 46.886348724365234,
@@ -34182,6 +34227,15 @@
       "k": 0.4,
       "d": 0.42,
       "date": "2025-12-07 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "CNA",
+      "type": "Death Cross",
+      "price": 46.349998474121094,
+      "k": 0.77,
+      "d": 0.88,
+      "date": "2026-01-11 00:00:00"
     },
     {
       "category": "stocks",
@@ -37273,6 +37327,15 @@
     {
       "category": "stocks",
       "symbol": "AVGO",
+      "type": "Golden Cross",
+      "price": 344.9700012207031,
+      "k": 0.07,
+      "d": 0.06,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "AVGO",
       "type": "Death Cross",
       "price": 6.598180770874023,
       "k": 0.9,
@@ -40248,6 +40311,15 @@
       "k": 0.77,
       "d": 0.81,
       "date": "2025-12-07 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "TRV",
+      "type": "Confirmed Death Cross",
+      "price": 281.9599914550781,
+      "k": 0.53,
+      "d": 0.64,
+      "date": "2026-01-11 00:00:00"
     },
     {
       "category": "stocks",
@@ -46515,6 +46587,15 @@
     },
     {
       "category": "stocks",
+      "symbol": "TSN",
+      "type": "Confirmed Death Cross",
+      "price": 58.029998779296875,
+      "k": 0.27,
+      "d": 0.29,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
       "symbol": "CPB",
       "type": "Golden Cross",
       "price": 30.032379150390625,
@@ -48963,6 +49044,15 @@
     },
     {
       "category": "stocks",
+      "symbol": "PNC",
+      "type": "Death Cross",
+      "price": 217.5500030517578,
+      "k": 0.96,
+      "d": 0.97,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
       "symbol": "MPC",
       "type": "Confirmed Golden Cross",
       "price": 30.464651107788086,
@@ -50679,6 +50769,15 @@
       "k": 0.57,
       "d": 0.52,
       "date": "2025-11-30 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "ELV",
+      "type": "Confirmed Golden Cross",
+      "price": 372.8299865722656,
+      "k": 0.88,
+      "d": 0.82,
+      "date": "2026-01-11 00:00:00"
     },
     {
       "category": "stocks",
@@ -56655,6 +56754,15 @@
       "k": 0.41,
       "d": 0.33,
       "date": "2025-12-07 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "CVX",
+      "type": "Golden Cross",
+      "price": 162.11000061035156,
+      "k": 0.02,
+      "d": 0.01,
+      "date": "2026-01-11 00:00:00"
     },
     {
       "category": "stocks",
@@ -63354,6 +63462,15 @@
     },
     {
       "category": "stocks",
+      "symbol": "CCI",
+      "type": "Confirmed Death Cross",
+      "price": 83.66999816894531,
+      "k": 0.22,
+      "d": 0.22,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
       "symbol": "ADSK",
       "type": "Golden Cross",
       "price": 54.18000030517578,
@@ -68778,6 +68895,15 @@
       "k": 0.54,
       "d": 0.54,
       "date": "2025-12-28 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "ALL",
+      "type": "Confirmed Golden Cross",
+      "price": 212.2100067138672,
+      "k": 0.62,
+      "d": 0.56,
+      "date": "2026-01-11 00:00:00"
     },
     {
       "category": "stocks",
@@ -76647,6 +76773,15 @@
     },
     {
       "category": "stocks",
+      "symbol": "MNST",
+      "type": "Death Cross",
+      "price": 77.33999633789062,
+      "k": 0.85,
+      "d": 0.88,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
       "symbol": "MCO",
       "type": "Confirmed Golden Cross",
       "price": 81.92610931396484,
@@ -78462,6 +78597,15 @@
       "k": 0.12,
       "d": 0.09,
       "date": "2025-11-02 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "COP",
+      "type": "Confirmed Golden Cross",
+      "price": 97.51000213623047,
+      "k": 0.87,
+      "d": 0.79,
+      "date": "2026-01-11 00:00:00"
     },
     {
       "category": "stocks",
@@ -83955,6 +84099,15 @@
     },
     {
       "category": "stocks",
+      "symbol": "OMC",
+      "type": "Death Cross",
+      "price": 79.08000183105469,
+      "k": 0.91,
+      "d": 0.97,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
       "symbol": "AEP",
       "type": "Golden Cross",
       "price": 34.47978591918945,
@@ -88159,6 +88312,15 @@
     {
       "category": "stocks",
       "symbol": "VLO",
+      "type": "Golden Cross",
+      "price": 185.27999877929688,
+      "k": 0.32,
+      "d": 0.13,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "VLO",
       "type": "Confirmed Death Cross",
       "price": 31.39946937561035,
       "k": 0.44,
@@ -91696,6 +91858,15 @@
     {
       "category": "stocks",
       "symbol": "ABT",
+      "type": "Confirmed Golden Cross",
+      "price": 125.91999816894531,
+      "k": 0.27,
+      "d": 0.23,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "ABT",
       "type": "Confirmed Death Cross",
       "price": 33.894500732421875,
       "k": 0.34,
@@ -94005,6 +94176,15 @@
       "k": 0.0,
       "d": 0.0,
       "date": "2025-11-23 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "TXN",
+      "type": "Confirmed Golden Cross",
+      "price": 190.30999755859375,
+      "k": 0.86,
+      "d": 0.81,
+      "date": "2026-01-11 00:00:00"
     },
     {
       "category": "stocks",
@@ -99342,6 +99522,15 @@
       "k": 0.75,
       "d": 0.89,
       "date": "2025-11-02 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "AWK",
+      "type": "Confirmed Death Cross",
+      "price": 127.9800033569336,
+      "k": 0.03,
+      "d": 0.03,
+      "date": "2026-01-11 00:00:00"
     },
     {
       "category": "stocks",
@@ -105294,6 +105483,15 @@
     },
     {
       "category": "stocks",
+      "symbol": "KMB",
+      "type": "Confirmed Death Cross",
+      "price": 97.91999816894531,
+      "k": 0.25,
+      "d": 0.26,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
       "symbol": "CSX",
       "type": "Confirmed Golden Cross",
       "price": 8.642725944519043,
@@ -107757,6 +107955,15 @@
       "k": 0.23,
       "d": 0.29,
       "date": "2025-11-23 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "SCHW",
+      "type": "Death Cross",
+      "price": 100.16999816894531,
+      "k": 0.9,
+      "d": 0.95,
+      "date": "2026-01-11 00:00:00"
     },
     {
       "category": "stocks",
@@ -114780,6 +114987,15 @@
     },
     {
       "category": "stocks",
+      "symbol": "BUD",
+      "type": "Death Cross",
+      "price": 65.87999725341797,
+      "k": 0.91,
+      "d": 0.94,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
       "symbol": "MO",
       "type": "Golden Cross",
       "price": 20.68603515625,
@@ -117333,6 +117549,15 @@
       "k": 0.81,
       "d": 0.82,
       "date": "2025-12-21 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "CPT",
+      "type": "Death Cross",
+      "price": 108.80000305175781,
+      "k": 0.95,
+      "d": 0.96,
+      "date": "2026-01-11 00:00:00"
     },
     {
       "category": "stocks",
@@ -128992,6 +129217,15 @@
     {
       "category": "stocks",
       "symbol": "PSA",
+      "type": "Golden Cross",
+      "price": 278.1499938964844,
+      "k": 0.2,
+      "d": 0.1,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "PSA",
       "type": "Confirmed Death Cross",
       "price": 108.62320709228516,
       "k": 0.6,
@@ -132457,6 +132691,15 @@
     {
       "category": "stocks",
       "symbol": "AZO",
+      "type": "Golden Cross",
+      "price": 3421.169921875,
+      "k": 0.1,
+      "d": 0.05,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "AZO",
       "type": "Confirmed Death Cross",
       "price": 526.4400024414062,
       "k": 0.5,
@@ -133623,6 +133866,15 @@
       "k": 0.21,
       "d": 0.15,
       "date": "2025-11-23 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "SYK",
+      "type": "Golden Cross",
+      "price": 367.5400085449219,
+      "k": 0.3,
+      "d": 0.13,
+      "date": "2026-01-11 00:00:00"
     },
     {
       "category": "stocks",
@@ -136008,6 +136260,15 @@
       "k": 0.11,
       "d": 0.08,
       "date": "2025-11-30 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "TROW",
+      "type": "Confirmed Golden Cross",
+      "price": 107.30999755859375,
+      "k": 0.75,
+      "d": 0.62,
+      "date": "2026-01-11 00:00:00"
     },
     {
       "category": "stocks",
@@ -139077,6 +139338,15 @@
       "k": 0.6,
       "d": 0.76,
       "date": "2025-11-30 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "AFL",
+      "type": "Confirmed Death Cross",
+      "price": 109.23999786376953,
+      "k": 0.19,
+      "d": 0.25,
+      "date": "2026-01-11 00:00:00"
     },
     {
       "category": "stocks",
@@ -142734,6 +143004,15 @@
     },
     {
       "category": "stocks",
+      "symbol": "HST",
+      "type": "Death Cross",
+      "price": 18.440000534057617,
+      "k": 0.87,
+      "d": 0.92,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
       "symbol": "DUK",
       "type": "Confirmed Golden Cross",
       "price": 45.819488525390625,
@@ -146295,6 +146574,15 @@
       "k": 0.47,
       "d": 0.53,
       "date": "2025-12-07 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "KR",
+      "type": "Confirmed Death Cross",
+      "price": 59.5099983215332,
+      "k": 0.13,
+      "d": 0.13,
+      "date": "2026-01-11 00:00:00"
     },
     {
       "category": "stocks",
@@ -153687,6 +153975,15 @@
     },
     {
       "category": "stocks",
+      "symbol": "MKC",
+      "type": "Death Cross",
+      "price": 67.72000122070312,
+      "k": 0.86,
+      "d": 0.92,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
       "symbol": "PGR",
       "type": "Golden Cross",
       "price": 18.087711334228516,
@@ -154863,6 +155160,15 @@
       "k": 0.57,
       "d": 0.69,
       "date": "2025-12-07 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "PGR",
+      "type": "Death Cross",
+      "price": 215.16000366210938,
+      "k": 0.85,
+      "d": 0.89,
+      "date": "2026-01-11 00:00:00"
     },
     {
       "category": "stocks",
@@ -167494,6 +167800,15 @@
     {
       "category": "stocks",
       "symbol": "PSX",
+      "type": "Confirmed Golden Cross",
+      "price": 142.16000366210938,
+      "k": 0.31,
+      "d": 0.21,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "PSX",
       "type": "Confirmed Death Cross",
       "price": 55.11741256713867,
       "k": 0.6,
@@ -169906,6 +170221,15 @@
     {
       "category": "stocks",
       "symbol": "O",
+      "type": "Golden Cross",
+      "price": 58.16999816894531,
+      "k": 0.3,
+      "d": 0.18,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "O",
       "type": "Confirmed Death Cross",
       "price": 24.373414993286133,
       "k": 0.32,
@@ -171081,6 +171405,15 @@
       "k": 0.05,
       "d": 0.03,
       "date": "2025-11-09 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "ORLY",
+      "type": "Golden Cross",
+      "price": 93.80000305175781,
+      "k": 0.14,
+      "d": 0.06,
+      "date": "2026-01-11 00:00:00"
     },
     {
       "category": "stocks",
@@ -172305,6 +172638,15 @@
       "k": 0.35,
       "d": 0.34,
       "date": "2025-11-16 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "BDX",
+      "type": "Confirmed Golden Cross",
+      "price": 202.75,
+      "k": 0.81,
+      "d": 0.79,
+      "date": "2026-01-11 00:00:00"
     },
     {
       "category": "stocks",
@@ -174171,6 +174513,15 @@
     },
     {
       "category": "stocks",
+      "symbol": "AIG",
+      "type": "Death Cross",
+      "price": 75.43000030517578,
+      "k": 0.58,
+      "d": 0.83,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
       "symbol": "PAYC",
       "type": "Confirmed Golden Cross",
       "price": 27.4930477142334,
@@ -174789,6 +175140,15 @@
       "k": 0.03,
       "d": 0.02,
       "date": "2025-11-16 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "PAYC",
+      "type": "Golden Cross",
+      "price": 157.1699981689453,
+      "k": 0.17,
+      "d": 0.17,
+      "date": "2026-01-11 00:00:00"
     },
     {
       "category": "stocks",
@@ -177111,6 +177471,15 @@
       "k": 0.95,
       "d": 0.91,
       "date": "2025-12-14 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "SLB",
+      "type": "Confirmed Golden Cross",
+      "price": 45.20000076293945,
+      "k": 0.91,
+      "d": 0.86,
+      "date": "2026-01-11 00:00:00"
     },
     {
       "category": "stocks",
@@ -188680,6 +189049,15 @@
     {
       "category": "stocks",
       "symbol": "CAT",
+      "type": "Confirmed Golden Cross",
+      "price": 617.6199951171875,
+      "k": 0.25,
+      "d": 0.21,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "CAT",
       "type": "Confirmed Death Cross",
       "price": 78.63504791259766,
       "k": 0.42,
@@ -197239,6 +197617,15 @@
     {
       "category": "stocks",
       "symbol": "DLR",
+      "type": "Confirmed Golden Cross",
+      "price": 158.5500030517578,
+      "k": 0.88,
+      "d": 0.88,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "DLR",
       "type": "Confirmed Death Cross",
       "price": 51.95913314819336,
       "k": 0.23,
@@ -198768,6 +199155,15 @@
     },
     {
       "category": "stocks",
+      "symbol": "HPE",
+      "type": "Confirmed Death Cross",
+      "price": 22.170000076293945,
+      "k": 0.49,
+      "d": 0.55,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
       "symbol": "SYY",
       "type": "Golden Cross",
       "price": 27.861648559570312,
@@ -199404,6 +199800,15 @@
       "k": 0.14,
       "d": 0.12,
       "date": "2025-12-28 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "SYY",
+      "type": "Golden Cross",
+      "price": 74.27999877929688,
+      "k": 0.15,
+      "d": 0.13,
+      "date": "2026-01-11 00:00:00"
     },
     {
       "category": "stocks",
@@ -204933,6 +205338,15 @@
     },
     {
       "category": "stocks",
+      "symbol": "PG",
+      "type": "Confirmed Death Cross",
+      "price": 141.8699951171875,
+      "k": 0.13,
+      "d": 0.19,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
       "symbol": "EXPD",
       "type": "Golden Cross",
       "price": 41.47116470336914,
@@ -205497,6 +205911,15 @@
       "k": 0.0,
       "d": 0.0,
       "date": "2025-10-26 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "EXPD",
+      "type": "Confirmed Golden Cross",
+      "price": 158.88999938964844,
+      "k": 0.94,
+      "d": 0.94,
+      "date": "2026-01-11 00:00:00"
     },
     {
       "category": "stocks",
@@ -210747,6 +211170,15 @@
     },
     {
       "category": "stocks",
+      "symbol": "NDAQ",
+      "type": "Death Cross",
+      "price": 98.23999786376953,
+      "k": 0.84,
+      "d": 0.89,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
       "symbol": "OKE",
       "type": "Confirmed Golden Cross",
       "price": 33.73653030395508,
@@ -211356,6 +211788,15 @@
       "k": 0.25,
       "d": 0.11,
       "date": "2025-11-09 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "OKE",
+      "type": "Confirmed Golden Cross",
+      "price": 72.69999694824219,
+      "k": 0.76,
+      "d": 0.73,
+      "date": "2026-01-11 00:00:00"
     },
     {
       "category": "stocks",
@@ -213222,6 +213663,15 @@
     },
     {
       "category": "stocks",
+      "symbol": "BAC",
+      "type": "Death Cross",
+      "price": 55.849998474121094,
+      "k": 0.94,
+      "d": 0.97,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
       "symbol": "HPQ",
       "type": "Golden Cross",
       "price": 17.265522003173828,
@@ -214717,6 +215167,15 @@
     {
       "category": "stocks",
       "symbol": "AMAT",
+      "type": "Confirmed Golden Cross",
+      "price": 301.17999267578125,
+      "k": 0.75,
+      "d": 0.67,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "AMAT",
       "type": "Confirmed Death Cross",
       "price": 19.358610153198242,
       "k": 0.4,
@@ -215874,6 +216333,15 @@
       "k": 0.14,
       "d": 0.06,
       "date": "2025-11-30 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "CLX",
+      "type": "Confirmed Golden Cross",
+      "price": 106.19000244140625,
+      "k": 0.44,
+      "d": 0.21,
+      "date": "2026-01-11 00:00:00"
     },
     {
       "category": "stocks",
@@ -224473,6 +224941,15 @@
     {
       "category": "stocks",
       "symbol": "PFGC",
+      "type": "Golden Cross",
+      "price": 90.91000366210938,
+      "k": 0.1,
+      "d": 0.06,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "PFGC",
       "type": "Death Cross",
       "price": 26.920000076293945,
       "k": 0.95,
@@ -229086,6 +229563,15 @@
       "k": 0.83,
       "d": 0.77,
       "date": "2025-11-30 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "GOOG",
+      "type": "Confirmed Golden Cross",
+      "price": 329.1400146484375,
+      "k": 0.6,
+      "d": 0.53,
+      "date": "2026-01-11 00:00:00"
     },
     {
       "category": "stocks",
@@ -234036,6 +234522,15 @@
       "k": 0.93,
       "d": 0.84,
       "date": "2025-11-23 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "EIX",
+      "type": "Golden Cross",
+      "price": 60.9900016784668,
+      "k": 0.18,
+      "d": 0.18,
+      "date": "2026-01-11 00:00:00"
     },
     {
       "category": "stocks",
@@ -239836,6 +240331,15 @@
     {
       "category": "stocks",
       "symbol": "ADP",
+      "type": "Confirmed Golden Cross",
+      "price": 266.0199890136719,
+      "k": 0.64,
+      "d": 0.55,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "ADP",
       "type": "Death Cross",
       "price": 57.41394805908203,
       "k": 0.84,
@@ -242877,6 +243381,15 @@
     },
     {
       "category": "stocks",
+      "symbol": "ESS",
+      "type": "Confirmed Death Cross",
+      "price": 251.02000427246094,
+      "k": 0.62,
+      "d": 0.71,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
       "symbol": "WM",
       "type": "Confirmed Golden Cross",
       "price": 35.852081298828125,
@@ -244017,6 +244530,15 @@
       "k": 0.93,
       "d": 0.93,
       "date": "2025-12-21 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "WM",
+      "type": "Death Cross",
+      "price": 220.91000366210938,
+      "k": 0.96,
+      "d": 0.97,
+      "date": "2026-01-11 00:00:00"
     },
     {
       "category": "stocks",
@@ -249912,6 +250434,15 @@
       "k": 0.76,
       "d": 0.83,
       "date": "2025-09-21 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "WRB",
+      "type": "Confirmed Death Cross",
+      "price": 68.44000244140625,
+      "k": 0.13,
+      "d": 0.15,
+      "date": "2026-01-11 00:00:00"
     },
     {
       "category": "stocks",
@@ -256089,6 +256620,15 @@
     },
     {
       "category": "stocks",
+      "symbol": "D",
+      "type": "Confirmed Death Cross",
+      "price": 57.97999954223633,
+      "k": 0.08,
+      "d": 0.13,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
       "symbol": "MMC",
       "type": "Confirmed Golden Cross",
       "price": 42.88087463378906,
@@ -259677,6 +260217,15 @@
       "k": 0.3,
       "d": 0.43,
       "date": "2025-11-09 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "CMG",
+      "type": "Death Cross",
+      "price": 40.11000061035156,
+      "k": 0.99,
+      "d": 0.99,
+      "date": "2026-01-11 00:00:00"
     },
     {
       "category": "stocks",
@@ -266817,6 +267366,15 @@
     },
     {
       "category": "stocks",
+      "symbol": "MA",
+      "type": "Death Cross",
+      "price": 575.5399780273438,
+      "k": 0.8,
+      "d": 0.82,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
       "symbol": "HIG",
       "type": "Confirmed Golden Cross",
       "price": 28.50690269470215,
@@ -267984,6 +268542,15 @@
       "k": 0.71,
       "d": 0.73,
       "date": "2025-12-07 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "HIG",
+      "type": "Death Cross",
+      "price": 136.25999450683594,
+      "k": 0.75,
+      "d": 0.81,
+      "date": "2026-01-11 00:00:00"
     },
     {
       "category": "stocks",
@@ -269802,6 +270369,15 @@
       "k": 0.12,
       "d": 0.1,
       "date": "2025-11-23 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "NKE",
+      "type": "Confirmed Golden Cross",
+      "price": 65.91999816894531,
+      "k": 0.6,
+      "d": 0.42,
+      "date": "2026-01-11 00:00:00"
     },
     {
       "category": "stocks",
@@ -272766,6 +273342,15 @@
     },
     {
       "category": "stocks",
+      "symbol": "ROP",
+      "type": "Confirmed Death Cross",
+      "price": 434.80999755859375,
+      "k": 0.25,
+      "d": 0.25,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
       "symbol": "CCL",
       "type": "Golden Cross",
       "price": 31.4617862701416,
@@ -275638,6 +276223,15 @@
     {
       "category": "stocks",
       "symbol": "FIS",
+      "type": "Confirmed Golden Cross",
+      "price": 66.83999633789062,
+      "k": 0.92,
+      "d": 0.91,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "FIS",
       "type": "Confirmed Death Cross",
       "price": 47.34734344482422,
       "k": 0.69,
@@ -276880,6 +277474,15 @@
     {
       "category": "stocks",
       "symbol": "ITW",
+      "type": "Confirmed Golden Cross",
+      "price": 255.1199951171875,
+      "k": 0.59,
+      "d": 0.58,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "ITW",
       "type": "Confirmed Death Cross",
       "price": 66.280517578125,
       "k": 0.57,
@@ -278091,6 +278694,15 @@
       "k": 0.89,
       "d": 0.87,
       "date": "2025-08-03 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "ICE",
+      "type": "Confirmed Golden Cross",
+      "price": 165.97999572753906,
+      "k": 0.94,
+      "d": 0.93,
+      "date": "2026-01-11 00:00:00"
     },
     {
       "category": "stocks",
@@ -283548,6 +284160,15 @@
     },
     {
       "category": "stocks",
+      "symbol": "ABBV",
+      "type": "Confirmed Death Cross",
+      "price": 220.0800018310547,
+      "k": 0.14,
+      "d": 0.15,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
       "symbol": "ADBE",
       "type": "Confirmed Golden Cross",
       "price": 73.12999725341797,
@@ -285282,6 +285903,15 @@
       "k": 0.88,
       "d": 0.77,
       "date": "2025-12-14 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "HAL",
+      "type": "Confirmed Golden Cross",
+      "price": 32.630001068115234,
+      "k": 0.94,
+      "d": 0.89,
+      "date": "2026-01-11 00:00:00"
     },
     {
       "category": "stocks",
@@ -293169,6 +293799,15 @@
     },
     {
       "category": "stocks",
+      "symbol": "MSFT",
+      "type": "Death Cross",
+      "price": 479.2799987792969,
+      "k": 0.93,
+      "d": 0.97,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
       "symbol": "MAA",
       "type": "Golden Cross",
       "price": 48.12986373901367,
@@ -294303,6 +294942,15 @@
     },
     {
       "category": "stocks",
+      "symbol": "MAA",
+      "type": "Death Cross",
+      "price": 135.89999389648438,
+      "k": 0.92,
+      "d": 0.93,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
       "symbol": "DE",
       "type": "Golden Cross",
       "price": 70.80043029785156,
@@ -294939,6 +295587,15 @@
       "k": 0.76,
       "d": 0.74,
       "date": "2025-12-21 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "DE",
+      "type": "Confirmed Golden Cross",
+      "price": 488.0799865722656,
+      "k": 0.71,
+      "d": 0.67,
+      "date": "2026-01-11 00:00:00"
     },
     {
       "category": "stocks",
@@ -296172,6 +296829,15 @@
       "k": 0.57,
       "d": 0.57,
       "date": "2025-11-09 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "BRK-B",
+      "type": "Confirmed Golden Cross",
+      "price": 499.1000061035156,
+      "k": 0.5,
+      "d": 0.48,
+      "date": "2026-01-11 00:00:00"
     },
     {
       "category": "stocks",
@@ -301045,6 +301711,15 @@
     {
       "category": "stocks",
       "symbol": "GOOGL",
+      "type": "Confirmed Golden Cross",
+      "price": 328.57000732421875,
+      "k": 0.58,
+      "d": 0.52,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "GOOGL",
       "type": "Confirmed Death Cross",
       "price": 29.193647384643555,
       "k": 0.32,
@@ -302211,6 +302886,15 @@
       "k": 0.44,
       "d": 0.18,
       "date": "2025-12-07 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "SO",
+      "type": "Confirmed Golden Cross",
+      "price": 87.01000213623047,
+      "k": 0.29,
+      "d": 0.29,
+      "date": "2026-01-11 00:00:00"
     },
     {
       "category": "stocks",
@@ -309550,6 +310234,15 @@
     {
       "category": "stocks",
       "symbol": "UNH",
+      "type": "Confirmed Golden Cross",
+      "price": 343.9800109863281,
+      "k": 0.59,
+      "d": 0.48,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "UNH",
       "type": "Confirmed Death Cross",
       "price": 72.80742645263672,
       "k": 0.61,
@@ -313119,6 +313812,15 @@
       "k": 0.33,
       "d": 0.27,
       "date": "2025-11-23 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "STZ",
+      "type": "Confirmed Golden Cross",
+      "price": 147.0,
+      "k": 0.88,
+      "d": 0.82,
+      "date": "2026-01-11 00:00:00"
     },
     {
       "category": "stocks",
@@ -317992,6 +318694,15 @@
     {
       "category": "stocks",
       "symbol": "WMB",
+      "type": "Confirmed Golden Cross",
+      "price": 60.31999969482422,
+      "k": 0.3,
+      "d": 0.21,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "WMB",
       "type": "Confirmed Death Cross",
       "price": 30.040109634399414,
       "k": 0.2,
@@ -322708,6 +323419,15 @@
     {
       "category": "stocks",
       "symbol": "ADI",
+      "type": "Confirmed Golden Cross",
+      "price": 300.92999267578125,
+      "k": 0.87,
+      "d": 0.85,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "ADI",
       "type": "Confirmed Death Cross",
       "price": 39.102176666259766,
       "k": 0.14,
@@ -325767,6 +326487,15 @@
     },
     {
       "category": "stocks",
+      "symbol": "TAP",
+      "type": "Death Cross",
+      "price": 48.130001068115234,
+      "k": 0.91,
+      "d": 0.91,
+      "date": "2026-01-11 00:00:00"
+    },
+    {
+      "category": "stocks",
       "symbol": "SNPS",
       "type": "Golden Cross",
       "price": 3.9331250190734863,
@@ -328716,6 +329445,15 @@
       "k": 0.83,
       "d": 0.79,
       "date": "2025-12-07 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "PLD",
+      "type": "Confirmed Golden Cross",
+      "price": 129.39999389648438,
+      "k": 0.76,
+      "d": 0.75,
+      "date": "2026-01-11 00:00:00"
     },
     {
       "category": "stocks",
@@ -332370,6 +333108,15 @@
       "k": 0.17,
       "d": 0.16,
       "date": "2025-11-09 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "KMI",
+      "type": "Golden Cross",
+      "price": 27.1200008392334,
+      "k": 0.19,
+      "d": 0.18,
+      "date": "2026-01-11 00:00:00"
     },
     {
       "category": "stocks",
