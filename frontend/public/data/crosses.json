@@ -1,5 +1,5 @@
 {
-  "updated": "2026-01-26 00:32:59.623767",
+  "updated": "2026-01-26 06:33:08.431783",
   "crosses": [
     {
       "category": "crypto",
@@ -720,6 +720,15 @@
       "k": 0.01,
       "d": 0.01,
       "date": "2025-12-21 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "ADA-USD",
+      "type": "Confirmed Death Cross",
+      "price": 0.33870500326156616,
+      "k": 0.12,
+      "d": 0.14,
+      "date": "2026-01-25 00:00:00"
     },
     {
       "category": "crypto",
@@ -1776,6 +1785,15 @@
     },
     {
       "category": "crypto",
+      "symbol": "LTC-USD",
+      "type": "Confirmed Death Cross",
+      "price": 67.1728286743164,
+      "k": 0.05,
+      "d": 0.1,
+      "date": "2026-01-25 00:00:00"
+    },
+    {
+      "category": "crypto",
       "symbol": "XRP-USD",
       "type": "Golden Cross",
       "price": 0.4458940029144287,
@@ -2565,6 +2583,15 @@
       "k": 0.01,
       "d": 0.05,
       "date": "2025-12-21 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XRP-USD",
+      "type": "Confirmed Death Cross",
+      "price": 1.8330260515213013,
+      "k": 0.29,
+      "d": 0.31,
+      "date": "2026-01-25 00:00:00"
     },
     {
       "category": "crypto",
@@ -3366,6 +3393,15 @@
       "k": 0.39,
       "d": 0.41,
       "date": "2025-10-05 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XLM-USD",
+      "type": "Confirmed Death Cross",
+      "price": 0.2030390053987503,
+      "k": 0.1,
+      "d": 0.13,
+      "date": "2026-01-25 00:00:00"
     },
     {
       "category": "crypto",
@@ -6258,6 +6294,15 @@
     },
     {
       "category": "crypto",
+      "symbol": "HBAR-USD",
+      "type": "Confirmed Death Cross",
+      "price": 0.10310599952936172,
+      "k": 0.11,
+      "d": 0.16,
+      "date": "2026-01-25 00:00:00"
+    },
+    {
+      "category": "crypto",
       "symbol": "DOGE-USD",
       "type": "Golden Cross",
       "price": 0.0026110000908374786,
@@ -6993,6 +7038,15 @@
       "k": 0.65,
       "d": 0.73,
       "date": "2025-10-05 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "DOGE-USD",
+      "type": "Confirmed Death Cross",
+      "price": 0.11929900199174881,
+      "k": 0.28,
+      "d": 0.3,
+      "date": "2026-01-25 00:00:00"
     },
     {
       "category": "stocks",
