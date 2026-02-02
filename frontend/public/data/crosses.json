@@ -1,5 +1,5 @@
 {
-  "updated": "2026-02-02 00:33:57.102236",
+  "updated": "2026-02-02 06:33:24.053643",
   "crosses": [
     {
       "category": "crypto",
@@ -3918,6 +3918,15 @@
     },
     {
       "category": "crypto",
+      "symbol": "SOL-USD",
+      "type": "Confirmed Death Cross",
+      "price": 100.85052490234375,
+      "k": 0.11,
+      "d": 0.21,
+      "date": "2026-02-01 00:00:00"
+    },
+    {
+      "category": "crypto",
       "symbol": "BTC-USD",
       "type": "Confirmed Golden Cross",
       "price": 240.29600524902344,
@@ -4944,6 +4953,15 @@
     },
     {
       "category": "crypto",
+      "symbol": "BTC-USD",
+      "type": "Confirmed Death Cross",
+      "price": 76974.4453125,
+      "k": 0.2,
+      "d": 0.27,
+      "date": "2026-02-01 00:00:00"
+    },
+    {
+      "category": "crypto",
       "symbol": "ETH-USD",
       "type": "Golden Cross",
       "price": 294.3710021972656,
@@ -5706,6 +5724,15 @@
       "k": 0.12,
       "d": 0.13,
       "date": "2025-12-28 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "ETH-USD",
+      "type": "Confirmed Death Cross",
+      "price": 2267.96484375,
+      "k": 0.2,
+      "d": 0.29,
+      "date": "2026-02-01 00:00:00"
     },
     {
       "category": "crypto",
@@ -139365,6 +139392,15 @@
       "k": 0.28,
       "d": 0.26,
       "date": "2025-12-28 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "AFL",
+      "type": "Golden Cross",
+      "price": 110.94999694824219,
+      "k": 0.22,
+      "d": 0.14,
+      "date": "2026-02-01 00:00:00"
     },
     {
       "category": "stocks",
