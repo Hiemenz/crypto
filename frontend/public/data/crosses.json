@@ -1,5 +1,5 @@
 {
-  "updated": "2026-02-16 00:33:17.186275",
+  "updated": "2026-02-16 06:33:16.959761",
   "crosses": [
     {
       "category": "crypto",
@@ -369,6 +369,15 @@
       "k": 0.06,
       "d": 0.02,
       "date": "2026-01-04 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "ADA-USD",
+      "type": "Golden Cross",
+      "price": 0.2817800045013428,
+      "k": 0.06,
+      "d": 0.04,
+      "date": "2026-02-15 00:00:00"
     },
     {
       "category": "crypto",
@@ -1251,6 +1260,15 @@
       "k": 0.28,
       "d": 0.16,
       "date": "2025-11-09 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "LTC-USD",
+      "type": "Golden Cross",
+      "price": 55.03819274902344,
+      "k": 0.01,
+      "d": 0.0,
+      "date": "2026-02-15 00:00:00"
     },
     {
       "category": "crypto",
@@ -3006,6 +3024,15 @@
       "k": 0.01,
       "d": 0.01,
       "date": "2025-12-28 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XLM-USD",
+      "type": "Golden Cross",
+      "price": 0.17032000422477722,
+      "k": 0.08,
+      "d": 0.04,
+      "date": "2026-02-15 00:00:00"
     },
     {
       "category": "crypto",
@@ -6021,6 +6048,15 @@
       "k": 0.02,
       "d": 0.01,
       "date": "2025-12-28 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "HBAR-USD",
+      "type": "Golden Cross",
+      "price": 0.10028500109910965,
+      "k": 0.21,
+      "d": 0.09,
+      "date": "2026-02-15 00:00:00"
     },
     {
       "category": "crypto",
