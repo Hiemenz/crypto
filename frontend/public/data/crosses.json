@@ -1,5 +1,5 @@
 {
-  "updated": "2026-03-09 18:39:18.344853",
+  "updated": "2026-03-10 00:33:29.039380",
   "crosses": [
     {
       "category": "crypto",
@@ -260343,6 +260343,15 @@
       "k": 0.13,
       "d": 0.12,
       "date": "2025-11-16 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "MMC",
+      "type": "Confirmed Golden Cross",
+      "price": 183.0800018310547,
+      "k": 0.79,
+      "d": 0.62,
+      "date": "2026-03-08 00:00:00"
     },
     {
       "category": "stocks",
