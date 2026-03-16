@@ -1,5 +1,5 @@
 {
-  "updated": "2026-03-16 00:34:50.554027",
+  "updated": "2026-03-16 06:34:27.920654",
   "crosses": [
     {
       "category": "crypto",
@@ -378,6 +378,15 @@
       "k": 0.06,
       "d": 0.04,
       "date": "2026-02-15 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "ADA-USD",
+      "type": "Golden Cross",
+      "price": 0.26984700560569763,
+      "k": 0.2,
+      "d": 0.15,
+      "date": "2026-03-15 00:00:00"
     },
     {
       "category": "crypto",
@@ -1278,6 +1287,15 @@
       "k": 0.01,
       "d": 0.0,
       "date": "2026-02-15 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "LTC-USD",
+      "type": "Golden Cross",
+      "price": 56.18583297729492,
+      "k": 0.1,
+      "d": 0.04,
+      "date": "2026-03-15 00:00:00"
     },
     {
       "category": "crypto",
@@ -2227,6 +2245,15 @@
     {
       "category": "crypto",
       "symbol": "XRP-USD",
+      "type": "Golden Cross",
+      "price": 1.4475510120391846,
+      "k": 0.11,
+      "d": 0.05,
+      "date": "2026-03-15 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XRP-USD",
       "type": "Confirmed Death Cross",
       "price": 0.4533059895038605,
       "k": 0.02,
@@ -3060,6 +3087,15 @@
       "k": 0.08,
       "d": 0.04,
       "date": "2026-02-15 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XLM-USD",
+      "type": "Golden Cross",
+      "price": 0.1691489964723587,
+      "k": 0.23,
+      "d": 0.12,
+      "date": "2026-03-15 00:00:00"
     },
     {
       "category": "crypto",
@@ -6786,6 +6822,15 @@
       "k": 0.09,
       "d": 0.07,
       "date": "2026-02-22 00:00:00"
+    },
+    {
+      "category": "crypto",
+      "symbol": "DOGE-USD",
+      "type": "Golden Cross",
+      "price": 0.09739399701356888,
+      "k": 0.11,
+      "d": 0.08,
+      "date": "2026-03-15 00:00:00"
     },
     {
       "category": "crypto",
