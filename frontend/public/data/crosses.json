@@ -1,5 +1,5 @@
 {
-  "updated": "2026-03-17 00:33:24.087359",
+  "updated": "2026-03-17 06:20:03.871264",
   "crosses": [
     {
       "category": "crypto",
@@ -261297,6 +261297,15 @@
       "k": 0.64,
       "d": 0.8,
       "date": "2026-02-15 00:00:00"
+    },
+    {
+      "category": "stocks",
+      "symbol": "MMC",
+      "type": "Confirmed Death Cross",
+      "price": 172.14999389648438,
+      "k": 0.66,
+      "d": 0.67,
+      "date": "2026-03-15 00:00:00"
     },
     {
       "category": "stocks",
