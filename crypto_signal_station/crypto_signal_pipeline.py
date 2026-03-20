@@ -18,6 +18,10 @@ from pycoingecko import CoinGeckoAPI
 import sys
 import traceback
 
+# Add parent directory to path so we can import db
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+import db
+
 global symbols
 global stock_symbols
 global config
@@ -33,45 +37,26 @@ with open("crypto_signal_station/cryptos.yml", "r") as f:
 # Pi-Optimization: Limit concurrent downloads to save RAM
 MAX_WORKERS = 1
 
-def _process_single_symbol(symbol, base_output_folder, timeframes, fetch_start_override=None):
+def _process_single_symbol(symbol, category, timeframes):
     """
-    Process a single symbol: Download 1d data, then generate signals for all timeframes.
-    Return True if successful/updated, False otherwise.
+    Process a single symbol: Download/update 1d OHLCV, then compute signals for all timeframes.
+    Return True if successful, False otherwise.
     """
     try:
-        # 1. Manage 1D Data (Download/Update)
-        output_path_1d = os.path.join(base_output_folder, "1d", f"{symbol}.parquet")
-        
+        db.init_db()
+
+        # 1. Manage 1D OHLCV (Download/Update from DB)
+        latest_date = db.get_latest_ohlcv_date(symbol, category)
         df_1d = None
         is_new_data = False
-        
-        if os.path.exists(output_path_1d):
-            # print(f"Checking {symbol}...")
-            df_existing = pd.read_parquet(output_path_1d)
-            if not pd.api.types.is_datetime64_any_dtype(df_existing["Date"]):
-                df_existing["Date"] = pd.to_datetime(df_existing["Date"])
-            
-                # Ensure Dates are timezone-naive for consistency
-                if pd.api.types.is_datetime64_any_dtype(df_existing["Date"]):
-                    df_existing["Date"] = df_existing["Date"].dt.tz_localize(None)
 
-            # --- DEDUPLICATION START ---
-            # Remove any duplicate columns if they exist
-            df_existing = df_existing.loc[:, ~df_existing.columns.duplicated()]
-            
-            # Ensure unique index (Date) if set, although we are using 'Date' column here
-            df_existing = df_existing.drop_duplicates(subset=["Date"])
-            # --- DEDUPLICATION END ---
-
-            df_existing = df_existing.dropna(subset=["Date"])
-
-            last_date = df_existing["Date"].max().date()
-            fetch_start = last_date + pd.Timedelta(days=1)
+        if latest_date is not None:
             today_date = pd.Timestamp.now().date()
+            fetch_start = (latest_date + pd.Timedelta(days=1)).date()
 
             if fetch_start >= today_date:
-                # print(f"{symbol} is up to date.")
-                df_1d = df_existing
+                # Already up to date – load from DB
+                df_1d = db.load_ohlcv(symbol, category)
             else:
                 print(f"Updating {symbol}...")
                 try:
@@ -82,7 +67,7 @@ def _process_single_symbol(symbol, base_output_folder, timeframes, fetch_start_o
                         interval="1d",
                         progress=False,
                         auto_adjust=True,
-                        threads=False # We handle threading externally
+                        threads=False,
                     )
                 except Exception as e:
                     print(f"Error downloading {symbol}: {e}")
@@ -91,73 +76,39 @@ def _process_single_symbol(symbol, base_output_folder, timeframes, fetch_start_o
                 if not df_new.empty:
                     if isinstance(df_new.columns, pd.MultiIndex):
                         df_new.columns = df_new.columns.get_level_values(0)
-
-                    # Deduplicate columns immediately after flattening
                     df_new = df_new.loc[:, ~df_new.columns.duplicated()]
-
                     df_new = df_new.reset_index()
-                    
-                    # Normalize New Data Dates to TZ-naive
                     if "Date" in df_new.columns:
                         df_new["Date"] = pd.to_datetime(df_new["Date"]).dt.tz_localize(None)
 
                     expected_cols = ["Date", "Close", "High", "Low", "Open", "Volume"]
                     available_cols = [c for c in expected_cols if c in df_new.columns]
-                    df_new = df_new[available_cols]
-                    
-                    try:
-                         # Attempt merge
-                        df_combined = pd.concat([df_existing, df_new], ignore_index=True).drop_duplicates(subset="Date")
-                    except Exception as merge_err:
-                        print(f"Error merging data for {symbol}: {merge_err}. Corrupt file likely. Deleting and restarting.")
-                        if os.path.exists(output_path_1d):
-                            os.remove(output_path_1d)
-                        # Recursive retry (or just return False to pick it up next time)
-                        # returning False lets the logic fall through to 'Fetching new data' block below if we restructured, 
-                        # but here we are inside the 'if exists' block. 
-                        # Simplest fix: Force df_1d to None so we don't save bad state, and let next run fix it.
-                        # Better: Process as if it's new data.
-                        print(f"Redownloading full history for {symbol}...")
-                        df_1d = None # Force re-fetch logic essentially (but we need to trigger the else block)
-                         # Actually, we can just let it fail this run, and delete the file.
-                        return False
+                    df_new = df_new[available_cols].drop_duplicates(subset="Date")
 
-                    # Check partial candle
-                    if not df_combined.empty:
-                        last_date = df_combined["Date"].iloc[-1].date()
-                        if last_date >= today_date:
-                            df_combined = df_combined.iloc[:-1]
+                    # Drop partial (today's) candle
+                    if not df_new.empty:
+                        if df_new["Date"].iloc[-1].date() >= today_date:
+                            df_new = df_new.iloc[:-1]
 
-                    # Atomic write to prevent corruption
-                    temp_path = output_path_1d + ".tmp"
-                    df_combined.to_parquet(temp_path, index=False)
-                    os.replace(temp_path, output_path_1d)
-                    df_1d = df_combined
-                    is_new_data = True
-                    # print(f"Updated {symbol}")
-                else:
-                    df_1d = df_existing
+                    if not df_new.empty:
+                        db.upsert_ohlcv(df_new, symbol, category)
+                        is_new_data = True
+
+                df_1d = db.load_ohlcv(symbol, category)
         else:
             print(f"Fetching new data for {symbol}...")
             try:
                 df = yf.download(symbol, start="2014-01-01", interval="1d", progress=False, auto_adjust=True, threads=False)
-                df = df.iloc[:-1] # Drop partial
+                df = df.iloc[:-1]  # Drop partial candle
                 if isinstance(df.columns, pd.MultiIndex):
                     df.columns = df.columns.get_level_values(0)
-
-                # Deduplicate columns immediately after flattening
                 df = df.loc[:, ~df.columns.duplicated()]
-
                 if not df.empty:
                     df = df.reset_index()
-                    if "Date" not in df.columns and df.index.name == "Date":
-                         df = df.reset_index()
-                    
-                    # Atomic write to prevent corruption
-                    temp_path = output_path_1d + ".tmp"
-                    df.to_parquet(temp_path, index=False)
-                    os.replace(temp_path, output_path_1d)
-                    df_1d = df
+                    if "Date" in df.columns:
+                        df["Date"] = pd.to_datetime(df["Date"]).dt.tz_localize(None)
+                    db.upsert_ohlcv(df, symbol, category)
+                    df_1d = db.load_ohlcv(symbol, category)
                     is_new_data = True
             except Exception as e:
                 print(f"Failed to fetch {symbol}: {e}")
@@ -166,43 +117,27 @@ def _process_single_symbol(symbol, base_output_folder, timeframes, fetch_start_o
         if df_1d is None or df_1d.empty:
             return False
 
-        # 2. Process All Timeframes
+        # 2. Prepare 1D DataFrame
         cols_to_numeric = ["Close", "High", "Low", "Open", "Volume"]
         for col in cols_to_numeric:
             if col in df_1d.columns:
                 df_1d[col] = pd.to_numeric(df_1d[col], errors="coerce")
-        
+
         df_1d.dropna(subset=["Close", "High", "Low", "Open", "Volume"], inplace=True)
-        
-        # Ensure Date is datetime and normalized to remove time components
         df_1d["Date"] = pd.to_datetime(df_1d["Date"]).dt.normalize()
-        
-        # FINAL duplicate check before setting index
         df_1d = df_1d.drop_duplicates(subset=["Date"], keep="last")
-        
         df_1d = df_1d.set_index("Date").sort_index()
-        
-        # Double check index uniqueness just in case
         if not df_1d.index.is_unique:
-             # print(f"Warning: {symbol} has duplicate index after cleanup. deduping...")
-             df_1d = df_1d[~df_1d.index.duplicated(keep='last')]
+            df_1d = df_1d[~df_1d.index.duplicated(keep='last')]
 
+        # 3. Process All Timeframes
         for tf_name, tf_alias in timeframes.items():
-            output_folder_tf = os.path.join(base_output_folder, tf_name)
-            enhanced_output = os.path.join(output_folder_tf, f"{symbol}_with_signals.parquet")
-
-            needs_processing = is_new_data
-            if not needs_processing and os.path.exists(enhanced_output):
-                try:
-                    existing_cols = pd.read_parquet(enhanced_output).columns
-                    required_cols = ["bb_upper", "macd", "stoch_rsi_k"]
-                    if any(col not in existing_cols for col in required_cols):
-                        needs_processing = True
-                except Exception:
-                    needs_processing = True
-
-            if not needs_processing and os.path.exists(enhanced_output):
-                continue
+            # Check if signals already exist and are current
+            if not is_new_data:
+                _, max_date = db.get_signals_date_range(symbol, category, tf_name)
+                if max_date is not None:
+                    # Signals exist and data hasn't changed – skip
+                    continue
 
             if tf_name == "1d":
                 df_tf = df_1d.copy()
@@ -219,7 +154,7 @@ def _process_single_symbol(symbol, base_output_folder, timeframes, fetch_start_o
                 if not df_tf.empty:
                     last_idx = df_tf.index[-1]
                     today = pd.Timestamp.now().normalize()
-                    
+
                     should_drop = False
                     if tf_name in ["1wk", "2wk"]:
                         if last_idx >= today:
@@ -227,13 +162,16 @@ def _process_single_symbol(symbol, base_output_folder, timeframes, fetch_start_o
                     elif tf_name == "3d":
                         if last_idx + pd.Timedelta(days=3) > today:
                             should_drop = True
-                            
+                    elif tf_name == "2d":
+                        if last_idx + pd.Timedelta(days=2) > today:
+                            should_drop = True
+
                     if should_drop:
                         df_tf = df_tf.iloc[:-1]
-                    
+
                     if df_tf.empty:
                         continue
-            
+
             if df_tf.empty:
                 continue
 
@@ -283,20 +221,18 @@ def _process_single_symbol(symbol, base_output_folder, timeframes, fetch_start_o
             df_tf["signal"] = df_tf.apply(label_signal, axis=1)
 
             df_tf = df_tf.reset_index()
-            # Atomic write to prevent corruption
-            temp_output = enhanced_output + ".tmp"
-            df_tf.to_parquet(temp_output, index=False)
-            os.replace(temp_output, enhanced_output)
-            
+
+            # Save signals to DB
+            db.upsert_signals(df_tf, symbol, category, tf_name)
+
             # Chart generation
             fig, ax = plt.subplots(figsize=(10, 6))
             ax.plot(df_tf["Date"], df_tf["Close"], color='black', label='Close Price')
 
-            # Scatter signals
             for tier, color in [("Excellent Buy", "darkgreen"), ("Great Buy", "green"), ("Good Buy", "lightgreen")]:
                 subset = df_tf[df_tf["signal"] == tier]
                 ax.scatter(subset["Date"], subset["Close"], color=color, label=tier, marker='o', s=80)
-            
+
             for tier, color in [("Excellent Sell", "navy"), ("Great Sell", "blue"), ("Good Sell", "skyblue")]:
                 subset = df_tf[df_tf["signal"] == tier]
                 ax.scatter(subset["Date"], subset["Close"], color=color, label=tier, marker='o', s=80)
@@ -318,7 +254,11 @@ def _process_single_symbol(symbol, base_output_folder, timeframes, fetch_start_o
             ax.set_ylabel("Price (USD)")
             ax.legend()
             plt.tight_layout()
-            plt.savefig(os.path.join(output_folder_tf, f"{symbol}_signals_chart.png"), dpi=150, bbox_inches="tight") # Lower DPI for speed
+
+            # Save chart to eink_output or similar directory
+            chart_dir = os.path.join("eink_output", category, tf_name)
+            os.makedirs(chart_dir, exist_ok=True)
+            plt.savefig(os.path.join(chart_dir, f"{symbol}_signals_chart.png"), dpi=150, bbox_inches="tight")
             plt.close()
 
         return True
@@ -329,40 +269,31 @@ def _process_single_symbol(symbol, base_output_folder, timeframes, fetch_start_o
         return False
 
 
-def _process_asset_list(asset_symbols, subfolder):
-    # Base folder for this asset class (crypto or stocks)
-    base_output_folder = os.path.join("crypto_history_csv", subfolder)
-    
-    # Define timeframes and their pandas offset aliases
-    # 1d is the base, others are resampled from it
+def _process_asset_list(asset_symbols, category):
     timeframes = {
         "1d": None,
+        "2d": "2D",
         "3d": "3D",
-        "1wk": "W-SUN", # Weekly starting Sunday
-        "2wk": "2W-SUN" # Bi-weekly starting Sunday
+        "1wk": "W-SUN",
+        "2wk": "2W-SUN",
     }
 
-    # Ensure subfolders exist
-    for tf in timeframes:
-        os.makedirs(os.path.join(base_output_folder, tf), exist_ok=True)
+    db.init_db()
+    print(f"Processing {len(asset_symbols)} items for {category} with {MAX_WORKERS} threads...")
 
-    print(f"Processing {len(asset_symbols)} items for {subfolder} with {MAX_WORKERS} threads...")
-    
     import concurrent.futures
-    
+
     with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
-        # Submit all tasks
-        futures = {executor.submit(_process_single_symbol, symbol, base_output_folder, timeframes): symbol for symbol in asset_symbols}
-        
-        # Wait for completion (optional: use as_completed for progress bar)
+        futures = {executor.submit(_process_single_symbol, symbol, category, timeframes): symbol for symbol in asset_symbols}
+
         for future in concurrent.futures.as_completed(futures):
             symbol = futures[future]
             try:
                 future.result()
             except Exception as e:
                 print(f"Exception for {symbol}: {e}")
-    
-    print(f"Completed {subfolder} processing.")
+
+    print(f"Completed {category} processing.")
 
 
 def process_crypto_data():
@@ -373,15 +304,14 @@ def process_stock_data():
     _process_asset_list(stock_symbols, "stocks")
 
 
-def generate_signals_summary(folder="crypto_history_csv", target_date=None):
-
+def generate_signals_summary(target_date=None):
     buy_tiers = {"Excellent": [], "Great": [], "Good": []}
     sell_tiers = {"Excellent": [], "Great": [], "Good": []}
     summary_output = ""
     buy_summary = ""
     sell_summary = ""
 
-    all_symbols = symbols + stock_symbols
+    all_symbols_with_cat = [(s, "crypto") for s in symbols] + [(s, "stocks") for s in stock_symbols]
 
     if target_date is not None:
         if isinstance(target_date, str):
@@ -393,38 +323,36 @@ def generate_signals_summary(folder="crypto_history_csv", target_date=None):
         latest_available_date = target_date
     else:
         latest_available_date = None
-        for symbol in all_symbols:
-            filepath = os.path.join(folder, f"{symbol}_with_signals.parquet")
-            if not os.path.exists(filepath):
-                continue
-            df = pd.read_parquet(filepath)
-            date = df["Date"].max().normalize()
-            if latest_available_date is None or date < latest_available_date:
-                latest_available_date = date
+        for sym, cat in all_symbols_with_cat:
+            _, max_date = db.get_signals_date_range(sym, cat, "1d")
+            if max_date:
+                d = pd.Timestamp(max_date).normalize()
+                if latest_available_date is None or d < latest_available_date:
+                    latest_available_date = d
 
     if latest_available_date is None:
-        summary_output += "No signal files found.\n"
+        summary_output += "No signal data found.\n"
         print(summary_output)
         return summary_output, buy_summary, sell_summary
 
-    for symbol in all_symbols:
-        filepath = os.path.join(folder, f"{symbol}_with_signals.parquet")
-        if not os.path.exists(filepath):
+    lad_str = str(latest_available_date.date())
+
+    for sym, cat in all_symbols_with_cat:
+        df = db.load_signals(sym, cat, "1d")
+        if df.empty:
             continue
-        df = pd.read_parquet(filepath)
         today_df = df[df["Date"].dt.normalize() == latest_available_date]
         for tier in ["Excellent", "Great", "Good"]:
             if not today_df[today_df["signal"] == f"{tier} Buy"].empty:
-                buy_tiers[tier].append(symbol)
+                buy_tiers[tier].append(sym)
             if not today_df[today_df["signal"] == f"{tier} Sell"].empty:
-                sell_tiers[tier].append(symbol)
+                sell_tiers[tier].append(sym)
 
-    # Build summary output string
     summary_output += "\n"
     if not any(buy_tiers.values()) and not any(sell_tiers.values()):
-        sell_summary += f'No Sell signals\n{latest_available_date.date()}\n'
-        buy_summary += f'No Buy signals\n{latest_available_date.date()}\n'
-        summary_output += f'No Buy or Sell signals\n'
+        sell_summary += f'No Sell signals\n{lad_str}\n'
+        buy_summary += f'No Buy signals\n{lad_str}\n'
+        summary_output += 'No Buy or Sell signals\n'
     else:
         if any(sell_tiers.values()):
             sell_summary += "Sell on the One Day:\n"
@@ -450,9 +378,9 @@ def generate_signals_summary(folder="crypto_history_csv", target_date=None):
     return summary_output, buy_summary, sell_summary
 
 
-def generate_signals_summary_separate(base_folder="crypto_history_csv", target_date=None):
+def generate_signals_summary_separate(target_date=None):
     """
-    Returns separate summaries for crypto and stocks, plus a combined summary for convenience.
+    Returns separate summaries for crypto and stocks, plus a combined summary.
     Output format:
       {
         "crypto": (summary_output, buy_summary, sell_summary),
@@ -460,65 +388,50 @@ def generate_signals_summary_separate(base_folder="crypto_history_csv", target_d
         "combined": (summary_output, buy_summary, sell_summary)
       }
     """
-    crypto_folder = os.path.join(base_folder, "crypto")
-    stocks_folder = os.path.join(base_folder, "stocks")
+    timeframes = ["1d", "2d", "3d", "1wk", "2wk"]
 
-    def _summarize_symbols(subset_symbols, folder):
+    def _resolve_lad(subset_symbols, category, tf):
+        if target_date is not None:
+            if isinstance(target_date, str):
+                return pd.to_datetime(target_date).normalize()
+            elif isinstance(target_date, pd.Timestamp):
+                return target_date.normalize()
+            else:
+                return pd.Timestamp(target_date).normalize()
+        lad = None
+        for sym in subset_symbols:
+            _, max_date = db.get_signals_date_range(sym, category, tf)
+            if max_date:
+                d = pd.Timestamp(max_date).normalize()
+                if lad is None or d < lad:
+                    lad = d
+        return lad
+
+    def _summarize_symbols(subset_symbols, category):
         summary_output = ""
         buy_summary = ""
         sell_summary = ""
-        
-        timeframes = ["1d", "3d", "1wk", "2wk"]
-        
-        for tf in timeframes:
-            tf_folder = os.path.join(folder, tf)
-            if not os.path.exists(tf_folder):
-                continue
 
+        for tf in timeframes:
             buy_tiers = {"Excellent": [], "Great": [], "Good": []}
             sell_tiers = {"Excellent": [], "Great": [], "Good": []}
 
-            # Resolve latest_available_date for this subset if not provided
-            if target_date is not None:
-                if isinstance(target_date, str):
-                    lad = pd.to_datetime(target_date).normalize()
-                elif isinstance(target_date, pd.Timestamp):
-                    lad = target_date.normalize()
-                else:
-                    lad = pd.Timestamp(target_date).normalize()
-            else:
-                lad = None
-                for symbol in subset_symbols:
-                    filepath = os.path.join(tf_folder, f"{symbol}_with_signals.parquet")
-                    if not os.path.exists(filepath):
-                        continue
-                    df = pd.read_parquet(filepath)
-                    date = df["Date"].max().normalize()
-                    if lad is None or date < lad:
-                        lad = date
-
+            lad = _resolve_lad(subset_symbols, category, tf)
             if lad is None:
-                summary_output += f"[{tf}] No signal files found.\n"
                 continue
 
-            # Build tiers for this subset
-            for symbol in subset_symbols:
-                filepath = os.path.join(tf_folder, f"{symbol}_with_signals.parquet")
-                if not os.path.exists(filepath):
+            for sym in subset_symbols:
+                df = db.load_signals(sym, category, tf)
+                if df.empty:
                     continue
-                df = pd.read_parquet(filepath)
                 today_df = df[df["Date"].dt.normalize() == lad]
                 for tier in ["Excellent", "Great", "Good"]:
                     if not today_df[today_df["signal"] == f"{tier} Buy"].empty:
-                        buy_tiers[tier].append(symbol)
+                        buy_tiers[tier].append(sym)
                     if not today_df[today_df["signal"] == f"{tier} Sell"].empty:
-                        sell_tiers[tier].append(symbol)
+                        sell_tiers[tier].append(sym)
 
-            # summary_output += "\n"
             if not any(buy_tiers.values()) and not any(sell_tiers.values()):
-                # sell_summary += f'[{tf}] No Sell signals ({lad.date()})\n'
-                # buy_summary += f'[{tf}] No Buy signals ({lad.date()})\n'
-                # summary_output += f'[{tf}] No Buy or Sell signals\n'
                 pass
             else:
                 if any(sell_tiers.values()):
@@ -537,28 +450,26 @@ def generate_signals_summary_separate(base_folder="crypto_history_csv", target_d
                             for sym in buy_tiers[tier]:
                                 buy_summary += f"  {sym}\n"
                             buy_summary += "\n"
-        
+
         if not buy_summary and not sell_summary:
-             summary_output += "No signals found across any timeframe.\n"
+            summary_output += "No signals found across any timeframe.\n"
         else:
-             summary_output += sell_summary + buy_summary
+            summary_output += sell_summary + buy_summary
 
         now_utc = pd.Timestamp.utcnow()
         summary_output += now_utc.strftime("%H:%M:%S • %m-%d-%Y UTC\n")
         return summary_output, buy_summary, sell_summary
 
-    def _summarize_combined(subset_symbols):
+    def _summarize_combined(crypto_syms, stock_syms):
         summary_output = ""
         buy_summary = ""
         sell_summary = ""
-        
-        timeframes = ["1d", "3d", "1wk", "2wk"]
 
         for tf in timeframes:
             buy_tiers = {"Excellent": [], "Great": [], "Good": []}
             sell_tiers = {"Excellent": [], "Great": [], "Good": []}
 
-            # Resolve latest_available_date across both folders
+            # Resolve lad across both categories
             if target_date is not None:
                 if isinstance(target_date, str):
                     lad = pd.to_datetime(target_date).normalize()
@@ -568,41 +479,28 @@ def generate_signals_summary_separate(base_folder="crypto_history_csv", target_d
                     lad = pd.Timestamp(target_date).normalize()
             else:
                 lad = None
-                for symbol in subset_symbols:
-                    for folder in (crypto_folder, stocks_folder):
-                        filepath = os.path.join(folder, tf, f"{symbol}_with_signals.parquet")
-                        if os.path.exists(filepath):
-                            df = pd.read_parquet(filepath)
-                            date = df["Date"].max().normalize()
-                            if lad is None or date < lad:
-                                lad = date
+                for sym, cat in [(s, "crypto") for s in crypto_syms] + [(s, "stocks") for s in stock_syms]:
+                    _, max_date = db.get_signals_date_range(sym, cat, tf)
+                    if max_date:
+                        d = pd.Timestamp(max_date).normalize()
+                        if lad is None or d < lad:
+                            lad = d
 
             if lad is None:
-                # summary_output += f"[{tf}] No signal files found.\n"
                 continue
 
-            # Build tiers across both folders
-            for symbol in subset_symbols:
-                df = None
-                for folder in (crypto_folder, stocks_folder):
-                    filepath = os.path.join(folder, tf, f"{symbol}_with_signals.parquet")
-                    if os.path.exists(filepath):
-                        df = pd.read_parquet(filepath) 
-                        break
-                if df is None:
+            for sym, cat in [(s, "crypto") for s in crypto_syms] + [(s, "stocks") for s in stock_syms]:
+                df = db.load_signals(sym, cat, tf)
+                if df.empty:
                     continue
                 today_df = df[df["Date"].dt.normalize() == lad]
                 for tier in ["Excellent", "Great", "Good"]:
                     if not today_df[today_df["signal"] == f"{tier} Buy"].empty:
-                        buy_tiers[tier].append(symbol)
+                        buy_tiers[tier].append(sym)
                     if not today_df[today_df["signal"] == f"{tier} Sell"].empty:
-                        sell_tiers[tier].append(symbol)
+                        sell_tiers[tier].append(sym)
 
-            # summary_output += "\n"
             if not any(buy_tiers.values()) and not any(sell_tiers.values()):
-                # sell_summary += f'[{tf}] No Sell signals ({lad.date()})\n'
-                # buy_summary += f'[{tf}] No Buy signals ({lad.date()})\n'
-                # summary_output += f'[{tf}] No Buy or Sell signals\n'
                 pass
             else:
                 if any(sell_tiers.values()):
@@ -621,47 +519,37 @@ def generate_signals_summary_separate(base_folder="crypto_history_csv", target_d
                             for sym in buy_tiers[tier]:
                                 buy_summary += f"  {sym}\n"
                             buy_summary += "\n"
-        
+
         if not buy_summary and not sell_summary:
-             summary_output += "No signals found across any timeframe.\n"
+            summary_output += "No signals found across any timeframe.\n"
         else:
-             summary_output += sell_summary + buy_summary
+            summary_output += sell_summary + buy_summary
 
         now_utc = pd.Timestamp.utcnow()
         summary_output += now_utc.strftime("%H:%M:%S • %m-%d-%Y UTC\n")
         return summary_output, buy_summary, sell_summary
 
-    # Separate sets
-    crypto_syms = symbols
-    stock_syms = stock_symbols
-
-    crypto_summary = _summarize_symbols(crypto_syms, crypto_folder)
-    stock_summary = _summarize_symbols(stock_syms, stocks_folder)
-
-    # Also provide a combined view that searches both folders
-    combined_syms = crypto_syms + stock_syms
-    combined_summary = _summarize_combined(combined_syms)
+    crypto_summary = _summarize_symbols(symbols, "crypto")
+    stock_summary = _summarize_symbols(stock_symbols, "stocks")
+    combined_summary = _summarize_combined(symbols, stock_symbols)
 
     return {
         "crypto": crypto_summary,
         "stocks": stock_summary,
-        "combined": combined_summary
+        "combined": combined_summary,
     }
 
 
 def get_current_prices_string(config_path="cryptos.yml", vs_currency="usd"):
-    # with open(config_path, "r") as f:
-    #     config = yaml.safe_load(f)
-
-    symbols = [entry["id"] for entry in config["crypto_prices"]]
+    symbols_cg = [entry["id"] for entry in config["crypto_prices"]]
     id_to_symbol = {entry["id"]: entry["symbol"] for entry in config["crypto_prices"]}
 
-    url = f"https://api.coingecko.com/api/v3/simple/price?ids={','.join(symbols)}&vs_currencies={vs_currency}"
+    url = f"https://api.coingecko.com/api/v3/simple/price?ids={','.join(symbols_cg)}&vs_currencies={vs_currency}"
     response = requests.get(url)
     prices = response.json()
 
     result = ""
-    for symbol in symbols:
+    for symbol in symbols_cg:
         price = prices[symbol][vs_currency]
         if price >= 1:
             result += f"{id_to_symbol[symbol]}: ${price:,.2f}\n"
@@ -696,16 +584,13 @@ def get_current_stock_prices_string(vs_currency="usd"):
     return result
 
 
-# Function to fetch and display BTC dominance from CoinGecko
 def get_btc_dominance():
     url = "https://api.coingecko.com/api/v3/global"
     response = requests.get(url)
     if response.status_code != 200:
         return "Error fetching BTC dominance"
-
     data = response.json()
     btc_dominance = data["data"]["market_cap_percentage"]["btc"]
-
     return f"BTC Dominance: {btc_dominance:.2f}%\n"
 
 
@@ -728,7 +613,6 @@ if is_raspberry_pi():
 
 def _count_signals(buy_summary_text: str, sell_summary_text: str):
     def _count_items(block: str) -> int:
-        # Count lines that are indented with two spaces (ticker lines)
         return sum(1 for line in block.splitlines() if line.startswith("  "))
     return _count_items(buy_summary_text), _count_items(sell_summary_text)
 
@@ -736,14 +620,14 @@ if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "refresh":
         process_crypto_data()
         process_stock_data()
-    
+
 
     else:
         separated = generate_signals_summary_separate(target_date=None)
         crypto_combined, crypto_buy_summary, crypto_sell_summary = separated["crypto"]
         stock_combined, stock_buy_summary, stock_sell_summary = separated["stocks"]
         combined_all, buy_summary_str, sell_summary_str = separated["combined"]
-        
+
         crypto_prices_str = get_total_marketcap()
         crypto_prices_str += get_current_prices_string()
         stock_prices_str = get_current_stock_prices_string()
@@ -751,15 +635,13 @@ if __name__ == "__main__":
         # Image: crypto-only (per your instruction)
         image_path = generate_crypto_signal_image(crypto_buy_summary, crypto_sell_summary, crypto_prices_str, config)
 
-        if is_raspberry_pi():
+        if is_raspberry_pi() and "tweet" not in sys.argv:
             display_single_image(image_path)
 
         if len(sys.argv) > 1 and sys.argv[1] == "tweet":
-            # Counts
             crypto_buy_count, crypto_sell_count = _count_signals(crypto_buy_summary, crypto_sell_summary)
             stock_buy_count, stock_sell_count = _count_signals(stock_buy_summary, stock_sell_summary)
 
-            # Two separate tweets
             crypto_tweet = (
                 f"Crypto: {crypto_buy_count} buys, {crypto_sell_count} sells\n"
                 + "— Crypto —\n"
@@ -773,7 +655,5 @@ if __name__ == "__main__":
                 + stock_combined
             )
 
-            # send_toot(crypto_tweet)
             send_tweet(crypto_tweet)
-            # send_toot(stocks_tweet)
             send_tweet(stocks_tweet)
