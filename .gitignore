@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+
+# Open table-format data lake (Parquet) — generated locally, never committed
+data/
+
+# Legacy / generated data stores — too large to commit
+crypto.db
+crypto.db-wal
+crypto.db-shm
+crypto_history_csv/
+
+# Generated display artifacts
+*.bmp
+eink_output/
+
+# Logs
+*.log
