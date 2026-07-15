@@ -42,6 +42,14 @@ crypto_prices:
 
 MASTODON_ACCESS_TOKEN: insert
 
+# Push notifications for new signals / pipeline failures.
+# Fill in either channel (or both) to enable; empty values disable.
+notify:
+  ntfy_topic: ""            # e.g. a hard-to-guess topic; get pings via the ntfy app
+  ntfy_server: https://ntfy.sh
+  telegram_bot_token: ""    # from @BotFather
+  telegram_chat_id: ""
+
 
 twitter:
   api_key: INSERT_API_KEY
@@ -354,3 +362,6 @@ stocks:
   - BTI
   - RAI
   - TSLA
+# Symbol auto-update: stocks track current S&P 500 constituents each refresh.
+# Add e.g. `auto_update_cryptos: 30` to also union in the CoinGecko top-30.
+auto_update_stocks: sp500
