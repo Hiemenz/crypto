@@ -23,6 +23,8 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import db
 import backtest as backtest_mod
 import breadth as breadth_mod
+import sectors as sectors_mod
+import momentum as momentum_mod
 
 CHART_DAYS = 90
 SPARK_DAYS = 90
@@ -108,6 +110,10 @@ svg .endlabel { fill: var(--ink-2); }
 #tooltip .tval { font-weight: 600; font-variant-numeric: tabular-nums; }
 #tooltip .tname { color: var(--ink-2); }
 footer { color: var(--muted); font-size: 12.5px; margin-top: 32px; }
+h3 { font-size: 14px; margin: 16px 0 6px; color: var(--ink-2); }
+.heatmap td { text-align: center; font-size: 12px; font-variant-numeric: tabular-nums; padding: 5px 6px; }
+.heatmap th { text-align: center; font-size: 12px; padding: 5px 6px; }
+.bar-cell { font-size: 11px; letter-spacing: -1px; }
 """
 
 CROSSHAIR_JS = """
@@ -470,6 +476,204 @@ def _watchlist_section(watchlist_frames):
     )
 
 
+# ── new feature sections ────────────────────────────────────────────────────────
+
+def _conviction_section(latest_signals):
+    """Symbols where 2+ timeframes agree on buy or sell direction."""
+    sym_buy: dict = {}
+    sym_sell: dict = {}
+    for (cat, tf), (date, buys, sells) in latest_signals.items():
+        for sym, _ in buys:
+            sym_buy[sym] = sym_buy.get(sym, 0) + 1
+        for sym, _ in sells:
+            sym_sell[sym] = sym_sell.get(sym, 0) + 1
+
+    high_buy = sorted([(s, c) for s, c in sym_buy.items() if c >= 2], key=lambda x: -x[1])
+    high_sell = sorted([(s, c) for s, c in sym_sell.items() if c >= 2], key=lambda x: -x[1])
+    if not high_buy and not high_sell:
+        return ""
+
+    rows = []
+    for sym, count in high_buy:
+        bar = "█" * count + "░" * (5 - count)
+        rows.append(
+            f"<tr><td>{_esc(sym)}</td><td class='num'>{count}/5</td>"
+            f"<td><span style='color:var(--buy)'>{bar} Buy</span></td></tr>"
+        )
+    for sym, count in high_sell:
+        bar = "█" * count + "░" * (5 - count)
+        rows.append(
+            f"<tr><td>{_esc(sym)}</td><td class='num'>{count}/5</td>"
+            f"<td><span style='color:var(--sell)'>{bar} Sell</span></td></tr>"
+        )
+    return (
+        "<h2>High-conviction signals (2+ timeframes agree)</h2>"
+        '<div class="card"><table>'
+        "<tr><th>Symbol</th><th class='num'>Timeframes</th><th>Direction</th></tr>"
+        + "".join(rows)
+        + "</table></div>"
+    )
+
+
+def _volume_spikes_data():
+    """Symbols with vol_spike on their latest daily bar, per category."""
+    result = {}
+    for cat in ("crypto", "stocks"):
+        try:
+            df = db.scan_signals_lake(cat, "1d", columns=["Date", "vol_spike"])
+        except Exception:
+            continue
+        if df.empty or "vol_spike" not in df.columns:
+            continue
+        latest = df["Date"].max()
+        spikes = df[(df["Date"] == latest) & df["vol_spike"].fillna(False)]
+        if not spikes.empty:
+            result[cat] = sorted(spikes["symbol"].unique())
+    return result
+
+
+def _volume_spikes_section(spikes_data):
+    if not spikes_data:
+        return ""
+    parts = ["<h2>Volume spikes today (2× 20-day average)</h2>", '<div class="card">']
+    for cat, syms in spikes_data.items():
+        label = "Crypto" if cat == "crypto" else "Stocks"
+        parts.append(f"<p><strong>{label}:</strong> {', '.join(_esc(s) for s in syms)}</p>")
+    parts.append("</div>")
+    return "".join(parts)
+
+
+def _sector_breadth_section():
+    df = sectors_mod.load()
+    if df.empty:
+        return ""
+    rows = []
+    for r in df.itertuples():
+        pct = r.pct_above_ma200
+        cls = "up" if pct >= 0.6 else ("down" if pct <= 0.4 else "")
+        filled = round(pct * 10)
+        bar = "█" * filled + "░" * (10 - filled)
+        rows.append(
+            f"<tr><td>{_esc(r.sector)}</td>"
+            f"<td class='num {cls}'>{pct:.0%}</td>"
+            f"<td class='num'>{r.n}</td>"
+            f"<td class='bar-cell' style='color:var(--muted)'>{bar}</td></tr>"
+        )
+    return (
+        "<h2>S&amp;P 500 — breadth by GICS sector</h2>"
+        '<div class="card"><table>'
+        "<tr><th>Sector</th><th class='num'>Above 200dMA</th>"
+        "<th class='num'>n</th><th>Bar</th></tr>"
+        + "".join(rows)
+        + "</table></div>"
+    )
+
+
+def _momentum_section():
+    df = momentum_mod.load()
+    if df.empty or "ret_30d" not in df.columns:
+        return ""
+
+    N = 10
+    parts = ["<h2>Momentum — top &amp; bottom movers by 1-month return</h2>"]
+
+    def _row(r):
+        def fmt(v):
+            if v is None or (hasattr(v, '__class__') and v.__class__.__name__ == 'float' and pd.isna(v)):
+                return "<td class='num'>—</td>"
+            try:
+                fv = float(v)
+            except (TypeError, ValueError):
+                return "<td class='num'>—</td>"
+            if pd.isna(fv):
+                return "<td class='num'>—</td>"
+            cls = "up" if fv >= 0 else "down"
+            return f"<td class='num {cls}'>{fv:+.1%}</td>"
+        return (
+            f"<tr><td>{_esc(r.symbol)}</td>"
+            + fmt(r.ret_30d) + fmt(r.ret_90d) + fmt(r.ret_180d)
+            + "</tr>"
+        )
+
+    for cat in ("stocks", "crypto"):
+        sub = df[df["category"] == cat].dropna(subset=["ret_30d"])
+        if sub.empty:
+            continue
+        label = "Stocks" if cat == "stocks" else "Crypto"
+        parts.append(f"<h3>{label}</h3>")
+        parts.append(
+            '<div class="card"><table>'
+            "<tr><th>Symbol</th><th class='num'>1m</th>"
+            "<th class='num'>3m</th><th class='num'>6m</th></tr>"
+        )
+        top = sub.nlargest(N, "ret_30d")
+        bottom = sub.nsmallest(N, "ret_30d")
+        parts.append(
+            "<tr><td colspan='4' style='color:var(--ink-2);font-size:12px;"
+            "padding:3px 10px'>▲ Top gainers</td></tr>"
+        )
+        for r in top.itertuples():
+            parts.append(_row(r))
+        parts.append(
+            "<tr><td colspan='4' style='color:var(--ink-2);font-size:12px;"
+            "padding:3px 10px'>▼ Top losers</td></tr>"
+        )
+        for r in bottom.itertuples():
+            parts.append(_row(r))
+        parts.append("</table></div>")
+
+    return "".join(parts)
+
+
+def _correlation_heatmap_html(watchlist_frames):
+    """30-day daily return correlation matrix for the crypto watchlist."""
+    if len(watchlist_frames) < 2:
+        return ""
+
+    closes = pd.DataFrame({
+        sym: df.set_index("Date")["Close"].tail(30)
+        for sym, df in watchlist_frames.items()
+    })
+    rets = closes.pct_change().dropna()
+    if len(rets) < 5:
+        return ""
+
+    corr = rets.corr()
+    syms = list(corr.columns)
+    labels = [s.replace("-USD", "") for s in syms]
+
+    def _cell_style(val):
+        if pd.isna(val):
+            return ""
+        alpha = min(0.70, abs(float(val)) * 0.70)
+        if val > 0:
+            return f"background:rgba(0,131,0,{alpha:.2f})"
+        return f"background:rgba(227,73,72,{alpha:.2f})"
+
+    header = (
+        "<tr><th></th>"
+        + "".join(f"<th>{_esc(lb)}</th>" for lb in labels)
+        + "</tr>"
+    )
+    rows = []
+    for i, s1 in enumerate(syms):
+        cells = f"<th>{_esc(labels[i])}</th>"
+        for s2 in syms:
+            val = corr.loc[s1, s2]
+            style = _cell_style(val)
+            text = f"{val:.2f}" if not pd.isna(val) else "—"
+            cells += f'<td style="{style}">{text}</td>'
+        rows.append(f"<tr>{cells}</tr>")
+
+    return (
+        "<h2>Crypto watchlist — 30-day return correlations</h2>"
+        '<div class="card" style="overflow-x:auto">'
+        '<table class="heatmap">'
+        + header + "".join(rows)
+        + "</table></div>"
+    )
+
+
 # ── data assembly ───────────────────────────────────────────────────────────────
 
 def _latest_signals():
@@ -551,6 +755,8 @@ def generate(output_path=None) -> str:
     latest_signals, signal_counts = _latest_signals()
     chart_svg, chart_payload = _breadth_chart_svg(histories) if histories else (
         "<p class='empty'>No breadth history yet — it accrues one point per refresh.</p>", None)
+    watchlist_frames = _watchlist_data()
+    spikes_data = _volume_spikes_data()
 
     body = [
         "<main>",
@@ -565,10 +771,15 @@ def generate(output_path=None) -> str:
         "</div>",
         chart_svg,
         "</div>",
+        _conviction_section(latest_signals),
         _signals_section(latest_signals),
+        _volume_spikes_section(spikes_data),
         _crosses_section(_recent_crosses()),
         _backtest_section(backtest_mod.load_stats()),
-        _watchlist_section(_watchlist_data()),
+        _sector_breadth_section(),
+        _momentum_section(),
+        _watchlist_section(watchlist_frames),
+        _correlation_heatmap_html(watchlist_frames),
         "<footer>Static page regenerated after each pipeline refresh. "
         "Serve with: python -m http.server -d data/dashboard 8080</footer>",
         "</main>",

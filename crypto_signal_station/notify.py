@@ -67,6 +67,16 @@ def _send_telegram(cfg, title, message):
     return True
 
 
+def _send_discord(cfg, title, message):
+    url = (cfg.get("discord_webhook_url") or "").strip()
+    if not url:
+        return False
+    text = f"**{title}**\n{message}"[:2000]
+    resp = requests.post(url, json={"content": text}, timeout=30)
+    resp.raise_for_status()
+    return True
+
+
 def send_notification(title, message, priority="default", config=None):
     """Send to every configured channel; True if at least one accepted it.
 
@@ -78,6 +88,7 @@ def send_notification(title, message, priority="default", config=None):
     for chan, fn in (
         ("ntfy", lambda: _send_ntfy(cfg, title, message, priority)),
         ("telegram", lambda: _send_telegram(cfg, title, message)),
+        ("discord", lambda: _send_discord(cfg, title, message)),
     ):
         try:
             if fn():

@@ -31,6 +31,8 @@ import db
 import breadth as breadth_mod
 import dashboard as dashboard_mod
 import notify
+import sectors as sectors_mod
+import momentum as momentum_mod
 
 # Load config from YAML (symbol lists are resolved by _load_universe below,
 # which layers the auto-updated universe caches on top of the YAML lists)
@@ -201,6 +203,7 @@ def _wiki_to_yahoo(sym):
 
 
 def _fetch_sp500_symbols():
+    """Return (sorted symbol list, {yahoo_symbol: gics_sector}) from Wikipedia."""
     resp = requests.get(
         "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies",
         headers={"User-Agent": "Mozilla/5.0"},
@@ -208,7 +211,15 @@ def _fetch_sp500_symbols():
     )
     resp.raise_for_status()
     table = pd.read_html(io.StringIO(resp.text))[0]
-    return sorted({_wiki_to_yahoo(s) for s in table["Symbol"].astype(str)})
+    syms = sorted({_wiki_to_yahoo(s) for s in table["Symbol"].astype(str)})
+    sector_map = {}
+    if "GICS Sector" in table.columns:
+        for _, row in table.iterrows():
+            sym = _wiki_to_yahoo(str(row["Symbol"]))
+            sector = str(row["GICS Sector"]).strip()
+            if sector and sector.lower() != "nan":
+                sector_map[sym] = sector
+    return syms, sector_map
 
 
 def _coingecko_to_yahoo(markets, top_n):
@@ -254,12 +265,14 @@ def update_symbol_universe():
 
     if config.get("auto_update_stocks") == "sp500":
         try:
-            syms = _fetch_sp500_symbols()
+            syms, sector_map = _fetch_sp500_symbols()
             # Sanity floor: never clobber the cache with a bad scrape
             if len(syms) > 400:
                 with open(_universe_file("sp500.json"), "w") as f:
                     json.dump(syms, f)
-                print(f"S&P 500 universe updated: {len(syms)} symbols")
+                if sector_map:
+                    sectors_mod.save_sector_map(sector_map)
+                print(f"S&P 500 universe updated: {len(syms)} symbols, {len(sector_map)} sector mappings")
             else:
                 print(f"S&P 500 scrape returned only {len(syms)} symbols; keeping previous list")
         except Exception as e:
@@ -993,6 +1006,71 @@ def _count_signals(buy_summary_text: str, sell_summary_text: str):
         return len({line.strip() for line in block.splitlines() if line.startswith("  ")})
     return _count_items(buy_summary_text), _count_items(sell_summary_text)
 
+def _price_alert_state_path():
+    return db.table_path("notify", "price_alert_state.json")
+
+
+def check_price_alerts():
+    """Notify when a symbol's latest close crosses a configured price threshold.
+
+    Alerts in cryptos.yml:
+        price_alerts:
+          BTC-USD: 100000
+          ETH-USD: 3000
+
+    Fires once on each direction change (below→above and above→below).
+    State is in data/notify/price_alert_state.json; delete to reset.
+    """
+    alerts = config.get("price_alerts") or {}
+    if not alerts:
+        return
+
+    try:
+        with open(_price_alert_state_path()) as f:
+            import json as _json
+            state = _json.load(f)
+    except (OSError, ValueError):
+        state = {}
+
+    def _latest_close(symbol):
+        for cat in ("crypto", "stocks"):
+            df = db.load_ohlcv(symbol, cat)
+            if not df.empty:
+                return float(df["Close"].iloc[-1])
+        return None
+
+    dirty = False
+    for symbol, threshold in alerts.items():
+        threshold = float(threshold)
+        current = _latest_close(symbol)
+        if current is None:
+            print(f"Price alert: no OHLCV data for {symbol}, skipping")
+            continue
+
+        current_side = "above" if current >= threshold else "below"
+        sym_state = state.get(symbol, {})
+        # Reset if the threshold was changed in config
+        last_side = sym_state.get("side") if sym_state.get("threshold") == threshold else None
+
+        if last_side != current_side:
+            fmt = lambda v: f"${v:,.2f}" if v >= 1 else f"${v:,.5f}"
+            direction = "above" if current_side == "above" else "below"
+            msg = (
+                f"{symbol} is now {direction} {fmt(threshold)}\n"
+                f"Current price: {fmt(current)}"
+            )
+            notify.send_notification(f"Price Alert: {symbol}", msg, priority="high")
+            state[symbol] = {"threshold": threshold, "side": current_side}
+            dirty = True
+
+    if dirty:
+        import os as _os
+        import json as _json
+        _os.makedirs(_os.path.dirname(_price_alert_state_path()), exist_ok=True)
+        with open(_price_alert_state_path(), "w") as f:
+            _json.dump(state, f)
+
+
 USAGE = """\
 Commands:
   refresh          update universe + OHLCV + signals, then breadth, dashboard,
@@ -1022,9 +1100,12 @@ if __name__ == "__main__":
             process_crypto_data()
             process_stock_data()
             breadth_mod.record_daily()
+            sectors_mod.compute_and_save()
+            momentum_mod.compute()
             dashboard_mod.generate()
             _, buy_all, sell_all = generate_signals_summary_separate()["combined"]
             notify.notify_signals(buy_all, sell_all)
+            check_price_alerts()
         except Exception:
             tb = traceback.format_exc()
             print(tb)

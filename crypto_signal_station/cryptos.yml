@@ -49,6 +49,13 @@ notify:
   ntfy_server: https://ntfy.sh
   telegram_bot_token: ""    # from @BotFather
   telegram_chat_id: ""
+  discord_webhook_url: ""   # from Server Settings > Integrations > Webhooks
+
+# One-way price alerts: notify when price first crosses a threshold (either direction).
+# State is tracked in data/notify/price_alert_state.json; delete that file to reset.
+price_alerts: {}
+  # BTC-USD: 100000
+  # ETH-USD: 3000
 
 
 twitter:
