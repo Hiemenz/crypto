@@ -38,7 +38,7 @@ def save_sector_map(mapping: dict):
 
 
 def compute_and_save() -> pd.DataFrame:
-    """Compute per-sector % above 200dMA and persist; returns the DataFrame."""
+    """Compute per-sector breadth, momentum, and signal activity; persist results."""
     sector_map = load_sector_map()
     if not sector_map:
         print("Sector breadth: no sector map cached yet (run update_symbol_universe first).")
@@ -70,10 +70,49 @@ def compute_and_save() -> pd.DataFrame:
     df = df.dropna(subset=["sector"])
     df["above"] = df["last_close"] > df["ma200"]
 
-    rows = [
-        {"sector": s, "n": len(g), "pct_above_ma200": float(g["above"].mean())}
-        for s, g in df.groupby("sector")
-    ]
+    # 30-day returns from stored momentum parquet (may be from prior run, ±1 day)
+    mom_by_sym: dict = {}
+    mom_path = db.table_path("momentum", "latest.parquet")
+    if os.path.exists(mom_path):
+        try:
+            import duckdb
+            con = duckdb.connect()
+            try:
+                mom = con.execute(
+                    f"SELECT symbol, ret_30d FROM read_parquet('{mom_path}', hive_partitioning=false)"
+                ).df()
+            finally:
+                con.close()
+            mom_by_sym = dict(zip(mom["symbol"], mom["ret_30d"]))
+        except Exception as e:
+            print(f"Sector breadth: momentum load failed: {e}")
+
+    df["ret_30d"] = df["symbol"].map(mom_by_sym)
+
+    # Today's buy/sell signal counts per sector (1d timeframe)
+    sig_buy_syms: set = set()
+    sig_sell_syms: set = set()
+    try:
+        sigs = db.scan_signals_lake("stocks", "1d", columns=["Date", "signal"])
+        if not sigs.empty:
+            today_sigs = sigs[sigs["Date"] == sigs["Date"].max()]
+            sig_buy_syms = set(today_sigs.loc[today_sigs["signal"].str.endswith("Buy"), "symbol"])
+            sig_sell_syms = set(today_sigs.loc[today_sigs["signal"].str.endswith("Sell"), "symbol"])
+    except Exception as e:
+        print(f"Sector breadth: signal load failed: {e}")
+
+    rows = []
+    for s, g in df.groupby("sector"):
+        sym_set = set(g["symbol"])
+        rows.append({
+            "sector": s,
+            "n": len(g),
+            "pct_above_ma200": float(g["above"].mean()),
+            "ret_30d": float(g["ret_30d"].mean()) if g["ret_30d"].notna().any() else float("nan"),
+            "buy_signals": len(sym_set & sig_buy_syms),
+            "sell_signals": len(sym_set & sig_sell_syms),
+        })
+
     result = (
         pd.DataFrame(rows)
         .sort_values("pct_above_ma200", ascending=False)

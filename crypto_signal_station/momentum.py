@@ -1,10 +1,13 @@
 """Pre-compute momentum rankings from the OHLCV lake.
 
 Computes 1-month, 3-month, and 6-month trailing returns for every active symbol
-and stores the result in data/momentum/latest.parquet. Called during refresh;
-the dashboard reads the stored frame without re-scanning the lake.
+and stores the result in data/momentum/latest.parquet. Also computes the altcoin
+season index (% of cryptos outperforming BTC over 90 days) and stores it to
+data/momentum/altcoin_season.json. Called during refresh; the dashboard reads
+the stored frames without re-scanning the lake.
 """
 
+import json
 import os
 import sys
 
@@ -55,7 +58,47 @@ def compute(categories=("stocks", "crypto")) -> pd.DataFrame:
 
     combined = pd.concat(frames, ignore_index=True)
     db.save_table(combined, db.table_path("momentum", "latest.parquet"))
+
+    _compute_and_store_altcoin_season(combined)
     return combined
+
+
+def _compute_and_store_altcoin_season(df: pd.DataFrame):
+    """Altcoin season index: % of crypto symbols outperforming BTC over 90d."""
+    crypto = df[df["category"] == "crypto"].dropna(subset=["ret_90d"])
+    if crypto.empty:
+        return
+
+    btc_rows = crypto[crypto["symbol"] == "BTC-USD"]
+    if btc_rows.empty:
+        print("Altcoin season: BTC-USD not in momentum data, skipping")
+        return
+
+    btc_ret = float(btc_rows["ret_90d"].iloc[0])
+    n_total = len(crypto)
+    n_beating = int((crypto["ret_90d"] > btc_ret).sum())
+    pct_beating = n_beating / n_total if n_total > 0 else 0.0
+
+    if pct_beating >= 0.75:
+        label = "Altcoin Season"
+    elif pct_beating >= 0.50:
+        label = "Neutral"
+    else:
+        label = "BTC Season"
+
+    result = {
+        "btc_ret_90d": btc_ret,
+        "pct_beating_btc": pct_beating,
+        "n_total": n_total,
+        "n_beating": n_beating,
+        "label": label,
+        "as_of": pd.Timestamp.now().isoformat(),
+    }
+    path = db.table_path("momentum", "altcoin_season.json")
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w") as f:
+        json.dump(result, f)
+    print(f"Altcoin season: {label} ({pct_beating:.0%} of {n_total} beating BTC {btc_ret:+.1%})")
 
 
 def load() -> pd.DataFrame:
@@ -72,3 +115,15 @@ def load() -> pd.DataFrame:
     finally:
         con.close()
     return df
+
+
+def load_altcoin_season() -> dict:
+    """Load stored altcoin season data ({} if not yet computed)."""
+    path = db.table_path("momentum", "altcoin_season.json")
+    if not os.path.exists(path):
+        return {}
+    try:
+        with open(path) as f:
+            return json.load(f)
+    except Exception:
+        return {}

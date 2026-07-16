@@ -26,6 +26,23 @@ import breadth as breadth_mod
 import sectors as sectors_mod
 import momentum as momentum_mod
 
+_MARKET_CONTEXT_PATH = None  # resolved lazily below
+
+
+def _market_ctx_path():
+    return db.table_path("market", "context.json")
+
+
+def _load_market_context() -> dict:
+    path = _market_ctx_path()
+    if not os.path.exists(path):
+        return {}
+    try:
+        with open(path) as f:
+            return json.load(f)
+    except Exception:
+        return {}
+
 CHART_DAYS = 90
 SPARK_DAYS = 90
 MAX_SYMBOLS_SHOWN = 12  # per signal cell before folding into <details>
@@ -114,6 +131,23 @@ h3 { font-size: 14px; margin: 16px 0 6px; color: var(--ink-2); }
 .heatmap td { text-align: center; font-size: 12px; font-variant-numeric: tabular-nums; padding: 5px 6px; }
 .heatmap th { text-align: center; font-size: 12px; padding: 5px 6px; }
 .bar-cell { font-size: 11px; letter-spacing: -1px; }
+.vol-low { color: var(--muted); }
+.vol-normal { color: var(--ink-2); }
+.vol-high { color: #c07000; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .vol-high { color: #e09020; } }
+:root[data-theme="dark"] .vol-high { color: #e09020; }
+.tile .vol-sub { font-size: 11.5px; margin-top: 3px; }
+.altcoin-season { color: var(--s-crypto); font-weight: 600; }
+.btc-season { color: var(--s-stocks); font-weight: 600; }
+.neutral-season { color: var(--ink-2); }
+.section-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+.mini-tile {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 10px 14px; min-width: 130px; flex: 1;
+}
+.mini-tile .label { color: var(--ink-2); font-size: 12px; }
+.mini-tile .value { font-size: 20px; font-weight: 600; margin-top: 2px; }
+.mini-tile .sub { color: var(--muted); font-size: 11.5px; margin-top: 2px; }
 """
 
 CROSSHAIR_JS = """
@@ -301,6 +335,10 @@ def _regime_dot(regime):
     return f'<span class="dot" style="background:{color}"></span>'
 
 
+def _vol_regime_cls(regime):
+    return {"Low Vol": "vol-low", "High Vol": "vol-high"}.get(regime, "vol-normal")
+
+
 def _tiles_html(rows, signal_counts):
     tiles = []
     for cat, label in (("stocks", "Stocks breadth"), ("crypto", "Crypto breadth")):
@@ -309,12 +347,22 @@ def _tiles_html(rows, signal_counts):
             continue
         pct = row["pct_above_ma200"]
         pct_str = f"{pct:.0%}" if pd.notna(pct) else "n/a"
+        vol = row.get("avg_vol_20d")
+        vol_regime = row.get("vol_regime", "")
+        vol_str = ""
+        if vol is not None and not pd.isna(vol):
+            vcls = _vol_regime_cls(vol_regime)
+            vol_str = (
+                f'<div class="vol-sub {vcls}">Vol {vol:.0%} annlzd &nbsp;·&nbsp; '
+                f'{_esc(vol_regime)}</div>'
+            )
         tiles.append(
             '<div class="tile">'
             f'<div class="label">{label} &gt;200dMA</div>'
             f'<div class="value">{pct_str}</div>'
             f'<div class="chip">{_regime_dot(row["regime"])}{_esc(row["regime"])}'
             f' &nbsp;·&nbsp; 52w H/L {row["new_highs_52w"]}/{row["new_lows_52w"]}</div>'
+            + vol_str +
             "</div>"
         )
     buys, sells = signal_counts
@@ -478,6 +526,171 @@ def _watchlist_section(watchlist_frames):
 
 # ── new feature sections ────────────────────────────────────────────────────────
 
+def _fmt_cap(v):
+    if v >= 1e12:
+        return f"${v / 1e12:.2f}T"
+    if v >= 1e9:
+        return f"${v / 1e9:.1f}B"
+    return f"${v:,.0f}"
+
+
+def _fmt_ret(v, signed=True):
+    if v is None or pd.isna(v):
+        return "n/a"
+    cls = "up" if v >= 0 else "down"
+    s = f"{v:+.2%}" if signed else f"{v:.2%}"
+    return f'<span class="{cls}">{s}</span>'
+
+
+def _market_overview_section(ctx: dict) -> str:
+    if not ctx:
+        return ""
+
+    parts = ["<h2>Market Overview</h2>", '<div class="section-row">']
+
+    # Crypto tiles
+    btc_dom = ctx.get("btc_dominance")
+    eth_dom = ctx.get("eth_dominance")
+    if btc_dom is not None:
+        sub = f"ETH {eth_dom:.1f}%" if eth_dom is not None else ""
+        parts.append(
+            '<div class="mini-tile">'
+            '<div class="label">BTC Dominance</div>'
+            f'<div class="value">{btc_dom:.1f}%</div>'
+            f'<div class="sub">{sub}</div>'
+            "</div>"
+        )
+
+    tmc = ctx.get("total_market_cap_usd")
+    tmc_chg = ctx.get("market_cap_change_24h_pct")
+    if tmc is not None:
+        chg_html = _fmt_ret(tmc_chg / 100 if tmc_chg is not None else None)
+        parts.append(
+            '<div class="mini-tile">'
+            '<div class="label">Crypto Market Cap</div>'
+            f'<div class="value">{_fmt_cap(tmc)}</div>'
+            f'<div class="sub">{chg_html} 24h</div>'
+            "</div>"
+        )
+
+    fng_v = ctx.get("fear_greed_value")
+    fng_l = ctx.get("fear_greed_label", "")
+    if fng_v is not None:
+        fng_cls = "down" if fng_v < 40 else ("up" if fng_v > 60 else "")
+        parts.append(
+            '<div class="mini-tile">'
+            '<div class="label">Fear &amp; Greed</div>'
+            f'<div class="value"><span class="{fng_cls}">{fng_v}</span></div>'
+            f'<div class="sub">{_esc(fng_l)}</div>'
+            "</div>"
+        )
+
+    # Stock index ETF tiles
+    for key, label in [("spy", "SPY"), ("qqq", "QQQ"), ("dia", "DIA")]:
+        last = ctx.get(f"{key}_last")
+        ret_1d = ctx.get(f"{key}_ret_1d")
+        ret_1m = ctx.get(f"{key}_ret_1m")
+        if last is None:
+            continue
+        price_str = f"${last:,.2f}"
+        parts.append(
+            '<div class="mini-tile">'
+            f'<div class="label">{label}</div>'
+            f'<div class="value">{_fmt_ret(ret_1d)} today</div>'
+            f'<div class="sub">{price_str} &nbsp;·&nbsp; 1m {_fmt_ret(ret_1m)}</div>'
+            "</div>"
+        )
+
+    parts.append("</div>")
+    return "".join(parts)
+
+
+def _altcoin_season_section() -> str:
+    data = momentum_mod.load_altcoin_season()
+    if not data:
+        return ""
+    label = data.get("label", "")
+    pct = data.get("pct_beating_btc")
+    n_total = data.get("n_total", 0)
+    btc_ret = data.get("btc_ret_90d")
+    pct_str = f"{pct:.0%}" if pct is not None else "n/a"
+    btc_str = f"{btc_ret:+.1%}" if btc_ret is not None else "n/a"
+    lbl_cls = {
+        "Altcoin Season": "altcoin-season",
+        "BTC Season": "btc-season",
+        "Neutral": "neutral-season",
+    }.get(label, "")
+    return (
+        "<h2>Altcoin Season Index</h2>"
+        '<div class="card" style="padding:12px 16px">'
+        f'<span class="{lbl_cls}" style="font-size:20px">{_esc(label)}</span>'
+        f'<span style="color:var(--ink-2);font-size:13px;margin-left:16px">'
+        f"{pct_str} of {n_total} cryptos beating BTC over 90d &nbsp;·&nbsp; "
+        f"BTC 90d return: {btc_str}"
+        "</span></div>"
+    )
+
+
+def _rsi_divergences_data() -> dict:
+    """Return {category: {bullish: [syms], bearish: [syms]}} for today's 1d bars."""
+    result = {}
+    for cat in ("crypto", "stocks"):
+        try:
+            df = db.scan_signals_lake(
+                cat, "1d", columns=["Date", "rsi_bullish_div", "rsi_bearish_div"]
+            )
+        except Exception:
+            continue
+        if df.empty:
+            continue
+        has_bull = "rsi_bullish_div" in df.columns
+        has_bear = "rsi_bearish_div" in df.columns
+        if not has_bull and not has_bear:
+            continue
+        today = df[df["Date"] == df["Date"].max()]
+        bull = (
+            sorted(today.loc[today["rsi_bullish_div"].fillna(False).astype(bool), "symbol"].unique())
+            if has_bull else []
+        )
+        bear = (
+            sorted(today.loc[today["rsi_bearish_div"].fillna(False).astype(bool), "symbol"].unique())
+            if has_bear else []
+        )
+        if bull or bear:
+            result[cat] = {"bullish": bull, "bearish": bear}
+    return result
+
+
+def _rsi_divergences_section(div_data: dict) -> str:
+    if not div_data:
+        return ""
+    rows = []
+    for cat in ("crypto", "stocks"):
+        entry = div_data.get(cat)
+        if not entry:
+            continue
+        cat_label = "Crypto" if cat == "crypto" else "Stocks"
+        for sym in entry.get("bullish", []):
+            rows.append(
+                f"<tr><td>{_esc(sym)}</td><td>{cat_label}</td>"
+                f'<td><span class="up">Bullish</span> — price near low, RSI recovering</td></tr>'
+            )
+        for sym in entry.get("bearish", []):
+            rows.append(
+                f"<tr><td>{_esc(sym)}</td><td>{cat_label}</td>"
+                f'<td><span class="down">Bearish</span> — price near high, RSI fading</td></tr>'
+            )
+    if not rows:
+        return ""
+    return (
+        "<h2>RSI Divergences (today, daily bars)</h2>"
+        '<div class="card"><table>'
+        "<tr><th>Symbol</th><th>Category</th><th>Signal</th></tr>"
+        + "".join(rows)
+        + "</table></div>"
+    )
+
+
 def _conviction_section(latest_signals):
     """Symbols where 2+ timeframes agree on buy or sell direction."""
     sym_buy: dict = {}
@@ -547,23 +760,47 @@ def _sector_breadth_section():
     df = sectors_mod.load()
     if df.empty:
         return ""
+    has_ret = "ret_30d" in df.columns
+    has_sigs = "buy_signals" in df.columns and "sell_signals" in df.columns
     rows = []
     for r in df.itertuples():
         pct = r.pct_above_ma200
-        cls = "up" if pct >= 0.6 else ("down" if pct <= 0.4 else "")
+        breadth_cls = "up" if pct >= 0.6 else ("down" if pct <= 0.4 else "")
         filled = round(pct * 10)
         bar = "█" * filled + "░" * (10 - filled)
+        ret_td = ""
+        if has_ret:
+            ret = getattr(r, "ret_30d", None)
+            if ret is not None and not pd.isna(ret):
+                rcls = "up" if ret >= 0 else "down"
+                ret_td = f"<td class='num {rcls}'>{ret:+.1%}</td>"
+            else:
+                ret_td = "<td class='num'>—</td>"
+        sig_td = ""
+        if has_sigs:
+            buys = getattr(r, "buy_signals", 0) or 0
+            sells = getattr(r, "sell_signals", 0) or 0
+            sig_td = (
+                f"<td class='num'>"
+                f'<span style="color:var(--buy)">{buys}↑</span>'
+                f' <span style="color:var(--sell)">{sells}↓</span>'
+                "</td>"
+            )
         rows.append(
             f"<tr><td>{_esc(r.sector)}</td>"
-            f"<td class='num {cls}'>{pct:.0%}</td>"
+            f"<td class='num {breadth_cls}'>{pct:.0%}</td>"
             f"<td class='num'>{r.n}</td>"
-            f"<td class='bar-cell' style='color:var(--muted)'>{bar}</td></tr>"
+            f"<td class='bar-cell' style='color:var(--muted)'>{bar}</td>"
+            + ret_td + sig_td
+            + "</tr>"
         )
+    ret_th = "<th class='num'>30d return</th>" if has_ret else ""
+    sig_th = "<th class='num'>Signals↑↓</th>" if has_sigs else ""
     return (
         "<h2>S&amp;P 500 — breadth by GICS sector</h2>"
         '<div class="card"><table>'
         "<tr><th>Sector</th><th class='num'>Above 200dMA</th>"
-        "<th class='num'>n</th><th>Bar</th></tr>"
+        f"<th class='num'>n</th><th>Bar</th>{ret_th}{sig_th}</tr>"
         + "".join(rows)
         + "</table></div>"
     )
@@ -757,11 +994,14 @@ def generate(output_path=None) -> str:
         "<p class='empty'>No breadth history yet — it accrues one point per refresh.</p>", None)
     watchlist_frames = _watchlist_data()
     spikes_data = _volume_spikes_data()
+    market_ctx = _load_market_context()
+    div_data = _rsi_divergences_data()
 
     body = [
         "<main>",
         "<h1>Crypto Signal Station</h1>",
         f'<p class="asof">Generated {pd.Timestamp.now().strftime("%Y-%m-%d %H:%M")} local · reads nightly Parquet lake</p>',
+        _market_overview_section(market_ctx),
         _tiles_html(latest_rows, signal_counts),
         f"<h2>Market breadth — % of symbols above 200-day MA ({CHART_DAYS}d)</h2>",
         '<div class="card">',
@@ -771,7 +1011,9 @@ def generate(output_path=None) -> str:
         "</div>",
         chart_svg,
         "</div>",
+        _altcoin_season_section(),
         _conviction_section(latest_signals),
+        _rsi_divergences_section(div_data),
         _signals_section(latest_signals),
         _volume_spikes_section(spikes_data),
         _crosses_section(_recent_crosses()),

@@ -2,14 +2,15 @@
 
 Breadth answers "how healthy is the whole market?" independent of any single
 ticker: the share of symbols above their 200-day MA, the share in a bull
-alignment (50MA > 200MA), fresh 52-week highs/lows, and the share of symbols
-carrying an active buy/sell signal today.
+alignment (50MA > 200MA), fresh 52-week highs/lows, the share of symbols
+carrying an active buy/sell signal today, and the realized-volatility regime.
 
 One row per day per category is appended to
     data/breadth/history_<category>.parquet
 so trends can be charted; the latest row feeds the eink/tweet regime line.
 """
 
+import math
 import os
 import sys
 
@@ -27,6 +28,14 @@ TRADING_DAYS_52W = 252
 RISK_ON_THRESHOLD = 0.60
 RISK_OFF_THRESHOLD = 0.40
 
+# Annualized 20-day realized vol thresholds measured on *individual symbols*
+# (not the index): large-cap stocks naturally average 25–40%, crypto 50–100%+.
+_VOL_HIGH_THRESHOLD = {"stocks": 0.45, "crypto": 1.00}
+_VOL_REGIME_BANDS = {
+    "stocks": (0.25, 0.45),   # (low_ceiling, high_floor)
+    "crypto": (0.50, 1.00),
+}
+
 
 def regime_label(pct_above_ma200):
     if pd.isna(pct_above_ma200):
@@ -36,6 +45,18 @@ def regime_label(pct_above_ma200):
     if pct_above_ma200 <= RISK_OFF_THRESHOLD:
         return "Risk-Off"
     return "Neutral"
+
+
+def vol_regime_label(avg_vol, category):
+    """Low / Normal / High Vol from annualized 20-day realized vol."""
+    if avg_vol is None or pd.isna(avg_vol):
+        return "Unknown"
+    lo, hi = _VOL_REGIME_BANDS.get(category, (0.15, 0.25))
+    if avg_vol < lo:
+        return "Low Vol"
+    if avg_vol >= hi:
+        return "High Vol"
+    return "Normal Vol"
 
 
 def compute_breadth(category="stocks"):
@@ -81,6 +102,27 @@ def compute_breadth(category="stocks"):
             pct_buy = float(latest["signal"].str.endswith("Buy").mean())
             pct_sell = float(latest["signal"].str.endswith("Sell").mean())
 
+    # Realized volatility regime: annualized std of 20-day % returns per symbol
+    vol_list = []
+    high_thresh = _VOL_HIGH_THRESHOLD.get(category, 0.25)
+    for sym, g in df.groupby("symbol"):
+        g_sorted = g.sort_values("Date")
+        if g_sorted["Date"].iloc[-1] < cutoff:
+            continue
+        tail = g_sorted["Close"].tail(22)
+        if len(tail) < 5:
+            continue
+        rets = tail.pct_change().dropna()
+        if rets.empty:
+            continue
+        vol_list.append(float(rets.std() * math.sqrt(252)))
+
+    avg_vol_20d = float(sum(vol_list) / len(vol_list)) if vol_list else float("nan")
+    pct_high_vol = (
+        float(sum(v > high_thresh for v in vol_list) / len(vol_list))
+        if vol_list else float("nan")
+    )
+
     return {
         "Date": as_of,
         "category": category,
@@ -92,6 +134,9 @@ def compute_breadth(category="stocks"):
         "pct_buy_signal": pct_buy,
         "pct_sell_signal": pct_sell,
         "regime": regime_label(pct_above),
+        "avg_vol_20d": avg_vol_20d,
+        "pct_high_vol": pct_high_vol,
+        "vol_regime": vol_regime_label(avg_vol_20d, category),
     }
 
 
@@ -121,14 +166,16 @@ def record_daily(categories=("stocks", "crypto")):
 
 def breadth_line(row) -> str:
     """One-line summary for the eink display / tweet, e.g.
-    'Stocks: 62% >200dMA • Risk-On • 52w H/L 12/3'."""
+    'Stocks: 62% >200dMA • Risk-On • Vol 18% Normal • 52w H/L 12/3'."""
     if not row:
         return ""
     name = "Stocks" if row["category"] == "stocks" else row["category"].capitalize()
     pct = row["pct_above_ma200"]
     pct_str = f"{pct:.0%}" if pd.notna(pct) else "n/a"
+    vol = row.get("avg_vol_20d")
+    vol_str = f" • Vol {vol:.0%}" if (vol is not None and not pd.isna(vol)) else ""
     return (
-        f"{name}: {pct_str} >200dMA • {row['regime']} • "
+        f"{name}: {pct_str} >200dMA • {row['regime']}{vol_str} • "
         f"52w H/L {row['new_highs_52w']}/{row['new_lows_52w']}\n"
     )
 
