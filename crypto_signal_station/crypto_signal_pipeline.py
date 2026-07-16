@@ -348,6 +348,41 @@ def verify_history():
     return issues
 
 
+def _add_rsi_divergence(df: pd.DataFrame, window: int = 20) -> pd.DataFrame:
+    """Add rsi_bullish_div and rsi_bearish_div boolean columns (vectorized).
+
+    Bearish: close near 20-period high but RSI below its recent high (momentum fading).
+    Bullish: close near 20-period low but RSI above its recent low (momentum recovering).
+    Both compare the current bar to rolling stats over the prior `window` bars.
+    """
+    if "rsi" not in df.columns or len(df) < window + 1:
+        df["rsi_bullish_div"] = False
+        df["rsi_bearish_div"] = False
+        return df
+
+    prior_max_close = df["Close"].shift(1).rolling(window).max()
+    prior_min_close = df["Close"].shift(1).rolling(window).min()
+    prior_max_rsi = df["rsi"].shift(1).rolling(window).max()
+    prior_min_rsi = df["rsi"].shift(1).rolling(window).min()
+
+    valid_bear = prior_max_close.notna() & prior_max_rsi.notna()
+    valid_bull = prior_min_close.notna() & prior_min_rsi.notna()
+
+    df["rsi_bearish_div"] = (
+        valid_bear
+        & (df["Close"] >= prior_max_close * 0.97)
+        & (df["rsi"] < prior_max_rsi - 5)
+    ).fillna(False)
+
+    df["rsi_bullish_div"] = (
+        valid_bull
+        & (df["Close"] <= prior_min_close * 1.03)
+        & (df["rsi"] > prior_min_rsi + 5)
+    ).fillna(False)
+
+    return df
+
+
 def _label_signal(row):
     """Map one indicator row to a signal tier. Buys only in a bear regime,
     sells only in a bull regime (mean-reversion tiers)."""
@@ -545,6 +580,7 @@ def _process_single_symbol(symbol, category, timeframes):
 
             df_tf["vol_spike"] = df_tf["Volume"] > 2 * df_tf["Volume"].rolling(window=20).mean()
 
+            df_tf = _add_rsi_divergence(df_tf)
             df_tf["signal"] = df_tf.apply(_label_signal, axis=1)
 
             df_tf = df_tf.reset_index()
@@ -923,6 +959,70 @@ def generate_signals_summary_separate(target_date=None):
     }
 
 
+def fetch_and_store_market_context():
+    """Pull CoinGecko global data + SPY/QQQ/DIA closes and store to
+    data/market/context.json for the dashboard to read without network calls."""
+    ctx: dict = {}
+
+    # CoinGecko /global: dominance, total market cap, 24h change
+    try:
+        resp = requests.get("https://api.coingecko.com/api/v3/global", timeout=30)
+        resp.raise_for_status()
+        gdata = resp.json()["data"]
+        dom = gdata.get("market_cap_percentage", {})
+        ctx["btc_dominance"] = float(dom.get("btc", 0))
+        ctx["eth_dominance"] = float(dom.get("eth", 0))
+        ctx["total_market_cap_usd"] = float(gdata["total_market_cap"]["usd"])
+        ctx["market_cap_change_24h_pct"] = float(gdata["market_cap_change_percentage_24h_usd"])
+        ctx["active_cryptos"] = int(gdata.get("active_cryptocurrencies", 0))
+        print(f"Market context: BTC dom {ctx['btc_dominance']:.1f}%, "
+              f"TMC ${ctx['total_market_cap_usd']/1e12:.2f}T")
+    except Exception as e:
+        print(f"Market context: CoinGecko global failed: {e}")
+
+    # Fear & Greed
+    try:
+        resp = requests.get("https://api.alternative.me/fng/", timeout=30)
+        resp.raise_for_status()
+        d = resp.json()["data"][0]
+        ctx["fear_greed_value"] = int(d["value"])
+        ctx["fear_greed_label"] = str(d["value_classification"])
+    except Exception as e:
+        print(f"Market context: Fear & Greed failed: {e}")
+
+    # US equity index ETFs via yfinance (65 days covers 1m + buffer)
+    for ticker, key in [("SPY", "spy"), ("QQQ", "qqq"), ("DIA", "dia")]:
+        try:
+            with _YF_LOCK:
+                raw = yf.download(
+                    ticker, period="65d", interval="1d",
+                    progress=False, auto_adjust=True, threads=False,
+                )
+            if raw.empty:
+                continue
+            if isinstance(raw.columns, pd.MultiIndex):
+                raw.columns = raw.columns.get_level_values(0)
+            raw = raw.reset_index()
+            date_col = "Date" if "Date" in raw.columns else raw.columns[0]
+            raw = raw.rename(columns={date_col: "Date"})
+            closes = raw["Close"].dropna()
+            if len(closes) < 2:
+                continue
+            ctx[f"{key}_last"] = float(closes.iloc[-1])
+            ctx[f"{key}_ret_1d"] = float(closes.iloc[-1] / closes.iloc[-2] - 1)
+            if len(closes) >= 22:
+                ctx[f"{key}_ret_1m"] = float(closes.iloc[-1] / closes.iloc[-22] - 1)
+        except Exception as e:
+            print(f"Market context: {ticker} failed: {e}")
+
+    ctx["as_of"] = pd.Timestamp.now().isoformat()
+    path = db.table_path("market", "context.json")
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w") as f:
+        json.dump(ctx, f)
+    return ctx
+
+
 def get_current_prices_string(vs_currency="usd"):
     symbols_cg = [entry["id"] for entry in config["crypto_prices"]]
     id_to_symbol = {entry["id"]: entry["symbol"] for entry in config["crypto_prices"]}
@@ -1100,8 +1200,9 @@ if __name__ == "__main__":
             process_crypto_data()
             process_stock_data()
             breadth_mod.record_daily()
+            momentum_mod.compute()          # before sectors so sectors get fresh 30d returns
             sectors_mod.compute_and_save()
-            momentum_mod.compute()
+            fetch_and_store_market_context()
             dashboard_mod.generate()
             _, buy_all, sell_all = generate_signals_summary_separate()["combined"]
             notify.notify_signals(buy_all, sell_all)
