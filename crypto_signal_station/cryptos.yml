@@ -11,7 +11,7 @@ cryptos:
 
 output_path: crypto_signal_station/crypto_station_image.bmp
 
-show_boxes: True
+show_boxes: true
 
 # prices
 crypto_prices:
@@ -54,10 +54,6 @@ notify:
 # One-way price alerts: notify when price first crosses a threshold (either direction).
 # State is tracked in data/notify/price_alert_state.json; delete that file to reset.
 price_alerts: {}
-  # BTC-USD: 100000
-  # ETH-USD: 3000
-
-
 twitter:
   api_key: INSERT_API_KEY
   api_key_secret: INSERT_API_KEY_SECRET

@@ -12,10 +12,23 @@ crypto.db
 crypto.db-wal
 crypto.db-shm
 crypto_history_csv/
+signals.db
+*.duckdb
 
 # Generated display artifacts
 *.bmp
 eink_output/
+docs/
+reports/
 
 # Logs
 *.log
+
+# Secrets — never commit
+config_keys.yml
+
+# Flutter build artifacts
+flutter_app/build/
+
+# macOS
+.DS_Store

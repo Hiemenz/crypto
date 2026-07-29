@@ -1,0 +1,53 @@
+# List of cryptocurrency pairs to monitor
+pairs:
+ # Against USD
+  - BTC-USD
+  - ETH-USD
+  - BNB-USD
+  - XRP-USD
+  - DOGE-USD
+  - ADA-USD
+  - SOL-USD
+  - TRX-USD
+  - DOT-USD
+  - MATIC-USD
+  - LTC-USD
+  - SHIB-USD
+  - AVAX-USD
+  - LINK-USD
+  - XLM-USD
+  - APT-USD
+  - FIL-USD
+  - ICP-USD
+  - AAVE-USD
+  - ALGO-USD
+  - HBAR-USD
+  - ATOM-USD
+
+
+  # Against BTC
+  # - ETH-BTC
+  # - BNB-BTC
+  # - XRP-BTC
+  # - DOGE-BTC
+  # - ADA-BTC
+  # - SOL-BTC
+  # - TRX-BTC
+  # - DOT-BTC
+  # - MATIC-BTC
+  # - LTC-BTC
+  # - SHIB-BTC
+  # - AVAX-BTC
+  # - LINK-BTC
+  # - XLM-BTC
+  # - FIL-BTC
+  # - ICP-BTC
+  # - AAVE-BTC
+  # - ALGO-BTC
+  # - HBAR-BTC
+  # - ATOM-BTC
+
+
+
+# Path to the DuckDB database file
+db_path: crypto_data.duckdb

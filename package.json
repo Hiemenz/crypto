@@ -1,0 +1,14 @@
+{
+    "name": "crypto-signal-station-root",
+    "version": "1.0.0",
+    "description": "Root package to proxy commands to frontend",
+    "scripts": {
+        "dev": "cd frontend && npm run dev",
+        "build": "cd frontend && npm run build",
+        "lint": "cd frontend && npm run lint",
+        "preview": "cd frontend && npm run preview"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+}
