@@ -4,6 +4,7 @@ import AssetList from './dashboard/AssetList';
 import ChartSection from './dashboard/ChartSection';
 import StrategySimulator from './StrategySimulator';
 import { Search, BarChart3, Calculator } from 'lucide-react';
+import { dataUrl } from '../utils/storage';
 
 const ProDashboard = ({ onLogout }) => {
     const [signals, setSignals] = useState([]);
@@ -21,8 +22,8 @@ const ProDashboard = ({ onLogout }) => {
     // Initial Data Load
     useEffect(() => {
         Promise.all([
-            fetch('/data/latest_signals.json').then(r => r.json()),
-            fetch('/data/crosses.json').then(r => r.json())
+            fetch(dataUrl('latest_signals.json')).then(r => r.json()),
+            fetch(dataUrl('crosses.json')).then(r => r.json())
         ]).then(([sig, cr]) => {
             setSignals(sig.signals);
             setCrosses(cr.crosses);
@@ -51,7 +52,7 @@ const ProDashboard = ({ onLogout }) => {
         setHistoryData(null);
 
         // Construct path - handle both crypto and stock symbols if needed, assuming flat structure based on previous file
-        fetch(`/data/history/${selectedSymbol}.json`)
+        fetch(dataUrl(`history/${selectedSymbol}.json`))
             .then(res => {
                 if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
                 return res.json();

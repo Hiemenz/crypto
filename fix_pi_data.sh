@@ -1,28 +1,32 @@
 #!/bin/bash
-# Fix corrupted crypto data on Raspberry Pi
+# Rebuild the crypto side of the Parquet lake from scratch.
+#
+# Use when crypto OHLCV is suspect — e.g. `verify` reports CONTAMINATED
+# (the yfinance concurrency bug that mixed up symbol payloads) or gaps that
+# the nightly self-heal can't close. Stock data is left untouched.
+set -euo pipefail
 
-echo "🔧 Fixing corrupted crypto data..."
+cd "$(dirname "$0")"
 
-# 1. Pull latest code with atomic write fixes
+echo "🔧 Rebuilding crypto data..."
+
 echo "📥 Pulling latest code..."
 git pull
 
-# 2. Delete corrupted crypto data
-echo "🗑️  Deleting corrupted crypto data directory..."
-rm -rf crypto_history_csv/crypto/1d/*
+echo "🗑️  Deleting crypto OHLCV (Parquet lake; see db.py for the layout)..."
+rm -rf data/ohlcv/category=crypto/*
 
-# 3. Re-fetch crypto data with new atomic write code
 echo "📊 Re-fetching crypto data (this may take a while)..."
 poetry run python crypto_signal_station/crypto_signal_pipeline.py refresh
 
-# 4. Regenerate JSON files
-echo "📝 Regenerating JSON files..."
+echo "📝 Regenerating and uploading JSON..."
 poetry run python generate_api_data.py
 
-# 5. Commit and push
-echo "🚀 Pushing to GitHub..."
-git add frontend/public/data
-git commit -m "Fix: Regenerated crypto data with atomic writes"
-git push
+# verify exits non-zero when it finds problems; report them without aborting
+echo "🔎 Verifying..."
+poetry run python crypto_signal_station/crypto_signal_pipeline.py verify || \
+    echo "⚠️  verify reported issues — see above."
 
-echo "✅ Done! Crypto data has been fixed."
+# Generated JSON is *not* committed — it ships to Supabase Storage from
+# generate_api_data.py, and committing it previously bloated .git past 2 GB.
+echo "✅ Done! Crypto data has been rebuilt."

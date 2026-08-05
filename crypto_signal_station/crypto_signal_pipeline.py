@@ -1,5 +1,7 @@
 import io
 import json
+import math
+import re
 
 import pandas as pd
 import matplotlib
@@ -34,10 +36,25 @@ import notify
 import sectors as sectors_mod
 import momentum as momentum_mod
 
+# Resolved from this file's location, not the working directory: cron jobs and
+# `python -m` invocations otherwise died on a relative path at import time.
+CONFIG_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "cryptos.yml")
+
 # Load config from YAML (symbol lists are resolved by _load_universe below,
 # which layers the auto-updated universe caches on top of the YAML lists)
-with open("crypto_signal_station/cryptos.yml", "r") as f:
+with open(CONFIG_PATH, "r") as f:
     config = yaml.safe_load(f)
+
+
+# A symbol becomes a directory name in the lake and a literal inside DuckDB's
+# read_parquet(...) SQL, so anything outside this alphabet is rejected at the
+# source rather than trusted from Wikipedia/CoinGecko. Guards path traversal
+# ("../"), quote injection into the scan queries, and junk tickers generally.
+_SYMBOL_RE = re.compile(r"^[A-Z0-9][A-Z0-9.\-]{0,19}$")
+
+
+def _is_safe_symbol(sym) -> bool:
+    return bool(_SYMBOL_RE.match(str(sym)))
 
 
 def _universe_file(name):
@@ -69,6 +86,19 @@ def _load_universe():
                 extra = json.load(f)
             symbols += [s for s in extra if s not in symbols]
 
+    # Last line of defence, covering hand-edited cryptos.yml and any cache
+    # written before the fetch-time validation existed.
+    symbols = _filter_safe(symbols, "cryptos")
+    stock_symbols = _filter_safe(stock_symbols, "stocks")
+
+
+def _filter_safe(syms, label):
+    safe = [s for s in syms if _is_safe_symbol(s)]
+    dropped = [s for s in syms if not _is_safe_symbol(s)]
+    if dropped:
+        print(f"Ignoring {len(dropped)} malformed {label} symbol(s): {dropped[:10]}")
+    return safe
+
 
 _load_universe()
 
@@ -76,6 +106,11 @@ _load_universe()
 # One worker per Pi core: downloads are network-bound and pandas/numpy release
 # the GIL for most of the indicator math. Charts use the thread-safe Figure API.
 MAX_WORKERS = 4
+
+# Per-symbol PNG charts under eink_output/. Off by default: nothing in the
+# project reads them, and they cost ~11 min and ~350 MB per nightly run across
+# the full universe. Set CSS_RENDER_CHARTS=1 to turn them back on for debugging.
+RENDER_CHARTS = os.environ.get("CSS_RENDER_CHARTS", "").lower() in ("1", "true", "yes")
 
 HISTORY_START = "2014-01-01"
 # Relative change in the re-downloaded last stored Close that signals a
@@ -103,9 +138,13 @@ def _last_complete_daily_date(category, now=None):
     if category == "crypto":
         return (now.tz_convert("UTC") - pd.Timedelta(days=1)).date()
     now_et = now.tz_convert(ZoneInfo("America/New_York"))
-    if now_et.hour >= 16:
-        return now_et.date()
-    return (now_et - pd.Timedelta(days=1)).date()
+    day = now_et if now_et.hour >= 16 else now_et - pd.Timedelta(days=1)
+    # Roll back over the weekend. Without this, a Sunday-evening run reports
+    # Sunday as the last complete bar, so every symbol looks stale and
+    # re-downloads to receive nothing — ~500 pointless requests, twice a week.
+    while day.weekday() >= 5:  # 5=Sat, 6=Sun
+        day -= pd.Timedelta(days=1)
+    return day.date()
 
 
 # yf.download is NOT safe under concurrent callers (threads=False only turns
@@ -211,11 +250,15 @@ def _fetch_sp500_symbols():
     )
     resp.raise_for_status()
     table = pd.read_html(io.StringIO(resp.text))[0]
-    syms = sorted({_wiki_to_yahoo(s) for s in table["Symbol"].astype(str)})
+    syms = sorted(
+        {s for s in (_wiki_to_yahoo(x) for x in table["Symbol"].astype(str)) if _is_safe_symbol(s)}
+    )
     sector_map = {}
     if "GICS Sector" in table.columns:
         for _, row in table.iterrows():
             sym = _wiki_to_yahoo(str(row["Symbol"]))
+            if not _is_safe_symbol(sym):
+                continue
             sector = str(row["GICS Sector"]).strip()
             if sector and sector.lower() != "nan":
                 sector_map[sym] = sector
@@ -237,7 +280,13 @@ def _coingecko_to_yahoo(markets, top_n):
             continue
         if cid.startswith(("wrapped-", "staked-", "bridged-")):
             continue
-        out.append(f"{csym.upper()}-USD")
+        ticker = f"{csym.upper().strip()}-USD"
+        # CoinGecko symbols are effectively free text; anything that isn't a
+        # plain ticker must not reach the filesystem or the DuckDB scans.
+        if not _is_safe_symbol(ticker):
+            print(f"Skipping unsafe CoinGecko symbol {csym!r} (id={cid})")
+            continue
+        out.append(ticker)
         if len(out) >= top_n:
             break
     return out
@@ -383,6 +432,53 @@ def _add_rsi_divergence(df: pd.DataFrame, window: int = 20) -> pd.DataFrame:
     return df
 
 
+# Symbols whose history gaps a full re-download could not close, keyed
+# "<category>/<symbol>" → bar count at the time of the failed attempt. Guarded
+# by a lock: _process_single_symbol runs under the thread pool.
+_HEAL_FAILURES = {}
+_HEAL_LOCK = threading.Lock()
+
+
+def _heal_state_path():
+    return db.table_path("universe", "heal_failures.json")
+
+
+def _load_heal_failures():
+    """Populate the unhealable-gap cache from disk (called once per run)."""
+    global _HEAL_FAILURES
+    try:
+        with open(_heal_state_path()) as f:
+            _HEAL_FAILURES = json.load(f)
+    except (OSError, ValueError):
+        _HEAL_FAILURES = {}
+    return _HEAL_FAILURES
+
+
+def _save_heal_failures():
+    path = _heal_state_path()
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with _HEAL_LOCK:
+        snapshot = dict(_HEAL_FAILURES)
+    tmp = path + ".tmp"
+    with open(tmp, "w") as f:
+        json.dump(snapshot, f)
+    os.replace(tmp, path)
+
+
+def _should_attempt_heal(symbol, category, n_bars):
+    """True unless we already tried at this exact bar count and got nowhere.
+
+    A changed bar count means new data arrived, so the gap is worth another
+    attempt; an unchanged one means nothing upstream has moved."""
+    with _HEAL_LOCK:
+        return _HEAL_FAILURES.get(f"{category}/{symbol}") != n_bars
+
+
+def _mark_heal_failed(symbol, category, n_bars):
+    with _HEAL_LOCK:
+        _HEAL_FAILURES[f"{category}/{symbol}"] = n_bars
+
+
 def _label_signal(row):
     """Map one indicator row to a signal tier. Buys only in a bear regime,
     sells only in a bull regime (mean-reversion tiers)."""
@@ -464,15 +560,20 @@ def _process_single_symbol(symbol, category, timeframes):
             return False
 
         # Heal holes left by crashed runs or transient Yahoo outages: one full
-        # re-download, kept only if it actually recovers more bars (a symbol
-        # with a genuine trading halt would otherwise re-download every night).
+        # re-download, kept only if it actually recovers more bars. A genuine
+        # trading halt leaves a gap no download can close, so a failed attempt
+        # is remembered and not retried until the symbol grows new bars —
+        # otherwise every such symbol re-downloads its full history nightly.
         if _has_history_gaps(df_1d["Date"], category):
-            df_full = _fetch_daily(symbol, HISTORY_START, last_complete)
-            if len(df_full) > len(df_1d):
-                print(f"{symbol}: healed history gaps ({len(df_1d)} → {len(df_full)} bars)")
-                db.replace_ohlcv(df_full, symbol, category)
-                is_new_data = True
-                df_1d = db.load_ohlcv(symbol, category)
+            if _should_attempt_heal(symbol, category, len(df_1d)):
+                df_full = _fetch_daily(symbol, HISTORY_START, last_complete)
+                if len(df_full) > len(df_1d):
+                    print(f"{symbol}: healed history gaps ({len(df_1d)} → {len(df_full)} bars)")
+                    db.replace_ohlcv(df_full, symbol, category)
+                    is_new_data = True
+                    df_1d = db.load_ohlcv(symbol, category)
+                else:
+                    _mark_heal_failed(symbol, category, len(df_1d))
 
         # 2. Prepare 1D DataFrame
         cols_to_numeric = ["Close", "High", "Low", "Open", "Volume"]
@@ -590,47 +691,8 @@ def _process_single_symbol(symbol, category, timeframes):
             # boundaries or upstream data ever change)
             db.replace_signals(df_tf, symbol, category, tf_name)
 
-            # Chart generation
-            fig = Figure(figsize=(10, 6))
-            ax = fig.add_subplot()
-            ax.plot(df_tf["Date"], df_tf["Close"], color='black', label='Close Price')
-
-            for tier, color in [("Excellent Buy", "darkgreen"), ("Great Buy", "green"), ("Good Buy", "lightgreen")]:
-                subset = df_tf[df_tf["signal"] == tier]
-                ax.scatter(subset["Date"], subset["Close"], color=color, label=tier, marker='o', s=80)
-
-            for tier, color in [("Excellent Sell", "navy"), ("Great Sell", "blue"), ("Good Sell", "skyblue")]:
-                subset = df_tf[df_tf["signal"] == tier]
-                ax.scatter(subset["Date"], subset["Close"], color=color, label=tier, marker='o', s=80)
-
-            ax.plot(df_tf["Date"], df_tf["ma_50"], linestyle='--', label='50-MA')
-            ax.plot(df_tf["Date"], df_tf["ma_200"], linestyle='--', label='200-MA')
-
-            ax.set_axisbelow(True)
-            ax.grid(True, which='both', linestyle=':', linewidth=0.6, alpha=0.6)
-
-            max_close = float(df_tf["Close"].max())
-            if max_close < 1:
-                dollar_fmt = mticker.StrMethodFormatter('${x:,.4f}')
-            elif max_close < 100:
-                dollar_fmt = mticker.StrMethodFormatter('${x:,.2f}')
-            else:
-                dollar_fmt = mticker.StrMethodFormatter('${x:,.0f}')
-            ax.yaxis.set_major_formatter(dollar_fmt)
-            ax2 = ax.secondary_yaxis('right', functions=(lambda y: y, lambda y: y))
-            ax2.yaxis.set_major_formatter(dollar_fmt)
-            ax2.set_ylabel("Price (USD)")
-
-            ax.set_title(f"{symbol} ({tf_name}) Buy/Sell Signals")
-            ax.set_xlabel("Date")
-            ax.set_ylabel("Price (USD)")
-            ax.legend()
-            fig.tight_layout()
-
-            # Save chart to eink_output or similar directory
-            chart_dir = os.path.join("eink_output", category, tf_name)
-            os.makedirs(chart_dir, exist_ok=True)
-            fig.savefig(os.path.join(chart_dir, f"{symbol}_signals_chart.png"), dpi=150, bbox_inches="tight")
+            if RENDER_CHARTS:
+                _render_signal_chart(df_tf, symbol, category, tf_name)
 
         return True
 
@@ -638,6 +700,55 @@ def _process_single_symbol(symbol, category, timeframes):
         print(f"Critical error processing {symbol}: {e}")
         traceback.print_exc()
         return False
+
+
+def _render_signal_chart(df_tf, symbol, category, tf_name):
+    """Write eink_output/<category>/<tf>/<symbol>_signals_chart.png.
+
+    Opt-in (see RENDER_CHARTS): nothing in the project reads these — the E Ink
+    image comes from eink_generator and the dashboard draws inline SVG — while
+    rendering them cost ~0.3 s per symbol-timeframe, i.e. ~11 minutes and
+    ~350 MB per nightly run across the S&P 500.
+    """
+    fig = Figure(figsize=(10, 6))
+    ax = fig.add_subplot()
+    ax.plot(df_tf["Date"], df_tf["Close"], color='black', label='Close Price')
+
+    for tier, color in [("Excellent Buy", "darkgreen"), ("Great Buy", "green"), ("Good Buy", "lightgreen")]:
+        subset = df_tf[df_tf["signal"] == tier]
+        ax.scatter(subset["Date"], subset["Close"], color=color, label=tier, marker='o', s=80)
+
+    for tier, color in [("Excellent Sell", "navy"), ("Great Sell", "blue"), ("Good Sell", "skyblue")]:
+        subset = df_tf[df_tf["signal"] == tier]
+        ax.scatter(subset["Date"], subset["Close"], color=color, label=tier, marker='o', s=80)
+
+    ax.plot(df_tf["Date"], df_tf["ma_50"], linestyle='--', label='50-MA')
+    ax.plot(df_tf["Date"], df_tf["ma_200"], linestyle='--', label='200-MA')
+
+    ax.set_axisbelow(True)
+    ax.grid(True, which='both', linestyle=':', linewidth=0.6, alpha=0.6)
+
+    max_close = float(df_tf["Close"].max())
+    if max_close < 1:
+        dollar_fmt = mticker.StrMethodFormatter('${x:,.4f}')
+    elif max_close < 100:
+        dollar_fmt = mticker.StrMethodFormatter('${x:,.2f}')
+    else:
+        dollar_fmt = mticker.StrMethodFormatter('${x:,.0f}')
+    ax.yaxis.set_major_formatter(dollar_fmt)
+    ax2 = ax.secondary_yaxis('right', functions=(lambda y: y, lambda y: y))
+    ax2.yaxis.set_major_formatter(dollar_fmt)
+    ax2.set_ylabel("Price (USD)")
+
+    ax.set_title(f"{symbol} ({tf_name}) Buy/Sell Signals")
+    ax.set_xlabel("Date")
+    ax.set_ylabel("Price (USD)")
+    ax.legend()
+    fig.tight_layout()
+
+    chart_dir = os.path.join("eink_output", category, tf_name)
+    os.makedirs(chart_dir, exist_ok=True)
+    fig.savefig(os.path.join(chart_dir, f"{symbol}_signals_chart.png"), dpi=150, bbox_inches="tight")
 
 
 def _process_asset_list(asset_symbols, category):
@@ -654,29 +765,70 @@ def _process_asset_list(asset_symbols, category):
     }
 
     db.init_db()
+    _load_heal_failures()
+    if not asset_symbols:
+        print(f"No symbols configured for {category}; nothing to process.")
+        return 0, []
     print(f"Processing {len(asset_symbols)} items for {category} with {MAX_WORKERS} threads...")
 
     import concurrent.futures
 
+    failed = []
     with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
         futures = {executor.submit(_process_single_symbol, symbol, category, timeframes): symbol for symbol in asset_symbols}
 
         for future in concurrent.futures.as_completed(futures):
             symbol = futures[future]
             try:
-                future.result()
+                # _process_single_symbol swallows its own exceptions and reports
+                # via the return value; both paths have to be counted or a run
+                # where everything failed still looks like a success.
+                if not future.result():
+                    failed.append(symbol)
             except Exception as e:
                 print(f"Exception for {symbol}: {e}")
+                failed.append(symbol)
 
-    print(f"Completed {category} processing.")
+    _save_heal_failures()
+    ok = len(asset_symbols) - len(failed)
+    print(f"Completed {category} processing: {ok}/{len(asset_symbols)} succeeded.")
+    if failed:
+        shown = ", ".join(sorted(failed)[:20])
+        more = f" (+{len(failed) - 20} more)" if len(failed) > 20 else ""
+        print(f"  failed {category}: {shown}{more}")
+    return ok, failed
+
+
+# Fraction of a category's symbols that may fail before the run is treated as
+# broken. Individual delistings and Yahoo hiccups are normal; a third of the
+# universe failing means the data source or the network is down, and silently
+# carrying on would publish a dashboard built on stale data.
+MAX_FAILURE_RATE = 0.33
+
+
+def _check_failure_rate(results):
+    """Raise if any category failed for too much of its universe.
+
+    `results` is {category: (ok_count, failed_symbols)}."""
+    broken = []
+    for category, (ok, failed) in results.items():
+        total = ok + len(failed)
+        if total and len(failed) / total > MAX_FAILURE_RATE:
+            broken.append(f"{category}: {len(failed)}/{total} symbols failed")
+    if broken:
+        raise RuntimeError(
+            "Too many symbols failed to process — "
+            + "; ".join(broken)
+            + ". Stored data is incomplete; see the log above for per-symbol errors."
+        )
 
 
 def process_crypto_data():
-    _process_asset_list(symbols, "crypto")
+    return _process_asset_list(symbols, "crypto")
 
 
 def process_stock_data():
-    _process_asset_list(stock_symbols, "stocks")
+    return _process_asset_list(stock_symbols, "stocks")
 
 
 def _active_symbols(subset_symbols, category):
@@ -1016,10 +1168,18 @@ def fetch_and_store_market_context():
             print(f"Market context: {ticker} failed: {e}")
 
     ctx["as_of"] = pd.Timestamp.now().isoformat()
+    # Sanitize NaN/Inf before writing: json.dump with allow_nan=True (the
+    # default) would emit bare `NaN`/`Infinity` tokens, which are not valid
+    # JSON — json.load raises JSONDecodeError and the dashboard loses its
+    # market context silently.
+    safe_ctx = {
+        k: (None if isinstance(v, float) and (math.isnan(v) or math.isinf(v)) else v)
+        for k, v in ctx.items()
+    }
     path = db.table_path("market", "context.json")
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w") as f:
-        json.dump(ctx, f)
+        json.dump(safe_ctx, f)
     return ctx
 
 
@@ -1127,8 +1287,7 @@ def check_price_alerts():
 
     try:
         with open(_price_alert_state_path()) as f:
-            import json as _json
-            state = _json.load(f)
+            state = json.load(f)
     except (OSError, ValueError):
         state = {}
 
@@ -1164,11 +1323,9 @@ def check_price_alerts():
             dirty = True
 
     if dirty:
-        import os as _os
-        import json as _json
-        _os.makedirs(_os.path.dirname(_price_alert_state_path()), exist_ok=True)
+        os.makedirs(os.path.dirname(_price_alert_state_path()), exist_ok=True)
         with open(_price_alert_state_path(), "w") as f:
-            _json.dump(state, f)
+            json.dump(state, f)
 
 
 USAGE = """\
@@ -1197,8 +1354,13 @@ if __name__ == "__main__":
     elif cmd == "refresh":
         try:
             update_symbol_universe()
-            process_crypto_data()
-            process_stock_data()
+            results = {
+                "crypto": process_crypto_data(),
+                "stocks": process_stock_data(),
+            }
+            # Before anything downstream consumes the lake: a mostly-failed
+            # fetch must alert, not quietly produce a stale dashboard.
+            _check_failure_rate(results)
             breadth_mod.record_daily()
             momentum_mod.compute()          # before sectors so sectors get fresh 30d returns
             sectors_mod.compute_and_save()

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Scatter } from 'recharts';
+import { dataUrl } from '../utils/storage';
 
 const TestChart = () => {
   const [data, setData] = useState(null);
   
   useEffect(() => {
-    fetch('/data/history/BTC-USD.json')
+    fetch(dataUrl('history/BTC-USD.json'))
       .then(res => res.json())
       .then(json => {
         console.log('Loaded data:', json.data.length, 'points');

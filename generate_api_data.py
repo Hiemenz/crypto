@@ -1,320 +1,347 @@
-import os
+"""Export the signals lake to static JSON for the frontend (frontend/public/data/).
+
+Reads from the Parquet lake via db.py — the same store crypto_signal_pipeline.py
+writes to. Each 1d/1wk signals row already carries OHLCV + every computed
+indicator (see crypto_signal_pipeline.py's _process_single_symbol), so no
+separate "with signals" file format is needed here.
+
+Output is *generated*, never committed: it ships to Supabase Storage and the
+frontend fetches it from there at runtime (see frontend/src/utils/storage.js).
+"""
+
+import hashlib
 import json
-import glob
-import pandas as pd
-import numpy as np
+import math
+import os
+import socket
+import urllib.error
+import urllib.request
 from datetime import datetime
 
-# Configuration
-REPORTS_DIR = "reports"
-DATA_DIR = "crypto_history_csv"
+import numpy as np
+import pandas as pd
+
+import db
+
 OUTPUT_DIR = "frontend/public/data"
+CATEGORIES = ("crypto", "stocks")
 
-def parse_report_line(line):
-    # Determine the type of line (Header or Asset)
-    if line.startswith("#"):
-        return {"type": "header", "content": line.strip("#").strip()}
-    
-    # Simple asset parsing logic (custom to your report format)
-    # Assuming standard format: BTC-USD: Buy (Signal details...)
-    if ": " in line:
-        parts = line.split(": ", 1)
-        symbol = parts[0].strip()
-        details = parts[1].strip()
-        return {"type": "asset", "symbol": symbol, "details": details}
-    
-    if line.strip() == "":
-        return {"type": "empty"}
+# Per-symbol history feeds the chart and the strategy simulator, which read
+# only OHLCV + the signal label. Exporting all ~31 lake columns made each file
+# ~4x larger (≈2 MB/symbol, ≈1 GB/night across the S&P 500) for data nothing
+# renders. Add a column here if the frontend starts using it.
+HISTORY_COLUMNS = ["Date", "Open", "High", "Low", "Close", "Volume", "signal"]
 
-    return {"type": "text", "content": line.strip()}
+# crosses.json is a "what happened recently" feed, not an archive. Unbounded,
+# it grew to 7.6 MB of all-time crossovers re-uploaded every night.
+CROSSES_LOOKBACK_DAYS = 180
 
-def generate_reports_json():
-    print(f"Generating reports JSON to {OUTPUT_DIR}/reports/...")
-    report_files = glob.glob(os.path.join(REPORTS_DIR, "**", "*.txt"), recursive=True)
-    
-    index_data = set() # Use a set to avoid duplicates
+# StochRSI extremes. A K/D crossover carries information when it happens *out
+# of* an extreme zone — up out of oversold, down out of overbought.
+STOCH_OVERSOLD = 0.2
+STOCH_OVERBOUGHT = 0.8
 
-    for report_path in report_files:
-        filename = os.path.basename(report_path)
-        date_str = filename.replace(".txt", "")
-        
-        # Read the report content
-        with open(report_path, "r") as f:
-            lines = f.readlines()
-        
-        parsed_content = [parse_report_line(line) for line in lines]
-        
-        # Save individual report JSON
-        output_path = os.path.join(OUTPUT_DIR, "reports", f"{date_str}.json")
-        with open(output_path, "w") as f:
-            json.dump({"date": date_str, "content": parsed_content}, f, indent=2)
-            
-        index_data.add(date_str)
-    
-    # Save index JSON
-    sorted_dates = sorted(list(index_data), reverse=True)
-    with open(os.path.join(OUTPUT_DIR, "index.json"), "w") as f:
-        json.dump({"dates": sorted_dates}, f, indent=2)
-    print("Reports JSON generation complete.")
+UPLOAD_TIMEOUT_SECONDS = 60
+
+
+def _json_safe(value):
+    """Recursively replace NaN/±inf with None and box numpy scalars.
+
+    json.dump defaults to allow_nan=True, which emits bare `NaN` / `Infinity`
+    tokens. Those are not valid JSON, and JSON.parse rejects the whole
+    document — one bad row would blank every page that fetches the file.
+    """
+    if isinstance(value, dict):
+        return {k: _json_safe(v) for k, v in value.items()}
+    if isinstance(value, (list, tuple)):
+        return [_json_safe(v) for v in value]
+    if isinstance(value, (np.integer,)):
+        return int(value)
+    if isinstance(value, (np.floating,)):
+        value = float(value)
+    if isinstance(value, (np.bool_,)):
+        return bool(value)
+    if isinstance(value, float):
+        return None if (math.isnan(value) or math.isinf(value)) else value
+    if isinstance(value, (pd.Timestamp, datetime)):
+        return str(value)
+    if value is pd.NaT or value is pd.NA:
+        return None
+    return value
+
+
+def _write_json_atomic(path, payload):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    tmp = path + ".tmp"
+    with open(tmp, "w") as f:
+        # allow_nan=False turns any sanitiser miss into a loud ValueError here
+        # instead of silent invalid JSON in the browser.
+        json.dump(_json_safe(payload), f, separators=(",", ":"), allow_nan=False)
+    os.replace(tmp, path)
+
+
+def _clean_records(df):
+    """Rows as JSON-safe dicts: Date as string, NaN/inf as null, no lake-only columns."""
+    df = df.drop(columns=["symbol", "category", "timeframe"], errors="ignore").copy()
+    df["Date"] = df["Date"].astype(str)
+    # inf shows up wherever an indicator divides by a zero range (e.g. bb_pband
+    # on a perfectly flat 20-bar window), so it has to be cleared alongside NaN.
+    df = df.replace([np.inf, -np.inf], np.nan).replace({np.nan: None})
+    return df.to_dict(orient="records")
+
 
 def generate_history_json():
     print(f"Generating history JSON to {OUTPUT_DIR}/history/...")
-    # Scan for parquet files in crypto_history_csv/{category}/1d/*.parquet
-    parquet_files = glob.glob(os.path.join(DATA_DIR, "*", "1d", "*_with_signals.parquet"))
-    
-    for file_path in parquet_files:
-        output_path = None
-        temp_path = None
-        try:
-            filename = os.path.basename(file_path)
-            symbol = filename.replace("_with_signals.parquet", "")
-            
-            df = pd.read_parquet(file_path)
-            
-            # Validate data before processing
-            if df.empty:
-                print(f"Warning: {symbol} has empty data, skipping")
-                continue
-            
-            if "Date" not in df.columns:
-                print(f"Warning: {symbol} missing Date column, skipping")
-                continue
-            
-            # Ensure Date is string for JSON
-            if "Date" in df.columns:
-                df["Date"] = df["Date"].astype(str)
-            
-            # Replace NaN with None (which becomes null in JSON)
-            df = df.replace({np.nan: None})
-            
-            # Convert to list of dicts
-            data = df.to_dict(orient="records")
-            
-            # Validate we have data
-            if not data:
-                print(f"Warning: {symbol} has no data after conversion, skipping")
-                continue
-            
-            # Use atomic write: write to temp file first, then rename
+    count = 0
+    for category in CATEGORIES:
+        # Intersect with what's actually stored: a lake written before a column
+        # existed would otherwise fail the projected SELECT outright.
+        available = set(db.signals_lake_columns(category, "1d"))
+        cols = [c for c in HISTORY_COLUMNS if c in available]
+        if "Date" not in cols:
+            continue
+        lake = db.scan_signals_lake(category, "1d", columns=cols)
+        if lake.empty:
+            continue
+        for symbol, g in lake.groupby("symbol"):
+            g = g.sort_values("Date")
             output_path = os.path.join(OUTPUT_DIR, "history", f"{symbol}.json")
-            temp_path = output_path + ".tmp"
-            
-            with open(temp_path, "w") as f:
-                json.dump({"symbol": symbol, "data": data}, f, indent=2)
-            
-            # Atomic rename - this prevents partial writes from corrupting the file
-            os.replace(temp_path, output_path)
-            temp_path = None  # Mark as successfully moved
-                
-        except Exception as e:
-            print(f"Error processing {file_path}: {e}")
-            # Clean up temp file if it exists
-            if temp_path and os.path.exists(temp_path):
-                try:
-                    os.remove(temp_path)
-                except:
-                    pass
+            _write_json_atomic(output_path, {"symbol": symbol, "data": _clean_records(g)})
+            count += 1
+    print(f"History JSON generation complete. ({count} symbols)")
 
-    print("History JSON generation complete.")
 
-def main():
-    if not os.path.exists(OUTPUT_DIR):
-        os.makedirs(OUTPUT_DIR)
-        
-    os.makedirs(os.path.join(OUTPUT_DIR, "reports"), exist_ok=True)
-    os.makedirs(os.path.join(OUTPUT_DIR, "history"), exist_ok=True)
-    
-    generate_reports_json()
-    generate_history_json()
-    generate_latest_signals_json()
-    generate_crosses_json()
+# Base score per signal tier; anything unrecognised (incl. "Hold") is neutral.
+_TIER_SCORES = {"excellent": 95, "great": 85, "good": 75}
+_NEUTRAL_SCORE = 50
+
 
 def calculate_score(row):
-    """
-    Calculates a 0-100 score representing the strength/confidence of the signal.
+    """0-100 score for the strength/confidence of a signal.
+
+    Tier sets the base; RSI nudges it so same-tier signals rank against each
+    other (a buy at RSI 15 beats a buy at RSI 29, and vice versa for sells).
     """
     signal = str(row.get("signal", "")).lower()
-    
-    # Base score from signal tier
-    if "excellent" in signal:
-        score = 95
-    elif "great" in signal:
-        score = 85
-    elif "good" in signal:
-        score = 75
-    else:
-        # For 'Hold' or no signal, calculate a 'neutrality' or 'volatility' score? 
-        # Or just a basic trend score.
-        # Let's based it on RSI for Hold.
-        rsi = row.get("rsi")
-        if pd.isna(rsi):
-            return 50
-        
-        # This is ambiguous.
-        # Let's default to a "Stability" score for now, or just 50.
-        score = 50
-        
-    # Add small variance based on indicators to differentiate same-tier signals
-    # For Buys: lower RSI is better
-    rsi = row.get("rsi", 50)
-    if pd.isna(rsi): rsi = 50
-    
+    score = next(
+        (v for tier, v in _TIER_SCORES.items() if tier in signal), _NEUTRAL_SCORE
+    )
+
+    rsi = row.get("rsi")
+    if rsi is None or pd.isna(rsi):
+        return score
+
     if "buy" in signal:
-        # Bonus for lower RSI
-        # RSI 20 vs 30: 20 is better.
-        # Add (30 - RSI) * 0.5
-        score += (30 - rsi) * 0.2
+        score += (30 - float(rsi)) * 0.2   # deeper oversold = stronger buy
     elif "sell" in signal:
-        # Bonus for higher RSI
-        # RSI 80 vs 70: 80 is better.
-        score += (rsi - 70) * 0.2
-        
+        score += (float(rsi) - 70) * 0.2   # deeper overbought = stronger sell
+
     return int(min(max(score, 0), 100))
+
 
 def generate_latest_signals_json():
     print(f"Generating latest signals JSON to {OUTPUT_DIR}/latest_signals.json...")
-    
+
     all_signals = []
-    
-    # Scan crypto and stocks
-    for category in ["crypto", "stocks"]:
-        parquet_files = glob.glob(os.path.join(DATA_DIR, category, "1d", "*_with_signals.parquet"))
-        
-        for file_path in parquet_files:
-            try:
-                filename = os.path.basename(file_path)
-                symbol = filename.replace("_with_signals.parquet", "")
-                
-                df = pd.read_parquet(file_path)
-                if df.empty:
-                    continue
-                    
-                # Get last row
-                last_row = df.iloc[-1]
-                
-                # Convert to dict
-                item = last_row.to_dict()
-                
-                # Clean up values for JSON
-                for k, v in item.items():
-                    if pd.isna(v):
-                        item[k] = None
-                    elif isinstance(v, (pd.Timestamp, datetime)):
-                        item[k] = str(v)
-                
-                # Add calculated fields
-                item["symbol"] = symbol
-                item["category"] = category
-                item["score"] = calculate_score(last_row)
-                
-                # Determine "Side" (Buy/Sell/Hold) for easier frontend filtering
-                sig_str = str(item.get("signal", "")).lower()
-                if "buy" in sig_str:
-                    item["side"] = "buy"
-                elif "sell" in sig_str:
-                    item["side"] = "sell"
-                else:
-                    item["side"] = "hold"
-                
-                all_signals.append(item)
-                
-            except Exception as e:
-                print(f"Error processing {file_path} for latest signals: {e}")
-                
-    # Save
+    for category in CATEGORIES:
+        lake = db.scan_signals_lake(category, "1d")
+        if lake.empty:
+            continue
+
+        for symbol, g in lake.groupby("symbol"):
+            last_row = g.sort_values("Date").iloc[-1]
+
+            item = last_row.drop(labels=["symbol", "category", "timeframe"], errors="ignore").to_dict()
+            item = {k: _json_safe(v) for k, v in item.items()}
+
+            item["symbol"] = symbol
+            item["category"] = category
+            item["score"] = calculate_score(last_row)
+
+            sig_str = str(item.get("signal", "")).lower()
+            if "buy" in sig_str:
+                item["side"] = "buy"
+            elif "sell" in sig_str:
+                item["side"] = "sell"
+            else:
+                item["side"] = "hold"
+
+            all_signals.append(item)
+
     output_path = os.path.join(OUTPUT_DIR, "latest_signals.json")
-    with open(output_path, "w") as f:
-        json.dump({"updated": str(datetime.now()), "signals": all_signals}, f, indent=2)
-        
+    _write_json_atomic(output_path, {"updated": str(datetime.now()), "signals": all_signals})
     print(f"Latest signals JSON generation complete. ({len(all_signals)} items)")
 
+
+def _cross_type(kind, prev_k, prev_d):
+    """Label a K/D crossover, marking the ones that came out of an extreme.
+
+    The crossover's information is in where it came *from*: a bullish cross is
+    worth flagging when the prior bar was oversold, a bearish one when it was
+    overbought. (This previously tested the post-cross values against inverted
+    bounds, which marked nearly every death cross "Confirmed".)
+    """
+    if kind == "Golden Cross":
+        confirmed = prev_k < STOCH_OVERSOLD and prev_d < STOCH_OVERSOLD
+    else:
+        confirmed = prev_k > STOCH_OVERBOUGHT and prev_d > STOCH_OVERBOUGHT
+    return f"Confirmed {kind}" if confirmed else kind
+
+
 def generate_crosses_json():
-    """
-    Scans 1wk data for StochRSI crosses and exports to JSON.
-    """
+    """Scans recent 1wk data for StochRSI K/D crosses and exports to JSON."""
     print(f"Generating Stoch Crosses JSON to {OUTPUT_DIR}/crosses.json...")
-    
+
+    cutoff = pd.Timestamp.now().normalize() - pd.Timedelta(days=CROSSES_LOOKBACK_DAYS)
     crosses = []
-    categories = ["crypto", "stocks"]
-    
-    for category in categories:
-        base_folder = os.path.join(DATA_DIR, category, "1wk") # Use DATA_DIR constant
-        
-        if not os.path.exists(base_folder):
+    for category in CATEGORIES:
+        lake = db.scan_signals_lake(category, "1wk", columns=["Date", "Close", "stoch_rsi_k", "stoch_rsi_d"])
+        if lake.empty:
             continue
-        
-        for file in os.listdir(base_folder):
-            if not file.endswith("_with_signals.parquet"):
+
+        for symbol, g in lake.groupby("symbol"):
+            g = g.sort_values("Date")
+            if len(g) < 2:
                 continue
-            
-            symbol = file.replace("_with_signals.parquet", "")
-            file_path = os.path.join(base_folder, file)
-            
-            try:
-                df = pd.read_parquet(file_path)
-                if len(df) < 2:
-                    continue
-                
-                # Ensure sorted by date
-                df = df.sort_values("Date")
-                
-                prev_k = df["stoch_rsi_k"].shift(1)
-                prev_d = df["stoch_rsi_d"].shift(1)
-                curr_k = df["stoch_rsi_k"]
-                curr_d = df["stoch_rsi_d"]
-                
-                golden_mask = (prev_k < prev_d) & (curr_k > curr_d)
-                death_mask = (prev_k > prev_d) & (curr_k < curr_d)
-                
-                events = []
-                
-                golden_events = df[golden_mask].copy()
-                if not golden_events.empty:
-                    golden_events["type"] = "Golden Cross"
-                    events.append(golden_events)
-                    
-                death_events = df[death_mask].copy()
-                if not death_events.empty:
-                    death_events["type"] = "Death Cross"
-                    events.append(death_events)
-                
-                if events:
-                    all_events = pd.concat(events)
-                    
-                    for _, row in all_events.iterrows():
-                        k = row.get("stoch_rsi_k", 0)
-                        d = row.get("stoch_rsi_d", 0)
-                        cross_type = row["type"]
-                        
-                        # Add confirmed mapping
-                        if cross_type == "Golden Cross" and k > 0.2 and d > 0.2:
-                            cross_type = "Confirmed Golden Cross"
-                        elif cross_type == "Death Cross" and k < 0.8 and d < 0.8:
-                            cross_type = "Confirmed Death Cross"
-                            
-                        crosses.append({
-                            "category": category,
-                            "symbol": symbol,
-                            "type": cross_type,
-                            "price": row.get("Close", 0),
-                            "k": round(k, 2),
-                            "d": round(d, 2),
-                            "date": str(row["Date"]) # Ensure string format
-                        })
-                        
-            except Exception as e:
-                # print(f"Error processing {symbol}: {e}")
+
+            # Shift before windowing so the first retained bar still has the
+            # previous bar's K/D to compare against.
+            g = g.assign(prev_k=g["stoch_rsi_k"].shift(1), prev_d=g["stoch_rsi_d"].shift(1))
+            g = g[g["Date"] >= cutoff]
+            if g.empty:
                 continue
-                
-    # Filter for last 6 months to keep file size manageable but useful
-    # Sorting in frontend
-    
-    # Save
+
+            golden_mask = (g["prev_k"] < g["prev_d"]) & (g["stoch_rsi_k"] > g["stoch_rsi_d"])
+            death_mask = (g["prev_k"] > g["prev_d"]) & (g["stoch_rsi_k"] < g["stoch_rsi_d"])
+
+            events = []
+            for mask, kind in ((golden_mask, "Golden Cross"), (death_mask, "Death Cross")):
+                hit = g[mask].copy()
+                if not hit.empty:
+                    hit["type"] = kind
+                    events.append(hit)
+            if not events:
+                continue
+
+            for _, row in pd.concat(events).iterrows():
+                k = row["stoch_rsi_k"]
+                d = row["stoch_rsi_d"]
+                crosses.append({
+                    "category": category,
+                    "symbol": symbol,
+                    "type": _cross_type(row["type"], row["prev_k"], row["prev_d"]),
+                    "price": row.get("Close"),
+                    "k": round(float(k), 2),
+                    "d": round(float(d), 2),
+                    "date": str(row["Date"]),
+                })
+
     output_path = os.path.join(OUTPUT_DIR, "crosses.json")
-    with open(output_path, "w") as f:
-        json.dump({"updated": str(datetime.now()), "crosses": crosses}, f, indent=2)
-        
+    _write_json_atomic(output_path, {"updated": str(datetime.now()), "crosses": crosses})
     print(f"Stoch Crosses JSON generation complete. ({len(crosses)} items)")
+
+
+# ── Supabase upload ────────────────────────────────────────────────────────────
+
+def _manifest_path():
+    """Hashes of what we last uploaded. Kept outside OUTPUT_DIR so the walk
+    below doesn't try to upload the manifest itself."""
+    return db.table_path("api", "upload_manifest.json")
+
+
+def _load_manifest():
+    try:
+        with open(_manifest_path()) as f:
+            return json.load(f)
+    except (OSError, ValueError):
+        return {}
+
+
+def _save_manifest(manifest):
+    path = _manifest_path()
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    tmp = path + ".tmp"
+    with open(tmp, "w") as f:
+        json.dump(manifest, f)
+    os.replace(tmp, path)
+
+
+def upload_to_supabase():
+    """Upload changed JSON files from OUTPUT_DIR to Supabase Storage.
+
+    Reads SUPABASE_URL, SUPABASE_SERVICE_KEY, and SUPABASE_BUCKET from the
+    environment. Skips (and reports success) if the vars are not set, so local
+    runs without Supabase configured still work.
+
+    Files whose content hash matches the last successful upload are skipped.
+    Returns True if everything that needed uploading went up.
+    """
+    supabase_url = os.environ.get("SUPABASE_URL", "").rstrip("/")
+    service_key = os.environ.get("SUPABASE_SERVICE_KEY", "")
+    bucket = os.environ.get("SUPABASE_BUCKET", "signalstack")
+
+    if not supabase_url or not service_key:
+        print("SUPABASE_URL / SUPABASE_SERVICE_KEY not set — skipping upload.")
+        return True
+
+    manifest = _load_manifest()
+    new_manifest = dict(manifest)
+    uploaded = skipped = failed = 0
+
+    for dirpath, _, filenames in os.walk(OUTPUT_DIR):
+        for filename in sorted(filenames):
+            if not filename.endswith(".json"):
+                continue
+            local_path = os.path.join(dirpath, filename)
+            rel_path = os.path.relpath(local_path, OUTPUT_DIR).replace("\\", "/")
+
+            with open(local_path, "rb") as f:
+                body = f.read()
+            digest = hashlib.sha256(body).hexdigest()
+            if manifest.get(rel_path) == digest:
+                skipped += 1
+                continue
+
+            url = f"{supabase_url}/storage/v1/object/{bucket}/{rel_path}"
+            req = urllib.request.Request(
+                url,
+                data=body,
+                method="POST",
+                headers={
+                    "Authorization": f"Bearer {service_key}",
+                    "Content-Type": "application/json",
+                    "x-upsert": "true",
+                },
+            )
+            try:
+                # Without a timeout a stalled socket hangs the whole nightly
+                # job indefinitely, which is worse than failing.
+                with urllib.request.urlopen(req, timeout=UPLOAD_TIMEOUT_SECONDS):
+                    uploaded += 1
+                    new_manifest[rel_path] = digest
+            except urllib.error.HTTPError as e:
+                print(f"  upload failed {rel_path}: {e.code} {e.reason}")
+                failed += 1
+            except (urllib.error.URLError, socket.timeout, OSError) as e:
+                # DNS/TLS/connection-reset/timeout: transient and per-file, so
+                # log and keep going rather than aborting the whole export.
+                print(f"  upload failed {rel_path}: {e}")
+                failed += 1
+
+    _save_manifest(new_manifest)
+    print(f"Supabase upload: {uploaded} uploaded, {skipped} unchanged, {failed} failed.")
+    return failed == 0
+
+
+def main():
+    generate_history_json()
+    generate_latest_signals_json()
+    generate_crosses_json()
+    if not upload_to_supabase():
+        # Non-zero exit so daily_update.sh reports the failure instead of
+        # logging "Update complete" over a half-published dataset.
+        raise SystemExit(1)
+
 
 if __name__ == "__main__":
     main()

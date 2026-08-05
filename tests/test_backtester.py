@@ -4,6 +4,7 @@
 import sys
 import os
 import tempfile
+import duckdb
 import pandas as pd
 import numpy as np
 
@@ -48,7 +49,16 @@ def _make_synthetic_parquet(tmpdir, symbol="TEST-USD", timeframe="1d"):
     tf_dir = os.path.join(tmpdir, "crypto", timeframe)
     os.makedirs(tf_dir, exist_ok=True)
     path = os.path.join(tf_dir, f"{symbol}_with_signals.parquet")
-    df.to_parquet(path, index=False)
+    # Coerce pandas 3.0 str-backed columns to object so DuckDB can register them
+    for col in df.columns:
+        if isinstance(df[col].dtype, pd.StringDtype) or str(df[col].dtype) == "str":
+            df[col] = df[col].astype(object)
+    con = duckdb.connect()
+    try:
+        con.register("_df", df)
+        con.execute(f"COPY _df TO '{path}' (FORMAT PARQUET)")
+    finally:
+        con.close()
     return path, df
 
 

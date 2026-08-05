@@ -140,18 +140,30 @@ pipeline failures always alert at high priority.
 ## Setup
 
 ```bash
-poetry install
+poetry install                  # add --extras eink on a Pi for the display drivers
+cp crypto_signal_station/cryptos.example.yml crypto_signal_station/cryptos.yml
 poetry run python crypto_signal_station/crypto_signal_pipeline.py refresh   # first run backfills full history
 ```
 
 Cron (the nightly refresh; add the Sunday digest if you want weekly posts):
 
 ```cron
-30 21 * * * cd /home/pi/git/crypto && poetry run python crypto_signal_station/crypto_signal_pipeline.py refresh >> ~/refresh.log 2>&1
+30 21 * * * /usr/bin/flock -n /tmp/crypto-refresh.lock /home/pi/git/crypto/daily_update.sh >> ~/logs/crypto-refresh.log 2>&1
 ```
 
+See **[SCHEDULING.md](SCHEDULING.md)** for the full guide: why 21:30, overlap
+protection, a systemd-timer alternative, log rotation, failure alerts, and how
+to verify a run actually worked.
+
+See **[ARCHITECTURE.md](ARCHITECTURE.md)** for a walkthrough of the module
+layout, the Parquet lake schema, the signal-computation pipeline, and how the
+frontend and backend fit together.
+
 Secrets (Twitter/X keys, Mastodon token, notify credentials) live in
-`crypto_signal_station/cryptos.yml` — keep real values out of version control.
+`crypto_signal_station/cryptos.yml`, which is gitignored — fill in real values
+there, not in the tracked `cryptos.example.yml` template. Supabase upload
+credentials go in a gitignored `.env` at the repo root; see
+[SCHEDULING.md](SCHEDULING.md#3-prerequisites).
 
 ## Tests
 
@@ -172,3 +184,13 @@ never touch `data/`.
 - During `refresh`, momentum runs before sectors so sector momentum uses the
   freshest 30-day returns; market context is fetched last so it doesn't hold
   up signal processing.
+- `refresh` tolerates individual symbol failures but raises (and alerts) once
+  more than `MAX_FAILURE_RATE` of a category fails — a mostly-failed fetch must
+  not quietly publish a dashboard built on stale data.
+- Symbols are validated against `_SYMBOL_RE` before use: they become directory
+  names in the lake and literals inside DuckDB's `read_parquet(...)`, so
+  scraped tickers are never trusted verbatim.
+- Per-symbol PNG charts under `eink_output/` are opt-in (`CSS_RENDER_CHARTS=1`).
+  Nothing reads them; rendering them cost ~11 min and ~350 MB per run.
+- `frontend/public/data/` is generated and gitignored — it ships to Supabase
+  Storage, never to git. Committing it previously grew `.git` to 2.9 GB.

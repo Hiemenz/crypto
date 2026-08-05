@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { ComposedChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend, Scatter } from 'recharts';
 import { Calculator, TrendingUp, DollarSign, Calendar, Info, RefreshCw } from 'lucide-react';
+import { dataUrl } from '../utils/storage';
 
 const ASSETS = [
     { symbol: 'BTC-USD', name: 'Bitcoin' },
@@ -43,7 +44,7 @@ const StrategySimulator = ({ mode = 'demo' }) => {
         const fetchAssets = async () => {
             setLoadingAssets(true);
             try {
-                const response = await fetch('/data/latest_signals.json');
+                const response = await fetch(dataUrl('latest_signals.json'));
                 if (response.ok) {
                     const json = await response.json();
                     // Extract unique symbols.
@@ -77,7 +78,7 @@ const StrategySimulator = ({ mode = 'demo' }) => {
             setLoading(true);
             setError(null);
             try {
-                const response = await fetch(`/data/history/${selectedAsset.symbol}.json`);
+                const response = await fetch(dataUrl(`history/${selectedAsset.symbol}.json`));
                 if (!response.ok) throw new Error('Failed to load data');
                 const json = await response.json();
                 setHistoryData(json.data);

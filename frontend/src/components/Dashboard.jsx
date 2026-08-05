@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import Watchlist from './Watchlist'
 import Outsiders from './Outsiders'
 import { Bell, Search, Menu } from 'lucide-react'
+import { dataUrl } from '../utils/storage'
 
 function Dashboard() {
     const [data, setData] = useState(null)
@@ -21,7 +22,7 @@ function Dashboard() {
     }, [watchlist]);
 
     useEffect(() => {
-        fetch('/data/latest_signals.json')
+        fetch(dataUrl('latest_signals.json'))
             .then(res => res.json())
             .then(data => {
                 setData(data)
