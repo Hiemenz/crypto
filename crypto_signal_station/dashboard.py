@@ -26,6 +26,10 @@ import breadth as breadth_mod
 import sectors as sectors_mod
 import momentum as momentum_mod
 
+# Resolved from this file, not the working directory, so scheduled runs from
+# any cwd still find the config.
+CONFIG_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "cryptos.yml")
+
 _MARKET_CONTEXT_PATH = None  # resolved lazily below
 
 
@@ -965,7 +969,7 @@ def _recent_crosses():
 
 
 def _watchlist_data():
-    with open("crypto_signal_station/cryptos.yml") as f:
+    with open(CONFIG_PATH) as f:
         cfg = yaml.safe_load(f)
     watch = list(cfg.get("cryptos", []))
     if not watch:

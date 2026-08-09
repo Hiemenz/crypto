@@ -50,6 +50,21 @@ def test_telegram_send(monkeypatch):
     assert "Body" in kw["json"]["text"]
 
 
+def test_discord_send(monkeypatch):
+    calls = []
+
+    def fake_post(url, **kw):
+        calls.append((url, kw))
+        return _FakeResp()
+
+    monkeypatch.setattr(notify.requests, "post", fake_post)
+    cfg = {"discord_webhook_url": "https://discord.com/api/webhooks/xyz"}
+    assert notify.send_notification("Title", "Body", config=cfg) is True
+    url, kw = calls[0]
+    assert url == "https://discord.com/api/webhooks/xyz"
+    assert kw["json"]["content"] == "**Title**\nBody"
+
+
 def test_channel_failure_never_raises(monkeypatch):
     def boom(*a, **k):
         raise OSError("network down")
@@ -79,3 +94,27 @@ def test_notify_signals_skips_empty(monkeypatch):
         lambda *a, **k: (_ for _ in ()).throw(AssertionError("must not post")),
     )
     assert notify.notify_signals("", "", config={"ntfy_topic": "t"}) is False
+
+
+def test_notify_failure_always_sends_at_high_priority(monkeypatch):
+    calls = []
+
+    def fake_post(url, **kw):
+        calls.append(kw)
+        return _FakeResp()
+
+    monkeypatch.setattr(notify.requests, "post", fake_post)
+    cfg = {"ntfy_topic": "t"}
+    assert notify.notify_failure("refresh", "Traceback: boom", config=cfg) is True
+    kw = calls[0]
+    assert kw["headers"]["Priority"] == "high"
+    assert kw["headers"]["Title"] == "Crypto Signal Station FAILED: refresh"
+    assert kw["data"] == b"Traceback: boom"
+
+
+def test_notify_failure_truncates_long_detail(monkeypatch):
+    calls = []
+    monkeypatch.setattr(notify.requests, "post", lambda *a, **k: calls.append(k) or _FakeResp())
+    long_detail = "x" * 2000
+    notify.notify_failure("refresh", long_detail, config={"ntfy_topic": "t"})
+    assert len(calls[0]["data"]) == 1500

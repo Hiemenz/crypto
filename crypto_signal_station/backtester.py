@@ -13,6 +13,7 @@ import json
 import math
 import csv
 from datetime import datetime
+import duckdb
 import pandas as pd
 
 BASE_DATA = "crypto_history_csv"
@@ -32,7 +33,11 @@ def run_backtest(symbol: str, timeframe: str):
     else:
         raise FileNotFoundError(f"No parquet found for {symbol} / {timeframe}")
 
-    df = pd.read_parquet(path)
+    con = duckdb.connect()
+    try:
+        df = con.execute(f"SELECT * FROM read_parquet('{path}')").df()
+    finally:
+        con.close()
     if df.empty:
         raise ValueError(f"Empty dataframe for {symbol} {timeframe}")
 

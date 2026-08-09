@@ -275,6 +275,29 @@ def latest_ohlcv_dates(category: str) -> dict:
     return {sym: pd.Timestamp(d) for sym, d in rows if d is not None}
 
 
+def signals_lake_columns(category: str, timeframe: str) -> list:
+    """Column names present in a category/timeframe's signals partitions.
+
+    Schema-only (DESCRIBE reads footers, not row groups), so callers can
+    project to the columns they need without a Binder Error when older
+    partitions predate a column."""
+    base = os.path.join(SIGNALS_DIR, f"category={category}", f"timeframe={timeframe}")
+    if not os.path.isdir(base):
+        return []
+    glob = os.path.join(base, "symbol=*", "data.parquet")
+    con = duckdb.connect()
+    try:
+        rows = con.execute(
+            f"DESCRIBE SELECT * FROM read_parquet('{glob}', "
+            "hive_partitioning=true, union_by_name=true)"
+        ).fetchall()
+    except duckdb.IOException:
+        return []
+    finally:
+        con.close()
+    return [r[0] for r in rows]
+
+
 def scan_signals_lake(category: str, timeframe: str, columns=None) -> pd.DataFrame:
     """Scan every symbol's signals for one category/timeframe in one query."""
     base = os.path.join(SIGNALS_DIR, f"category={category}", f"timeframe={timeframe}")

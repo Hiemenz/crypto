@@ -5,6 +5,7 @@ import pandas as pd
 
 import db
 from crypto_signal_station import crypto_signal_pipeline as csp
+from crypto_signal_station import sectors as sectors_mod
 
 
 def test_wiki_to_yahoo_maps_share_classes():
@@ -74,7 +75,7 @@ def test_update_universe_rejects_bad_scrape_and_survives_errors(lake, monkeypatc
         json.dump(["GOOD1", "GOOD2"], f)
 
     # A truncated scrape (< 400 symbols) must not clobber the cache
-    monkeypatch.setattr(csp, "_fetch_sp500_symbols", lambda: ["ONLY", "THREE", "ROWS"])
+    monkeypatch.setattr(csp, "_fetch_sp500_symbols", lambda: (["ONLY", "THREE", "ROWS"], {}))
     csp.update_symbol_universe()
     assert csp.stock_symbols == ["GOOD1", "GOOD2"]
 
@@ -91,11 +92,13 @@ def test_update_universe_writes_good_scrape(lake, monkeypatch):
     cfg = {"cryptos": [], "stocks": ["OLD1"], "auto_update_stocks": "sp500"}
     _fixture_universe(lake, monkeypatch, cfg)
     fake_sp500 = sorted(f"SYM{i}" for i in range(500))
-    monkeypatch.setattr(csp, "_fetch_sp500_symbols", lambda: fake_sp500)
+    fake_sector_map = {"SYM0": "Technology"}
+    monkeypatch.setattr(csp, "_fetch_sp500_symbols", lambda: (fake_sp500, fake_sector_map))
     csp.update_symbol_universe()
     assert csp.stock_symbols == fake_sp500
     with open(csp._universe_file("sp500.json")) as f:
         assert json.load(f) == fake_sp500
+    assert sectors_mod.load_sector_map() == fake_sector_map
 
 
 def test_has_history_gaps():

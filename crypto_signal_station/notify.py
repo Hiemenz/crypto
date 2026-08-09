@@ -28,8 +28,13 @@ import db
 TELEGRAM_MAX_LEN = 4096
 
 
+# Resolved from this file, not the working directory, so scheduled runs from
+# any cwd still find the config.
+CONFIG_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "cryptos.yml")
+
+
 def _load_config():
-    with open("crypto_signal_station/cryptos.yml", "r") as f:
+    with open(CONFIG_PATH, "r") as f:
         return yaml.safe_load(f).get("notify") or {}
 
 

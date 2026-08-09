@@ -12,15 +12,11 @@ pyyaml = "^6.0.2"
 yfinance = "^0.2.54"
 duckdb = "^1.1.3"
 ta = "^0.11.0"
-plotly = "^5.24.1"
-matplotlib = "^3.10.3"
-prophet = "^1.1.7"
 pycoingecko = "^3.2.0"
 pandas = "^3.0.1"
 mastodon-py = "^2.1.4"
 requests-oauthlib = "^2.0.0"
-spidev = {version = "^3.8", markers = "sys_platform == 'linux'"}
-rpi-gpio = {version = "^0.7.1", markers = "sys_platform == 'linux'"}
+matplotlib = "^3.9.0"
 lxml = "^6.1.1"
 discord-py = "^2.3.2"
 anthropic = "^0.40.0"
@@ -28,6 +24,15 @@ pillow = "^10.0.0"
 fastapi = "^0.115.0"
 uvicorn = {extras = ["standard"], version = "^0.32.0"}
 ruamel-yaml = "^0.18.6"
+
+# E Ink display drivers. Optional so the pipeline installs on a laptop, a VPS,
+# or CI; display.py is only imported when is_raspberry_pi() is true.
+# Install on the Pi with: poetry install --extras eink
+spidev = { version = "^3.8", optional = true }
+rpi-gpio = { version = "^0.7.1", optional = true }
+
+[tool.poetry.extras]
+eink = ["spidev", "rpi-gpio"]
 
 
 [build-system]

@@ -27,6 +27,19 @@ reports/
 # Secrets — never commit
 config_keys.yml
 
+# Real config with live secrets — copy cryptos.example.yml to create it
+crypto_signal_station/cryptos.yml
+
+# Supabase upload credentials, sourced by daily_update.sh
+.env
+.env.*
+!.env.example
+frontend/.env
+frontend/.env.*
+
+# Generated JSON data — uploaded to Supabase Storage, not committed
+frontend/public/data/
+
 # Flutter build artifacts
 flutter_app/build/
 

@@ -1,6 +1,13 @@
+import os
+
 import yaml
 import requests
 from requests_oauthlib import OAuth1
+
+# Resolved from this file, not the working directory, so scheduled runs from
+# any cwd still find the config.
+CONFIG_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "cryptos.yml")
+
 
 def load_twitter_auth(yaml_path: str) -> dict:
     """Load Twitter API credentials from a YAML file."""
@@ -34,13 +41,7 @@ def post_tweet(api_key, api_key_secret, access_token, access_token_secret, tweet
         print(response.json())
 
 def send_tweet(tweet_text):
-    credentials = load_twitter_auth('crypto_signal_station/cryptos.yml')
+    credentials = load_twitter_auth(CONFIG_PATH)
 
     post_tweet(credentials['api_key'], credentials['api_key_secret'], credentials['access_token'], credentials['access_token_secret'], tweet_text)
-
-
-def main():
-
-    TWEET_TEXT = "I am back!!!!"
-    send_tweet(TWEET_TEXT)
 
