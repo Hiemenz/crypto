@@ -3593,4 +3593,4 @@ eink = ["rpi-gpio", "spidev"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.11"
-content-hash = "cd8bf2a67b2831667616e144eeae8e7f91fd285c25fb863b98a97e22c3b9d731"
+content-hash = "2f4c9d7671aa459797818f3a6872fb400f71e9c815cea8371311eccf1e8356e0"
