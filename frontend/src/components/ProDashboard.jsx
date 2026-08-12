@@ -3,7 +3,8 @@ import DashboardLayout from './dashboard/DashboardLayout';
 import AssetList from './dashboard/AssetList';
 import ChartSection from './dashboard/ChartSection';
 import StrategySimulator from './StrategySimulator';
-import { Search, BarChart3, Calculator } from 'lucide-react';
+import HeatMapView from './HeatMapView';
+import { Search, BarChart3, Calculator, Grid3X3 } from 'lucide-react';
 import { dataUrl } from '../utils/storage';
 
 const ProDashboard = ({ onLogout }) => {
@@ -11,22 +12,26 @@ const ProDashboard = ({ onLogout }) => {
     // eslint-disable-next-line no-unused-vars
     const [crosses, setCrosses] = useState([]);
     const [historyData, setHistoryData] = useState(null);
+    const [forecastData, setForecastData] = useState(null);
+    const [heatmapData, setHeatmapData] = useState(null);
     const [activeTab, setActiveTab] = useState('crypto'); // 'crypto' | 'stocks'
     const [selectedSymbol, setSelectedSymbol] = useState('BTC-USD');
     const [searchTerm, setSearchTerm] = useState('');
     const [loading, setLoading] = useState(true);
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [chartRange, setChartRange] = useState('ALL');
-    const [currentView, setCurrentView] = useState('market'); // 'market' | 'lab'
+    const [currentView, setCurrentView] = useState('market'); // 'market' | 'lab' | 'heatmap'
 
     // Initial Data Load
     useEffect(() => {
         Promise.all([
             fetch(dataUrl('latest_signals.json')).then(r => r.json()),
-            fetch(dataUrl('crosses.json')).then(r => r.json())
-        ]).then(([sig, cr]) => {
+            fetch(dataUrl('crosses.json')).then(r => r.json()),
+            fetch(dataUrl('heatmap.json')).then(r => r.json()).catch(() => null),
+        ]).then(([sig, cr, hm]) => {
             setSignals(sig.signals);
             setCrosses(cr.crosses);
+            if (hm) setHeatmapData(hm);
 
             // Default selection logic
             const btc = sig.signals.find(s => s.symbol === 'BTC-USD');
@@ -45,13 +50,12 @@ const ProDashboard = ({ onLogout }) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    // History Data Fetch
+    // History + Forecast Data Fetch
     useEffect(() => {
         if (!selectedSymbol) return;
-        // eslint-disable-next-line react-hooks/set-state-in-effect
         setHistoryData(null);
+        setForecastData(null);
 
-        // Construct path - handle both crypto and stock symbols if needed, assuming flat structure based on previous file
         fetch(dataUrl(`history/${selectedSymbol}.json`))
             .then(res => {
                 if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
@@ -62,7 +66,6 @@ const ProDashboard = ({ onLogout }) => {
                 const processed = json.data.map(d => ({
                     date: d.Date,
                     price: parseFloat(d.Close),
-                    // Keep original fields for candle chart
                     Open: parseFloat(d.Open),
                     High: parseFloat(d.High),
                     Low: parseFloat(d.Low),
@@ -73,6 +76,12 @@ const ProDashboard = ({ onLogout }) => {
                 setHistoryData(processed);
             })
             .catch(err => console.error('History error:', err));
+
+        // Forecast is best-effort: generated nightly, may not exist for all symbols
+        fetch(dataUrl(`forecasts/${selectedSymbol}.json`))
+            .then(res => res.ok ? res.json() : null)
+            .then(json => json?.forecast ? setForecastData(json.forecast) : null)
+            .catch(() => null);
     }, [selectedSymbol]);
 
     // Computed Lists
@@ -107,19 +116,26 @@ const ProDashboard = ({ onLogout }) => {
         <div className="flex flex-col h-full">
             {/* View Switching */}
             <div className="px-4 pt-4">
-                <div className="flex bg-panel border border-border-subtle rounded-lg p-1">
+                <div className="flex bg-panel border border-border-subtle rounded-lg p-1 gap-0.5">
                     <button
                         onClick={() => setCurrentView('market')}
-                        className={`flex-1 flex items-center justify-center gap-2 text-sm font-bold py-1.5 rounded-md transition-all ${currentView === 'market' ? 'bg-white text-black shadow-sm' : 'text-muted hover:text-white'}`}
+                        className={`flex-1 flex items-center justify-center gap-1.5 text-xs font-bold py-1.5 rounded-md transition-all ${currentView === 'market' ? 'bg-white text-black shadow-sm' : 'text-muted hover:text-white'}`}
                     >
-                        <BarChart3 size={16} />
+                        <BarChart3 size={13} />
                         <span>Market</span>
                     </button>
                     <button
-                        onClick={() => setCurrentView('lab')}
-                        className={`flex-1 flex items-center justify-center gap-2 text-sm font-bold py-1.5 rounded-md transition-all ${currentView === 'lab' ? 'bg-white text-black shadow-sm' : 'text-muted hover:text-white'}`}
+                        onClick={() => setCurrentView('heatmap')}
+                        className={`flex-1 flex items-center justify-center gap-1.5 text-xs font-bold py-1.5 rounded-md transition-all ${currentView === 'heatmap' ? 'bg-white text-black shadow-sm' : 'text-muted hover:text-white'}`}
                     >
-                        <Calculator size={16} />
+                        <Grid3X3 size={13} />
+                        <span>Heat</span>
+                    </button>
+                    <button
+                        onClick={() => setCurrentView('lab')}
+                        className={`flex-1 flex items-center justify-center gap-1.5 text-xs font-bold py-1.5 rounded-md transition-all ${currentView === 'lab' ? 'bg-white text-black shadow-sm' : 'text-muted hover:text-white'}`}
+                    >
+                        <Calculator size={13} />
                         <span>Lab</span>
                     </button>
                 </div>
@@ -196,7 +212,20 @@ const ProDashboard = ({ onLogout }) => {
                         range={chartRange}
                         onRangeChange={setChartRange}
                         currentSignal={currentSignal}
+                        forecastData={forecastData}
                     />
+                ) : currentView === 'heatmap' ? (
+                    <div className="flex-1 overflow-y-auto">
+                        <HeatMapView
+                            heatmapData={heatmapData}
+                            activeTab={activeTab}
+                            onSelectSymbol={(sym) => {
+                                setSelectedSymbol(sym);
+                                setCurrentView('market');
+                                setSidebarOpen(false);
+                            }}
+                        />
+                    </div>
                 ) : (
                     <div className="flex-1 overflow-y-auto p-4 md:p-8">
                         <StrategySimulator mode="pro" />

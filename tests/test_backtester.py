@@ -133,10 +133,72 @@ def test_csv_output():
         assert len(df_out) == len(trades), "CSV row count mismatch"
 
 
+def test_trailing_stop_triggers():
+    """Trailing stop should exit a trade when price drops below peak by threshold."""
+    with tempfile.TemporaryDirectory() as tmpdir:
+        import backtester
+        original = backtester.BASE_DATA
+        backtester.BASE_DATA = tmpdir
+
+        dates = pd.date_range("2024-01-01", periods=10, freq="D")
+        signals = ["Hold"] * 10
+        signals[0] = "Good Buy"     # enter at 100
+        closes = [100.0, 110.0, 120.0, 115.0, 108.0, 100.0, 90.0, 85.0, 80.0, 75.0]
+        # Peak is 120.0; 10% trailing stop triggers at 108.0 (120 * 0.90 = 108)
+
+        df = pd.DataFrame({
+            "Date": dates, "Close": closes, "Open": closes,
+            "High": [c * 1.01 for c in closes], "Low": [c * 0.99 for c in closes],
+            "Volume": [1000.0] * 10, "signal": signals,
+            "rsi": [50.0] * 10, "mfi": [50.0] * 10, "stoch_rsi": [0.5] * 10,
+            "ma_50": [100.0] * 10, "ma_200": [100.0] * 10, "is_bull": [True] * 10,
+        })
+        tf_dir = os.path.join(tmpdir, "crypto", "1d")
+        os.makedirs(tf_dir, exist_ok=True)
+        path = os.path.join(tf_dir, "TEST-USD_with_signals.parquet")
+        for col in df.columns:
+            if isinstance(df[col].dtype, pd.StringDtype) or str(df[col].dtype) == "str":
+                df[col] = df[col].astype(object)
+        con = duckdb.connect()
+        try:
+            con.register("_df", df)
+            con.execute(f"COPY _df TO '{path}' (FORMAT PARQUET)")
+        finally:
+            con.close()
+
+        metrics, trades = run_backtest("TEST-USD", "1d", trailing_stop_pct=10.0)
+        backtester.BASE_DATA = original
+
+        closed = [t for t in trades if t["status"] == "closed"]
+        assert len(closed) == 1, f"Expected 1 closed trade (stop hit), got {len(closed)}"
+        assert closed[0]["exit_signal"] == "Trailing Stop"
+        # Exit at 108 or next bar at or below stop: peak=120, stop=108, closes[4]=108.0
+        assert closed[0]["exit_price"] <= 108.0
+
+
+def test_trailing_stop_not_triggered_before_sell():
+    """When price never drops past the stop, the signal-based sell should still close."""
+    with tempfile.TemporaryDirectory() as tmpdir:
+        import backtester
+        original = backtester.BASE_DATA
+        backtester.BASE_DATA = tmpdir
+
+        _make_synthetic_parquet(tmpdir, "TEST-USD", "1d")
+        # Default synthetic data: Good Buy at 100, Good Sell at 120 (+20%), 50% dip never > 8%
+        metrics, trades = run_backtest("TEST-USD", "1d", trailing_stop_pct=50.0)
+        backtester.BASE_DATA = original
+
+        closed = [t for t in trades if t["status"] == "closed"]
+        # Both trades should close via signal, not stop
+        assert all(t["exit_signal"] != "Trailing Stop" for t in closed)
+
+
 if __name__ == "__main__":
     test_trade_count()
     test_win_rate()
     test_positive_trade_return()
     test_metrics_zero_trades()
     test_csv_output()
+    test_trailing_stop_triggers()
+    test_trailing_stop_not_triggered_before_sell()
     print("All backtester tests passed.")

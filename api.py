@@ -12,6 +12,8 @@ Run:
     poetry run uvicorn api:app --reload --port 8000
 """
 
+import sys
+import time
 from datetime import timedelta
 
 import pandas as pd
@@ -21,6 +23,22 @@ from pydantic import BaseModel
 from ruamel.yaml import YAML
 
 import db
+
+sys.path.insert(0, "crypto_signal_station")
+
+# ── simple in-memory TTL cache ────────────────────────────────────────────────
+_CACHE_TTL = 300  # seconds
+_cache: dict[str, tuple[float, object]] = {}
+
+
+def _cached(key: str, fn):
+    """Return cached value if fresh, else call fn(), cache and return result."""
+    entry = _cache.get(key)
+    if entry is not None and time.monotonic() - entry[0] < _CACHE_TTL:
+        return entry[1]
+    result = fn()
+    _cache[key] = (time.monotonic(), result)
+    return result
 
 CRYPTOS_YML = "crypto_signal_station/cryptos.yml"
 
@@ -110,15 +128,18 @@ def symbols(
     category: str = Query(None, description="crypto | stocks"),
     timeframe: str = Query(None),
 ):
-    keys = _symbol_keys(category, timeframe)
-    seen = set()
-    out = []
-    for sym, cat, _tf in keys:
-        if (sym, cat) in seen:
-            continue
-        seen.add((sym, cat))
-        out.append({"symbol": sym, "category": cat})
-    return out
+    def _build():
+        keys = _symbol_keys(category, timeframe)
+        seen: set = set()
+        out = []
+        for sym, cat, _tf in keys:
+            if (sym, cat) in seen:
+                continue
+            seen.add((sym, cat))
+            out.append({"symbol": sym, "category": cat})
+        return out
+
+    return _cached(f"symbols:{category}:{timeframe}", _build)
 
 
 @app.get("/api/feed")
@@ -128,18 +149,20 @@ def feed(
     signal: str | None = Query(None, description="Filter: Buy, Sell, Hold, Great Buy, Great Sell..."),
 ):
     """Latest signal row per symbol -- the main mobile feed."""
-    items = []
-    for sym, cat, tf in _symbol_keys(category, timeframe):
-        df = db.load_signals(sym, cat, tf)
-        if df.empty:
-            continue
-        item = _row_to_dict(sym, cat, tf, df.iloc[-1])
-        if signal and signal.lower() not in item["signal"].lower():
-            continue
-        items.append(item)
+    def _build():
+        items = []
+        for sym, cat, tf in _symbol_keys(category, timeframe):
+            df = db.load_signals(sym, cat, tf)
+            if df.empty:
+                continue
+            item = _row_to_dict(sym, cat, tf, df.iloc[-1])
+            if signal and signal.lower() not in item["signal"].lower():
+                continue
+            items.append(item)
+        items.sort(key=lambda x: x["date"], reverse=True)
+        return items
 
-    items.sort(key=lambda x: x["date"], reverse=True)
-    return items
+    return _cached(f"feed:{category}:{timeframe}:{signal}", _build)
 
 
 @app.get("/api/history/{symbol}")
@@ -159,59 +182,61 @@ def history(
 @app.get("/api/watch")
 def watch():
     """Assets near a Buy/Sell trigger (ported from watch_feed.py)."""
-    watch_items = []
-    for category in CATEGORIES:
-        for tf in TIMEFRAMES:
-            for sym, cat, _tf in _symbol_keys(category, tf):
-                df = db.load_signals(sym, cat, tf)
-                if df.empty:
-                    continue
-                latest = df.iloc[-1]
+    def _build():
+        watch_items = []
+        for category in CATEGORIES:
+            for tf in TIMEFRAMES:
+                for sym, cat, _tf in _symbol_keys(category, tf):
+                    df = db.load_signals(sym, cat, tf)
+                    if df.empty:
+                        continue
+                    latest = df.iloc[-1]
 
-                rsi = latest.get("rsi") or 0
-                mfi = latest.get("mfi") or 0
-                stoch_rsi = latest.get("stoch_rsi") or 0
-                is_bull = bool(latest.get("is_bull", False))
-                close = latest.get("Close") or 0
-                signal = latest.get("signal") or "Hold"
+                    rsi = latest.get("rsi") or 0
+                    mfi = latest.get("mfi") or 0
+                    stoch_rsi = latest.get("stoch_rsi") or 0
+                    is_bull = bool(latest.get("is_bull", False))
+                    close = latest.get("Close") or 0
+                    signal = latest.get("signal") or "Hold"
 
-                if signal != "Hold":
-                    continue
+                    if signal != "Hold":
+                        continue
 
-                near_type = None
-                reasons = []
+                    near_type = None
+                    reasons = []
 
-                if not is_bull:
-                    if 30 <= rsi <= 45:
-                        reasons.append(f"RSI: {rsi:.1f}")
-                    if 20 <= mfi <= 35:
-                        reasons.append(f"MFI: {mfi:.1f}")
-                    if 0.2 <= stoch_rsi <= 0.4:
-                        reasons.append(f"StochRSI: {stoch_rsi:.2f}")
-                    if reasons:
-                        near_type = "Near Buy"
-                else:
-                    if 55 <= rsi <= 70:
-                        reasons.append(f"RSI: {rsi:.1f}")
-                    if 65 <= mfi <= 80:
-                        reasons.append(f"MFI: {mfi:.1f}")
-                    if 0.6 <= stoch_rsi <= 0.8:
-                        reasons.append(f"StochRSI: {stoch_rsi:.2f}")
-                    if reasons:
-                        near_type = "Near Sell"
+                    if not is_bull:
+                        if 30 <= rsi <= 45:
+                            reasons.append(f"RSI: {rsi:.1f}")
+                        if 20 <= mfi <= 35:
+                            reasons.append(f"MFI: {mfi:.1f}")
+                        if 0.2 <= stoch_rsi <= 0.4:
+                            reasons.append(f"StochRSI: {stoch_rsi:.2f}")
+                        if reasons:
+                            near_type = "Near Buy"
+                    else:
+                        if 55 <= rsi <= 70:
+                            reasons.append(f"RSI: {rsi:.1f}")
+                        if 65 <= mfi <= 80:
+                            reasons.append(f"MFI: {mfi:.1f}")
+                        if 0.6 <= stoch_rsi <= 0.8:
+                            reasons.append(f"StochRSI: {stoch_rsi:.2f}")
+                        if reasons:
+                            near_type = "Near Sell"
 
-                if near_type:
-                    watch_items.append({
-                        "category": cat,
-                        "symbol": sym,
-                        "timeframe": tf,
-                        "type": near_type,
-                        "price": float(close),
-                        "reasons": reasons,
-                        "market": "Bull" if is_bull else "Bear",
-                    })
+                    if near_type:
+                        watch_items.append({
+                            "category": cat,
+                            "symbol": sym,
+                            "timeframe": tf,
+                            "type": near_type,
+                            "price": float(close),
+                            "reasons": reasons,
+                            "market": "Bull" if is_bull else "Bear",
+                        })
+        return watch_items
 
-    return watch_items
+    return _cached("watch", _build)
 
 
 @app.get("/api/crosses/ma")
@@ -284,6 +309,69 @@ def stoch_crosses():
 
     crosses.sort(key=lambda x: x["date"], reverse=True)
     return crosses
+
+
+@app.get("/api/forecast/{symbol}")
+def forecast(
+    symbol: str,
+    category: str = Query(..., description="crypto | stocks"),
+    timeframe: str = Query("1d"),
+):
+    """30-day Prophet price forecast for a symbol.
+
+    Returns the stored forecast (generated nightly) rather than fitting on
+    demand, so the response is fast. Returns 404 if no forecast is stored yet.
+    """
+    def _build():
+        try:
+            import prophet_forecast
+        except ImportError:
+            return None
+        return prophet_forecast.forecast_to_json(symbol, category, timeframe)
+
+    data = _cached(f"forecast:{symbol}:{category}:{timeframe}", _build)
+    if data is None:
+        raise HTTPException(status_code=503, detail="prophet not installed on this server")
+    if not data:
+        raise HTTPException(status_code=404, detail="No forecast stored for this symbol")
+    return {"symbol": symbol, "category": category, "timeframe": timeframe, "forecast": data}
+
+
+@app.get("/api/heatmap")
+def heatmap():
+    """Signal heat map grouped by sector (stocks) and signal (crypto)."""
+    def _build():
+        try:
+            import sectors as sectors_mod
+            sector_map = sectors_mod.load_sector_map()
+        except Exception:
+            sector_map = {}
+
+        result: dict = {"crypto": [], "stocks": {}}
+        for category in CATEGORIES:
+            lake = db.scan_signals_lake(category, "1d")
+            if lake.empty:
+                continue
+            for sym, g in lake.groupby("symbol"):
+                row = g.sort_values("Date").iloc[-1]
+                signal = str(row.get("signal") or "Hold")
+                side = "buy" if "buy" in signal.lower() else ("sell" if "sell" in signal.lower() else "hold")
+                entry = {
+                    "symbol": sym,
+                    "signal": signal,
+                    "side": side,
+                    "close": _clean(row.get("Close")),
+                    "rsi": _clean(row.get("rsi")),
+                    "date": str(row.get("Date"))[:10] if row.get("Date") is not None else None,
+                }
+                if category == "crypto":
+                    result["crypto"].append(entry)
+                else:
+                    sector = sector_map.get(sym, "Other")
+                    result["stocks"].setdefault(sector, []).append(entry)
+        return result
+
+    return _cached("heatmap", _build)
 
 
 # ── price alerts (server-side, pushed via crypto_signal_station/notify.py) ──
