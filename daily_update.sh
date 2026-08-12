@@ -44,6 +44,23 @@ run_step "Step 1: Updating Market Data..." \
 run_step "Step 2: Generating and uploading Frontend data..." \
     poetry run python generate_api_data.py
 
+# Non-blocking: freshness alert fires if the lake is stale; a miss here never
+# kills the whole update. Signal log append runs similarly best-effort.
+echo "----------------------------------------"
+echo "Step 3: Checking data freshness..."
+echo "----------------------------------------"
+poetry run python crypto_signal_station/freshness_check.py || true
+
+echo "----------------------------------------"
+echo "Step 4: Appending to signal history log..."
+echo "----------------------------------------"
+poetry run python crypto_signal_station/signal_log.py || true
+
+echo "----------------------------------------"
+echo "Step 5: Running Prophet forecasts..."
+echo "----------------------------------------"
+poetry run python crypto_signal_station/prophet_forecast.py || true
+
 echo "----------------------------------------"
 echo "Update complete: $(date)"
 echo "----------------------------------------"

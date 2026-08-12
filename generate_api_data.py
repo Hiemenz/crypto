@@ -333,10 +333,139 @@ def upload_to_supabase():
     return failed == 0
 
 
+def generate_heatmap_json():
+    """Export per-sector (stocks) and per-signal (crypto) heat map data."""
+    print(f"Generating heat map JSON to {OUTPUT_DIR}/heatmap.json...")
+
+    import sys
+    sys.path.insert(0, "crypto_signal_station")
+
+    heatmap: dict = {"crypto": [], "stocks": {}}
+
+    # Crypto: flat list sorted by signal strength
+    crypto_lake = db.scan_signals_lake("crypto", "1d")
+    if not crypto_lake.empty:
+        for symbol, g in crypto_lake.groupby("symbol"):
+            row = g.sort_values("Date").iloc[-1]
+            signal = str(row.get("signal") or "Hold")
+            side = "buy" if "buy" in signal.lower() else ("sell" if "sell" in signal.lower() else "hold")
+            heatmap["crypto"].append({
+                "symbol": symbol,
+                "signal": signal,
+                "side": side,
+                "score": _json_safe(calculate_score(row)),
+                "close": _json_safe(row.get("Close")),
+                "rsi": _json_safe(row.get("rsi")),
+                "date": str(row.get("Date"))[:10] if row.get("Date") is not None else None,
+            })
+        heatmap["crypto"].sort(key=lambda x: x["score"], reverse=True)
+
+    # Stocks: group by GICS sector
+    try:
+        import sectors as sectors_mod
+        sector_map = sectors_mod.load_sector_map()
+    except Exception:
+        sector_map = {}
+
+    stocks_lake = db.scan_signals_lake("stocks", "1d")
+    if not stocks_lake.empty:
+        for symbol, g in stocks_lake.groupby("symbol"):
+            row = g.sort_values("Date").iloc[-1]
+            signal = str(row.get("signal") or "Hold")
+            side = "buy" if "buy" in signal.lower() else ("sell" if "sell" in signal.lower() else "hold")
+            sector = sector_map.get(symbol, "Other")
+            entry = {
+                "symbol": symbol,
+                "signal": signal,
+                "side": side,
+                "score": _json_safe(calculate_score(row)),
+                "close": _json_safe(row.get("Close")),
+                "rsi": _json_safe(row.get("rsi")),
+                "date": str(row.get("Date"))[:10] if row.get("Date") is not None else None,
+            }
+            heatmap["stocks"].setdefault(sector, []).append(entry)
+        for sector_list in heatmap["stocks"].values():
+            sector_list.sort(key=lambda x: x["score"], reverse=True)
+
+    _write_json_atomic(
+        os.path.join(OUTPUT_DIR, "heatmap.json"),
+        {"updated": str(datetime.now()), **heatmap},
+    )
+    n_crypto = len(heatmap["crypto"])
+    n_stocks = sum(len(v) for v in heatmap["stocks"].values())
+    print(f"Heat map JSON done. ({n_crypto} crypto, {n_stocks} stocks in {len(heatmap['stocks'])} sectors)")
+
+
+def generate_signal_scorecard_json():
+    """Export forward-return stats for each signal tier (requires 30+ days of log)."""
+    print(f"Generating signal scorecard JSON to {OUTPUT_DIR}/signal_scorecard.json...")
+
+    import sys
+    sys.path.insert(0, "crypto_signal_station")
+
+    try:
+        import signal_log
+    except ImportError:
+        print("signal_log module not found — skipping scorecard.")
+        return
+
+    scorecard: dict = {}
+    for category in CATEGORIES:
+        stats = signal_log.scorecard_json(category)
+        scorecard[category] = stats
+
+    _write_json_atomic(
+        os.path.join(OUTPUT_DIR, "signal_scorecard.json"),
+        {"updated": str(datetime.now()), "scorecard": scorecard},
+    )
+    print("Signal scorecard JSON done.")
+
+
+def generate_forecasts_json(max_symbols: int = 20):
+    """Export Prophet forecasts for top symbols to JSON (best-effort).
+
+    Only runs when prophet is installed. Skipped silently if not.
+    The nightly pipeline must have already run prophet_forecast.run_all_forecasts()
+    to populate data/forecasts/; this function just exports what's there.
+    """
+    print(f"Exporting forecast JSON to {OUTPUT_DIR}/forecasts/...")
+
+    import sys
+    sys.path.insert(0, "crypto_signal_station")
+
+    try:
+        import prophet_forecast
+    except ImportError:
+        print("prophet not installed — skipping forecast export.")
+        return
+
+    count = 0
+    for category in CATEGORIES:
+        keys = [(s, c, t) for s, c, t in db.list_signal_keys() if c == category and t == "1d"]
+        keys = keys[:max_symbols]
+        for sym, cat, tf in keys:
+            data = prophet_forecast.forecast_to_json(sym, cat, tf)
+            if not data:
+                continue
+            path = os.path.join(OUTPUT_DIR, "forecasts", f"{sym}.json")
+            _write_json_atomic(path, {
+                "symbol": sym,
+                "category": cat,
+                "timeframe": tf,
+                "generated": str(datetime.now()),
+                "forecast": data,
+            })
+            count += 1
+    print(f"Forecast JSON done. ({count} symbols)")
+
+
 def main():
     generate_history_json()
     generate_latest_signals_json()
     generate_crosses_json()
+    generate_heatmap_json()
+    generate_signal_scorecard_json()
+    generate_forecasts_json()
     if not upload_to_supabase():
         # Non-zero exit so daily_update.sh reports the failure instead of
         # logging "Update complete" over a half-published dataset.

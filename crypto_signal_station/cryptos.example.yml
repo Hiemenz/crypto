@@ -54,6 +54,17 @@ notify:
 # One-way price alerts: notify when price first crosses a threshold (either direction).
 # State is tracked in data/notify/price_alert_state.json; delete that file to reset.
 price_alerts: {}
+
+# Weekly HTML digest via email. All fields must be filled to enable.
+# For Gmail: enable 2FA, then create a 16-char App Password at
+# https://myaccount.google.com/apppasswords
+email:
+  smtp_host: smtp.gmail.com
+  smtp_port: 587
+  username: ""           # your Gmail address
+  password: ""           # 16-char App Password
+  to: ""                 # recipient
+
 twitter:
   api_key: INSERT_API_KEY
   api_key_secret: INSERT_API_KEY_SECRET

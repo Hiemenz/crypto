@@ -77,9 +77,10 @@ const CustomTooltip = ({ active, payload, label }) => {
     return null;
 };
 
-const ChartSection = ({ data, symbol, range, onRangeChange, currentSignal }) => {
+const ChartSection = ({ data, symbol, range, onRangeChange, currentSignal, forecastData }) => {
     const [showMobileRange, setShowMobileRange] = useState(false);
     const [showDots, setShowDots] = useState(false);
+    const [showForecast, setShowForecast] = useState(true);
 
     // Reset and trigger dot animation on data change
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -103,6 +104,22 @@ const ChartSection = ({ data, symbol, range, onRangeChange, currentSignal }) => 
             Close: parseFloat(d.Close),
         }));
     }, [data]);
+
+    // Merge historical + forecast into a single series for the chart
+    const combinedData = useMemo(() => {
+        if (!forecastData || !forecastData.length || !showForecast) return processedData;
+        const histDates = new Set(processedData.map(d => d.date?.slice(0, 10)));
+        const futurePoints = forecastData
+            .filter(f => !histDates.has(f.date))
+            .map(f => ({
+                date: f.date,
+                dateStr: new Date(f.date).toLocaleDateString(),
+                yhat: f.yhat,
+                yhat_lower: f.yhat_lower,
+                yhat_upper: f.yhat_upper,
+            }));
+        return [...processedData, ...futurePoints];
+    }, [processedData, forecastData, showForecast]);
 
 
 
@@ -140,17 +157,27 @@ const ChartSection = ({ data, symbol, range, onRangeChange, currentSignal }) => 
                 {/* Controls */}
                 <div className="flex flex-col items-end gap-3 w-full sm:w-auto">
                     {/* Desktop Range Selector */}
-                    <div className="hidden sm:flex bg-panel border border-border-subtle rounded-lg p-1">
-                        {['1M', '3M', '1Y', '3Y', '5Y', 'ALL'].map(r => (
+                    <div className="hidden sm:flex items-center gap-2">
+                        {forecastData && forecastData.length > 0 && (
                             <button
-                                key={r}
-                                onClick={() => onRangeChange(r)}
-                                className={`px-3 py-1 text-xs font-bold rounded-md transition-all ${range === r ? 'bg-white text-black' : 'text-muted hover:text-white'
-                                    }`}
+                                onClick={() => setShowForecast(v => !v)}
+                                className={`px-3 py-1 text-xs font-bold rounded-md border transition-all ${showForecast ? 'border-violet-500 text-violet-400 bg-violet-500/10' : 'border-border-subtle text-muted'}`}
                             >
-                                {r}
+                                Prophet
                             </button>
-                        ))}
+                        )}
+                        <div className="flex bg-panel border border-border-subtle rounded-lg p-1">
+                            {['1M', '3M', '1Y', '3Y', '5Y', 'ALL'].map(r => (
+                                <button
+                                    key={r}
+                                    onClick={() => onRangeChange(r)}
+                                    className={`px-3 py-1 text-xs font-bold rounded-md transition-all ${range === r ? 'bg-white text-black' : 'text-muted hover:text-white'
+                                        }`}
+                                >
+                                    {r}
+                                </button>
+                            ))}
+                        </div>
                     </div>
 
                     {/* Mobile Range Dropdown */}
@@ -190,7 +217,7 @@ const ChartSection = ({ data, symbol, range, onRangeChange, currentSignal }) => 
             {/* Chart Area */}
             <div className="flex-1 w-full min-h-[300px] px-2 pb-4">
                 <ResponsiveContainer width="100%" height="100%">
-                    <ComposedChart data={processedData}>
+                    <ComposedChart data={combinedData}>
                         <defs>
                             <linearGradient id="colorPrice" x1="0" y1="0" x2="0" y2="1">
                                 <stop offset="5%" stopColor="var(--trade-accent)" stopOpacity={0.3} />
@@ -236,6 +263,47 @@ const ChartSection = ({ data, symbol, range, onRangeChange, currentSignal }) => 
                             legendType="none"
                             isAnimationActive={false}
                         />
+
+                        {/* Prophet forecast band + line */}
+                        {showForecast && forecastData && forecastData.length > 0 && (
+                            <>
+                                <defs>
+                                    <linearGradient id="forecastBand" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="5%" stopColor="#7c3aed" stopOpacity={0.18} />
+                                        <stop offset="95%" stopColor="#7c3aed" stopOpacity={0.04} />
+                                    </linearGradient>
+                                </defs>
+                                <Area
+                                    type="monotone"
+                                    dataKey="yhat_upper"
+                                    stroke="none"
+                                    fill="url(#forecastBand)"
+                                    fillOpacity={1}
+                                    isAnimationActive={false}
+                                />
+                                <Line
+                                    type="monotone"
+                                    dataKey="yhat"
+                                    stroke="#7c3aed"
+                                    strokeWidth={2}
+                                    strokeDasharray="6 3"
+                                    dot={false}
+                                    activeDot={false}
+                                    isAnimationActive={false}
+                                />
+                                <Line
+                                    type="monotone"
+                                    dataKey="yhat_lower"
+                                    stroke="#7c3aed"
+                                    strokeWidth={1}
+                                    strokeDasharray="2 4"
+                                    strokeOpacity={0.5}
+                                    dot={false}
+                                    activeDot={false}
+                                    isAnimationActive={false}
+                                />
+                            </>
+                        )}
                     </ComposedChart>
                 </ResponsiveContainer>
             </div>

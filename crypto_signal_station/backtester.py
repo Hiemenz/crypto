@@ -23,9 +23,14 @@ BUY_SIGNALS = {"Good Buy", "Great Buy", "Excellent Buy"}
 SELL_SIGNALS = {"Good Sell", "Great Sell", "Excellent Sell"}
 
 
-def run_backtest(symbol: str, timeframe: str):
-    """Run backtest for symbol/timeframe. Returns metrics dict and trades list."""
-    # Try crypto first, then stocks
+def run_backtest(symbol: str, timeframe: str, trailing_stop_pct: float | None = None):
+    """Run backtest for symbol/timeframe. Returns metrics dict and trades list.
+
+    Args:
+        trailing_stop_pct: If set, exit a position when price falls this many
+            percent below its peak since entry (e.g. 8.0 → exit at -8%).
+            A signal-based sell still closes the position first.
+    """
     for asset_class in ("crypto", "stocks"):
         path = os.path.join(BASE_DATA, asset_class, timeframe, f"{symbol}_with_signals.parquet")
         if os.path.exists(path):
@@ -46,43 +51,54 @@ def run_backtest(symbol: str, timeframe: str):
     trades = []
     open_position = None
 
+    def _close_trade(entry, exit_price, exit_date, exit_signal):
+        ep = entry["entry_price"]
+        pct = (exit_price - ep) / ep * 100 if ep else 0.0
+        return {
+            "entry_date": entry["entry_date"],
+            "exit_date": exit_date,
+            "entry_price": ep,
+            "exit_price": exit_price,
+            "entry_signal": entry["entry_signal"],
+            "exit_signal": exit_signal,
+            "pct_return": round(pct, 4),
+            "status": "closed",
+        }
+
     for _, row in df.iterrows():
         signal = row.get("signal", "Hold")
         close = float(row.get("Close", 0.0))
         date = row.get("Date")
-        if hasattr(date, "strftime"):
-            date_str = date.strftime("%Y-%m-%d")
+        date_str = date.strftime("%Y-%m-%d") if hasattr(date, "strftime") else str(date)
+
+        if open_position is None:
+            if signal in BUY_SIGNALS:
+                open_position = {
+                    "entry_date": date_str,
+                    "entry_price": close,
+                    "entry_signal": signal,
+                    "peak_price": close,
+                }
         else:
-            date_str = str(date)
+            # Update trailing peak
+            if close > open_position["peak_price"]:
+                open_position["peak_price"] = close
 
-        if open_position is None and signal in BUY_SIGNALS:
-            open_position = {
-                "entry_date": date_str,
-                "entry_price": close,
-                "entry_signal": signal,
-            }
-        elif open_position is not None and signal in SELL_SIGNALS:
-            entry_price = open_position["entry_price"]
-            pct_return = (close - entry_price) / entry_price * 100 if entry_price else 0.0
-            trades.append({
-                "entry_date": open_position["entry_date"],
-                "exit_date": date_str,
-                "entry_price": entry_price,
-                "exit_price": close,
-                "entry_signal": open_position["entry_signal"],
-                "exit_signal": signal,
-                "pct_return": round(pct_return, 4),
-                "status": "closed",
-            })
-            open_position = None
+            # Check trailing stop before signal exit
+            if trailing_stop_pct is not None:
+                stop_price = open_position["peak_price"] * (1 - trailing_stop_pct / 100)
+                if close <= stop_price:
+                    trades.append(_close_trade(open_position, close, date_str, "Trailing Stop"))
+                    open_position = None
+                    continue
 
-    # Report open positions separately
+            if signal in SELL_SIGNALS:
+                trades.append(_close_trade(open_position, close, date_str, signal))
+                open_position = None
+
     open_trades = []
     if open_position is not None:
-        open_trades.append({
-            **open_position,
-            "status": "open",
-        })
+        open_trades.append({**open_position, "status": "open"})
 
     return _compute_metrics(symbol, timeframe, trades, open_trades)
 
@@ -221,15 +237,22 @@ tr:nth-child(even) {{ background: #f9f9f9; }}
 
 
 def main():
-    if len(sys.argv) < 3:
-        print("Usage: backtester.py SYMBOL TIMEFRAME")
-        print("  e.g. backtester.py BTC-USD 1d")
-        sys.exit(1)
+    import argparse
+    parser = argparse.ArgumentParser(description="Backtest a symbol against its stored signals")
+    parser.add_argument("symbol", help="Symbol, e.g. BTC-USD")
+    parser.add_argument("timeframe", help="Timeframe, e.g. 1d or 1wk")
+    parser.add_argument(
+        "--trailing-stop",
+        type=float,
+        default=None,
+        metavar="PCT",
+        help="Exit when price drops this %% below its peak (e.g. 8.0)",
+    )
+    args = parser.parse_args()
+    symbol = args.symbol.upper()
+    timeframe = args.timeframe
 
-    symbol = sys.argv[1].upper()
-    timeframe = sys.argv[2]
-
-    metrics, all_trades = run_backtest(symbol, timeframe)
+    metrics, all_trades = run_backtest(symbol, timeframe, trailing_stop_pct=args.trailing_stop)
 
     print(json.dumps(metrics, indent=2))
 
