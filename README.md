@@ -45,13 +45,25 @@ poetry run python crypto_signal_station/crypto_signal_pipeline.py <command>
 | `verify` | Audit stored history: gaps, NaN rows, staleness, and cross-symbol contamination. |
 | `backtest` | Score every historical signal: forward returns at 7/30/90 days, win rates vs baseline, per tier/timeframe/category. |
 | `breadth` | Record today's market-breadth + vol-regime row (also part of `refresh`). |
+| `cycle` | Print the market-cycle summary: crypto phase + S&P sector business-cycle stage. |
+| `forecast` | Backtested breadth-bucket forward-return forecast, alongside the `cycle` summary. |
+| `prophet` | Fit + walk-forward-backtest the Prophet BTC-USD market forecast. |
+| `mlsignal` | Train + backtest the ML buy-signal model (full feature set, logistic regression). |
+| `mlselect` | Algorithmically select which indicators the ML model should use (greedy forward search). |
+| `mlcycle` | Cycle 3 ML methods (logistic/gboost/tree) × feature search, keep the validated winner. |
+| `mlexhaustive [k] [max_combos]` | Try every k-feature combination (default k=7, 3000 combos), not just a greedy search. |
+| `mlcorr` | Feature correlation matrix: redundancy between indicators + correlation with forward return. |
+| `mlwalkforward` | Validate the persisted ML model across several rolling time folds, not just one split. |
 | `dashboard` | Regenerate `data/dashboard/index.html` (also part of `refresh`). |
 | `digest` | Print the weekly signal digest; `digest post` also toots/tweets it. |
 | `tweet` | Render the E Ink image and post the daily signal summaries. |
 | *(none)* | Render the E Ink image and show it on the display (Pi only). |
 
 `--dry-run` on `tweet` / `digest post` prints what would be posted instead of
-posting it.
+posting it. `--relative` on `mlsignal` / `mlselect` / `mlcycle` / `mlcorr`
+labels by cross-sectional rank (beats the category's same-day median)
+instead of absolute forward-return direction — see
+[Market cycle & ML signal findings](#market-cycle--ml-signal-findings).
 
 ## Dashboard
 
@@ -120,6 +132,51 @@ symbols whose 90-day return beats BTC-USD:
 The sector breadth table (GICS sectors from Wikipedia) now includes the mean
 30-day momentum return and today's buy/sell signal count for each sector —
 useful for spotting which sectors are rotating in or out.
+
+## Market cycle & ML signal findings
+
+Four modules explore "where is the market, and can a trained model beat
+the hand-tuned Buy/Sell tiers" — full technical detail (methodology,
+storage schema, every constant) is in [ARCHITECTURE.md](ARCHITECTURE.md);
+this is the summary.
+
+- **`market_cycle.py`** — algorithmic phase call: a Wyckoff-style score
+  (Capitulation → Markup → Late-Stage Bull/Euphoria → Distribution →
+  Markdown) for crypto, and a Fidelity-style business-cycle stage
+  (Early/Mid/Late/Recession) for S&P sectors, from breadth + momentum +
+  Fear & Greed already in the lake.
+- **`cycle_forecast.py`** — backtests that phase call: reconstructs the
+  *full* historical breadth series from OHLCV (not the sparse daily
+  snapshot table) and reports the empirical forward return for whichever
+  breadth bucket today falls into.
+- **`prophet_backtest.py`** — a second, independent BTC-USD forecast via
+  Prophet, walk-forward validated. Verdict: **don't trust it standalone**
+  — directional accuracy came in at 40–50% (a coin flip) with a
+  persistent bullish bias, because Prophet's trend+seasonality curve
+  extrapolates the long-run uptrend and misses regime breaks.
+- **`ml_signal.py`** — a trained classifier (logistic regression /
+  gradient-boosted trees / decision tree) as an alternative to the
+  hand-tuned RSI/MFI/StochRSI thresholds: engineered features (momentum,
+  volatility trend, 52-week distance, cross-symbol market breadth),
+  algorithmic feature selection (greedy and exhaustive), a 3-method
+  cycle, walk-forward validation, and a feature-correlation check.
+
+### What's validated, and what isn't
+
+| Configuration | Result |
+|---|---|
+| Crypto, absolute label, any method | **No edge.** AUC ~0.50 everywhere; a result that looked strong during search (+43% on its validation slice) collapsed to exactly the baseline once walk-forward-confirmed. |
+| Stocks, absolute label | **No edge, and a real trap caught.** A model with a 90% win rate turned out to be ~800 calls clustered on 3 calendar dates — `mkt_breadth` firing for the whole market at once, not 800 independent bets. |
+| **Stocks, relative label** (beats the category's same-day median return, not "goes up") | **Validated.** Walk-forward across 5 folds spanning 2019–2026: every fold beat its own baseline, avg return +5.84% ± 3.82%, profit factor 2.95, 30,193 calls spread across 1,665 distinct dates (no clustering). This is the persisted live model for stocks. |
+| Crypto, relative label | Flat — 0% avg return, profit factor 1.00, no edge either way. |
+
+Why the label mattered more than any single feature: `mlcorr` shows no
+individual indicator clears r=0.10 with the actual 30-day forward return
+(the strongest, `mkt_breadth`, is r=0.094), and the 20 candidate features
+cluster into ~4 redundant groups (momentum oscillators, trend, volatility,
+overlapping momentum windows) rather than 20 independent signals.
+Predicting *relative* rank instead of absolute direction is what found
+real signal — not a better indicator.
 
 ## Notifications
 

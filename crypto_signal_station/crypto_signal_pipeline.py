@@ -1335,17 +1335,29 @@ Commands:
   verify           audit stored history (gaps, NaNs, staleness, contamination)
   backtest         recompute the signal scoreboard (forward returns/hit rates)
   breadth          record today's market breadth row
+  cycle            print the market-cycle summary (crypto phase + sector stage)
+  forecast         backtest + print the empirical forward-return forecast
+  prophet          fit + backtest the Prophet BTC-USD market forecast
+  mlsignal         train + backtest the ML buy-signal model (crypto & stocks)
+  mlselect         algorithmically select which indicators the ML model should use
+  mlcycle          cycle 3 model methods x feature search, keep the validated winner
+  mlexhaustive     try every k-feature combination (default k=7), not just a greedy search
+  mlcorr           feature correlation matrix (redundancy + correlation with forward return)
+  mlwalkforward    validate the persisted ML model across rolling time folds
   dashboard        regenerate data/dashboard/index.html
   digest [post]    weekly signal digest (post = also toot/tweet it)
   tweet            render eink image and post the daily signal tweets
   (no command)     render eink image and show it on the display
 
 Flags: --dry-run    print what would be posted instead of posting (tweet/digest)
+       --relative   ml* commands: label by cross-sectional rank (beats the category
+                    median that date) instead of absolute forward-return direction
 """
 
 if __name__ == "__main__":
-    args = [a for a in sys.argv[1:] if a != "--dry-run"]
+    args = [a for a in sys.argv[1:] if a not in ("--dry-run", "--relative")]
     dry_run = "--dry-run" in sys.argv
+    ml_label_mode = "relative" if "--relative" in sys.argv else "absolute"
     cmd = args[0] if args else None
 
     if cmd == "help" or cmd == "--help":
@@ -1385,6 +1397,44 @@ if __name__ == "__main__":
 
     elif cmd == "breadth":
         breadth_mod.record_daily()
+
+    elif cmd == "cycle":
+        import market_cycle as market_cycle_mod
+        print(market_cycle_mod.algorithmic_summary())
+
+    elif cmd == "forecast":
+        import cycle_forecast as cycle_forecast_mod
+        print(cycle_forecast_mod.forecast_report())
+
+    elif cmd == "prophet":
+        import prophet_backtest as prophet_backtest_mod
+        print(prophet_backtest_mod.full_report())
+
+    elif cmd == "mlsignal":
+        import ml_signal as ml_signal_mod
+        print(ml_signal_mod.fit_all_and_report(label_mode=ml_label_mode))
+
+    elif cmd == "mlselect":
+        import ml_signal as ml_signal_mod
+        print(ml_signal_mod.select_all_and_report(label_mode=ml_label_mode))
+
+    elif cmd == "mlcycle":
+        import ml_signal as ml_signal_mod
+        print(ml_signal_mod.cycle_all_and_report(label_mode=ml_label_mode))
+
+    elif cmd == "mlexhaustive":
+        import ml_signal as ml_signal_mod
+        k = int(args[1]) if len(args) > 1 else 7
+        max_combos = int(args[2]) if len(args) > 2 else 3000
+        print(ml_signal_mod.exhaustive_all_and_report(k=k, max_combos=max_combos, label_mode=ml_label_mode))
+
+    elif cmd == "mlcorr":
+        import ml_signal as ml_signal_mod
+        print(ml_signal_mod.correlation_all_and_report(label_mode=ml_label_mode))
+
+    elif cmd == "mlwalkforward":
+        import ml_signal as ml_signal_mod
+        print(ml_signal_mod.walkforward_all_and_report())
 
     elif cmd == "dashboard":
         dashboard_mod.generate()

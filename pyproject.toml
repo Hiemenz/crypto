@@ -31,6 +31,7 @@ ruamel-yaml = "^0.18.6"
 # Install on the Pi with: poetry install --extras eink
 spidev = { version = "^3.8", optional = true }
 rpi-gpio = { version = "^0.7.1", optional = true }
+scikit-learn = "^1.9.0"
 
 [tool.poetry.extras]
 eink = ["spidev", "rpi-gpio"]
