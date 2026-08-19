@@ -569,6 +569,29 @@ searched) — `select_features(..., label_mode="relative")` combined with
 walk-forward confirmation is the natural next step, to see whether a
 searched subset beats "just use everything."
 
+#### Exhaustive k-feature search (`mlexhaustive`)
+
+`select_features()`'s greedy forward search has a real blind spot: it
+builds a combination up one feature at a time, so it can only ever try
+feature B after feature A if A looked like the *single best* addition in
+some earlier round. A pair that's individually mediocre but only works
+*together* — an interaction the greedy search's own logic guarantees it
+never tries — would never surface.
+
+`exhaustive_feature_search()` tries whole combinations directly instead:
+every k-feature subset of `candidates` (`itertools.combinations`), each
+scored on validation with the exact same gates as the greedy search
+(`min_calls`, `min_dates`, must beat the validation baseline). With the
+default 20 candidates, C(20, 7) = 77,520 combinations — measured at
+~0.24s/combo for crypto and ~1.25s/combo for stocks (fit + score), that's
+~5 hours for crypto alone and completely infeasible for stocks. `max_combos`
+randomly samples down to a fixed, reproducible (`seed`) budget when the
+full space is too large; `mlexhaustive <k> <max_combos>` defaults to
+k=7, max_combos=3000 (~12 min crypto, ~63 min stocks). The winning
+combination gets the same treatment as every other search: refit on
+train+validation, confirmed via `evaluate()` *and* `walk_forward_validate()`
+on the untouched test slice — never picked by peeking at test performance.
+
 ---
 
 ## 6. Download safety
@@ -661,7 +684,7 @@ tests/
   test_cycle_forecast.py   breadth-band backtest, forward-return lookup
   test_prophet_backtest.py  fold selection, walk-forward scoring (stubbed fit)
   test_ml_signal.py        feature engineering, labels (absolute/relative), threshold/feature/
-                           method selection, walk-forward folds, profit factor
+                           method/exhaustive-combination selection, walk-forward folds, profit factor
   test_backtest.py         forward-return scoring, win-rate calculation
   test_notify.py           channel dispatch, dedup, failure alerts
   test_toot.py             lazy Mastodon client, missing-token guard
@@ -671,7 +694,8 @@ tests/
   test_summaries.py        multi-timeframe signal summaries
 ```
 
-All 232 tests run in ~30 s on a Pi 5. The `lake` fixture redirects every
+All 238 tests run in ~30 s on a Pi 5 (longer, ~2.5 min, if run alongside
+other CPU-heavy work — the suite itself is unchanged). The `lake` fixture redirects every
 Parquet read/write to a temp directory so the real `data/` is never touched.
 `test_prophet_backtest.py` stubs out the actual Prophet/Stan fit (`_fit_fn`)
 so the suite doesn't pay for real model training — only prophet_backtest.py's

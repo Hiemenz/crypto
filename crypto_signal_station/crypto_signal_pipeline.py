@@ -1341,6 +1341,7 @@ Commands:
   mlsignal         train + backtest the ML buy-signal model (crypto & stocks)
   mlselect         algorithmically select which indicators the ML model should use
   mlcycle          cycle 3 model methods x feature search, keep the validated winner
+  mlexhaustive     try every k-feature combination (default k=7), not just a greedy search
   mlwalkforward    validate the persisted ML model across rolling time folds
   dashboard        regenerate data/dashboard/index.html
   digest [post]    weekly signal digest (post = also toot/tweet it)
@@ -1419,6 +1420,12 @@ if __name__ == "__main__":
     elif cmd == "mlcycle":
         import ml_signal as ml_signal_mod
         print(ml_signal_mod.cycle_all_and_report(label_mode=ml_label_mode))
+
+    elif cmd == "mlexhaustive":
+        import ml_signal as ml_signal_mod
+        k = int(args[1]) if len(args) > 1 else 7
+        max_combos = int(args[2]) if len(args) > 2 else 3000
+        print(ml_signal_mod.exhaustive_all_and_report(k=k, max_combos=max_combos, label_mode=ml_label_mode))
 
     elif cmd == "mlwalkforward":
         import ml_signal as ml_signal_mod

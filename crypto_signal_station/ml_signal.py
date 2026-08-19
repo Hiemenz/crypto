@@ -87,9 +87,11 @@ Usage:
     poetry run python crypto_signal_station/crypto_signal_pipeline.py mlwalkforward  # validate the persisted model across time
 """
 
+import itertools
 import json
 import math
 import os
+import random
 import sys
 
 import pandas as pd
@@ -581,6 +583,149 @@ def _forward_select(train: pd.DataFrame, val: pd.DataFrame, candidates, method: 
     if not selected:
         return None
     return {"selected": selected, "history": history, "val_score": best_score}
+
+
+def exhaustive_feature_search(category, timeframe="1d", k=7, candidates=None, method="logistic",
+                               label_mode="absolute", max_combos=None, seed=0,
+                               confirm_folds=CONFIRM_N_FOLDS, progress=print):
+    """Try every k-feature combination from `candidates` directly — not
+    built up one feature at a time like _forward_select(), which can miss
+    a combination whose members only work well *together* (nothing in a
+    greedy search would ever try feature B before feature A if A alone
+    scored worse than some other single feature in round 1, even if A+B
+    together beats everything). Each combination is scored on the
+    validation slice with the exact same gates as _forward_select(): a
+    combination only counts if it clears min_calls *and* min_dates *and*
+    beats the validation baseline — same discipline, just applied to whole
+    combinations instead of one greedy step at a time.
+
+    With the default 20 candidates, C(20, 7) = 77,520 — too many to fit
+    exhaustively at real dataset sizes. max_combos randomly samples down
+    to a fixed, reproducible (via seed) budget when the full combinatorial
+    space exceeds it; None means try all of them.
+
+    Returns {category, k, n_combos_tried, n_combos_total, top,
+    best_features, final_eval, walk_forward, fit}, or None if there isn't
+    enough data or nothing ever beat the baseline."""
+    candidates = list(candidates or FEATURES)
+    data = _build_dataset(category, timeframe, label_mode=label_mode)
+    if len(data) < MIN_ROWS_PER_CATEGORY:
+        return None
+
+    train, val, test = _three_way_time_split(data)
+    if train.empty or val.empty or test.empty:
+        return None
+    if train["label"].nunique() < 2 or val["label"].nunique() < 2:
+        return None
+
+    ret_col = f"ret_{HORIZON_DAYS}d"
+    min_val_calls = max(MIN_VAL_CALLS_FOR_SELECTION, int(MIN_VAL_CALL_FRACTION * len(val)))
+    min_val_dates = MIN_VAL_DATES_FOR_SELECTION
+    baseline = float(val[ret_col].mean())
+
+    n_total = math.comb(len(candidates), k)
+    if max_combos and n_total > max_combos:
+        rng = random.Random(seed)
+        sample_idx = set(rng.sample(range(n_total), max_combos))
+        combos = (c for i, c in enumerate(itertools.combinations(candidates, k)) if i in sample_idx)
+        n_planned = max_combos
+    else:
+        combos = itertools.combinations(candidates, k)
+        n_planned = n_total
+
+    progress(f"[ml-exhaustive:{category}] trying {n_planned}/{n_total} combinations of {k} "
+             f"features (method={method}, label={label_mode}, baseline={baseline:+.2%})")
+
+    results = []
+    for i, combo in enumerate(combos, 1):
+        combo = list(combo)
+        bundle = _fit(train, combo, method=method)
+        s = _score(bundle, val, combo)
+        results.append({"features": combo, **s})
+        if i % 2000 == 0:
+            progress(f"[ml-exhaustive:{category}] {i}/{n_planned} combinations tried...")
+
+    qualifying = [
+        r for r in results
+        if r["n_calls"] >= min_val_calls and r["n_dates"] >= min_val_dates and r["avg_return"] > baseline
+    ]
+    if not qualifying:
+        progress(f"[ml-exhaustive:{category}] none of {len(results)} combinations beat the validation "
+                 f"baseline ({baseline:+.2%}) with enough calls/dates to trust")
+        return None
+
+    qualifying.sort(key=lambda r: r["avg_return"], reverse=True)
+    best = qualifying[0]
+    progress(f"[ml-exhaustive:{category}] best: {best['features']} -> val avg return "
+             f"{best['avg_return']:+.2%}, win {best['win_rate']:.0%}, n={best['n_calls']} "
+             f"({best['n_dates']} dates)")
+
+    trainval = pd.concat([train, val], ignore_index=True)
+    bundle = _fit(trainval, best["features"], method=method)
+    fit = {
+        "category": category, "features": best["features"], "method": method, "label_mode": label_mode,
+        "model": bundle["model"], "scaler": bundle["scaler"], "threshold": bundle["threshold"],
+        "train": trainval, "test": test,
+    }
+    final_eval = evaluate(fit)
+    walk_forward = walk_forward_validate(
+        category, features=best["features"], method=method, label_mode=label_mode, progress=progress,
+        data=pd.concat([trainval, test], ignore_index=True),
+        min_train_end_date=trainval["Date"].max(), n_folds=confirm_folds,
+    )
+
+    return {
+        "category": category, "k": k, "n_combos_tried": len(results), "n_combos_total": n_total,
+        "top": qualifying[:10], "best_features": best["features"],
+        "final_eval": final_eval, "walk_forward": walk_forward, "fit": fit,
+    }
+
+
+def fit_exhaustive_and_persist(category, timeframe="1d", k=7, candidates=None, method="logistic",
+                                label_mode="absolute", max_combos=None, seed=0, progress=print):
+    """Run exhaustive_feature_search() and persist the winning combination
+    exactly like fit_and_evaluate() does, so predict_latest() picks it up."""
+    result = exhaustive_feature_search(category, timeframe, k=k, candidates=candidates, method=method,
+                                        label_mode=label_mode, max_combos=max_combos, seed=seed,
+                                        progress=progress)
+    if result is None:
+        return None
+    _persist(result["fit"], result["final_eval"])
+    return result
+
+
+def format_exhaustive_report(result) -> str:
+    if not result:
+        return "No exhaustive-search result available (not enough data, or nothing beat baseline).\n"
+    lines = [
+        f"[{result['category']}] exhaustive {result['k']}-feature search "
+        f"({result['n_combos_tried']}/{result['n_combos_total']} combinations tried)",
+        "  top combinations (validation):",
+    ]
+    for r in result["top"][:5]:
+        lines.append(
+            f"    {r['avg_return']:+.2%} win {r['win_rate']:.0%} n={r['n_calls']} "
+            f"({r['n_dates']} dates): {', '.join(r['features'])}"
+        )
+    lines.append(f"  best: {', '.join(result['best_features'])}")
+    lines.append("")
+    lines.append(format_eval_report(result["final_eval"]).rstrip())
+    lines.append("")
+    lines.append("  single-split confirmation above; walk-forward confirmation below "
+                  "(trust this more — it's several splits, not one):")
+    lines.append(format_walkforward_report(result.get("walk_forward")).rstrip())
+    return "\n".join(lines) + "\n"
+
+
+def exhaustive_all_and_report(categories=("crypto", "stocks"), k=7, max_combos=None,
+                               label_mode="absolute") -> str:
+    lines = [f"ML Signal Model — exhaustive {k}-feature search ({label_mode} label) — "
+             f"{pd.Timestamp.now().date()}", ""]
+    for cat in categories:
+        result = fit_exhaustive_and_persist(cat, k=k, max_combos=max_combos, label_mode=label_mode)
+        lines.append(format_exhaustive_report(result).rstrip())
+        lines.append("")
+    return "\n".join(lines).rstrip() + "\n"
 
 
 def _walk_forward_folds(data: pd.DataFrame, min_train_end_date, n_folds=5):

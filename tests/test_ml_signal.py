@@ -566,3 +566,68 @@ def test_select_features_includes_walk_forward_confirmation(lake):
 
     text = ml_signal.format_selection_report(result)
     assert "walk-forward confirmation" in text
+
+
+# ---- exhaustive k-feature combination search ----------------------------
+
+def test_exhaustive_feature_search_none_below_min_rows(lake):
+    _seed_learnable_symbol("AAA-USD", "crypto", days=250)
+    assert ml_signal.exhaustive_feature_search("crypto", k=2, progress=lambda *a: None) is None
+
+
+def test_exhaustive_feature_search_finds_informative_feature(lake):
+    _seed_learnable_symbol("AAA-USD", "crypto", days=900)
+    _seed_learnable_symbol("BBB-USD", "crypto", days=900)
+    candidates = ["rsi", "mfi", "stoch_rsi_k"]  # C(3,2) = 3 combinations, all cheap
+
+    result = ml_signal.exhaustive_feature_search(
+        "crypto", k=2, candidates=candidates, progress=lambda *a: None
+    )
+    assert result is not None
+    assert result["n_combos_total"] == 3
+    assert result["n_combos_tried"] == 3  # no cap given: tries all of them
+    assert "rsi" in result["best_features"]
+    assert len(result["best_features"]) == 2
+    assert result["walk_forward"] is not None
+
+    text = ml_signal.format_exhaustive_report(result)
+    assert "exhaustive 2-feature search" in text
+    assert "top combinations" in text
+
+    # persisted exactly like the other search entry points
+    persisted = ml_signal.fit_exhaustive_and_persist(
+        "crypto", k=2, candidates=candidates, progress=lambda *a: None
+    )
+    assert persisted["best_features"] == result["best_features"]
+    bundle = ml_signal.load_model("crypto")
+    assert set(bundle["features"]) == set(result["best_features"])
+
+
+def test_exhaustive_feature_search_max_combos_samples_a_subset(lake):
+    _seed_learnable_symbol("AAA-USD", "crypto", days=900)
+    _seed_learnable_symbol("BBB-USD", "crypto", days=900)
+    candidates = ml_signal._INDICATOR_FEATURES + ["ma_spread"]  # C(12, 3) = 220
+
+    result = ml_signal.exhaustive_feature_search(
+        "crypto", k=3, candidates=candidates, max_combos=20, seed=1, progress=lambda *a: None
+    )
+    assert result is not None
+    assert result["n_combos_total"] == 220
+    assert result["n_combos_tried"] == 20  # capped, not exhaustive
+
+
+def test_exhaustive_feature_search_none_when_nothing_beats_baseline(lake):
+    _seed_constant_growth_symbol("AAA-USD", "crypto", 900, 0.0005)
+    result = ml_signal.exhaustive_feature_search(
+        "crypto", k=2, candidates=["rsi", "mfi"], progress=lambda *a: None
+    )
+    assert result is None
+
+
+def test_format_exhaustive_report_handles_none():
+    assert "No exhaustive-search result" in ml_signal.format_exhaustive_report(None)
+
+
+def test_exhaustive_all_and_report_handles_missing_data(lake):
+    text = ml_signal.exhaustive_all_and_report(categories=("crypto",), k=2)
+    assert "No exhaustive-search result" in text
