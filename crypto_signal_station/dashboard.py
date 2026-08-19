@@ -30,22 +30,8 @@ import momentum as momentum_mod
 # any cwd still find the config.
 CONFIG_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "cryptos.yml")
 
-_MARKET_CONTEXT_PATH = None  # resolved lazily below
-
-
-def _market_ctx_path():
-    return db.table_path("market", "context.json")
-
-
 def _load_market_context() -> dict:
-    path = _market_ctx_path()
-    if not os.path.exists(path):
-        return {}
-    try:
-        with open(path) as f:
-            return json.load(f)
-    except Exception:
-        return {}
+    return db.load_market_context()
 
 CHART_DAYS = 90
 SPARK_DAYS = 90

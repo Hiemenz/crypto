@@ -135,7 +135,7 @@ def run_backtest(symbol=DEFAULT_SYMBOL, category=DEFAULT_CATEGORY, n_folds=N_FOL
                 "anchor_close": anchor_close,
                 "predicted_close": predicted, "realized_close": realized,
                 "predicted_return": predicted_ret, "actual_return": actual_ret,
-                "abs_pct_error": abs(predicted - realized) / realized,
+                "abs_pct_error": abs(predicted - realized) / realized if realized != 0 else float("nan"),
                 "direction_correct": (predicted_ret > 0) == (actual_ret > 0),
             })
 

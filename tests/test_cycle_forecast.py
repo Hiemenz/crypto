@@ -20,11 +20,18 @@ def _daily_ending_now(days, closes):
 
 
 def test_band_label_edges():
+    # Boundaries mirror market_cycle.compute_crypto_cycle() exactly:
+    # <= 0.25 → "≤25%", (0.25, 0.40] → "25-40%", (0.40, 0.60) → "40-60%",
+    # [0.60, 0.75) → "60-75%", >= 0.75 → "≥75%"
     assert cycle_forecast._band_label(0.0) == "≤25%"
     assert cycle_forecast._band_label(0.24) == "≤25%"
-    assert cycle_forecast._band_label(0.25) == "25-40%"
+    assert cycle_forecast._band_label(0.25) == "≤25%"   # <= 0.25, same as market_cycle
+    assert cycle_forecast._band_label(0.26) == "25-40%"
+    assert cycle_forecast._band_label(0.40) == "25-40%"  # <= 0.40, same as market_cycle
+    assert cycle_forecast._band_label(0.41) == "40-60%"
     assert cycle_forecast._band_label(0.59) == "40-60%"
-    assert cycle_forecast._band_label(0.60) == "60-75%"
+    assert cycle_forecast._band_label(0.60) == "60-75%"  # >= 0.60, same as market_cycle
+    assert cycle_forecast._band_label(0.75) == "≥75%"   # >= 0.75, same as market_cycle
     assert cycle_forecast._band_label(0.99) == "≥75%"
     assert cycle_forecast._band_label(None) is None
     assert cycle_forecast._band_label(float("nan")) is None

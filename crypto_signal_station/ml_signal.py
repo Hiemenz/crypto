@@ -229,14 +229,17 @@ def _build_dataset(category, timeframe="1d", label_mode="absolute") -> pd.DataFr
     sigs = db.scan_signals_lake(category, timeframe, columns=_RAW_COLUMNS)
     if sigs.empty:
         return pd.DataFrame()
-    required = ["Close", "ma_50", "ma_200", "bb_upper", "bb_lower"] + [
-        c for c in _INDICATOR_FEATURES if c not in _BOOL_FEATURES
-    ]
-    sigs = sigs.dropna(subset=required)
-    if sigs.empty:
-        return pd.DataFrame()
+    # Engineer first so rolling-window features (momentum, ATR change, 52w distance)
+    # are computed on the full, untruncated per-symbol series.  Dropping interior
+    # NaN rows before this call shifts rolling positions and silently corrupts those
+    # features for the bar immediately after a data gap.
     sigs = _engineer_features(sigs, category)
-    sigs = sigs.dropna(subset=[c for c in FEATURES if c not in _BOOL_FEATURES])
+    # Only dropna on features that actually have data — prevents mkt_breadth (NaN for
+    # every row when breadth history is <200d) from wiping the entire dataset.
+    available_features = [
+        c for c in FEATURES if c not in _BOOL_FEATURES and sigs[c].notna().any()
+    ]
+    sigs = sigs.dropna(subset=available_features)
     if sigs.empty:
         return pd.DataFrame()
 
@@ -585,6 +588,25 @@ def _forward_select(train: pd.DataFrame, val: pd.DataFrame, candidates, method: 
     return {"selected": selected, "history": history, "val_score": best_score}
 
 
+def _confirm_fit(category, train, val, test, features, method, label_mode, confirm_folds, progress):
+    """Refit on train+val, evaluate on test (single split) and via
+    walk_forward_validate (multiple folds).  Returns (fit, final_eval, walk_forward)."""
+    trainval = pd.concat([train, val], ignore_index=True)
+    bundle = _fit(trainval, features, method=method)
+    fit = {
+        "category": category, "features": features, "method": method, "label_mode": label_mode,
+        "model": bundle["model"], "scaler": bundle["scaler"], "threshold": bundle["threshold"],
+        "train": trainval, "test": test,
+    }
+    final_eval = evaluate(fit)
+    walk_forward = walk_forward_validate(
+        category, features=features, method=method, label_mode=label_mode, progress=progress,
+        data=pd.concat([trainval, test], ignore_index=True),
+        min_train_end_date=trainval["Date"].max(), n_folds=confirm_folds,
+    )
+    return fit, final_eval, walk_forward
+
+
 def exhaustive_feature_search(category, timeframe="1d", k=7, candidates=None, method="logistic",
                                label_mode="absolute", max_combos=None, seed=0,
                                confirm_folds=CONFIRM_N_FOLDS, progress=print):
@@ -660,18 +682,8 @@ def exhaustive_feature_search(category, timeframe="1d", k=7, candidates=None, me
              f"{best['avg_return']:+.2%}, win {best['win_rate']:.0%}, n={best['n_calls']} "
              f"({best['n_dates']} dates)")
 
-    trainval = pd.concat([train, val], ignore_index=True)
-    bundle = _fit(trainval, best["features"], method=method)
-    fit = {
-        "category": category, "features": best["features"], "method": method, "label_mode": label_mode,
-        "model": bundle["model"], "scaler": bundle["scaler"], "threshold": bundle["threshold"],
-        "train": trainval, "test": test,
-    }
-    final_eval = evaluate(fit)
-    walk_forward = walk_forward_validate(
-        category, features=best["features"], method=method, label_mode=label_mode, progress=progress,
-        data=pd.concat([trainval, test], ignore_index=True),
-        min_train_end_date=trainval["Date"].max(), n_folds=confirm_folds,
+    fit, final_eval, walk_forward = _confirm_fit(
+        category, train, val, test, best["features"], method, label_mode, confirm_folds, progress
     )
 
     return {
@@ -982,18 +994,8 @@ def select_features(category, timeframe="1d", candidates=None, progress=print, m
         progress(f"[ml-select:{category}] ({method}) no single feature beat the validation baseline")
         return None
 
-    trainval = pd.concat([train, val], ignore_index=True)
-    bundle = _fit(trainval, result["selected"], method=method)
-    fit = {
-        "category": category, "features": result["selected"], "method": method, "label_mode": label_mode,
-        "model": bundle["model"], "scaler": bundle["scaler"], "threshold": bundle["threshold"],
-        "train": trainval, "test": test,
-    }
-    final_eval = evaluate(fit)
-    walk_forward = walk_forward_validate(
-        category, features=result["selected"], method=method, progress=progress,
-        data=pd.concat([trainval, test], ignore_index=True),
-        min_train_end_date=trainval["Date"].max(), n_folds=confirm_folds,
+    fit, final_eval, walk_forward = _confirm_fit(
+        category, train, val, test, result["selected"], method, label_mode, confirm_folds, progress
     )
 
     return {
@@ -1046,18 +1048,8 @@ def select_model(category, timeframe="1d", methods=METHODS_ORDER, candidates=Non
     progress(f"[ml-cycle:{category}] winner: {best_method} ({best['val_score']:+.2%} val) "
              f"-> {best['selected']}")
 
-    trainval = pd.concat([train, val], ignore_index=True)
-    bundle = _fit(trainval, best["selected"], method=best_method)
-    fit = {
-        "category": category, "features": best["selected"], "method": best_method, "label_mode": label_mode,
-        "model": bundle["model"], "scaler": bundle["scaler"], "threshold": bundle["threshold"],
-        "train": trainval, "test": test,
-    }
-    final_eval = evaluate(fit)
-    walk_forward = walk_forward_validate(
-        category, features=best["selected"], method=best_method, progress=progress,
-        data=pd.concat([trainval, test], ignore_index=True),
-        min_train_end_date=trainval["Date"].max(), n_folds=confirm_folds,
+    fit, final_eval, walk_forward = _confirm_fit(
+        category, train, val, test, best["selected"], best_method, label_mode, confirm_folds, progress
     )
 
     return {
@@ -1202,10 +1194,10 @@ def predict_latest(category, timeframe="1d") -> pd.DataFrame:
     sigs = db.scan_signals_lake(category, timeframe, columns=_RAW_COLUMNS)
     if sigs.empty:
         return pd.DataFrame()
-    required = ["Close", "ma_50", "ma_200", "bb_upper", "bb_lower"] + [
-        c for c in _INDICATOR_FEATURES if c not in _BOOL_FEATURES
-    ]
-    sigs = sigs.dropna(subset=required)
+    # Only require Close: _engineer_features needs it for rolling windows. The later
+    # dropna (on features the persisted model actually uses) handles the rest, so
+    # symbols with NaN in unrelated columns are not silently excluded.
+    sigs = sigs.dropna(subset=["Close"])
     if sigs.empty:
         return pd.DataFrame()
     # Engineer on the full per-symbol history (rolling windows need it),

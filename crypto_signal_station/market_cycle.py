@@ -17,7 +17,6 @@ cluster is leading.
 Both feed algorithmic_summary(), a digest-style text report.
 """
 
-import json
 import os
 import sys
 
@@ -53,17 +52,6 @@ _STAGE_NOTES = {
                               "typical of a slowdown.",
     "Unknown": "Not enough sector data to place a stage.",
 }
-
-
-def _load_market_context() -> dict:
-    path = db.table_path("market", "context.json")
-    if not os.path.exists(path):
-        return {}
-    try:
-        with open(path) as f:
-            return json.load(f)
-    except Exception:
-        return {}
 
 
 def _breadth_trend(category, lookback_days=BREADTH_TREND_LOOKBACK_DAYS):
@@ -131,7 +119,7 @@ def compute_crypto_cycle():
         score -= 1
         reasons.append(f"{lows} new 52w lows vs {highs} highs")
 
-    ctx = _load_market_context()
+    ctx = db.load_market_context()
     fng = ctx.get("fear_greed_value")
     extreme_fear = extreme_greed = False
     if fng is not None:
