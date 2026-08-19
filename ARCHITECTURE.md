@@ -592,6 +592,50 @@ combination gets the same treatment as every other search: refit on
 train+validation, confirmed via `evaluate()` *and* `walk_forward_validate()`
 on the untouched test slice — never picked by peeking at test performance.
 
+#### Feature correlation (`mlcorr`)
+
+`feature_correlation_matrix()` is the cheap complement to all the search
+machinery above: pairwise Pearson correlation among the 20 candidates
+(no model fitting — just `.corr()`), plus each feature's own correlation
+with the raw forward return. Two different questions, both worth asking
+before spending a search budget: which features are redundant with *each
+other* (a search wastes combinatorics trying both members of a highly
+correlated pair, since they carry mostly the same information), and which
+ones have *any* linear relationship with the actual outcome at all.
+
+Run against this repo's live lake (2026-08-18), crypto, relative label:
+
+```
+highly correlated pairs (|r| >= 0.5):
+  stoch_rsi_k <-> stoch_rsi_d        r=+0.94
+  rsi         <-> bb_pband           r=+0.88
+  rsi         <-> mfi                r=+0.78
+  atr_pct     <-> bb_bandwidth       r=+0.75
+  mom_5d      <-> mom_10d            r=+0.73
+  is_bull     <-> ma_spread          r=+0.70   (ma_spread's sign literally defines is_bull)
+  ...
+
+correlation with forward return (all 20 features):
+  mkt_breadth  r=+0.094   (the single strongest — still barely above noise)
+  rsi          r=+0.092
+  ma_spread    r=+0.091
+  ...down to...
+  atr_pct_chg_5d  r=+0.007
+```
+
+This is the quantitative version of something this session only observed
+indirectly through AUC hovering near 0.50 everywhere: no individual
+feature has more than weak (r≈0.09, R²<1%) linear correlation with the
+actual 30-day forward return. The 20 "features" also aren't 20
+independent signals — they cluster into a handful of underlying ideas
+(a momentum-oscillator group: rsi/mfi/bb_pband/stoch_rsi_k/stoch_rsi_d;
+a trend group: is_bull/ma_spread/mkt_breadth/dist_from_52w_high; a
+volatility group: atr_pct/bb_bandwidth) wearing different names. Whatever
+edge the stocks/relative-label model found almost certainly comes from
+*combinations and thresholds*, not from any single feature carrying real
+information on its own — consistent with AUC staying weak (~0.51) even in
+the one configuration that validated cleanly on walk-forward.
+
 ---
 
 ## 6. Download safety

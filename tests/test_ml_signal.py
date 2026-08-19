@@ -631,3 +631,72 @@ def test_format_exhaustive_report_handles_none():
 def test_exhaustive_all_and_report_handles_missing_data(lake):
     text = ml_signal.exhaustive_all_and_report(categories=("crypto",), k=2)
     assert "No exhaustive-search result" in text
+
+
+# ---- feature correlation --------------------------------------------------
+
+def _seed_correlation_symbol(sym, category, days=900):
+    """rsi and mfi vary identically (a 100-day phase cycle); stoch_rsi_k
+    varies on an unrelated, much shorter cycle — used to verify
+    feature_correlation_matrix() flags (rsi, mfi) as redundant and does
+    NOT flag (rsi, stoch_rsi_k)."""
+    price = 100.0
+    closes, rsis, stochs = [], [], []
+    for i in range(days):
+        phase_up = (i // 100) % 2 == 0
+        price *= (1 + (0.001 if phase_up else -0.001))
+        closes.append(price)
+        rsis.append(25.0 if phase_up else 75.0)
+        stochs.append(0.2 if (i // 37) % 2 == 0 else 0.8)
+
+    ohlcv = _daily_ending_now(days, closes)
+    db.replace_ohlcv(ohlcv, sym, category)
+    sigs = pd.DataFrame({
+        "Date": ohlcv["Date"], "Close": closes, "signal": "Hold",
+        "rsi": rsis, "mfi": rsis,  # identical to rsi
+        "stoch_rsi_k": stochs, "stoch_rsi_d": 0.5,
+        "bb_pband": 0.5, "macd_hist": 0.0, "atr_pct": 0.02,
+        "is_bull": True, "vol_spike": False,
+        "rsi_bullish_div": False, "rsi_bearish_div": False,
+        "ma_50": closes, "ma_200": closes,
+        "bb_upper": [c * 1.02 for c in closes], "bb_lower": [c * 0.98 for c in closes],
+    })
+    db.replace_signals(sigs, sym, category, "1d")
+
+
+def test_feature_correlation_matrix_none_below_min_rows(lake):
+    _seed_learnable_symbol("AAA-USD", "crypto", days=250)
+    assert ml_signal.feature_correlation_matrix("crypto") is None
+
+
+def test_feature_correlation_matrix_flags_identical_features(lake):
+    _seed_correlation_symbol("AAA-USD", "crypto", days=900)
+    _seed_correlation_symbol("BBB-USD", "crypto", days=900)
+
+    result = ml_signal.feature_correlation_matrix("crypto", features=["rsi", "mfi", "stoch_rsi_k"])
+    assert result is not None
+    assert result["corr_matrix"].loc["rsi", "mfi"] == pytest.approx(1.0)
+    assert "ret_30d" not in result["target_corr"].index  # target itself excluded from its own corr
+
+    pairs = ml_signal.top_correlated_pairs(result["corr_matrix"], threshold=0.9)
+    pair_names = [{a, b} for a, b, _ in pairs]
+    assert {"rsi", "mfi"} in pair_names
+    assert {"rsi", "stoch_rsi_k"} not in pair_names
+
+    text = ml_signal.format_correlation_report(result, threshold=0.9)
+    assert "rsi" in text and "mfi" in text
+    assert "correlation with forward return" in text
+
+
+def test_top_correlated_pairs_empty_when_nothing_clears_threshold():
+    m = pd.DataFrame({"a": [1.0, 0.1], "b": [0.1, 1.0]}, index=["a", "b"])
+    assert ml_signal.top_correlated_pairs(m, threshold=0.9) == []
+
+
+def test_format_correlation_report_handles_none():
+    assert "No correlation result" in ml_signal.format_correlation_report(None)
+
+
+def test_correlation_all_and_report_handles_missing_data(lake):
+    text = ml_signal.correlation_all_and_report(categories=("crypto",))
+    assert "No correlation result" in text

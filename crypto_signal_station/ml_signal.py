@@ -728,6 +728,80 @@ def exhaustive_all_and_report(categories=("crypto", "stocks"), k=7, max_combos=N
     return "\n".join(lines).rstrip() + "\n"
 
 
+def feature_correlation_matrix(category, timeframe="1d", features=None, label_mode="absolute"):
+    """Pairwise Pearson correlation among candidate features, plus each
+    feature's correlation with the raw forward return. Cheap (no model
+    fitting) and answers two different questions: which features are
+    redundant with *each other* (candidates for pruning before a search —
+    two features with |r| near 1 are mostly the same information twice,
+    which is exactly why the exhaustive search's combinatorics get wasted
+    trying both together) versus which ones actually correlate with the
+    outcome the model is trying to predict (most oscillators barely do —
+    see target_corr below, which is part of why AUC caps out around 0.51
+    everywhere in this module).
+
+    Returns {category, features, n_rows, corr_matrix, target_corr}, or
+    None if there isn't enough data."""
+    features = list(features or FEATURES)
+    data = _build_dataset(category, timeframe, label_mode=label_mode)
+    if data.empty or len(data) < MIN_ROWS_PER_CATEGORY:
+        return None
+
+    ret_col = f"ret_{HORIZON_DAYS}d"
+    corr_matrix = data[features].corr()
+    target_corr = data[features + [ret_col]].corr()[ret_col].drop(ret_col)
+    return {
+        "category": category, "features": features, "n_rows": int(len(data)),
+        "corr_matrix": corr_matrix, "target_corr": target_corr,
+    }
+
+
+def top_correlated_pairs(corr_matrix: pd.DataFrame, threshold=0.6):
+    """Every feature pair with |r| >= threshold, most-correlated first."""
+    cols = list(corr_matrix.columns)
+    pairs = []
+    for i in range(len(cols)):
+        for j in range(i + 1, len(cols)):
+            r = corr_matrix.iloc[i, j]
+            if pd.notna(r) and abs(r) >= threshold:
+                pairs.append((cols[i], cols[j], float(r)))
+    pairs.sort(key=lambda p: abs(p[2]), reverse=True)
+    return pairs
+
+
+def format_correlation_report(result, threshold=0.6, top_n=15) -> str:
+    if not result:
+        return "No correlation result available (not enough data).\n"
+    lines = [f"[{result['category']}] feature correlation (n={result['n_rows']:,} rows)"]
+
+    pairs = top_correlated_pairs(result["corr_matrix"], threshold=threshold)
+    if pairs:
+        lines.append(f"  highly correlated pairs (|r| >= {threshold}) — redundant, not independent signal:")
+        for a, b, r in pairs[:top_n]:
+            lines.append(f"    {a:<20} <-> {b:<20} r={r:+.2f}")
+        if len(pairs) > top_n:
+            lines.append(f"    ... and {len(pairs) - top_n} more")
+    else:
+        lines.append(f"  no pairs with |r| >= {threshold}")
+
+    lines.append("")
+    lines.append("  correlation with forward return (does this feature relate to the actual outcome?):")
+    ordered = result["target_corr"].reindex(result["target_corr"].abs().sort_values(ascending=False).index)
+    for feat, r in ordered.items():
+        lines.append(f"    {feat:<20} r={r:+.3f}")
+    return "\n".join(lines) + "\n"
+
+
+def correlation_all_and_report(categories=("crypto", "stocks"), threshold=0.6,
+                                label_mode="absolute") -> str:
+    lines = [f"ML Signal Model — feature correlation ({label_mode} label) — {pd.Timestamp.now().date()}", ""]
+    for cat in categories:
+        result = feature_correlation_matrix(cat, label_mode=label_mode)
+        lines.append(format_correlation_report(result, threshold=threshold).rstrip())
+        lines.append("")
+    return "\n".join(lines).rstrip() + "\n"
+
+
 def _walk_forward_folds(data: pd.DataFrame, min_train_end_date, n_folds=5):
     """Expanding-window folds after min_train_end_date: fold i trains on
     everything up to a cutoff (starting at min_train_end_date) and tests
