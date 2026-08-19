@@ -172,12 +172,15 @@ def _eval_path(category):
     return db.table_path("ml_signal", f"eval_{category}.json")
 
 
-def _engineer_features(sigs: pd.DataFrame, category: str) -> pd.DataFrame:
+def _engineer_features(sigs: pd.DataFrame, category: str, _ohlcv=None) -> pd.DataFrame:
     """Add every engineered feature column (ma_spread, momentum,
     volatility trend, Bollinger bandwidth, 52w distance, market breadth).
     Several of these need rolling per-symbol history, so this must run on
     the *full* per-symbol series — never on an already-truncated frame
-    (e.g. just the latest row), or the rolling windows come out empty."""
+    (e.g. just the latest row), or the rolling windows come out empty.
+
+    _ohlcv: pre-read OHLCV DataFrame (Date, Close columns) passed through
+    to compute_breadth_timeseries to avoid a redundant disk scan."""
     df = sigs.sort_values(["symbol", "Date"]).copy()
     df["ma_spread"] = df["ma_50"] / df["ma_200"] - 1
     for col in _BOOL_FEATURES:
@@ -198,7 +201,7 @@ def _engineer_features(sigs: pd.DataFrame, category: str) -> pd.DataFrame:
     df["dist_from_52w_high"] = df["Close"] / roll_high - 1
     df["dist_from_52w_low"] = df["Close"] / roll_low - 1
 
-    breadth_ts = cycle_forecast_mod.compute_breadth_timeseries(category)
+    breadth_ts = cycle_forecast_mod.compute_breadth_timeseries(category, _ohlcv=_ohlcv)
     if not breadth_ts.empty:
         df = df.merge(
             breadth_ts[["Date", "pct_above_ma200"]].rename(columns={"pct_above_ma200": "mkt_breadth"}),
@@ -229,11 +232,17 @@ def _build_dataset(category, timeframe="1d", label_mode="absolute") -> pd.DataFr
     sigs = db.scan_signals_lake(category, timeframe, columns=_RAW_COLUMNS)
     if sigs.empty:
         return pd.DataFrame()
+    # Read OHLCV once here; pass it into _engineer_features so compute_breadth_timeseries
+    # can reuse the same data instead of scanning the lake a second time.
+    daily = db.scan_ohlcv_lake(category, columns=["Date", "Close"])
+    if daily.empty:
+        return pd.DataFrame()
+    daily_by_sym = {sym: g.sort_values("Date").reset_index(drop=True) for sym, g in daily.groupby("symbol")}
     # Engineer first so rolling-window features (momentum, ATR change, 52w distance)
     # are computed on the full, untruncated per-symbol series.  Dropping interior
     # NaN rows before this call shifts rolling positions and silently corrupts those
     # features for the bar immediately after a data gap.
-    sigs = _engineer_features(sigs, category)
+    sigs = _engineer_features(sigs, category, _ohlcv=daily)
     # Only dropna on features that actually have data — prevents mkt_breadth (NaN for
     # every row when breadth history is <200d) from wiping the entire dataset.
     available_features = [
@@ -242,11 +251,6 @@ def _build_dataset(category, timeframe="1d", label_mode="absolute") -> pd.DataFr
     sigs = sigs.dropna(subset=available_features)
     if sigs.empty:
         return pd.DataFrame()
-
-    daily = db.scan_ohlcv_lake(category, columns=["Date", "Close"])
-    if daily.empty:
-        return pd.DataFrame()
-    daily_by_sym = {sym: g.sort_values("Date").reset_index(drop=True) for sym, g in daily.groupby("symbol")}
 
     cols = ["Date", "Close", "signal"] + FEATURES
     frames = []
