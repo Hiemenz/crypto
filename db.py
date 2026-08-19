@@ -18,6 +18,7 @@ You can query the whole lake directly, e.g.:
                "hive_partitioning=true) WHERE symbol='BTC-USD'")
 """
 
+import json
 import os
 import duckdb
 import pandas as pd
@@ -328,6 +329,19 @@ def table_path(*parts) -> str:
     """Path of a small auxiliary table inside the data lake, e.g.
     table_path('backtest', 'stats.parquet')."""
     return os.path.join(DATA_DIR, *parts)
+
+
+def load_market_context() -> dict:
+    """Load the market context JSON (Fear & Greed, altcoin season, etc.).
+    Returns an empty dict if the file is absent or malformed."""
+    path = table_path("market", "context.json")
+    if not os.path.exists(path):
+        return {}
+    try:
+        with open(path) as f:
+            return json.load(f)
+    except Exception:
+        return {}
 
 
 def load_table(path: str) -> pd.DataFrame:

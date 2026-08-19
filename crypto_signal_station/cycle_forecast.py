@@ -57,22 +57,33 @@ DIRECTION_FLAT_BAND = 0.005  # +/-0.5%: avg return inside this band reads as "Fl
 def _band_label(pct):
     if pct is None or pd.isna(pct):
         return None
-    for lo, hi, label in BREADTH_BANDS:
-        if lo <= pct < hi:
-            return label
-    return BREADTH_BANDS[-1][2]
+    # Mirror market_cycle.compute_crypto_cycle()'s exact boundary convention
+    # (>= for upper thresholds, <= for lower) so the two modules always agree
+    # on which band a given breadth value belongs to.
+    if pct >= 0.75:
+        return BREADTH_BANDS[4][2]
+    if pct >= 0.60:
+        return BREADTH_BANDS[3][2]
+    if pct <= 0.25:
+        return BREADTH_BANDS[0][2]
+    if pct <= 0.40:
+        return BREADTH_BANDS[1][2]
+    return BREADTH_BANDS[2][2]
 
 
 def _model_path(category):
     return db.table_path("forecast", f"breadth_model_{category}.parquet")
 
 
-def compute_breadth_timeseries(category) -> pd.DataFrame:
+def compute_breadth_timeseries(category, _ohlcv=None) -> pd.DataFrame:
     """Daily pct_above_ma200 / pct_bull reconstructed from the full OHLCV
     history (every symbol's own 200/50-day rolling MA), not the sparse
     breadth.parquet snapshot table. Columns: Date, pct_above_ma200,
-    pct_bull, n_active."""
-    df = db.scan_ohlcv_lake(category, columns=["Date", "Close"])
+    pct_bull, n_active.
+
+    _ohlcv: pre-read OHLCV DataFrame (Date, Close columns) to avoid a
+    redundant disk scan when the caller has already loaded it."""
+    df = _ohlcv if _ohlcv is not None else db.scan_ohlcv_lake(category, columns=["Date", "Close"])
     if df.empty:
         return pd.DataFrame()
     df = df.dropna(subset=["Close"]).sort_values(["symbol", "Date"])
@@ -95,10 +106,12 @@ def compute_breadth_timeseries(category) -> pd.DataFrame:
     return daily
 
 
-def _benchmark_forward_returns(category) -> pd.DataFrame:
+def _benchmark_forward_returns(category, _ohlcv=None) -> pd.DataFrame:
     """Per-date forward return of the category's benchmark at each horizon.
-    Columns: Date, ret_7d, ret_30d, ret_90d."""
-    ohlcv = db.scan_ohlcv_lake(category, columns=["Date", "Close"])
+    Columns: Date, ret_7d, ret_30d, ret_90d.
+
+    _ohlcv: pre-read OHLCV DataFrame to avoid a redundant disk scan."""
+    ohlcv = _ohlcv if _ohlcv is not None else db.scan_ohlcv_lake(category, columns=["Date", "Close"])
     if ohlcv.empty:
         return pd.DataFrame()
     ohlcv = ohlcv.dropna(subset=["Close"]).sort_values(["symbol", "Date"])
@@ -125,8 +138,11 @@ def fit_breadth_model(category) -> pd.DataFrame:
     benchmark's realized forward return at each horizon from that day.
     Persists and returns the resulting lookup table (empty if there isn't
     enough history yet)."""
-    breadth_ts = compute_breadth_timeseries(category)
-    bench = _benchmark_forward_returns(category)
+    ohlcv = db.scan_ohlcv_lake(category, columns=["Date", "Close"])
+    if ohlcv.empty:
+        return pd.DataFrame()
+    breadth_ts = compute_breadth_timeseries(category, _ohlcv=ohlcv)
+    bench = _benchmark_forward_returns(category, _ohlcv=ohlcv)
     if breadth_ts.empty or bench.empty:
         return pd.DataFrame()
 

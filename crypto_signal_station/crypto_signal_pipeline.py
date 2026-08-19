@@ -1350,8 +1350,9 @@ Commands:
   (no command)     render eink image and show it on the display
 
 Flags: --dry-run    print what would be posted instead of posting (tweet/digest)
-       --relative   ml* commands: label by cross-sectional rank (beats the category
-                    median that date) instead of absolute forward-return direction
+       --relative   mlsignal/mlselect/mlcycle/mlexhaustive/mlcorr: label by
+                    cross-sectional rank instead of absolute forward-return direction
+                    (mlwalkforward always uses the persisted model's own label mode)
 """
 
 if __name__ == "__main__":
