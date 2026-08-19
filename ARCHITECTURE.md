@@ -525,6 +525,50 @@ would need to treat a market-wide-feature-driven call as one trading
 decision across all symbols on that date, not N independent ones, when
 computing win rate/profit factor — not yet implemented.
 
+#### A validated edge: stocks, relative label, full feature set
+
+Everything above exists to answer one question honestly, and for stocks
+with `label_mode="relative"` (logistic regression, all 20 features), the
+answer is yes. Walk-forward across 5 expanding-window folds spanning
+2019-2026:
+
+```
+avg return across folds: +5.84% +/- 3.82% (win rate 61%, AUC 0.51, profit factor 2.95)
+100% of folds beat their own baseline (5/5)
+total buy calls: 30,193 across 1,665 distinct dates (~325/fold, ~18/date — not clustered)
+
+fold 1 2019-08-19 - 2020-12-31: +12.29% vs baseline +2.33%, win 79%, n=12393 (325 dates)
+fold 2 2021-01-04 - 2022-05-18: +2.86%  vs baseline +0.96%, win 59%, n=10343 (347 dates)
+fold 3 2022-05-19 - 2023-10-05: +4.16%  vs baseline +0.63%, win 54%, n=3303  (333 dates)
+fold 4 2023-10-06 - 2025-02-25: +3.64%  vs baseline +2.05%, win 55%, n=1423  (324 dates)
+fold 5 2025-02-26 - 2026-07-15: +6.25%  vs baseline +1.66%, win 57%, n=2731  (336 dates)
+```
+
+This is what the other results in this file weren't: every fold beats its
+own baseline (crypto's earlier check managed 1/3), the date spread is
+broad in every fold (no fold anywhere near the `mkt_breadth`-clustering
+problem above), and the standard deviation (3.82%) is smaller than the
+mean (5.84%) rather than dwarfing it. Even the weakest fold (fold 4,
++3.64%) still clearly separates from its baseline (+2.05%). AUC is still
+only ~0.51 — this isn't a strong overall classifier — but the threshold
+selection doesn't need strong overall discrimination, only for its
+highest-confidence calls to be right more than they're wrong, and across
+1,665 dates and 5 independent time periods, they consistently are.
+
+The label change (relative vs. absolute) is what did it: crypto's
+`--relative` run came back flat (avg return +0.0%, profit factor 1.00,
+no edge to validate), and every *absolute*-label result this session —
+crypto and stocks alike — either failed walk-forward or clustered. Only
+stocks + relative held up. This is the persisted stocks model as of this
+run (`fit_and_evaluate("stocks", label_mode="relative")` — the full
+feature set, no search needed).
+
+Caveat worth carrying forward: still a 30-day-forward horizon on daily
+technicals, still logistic regression on 20 features chosen by hand (not
+searched) — `select_features(..., label_mode="relative")` combined with
+walk-forward confirmation is the natural next step, to see whether a
+searched subset beats "just use everything."
+
 ---
 
 ## 6. Download safety
