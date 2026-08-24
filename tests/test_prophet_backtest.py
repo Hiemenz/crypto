@@ -129,3 +129,17 @@ def test_full_report_without_refit(lake):
     assert "Down" in text
     assert "Walk-forward backtest" in text
     assert "30d" in text
+
+
+def test_run_backtest_zero_realized_price_yields_nan_not_crash(lake):
+    """A zero Close in the OHLCV at a realized date (the kind of OHLCV corruption
+    the repo's verify command catches) must not raise ZeroDivisionError.
+    abs_pct_error for that fold/horizon becomes NaN; other folds are unaffected."""
+    days = 900
+    closes = [100.0 * (1.001 ** i) for i in range(days)]
+    closes[600] = 0.0  # corrupt one future close
+    ohlcv = _daily_ending_now(days, closes)
+    db.replace_ohlcv(ohlcv, "BTC-USD", "crypto")
+
+    # Reaching here without ZeroDivisionError is the whole point of this test.
+    pb.run_backtest(n_folds=3, progress=lambda *a: None, _fit_fn=_perfect_stub(ohlcv))
