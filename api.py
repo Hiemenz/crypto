@@ -9,7 +9,7 @@ price_alerts section of cryptos.yml so the app can manage the pipeline's
 existing server-side price-alert-to-ntfy feature.
 
 Run:
-    poetry run uvicorn api:app --reload --port 8000
+    uv run uvicorn api:app --reload --port 8000
 """
 
 import sys

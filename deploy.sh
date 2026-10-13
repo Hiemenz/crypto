@@ -15,7 +15,7 @@ echo "🚀 Starting Deployment..."
 
 # 1. Generate Site
 echo "Generating static site..."
-poetry run python generate_site.py
+uv run python generate_site.py
 
 # 2. Sync Content (Efficiently)
 echo "Syncing content to destination..."

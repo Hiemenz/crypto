@@ -36,7 +36,7 @@ crypto_signal_pipeline.py refresh  ──  nightly cron (21:30 America/Chicago)
 ## Commands
 
 ```bash
-poetry run python crypto_signal_station/crypto_signal_pipeline.py <command>
+uv run python crypto_signal_station/crypto_signal_pipeline.py <command>
 ```
 
 | Command | What it does |
@@ -197,9 +197,9 @@ pipeline failures always alert at high priority.
 ## Setup
 
 ```bash
-poetry install                  # add --extras eink on a Pi for the display drivers
+uv sync                  # add --extras eink on a Pi for the display drivers
 cp crypto_signal_station/cryptos.example.yml crypto_signal_station/cryptos.yml
-poetry run python crypto_signal_station/crypto_signal_pipeline.py refresh   # first run backfills full history
+uv run python crypto_signal_station/crypto_signal_pipeline.py refresh   # first run backfills full history
 ```
 
 Cron (the nightly refresh; add the Sunday digest if you want weekly posts):
@@ -225,7 +225,7 @@ credentials go in a gitignored `.env` at the repo root; see
 ## Tests
 
 ```bash
-poetry run pytest tests/
+uv run pytest tests/
 ```
 
 The `lake` fixture points the Parquet store at a temp directory, so tests

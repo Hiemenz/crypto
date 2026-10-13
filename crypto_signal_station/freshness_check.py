@@ -4,8 +4,8 @@ Run after the nightly pipeline (see daily_update.sh). Exits 0 always so a
 stale-data alert never blocks the rest of the update script.
 
 Usage:
-    poetry run python crypto_signal_station/freshness_check.py
-    poetry run python crypto_signal_station/freshness_check.py --max-age-hours 48
+    uv run python crypto_signal_station/freshness_check.py
+    uv run python crypto_signal_station/freshness_check.py --max-age-hours 48
 """
 
 import argparse
