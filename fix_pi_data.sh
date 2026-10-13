@@ -17,14 +17,14 @@ echo "🗑️  Deleting crypto OHLCV (Parquet lake; see db.py for the layout)...
 rm -rf data/ohlcv/category=crypto/*
 
 echo "📊 Re-fetching crypto data (this may take a while)..."
-poetry run python crypto_signal_station/crypto_signal_pipeline.py refresh
+uv run python crypto_signal_station/crypto_signal_pipeline.py refresh
 
 echo "📝 Regenerating and uploading JSON..."
-poetry run python generate_api_data.py
+uv run python generate_api_data.py
 
 # verify exits non-zero when it finds problems; report them without aborting
 echo "🔎 Verifying..."
-poetry run python crypto_signal_station/crypto_signal_pipeline.py verify || \
+uv run python crypto_signal_station/crypto_signal_pipeline.py verify || \
     echo "⚠️  verify reported issues — see above."
 
 # Generated JSON is *not* committed — it ships to Supabase Storage from

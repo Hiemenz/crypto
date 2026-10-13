@@ -434,7 +434,7 @@ def _backtest_section(stats):
     if stats.empty:
         return (
             "<h2>Signal backtest</h2><div class='card'><p class='empty'>"
-            "No backtest yet — run: poetry run python crypto_signal_station/crypto_signal_pipeline.py backtest"
+            "No backtest yet — run: uv run python crypto_signal_station/crypto_signal_pipeline.py backtest"
             "</p></div>"
         )
     rows = []

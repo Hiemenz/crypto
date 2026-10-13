@@ -8,7 +8,7 @@ static `docs/` site.
 
 1. Start the backend from the repo root:
    ```
-   poetry run uvicorn api:app --reload --port 8000
+   uv run uvicorn api:app --reload --port 8000
    ```
 2. Run the app:
    ```

@@ -8,8 +8,8 @@ Storage: data/forecasts/{category}/{timeframe}/{symbol}.parquet
 Columns : ds (date), yhat (float), yhat_lower (float), yhat_upper (float)
 
 Usage:
-    poetry run python crypto_signal_station/prophet_forecast.py
-    poetry run python crypto_signal_station/prophet_forecast.py --symbol BTC-USD --category crypto
+    uv run python crypto_signal_station/prophet_forecast.py
+    uv run python crypto_signal_station/prophet_forecast.py --symbol BTC-USD --category crypto
 """
 
 import argparse

@@ -9,7 +9,7 @@ pipeline recomputes them (with the current indicator set) on its next run.
 Only plain "<SYMBOL>.csv" files are read; "<SYMBOL>_with_signals.csv" is skipped.
 All CSVs present are crypto symbols.
 
-Run once:  poetry run python migrate_csv_to_parquet.py
+Run once:  uv run python migrate_csv_to_parquet.py
 """
 
 import glob

@@ -20,7 +20,7 @@ stocks (no single index is stored in the OHLCV lake).
 
 Storage: data/forecast/breadth_model_<category>.parquet
 Usage:
-    poetry run python crypto_signal_station/crypto_signal_pipeline.py forecast
+    uv run python crypto_signal_station/crypto_signal_pipeline.py forecast
 """
 
 import os

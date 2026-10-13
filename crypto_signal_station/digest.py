@@ -5,7 +5,7 @@
 through the existing send_toot/send_tweet, guarded by --dry-run.
 
 Suggested cron (Sunday evening, after the nightly refresh):
-    0 22 * * 0  cd /home/pi/git/crypto && poetry run python \
+    0 22 * * 0  cd /home/pi/git/crypto && uv run python \
         crypto_signal_station/crypto_signal_pipeline.py digest post
 """
 

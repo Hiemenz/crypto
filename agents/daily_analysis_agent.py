@@ -4,8 +4,8 @@ Daily Analysis Agent
 Reads today's report + watch/cross feeds → sends to Claude → saves AI analysis.
 
 Usage:
-    ANTHROPIC_API_KEY=... poetry run python agents/daily_analysis_agent.py
-    ANTHROPIC_API_KEY=... poetry run python agents/daily_analysis_agent.py --date 2025-12-01
+    ANTHROPIC_API_KEY=... uv run python agents/daily_analysis_agent.py
+    ANTHROPIC_API_KEY=... uv run python agents/daily_analysis_agent.py --date 2025-12-01
 """
 
 import os

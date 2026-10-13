@@ -56,16 +56,16 @@ between 19:00 and midnight is wide.
 Three things bite people scheduling this for the first time.
 
 **a. You must run from the repo root.** `generate_api_data.py` writes its output
-to `frontend/public/data/` (a relative path), and Poetry needs `pyproject.toml`
+to `frontend/public/data/` (a relative path), and uv needs `pyproject.toml`
 in the current directory. `daily_update.sh` already does `cd "$(dirname "$0")"`;
 if you invoke Python directly from cron, `cd` yourself first.
 
-**b. Cron's `PATH` is minimal** (`/usr/bin:/bin`), and Poetry lives in
+**b. Cron's `PATH` is minimal** (`/usr/bin:/bin`), and uv lives in
 `~/.local/bin`. `daily_update.sh` exports the right `PATH` at the top. If you
 schedule anything else, use the absolute path:
 
 ```bash
-/home/pi/.local/bin/poetry run python crypto_signal_station/crypto_signal_pipeline.py refresh
+/home/pi/.local/bin/uv run python crypto_signal_station/crypto_signal_pipeline.py refresh
 ```
 
 **c. Secrets.** Two separate places:
@@ -127,13 +127,13 @@ crontab -e
 30 21 * * *  /usr/bin/flock -n /tmp/crypto-refresh.lock /home/pi/git/crypto/daily_update.sh >> /home/pi/logs/crypto-refresh.log 2>&1
 
 # Weekly digest to Mastodon/X, Sunday 22:30 (after the refresh has landed).
-30 22 * * 0  cd /home/pi/git/crypto && /home/pi/.local/bin/poetry run python crypto_signal_station/crypto_signal_pipeline.py digest post >> /home/pi/logs/crypto-digest.log 2>&1
+30 22 * * 0  cd /home/pi/git/crypto && /home/pi/.local/bin/uv run python crypto_signal_station/crypto_signal_pipeline.py digest post >> /home/pi/logs/crypto-digest.log 2>&1
 
 # Weekly integrity audit, Saturday 08:00. Exits non-zero when it finds problems.
-0 8 * * 6    cd /home/pi/git/crypto && /home/pi/.local/bin/poetry run python crypto_signal_station/crypto_signal_pipeline.py verify >> /home/pi/logs/crypto-verify.log 2>&1
+0 8 * * 6    cd /home/pi/git/crypto && /home/pi/.local/bin/uv run python crypto_signal_station/crypto_signal_pipeline.py verify >> /home/pi/logs/crypto-verify.log 2>&1
 
 # Weekly backtest rebuild, Saturday 09:00 (slow; feeds the dashboard scoreboard).
-0 9 * * 6    cd /home/pi/git/crypto && /home/pi/.local/bin/poetry run python crypto_signal_station/crypto_signal_pipeline.py backtest >> /home/pi/logs/crypto-backtest.log 2>&1
+0 9 * * 6    cd /home/pi/git/crypto && /home/pi/.local/bin/uv run python crypto_signal_station/crypto_signal_pipeline.py backtest >> /home/pi/logs/crypto-backtest.log 2>&1
 ```
 
 ```bash
@@ -221,7 +221,7 @@ Then subscribe to that topic in the ntfy app. Test it end to end:
 
 ```bash
 cd /home/pi/git/crypto
-poetry run python -c "import sys; sys.path.insert(0,'crypto_signal_station'); \
+uv run python -c "import sys; sys.path.insert(0,'crypto_signal_station'); \
   import notify; notify.notify_failure('scheduling test', 'if you see this, alerts work')"
 ```
 
@@ -272,7 +272,7 @@ ls -la data/ohlcv data/signals data/breadth data/momentum data/sectors \
 find data/ohlcv -name data.parquet | wc -l
 
 # Newest stored bar per category, plus gaps/staleness/contamination.
-poetry run python crypto_signal_station/crypto_signal_pipeline.py verify
+uv run python crypto_signal_station/crypto_signal_pipeline.py verify
 
 # What the frontend will actually serve.
 python -c "import json;d=json.load(open('frontend/public/data/latest_signals.json'));\
@@ -292,7 +292,7 @@ python -m http.server -d data/dashboard 8080
 | Symptom | Cause | Fix |
 |---|---|---|
 | `FileNotFoundError: crypto_signal_station/cryptos.yml` | job ran from the wrong directory | `cd` to the repo root in the cron line |
-| `poetry: command not found` | cron's minimal `PATH` | use `/home/pi/.local/bin/poetry`, or keep the `export PATH` line in `daily_update.sh` |
+| `uv: command not found` | cron's minimal `PATH` | use `/home/pi/.local/bin/uv`, or keep the `export PATH` line in `daily_update.sh` |
 | Nothing runs at all | cron daemon not active | `systemctl status cron` |
 | Two runs tripping over each other, corrupt Parquet | no overlap guard | add `flock -n`, or switch to a systemd timer |
 | `SUPABASE_URL / SUPABASE_SERVICE_KEY not set — skipping upload` | `.env` absent or unreadable by the cron user | create it, `chmod 600`, confirm `daily_update.sh` sources it |
@@ -313,10 +313,10 @@ A defensive wrapper for the cron line, if you want a hard ceiling:
 
 The pipeline has no hard Pi dependency: the E Ink display path is skipped off
 ARM (`is_raspberry_pi()`), and the display drivers are an optional extra, so
-`poetry install` works anywhere. On the Pi itself, install them with:
+`uv sync` works anywhere. On the Pi itself, install them with:
 
 ```bash
-poetry install --extras eink
+uv sync --extra eink
 ```
 
 The one thing to solve elsewhere is persisting `data/` between runs — it is the

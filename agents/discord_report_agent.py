@@ -4,8 +4,8 @@ Discord Report Agent
 Generates a Discord-ready (<1900 char) market summary using Claude.
 
 Usage:
-    ANTHROPIC_API_KEY=... poetry run python agents/discord_report_agent.py
-    ANTHROPIC_API_KEY=... poetry run python agents/discord_report_agent.py --date 2025-12-01
+    ANTHROPIC_API_KEY=... uv run python agents/discord_report_agent.py
+    ANTHROPIC_API_KEY=... uv run python agents/discord_report_agent.py --date 2025-12-01
 """
 
 import os

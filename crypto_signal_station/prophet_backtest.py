@@ -22,7 +22,7 @@ Storage:
     data/backtest/prophet_<category>_events.parquet  one row per fold/horizon
     data/backtest/prophet_<category>_stats.parquet    aggregated per horizon
 Usage:
-    poetry run python crypto_signal_station/crypto_signal_pipeline.py prophet
+    uv run python crypto_signal_station/crypto_signal_pipeline.py prophet
 """
 
 import os

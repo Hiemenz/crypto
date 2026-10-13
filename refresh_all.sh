@@ -11,7 +11,7 @@ echo "🚀 Starting Master Refresh..."
 echo "----------------------------------------"
 echo "📦 Step 1: Updating Data..."
 echo "----------------------------------------"
-poetry run python crypto_signal_station/crypto_signal_pipeline.py refresh
+uv run python crypto_signal_station/crypto_signal_pipeline.py refresh
 if [ $? -ne 0 ]; then
     echo "❌ Data update failed!"
     exit 1
@@ -22,7 +22,7 @@ echo "----------------------------------------"
 echo "📝 Step 2: Generating Reports..."
 echo "----------------------------------------"
 # Backfill 5 days to ensure recent history is correct and consistent
-poetry run python crypto_signal_station/daily_report.py --backfill --days 5
+uv run python crypto_signal_station/daily_report.py --backfill --days 5
 if [ $? -ne 0 ]; then
     echo "❌ Report generation failed!"
     exit 1
@@ -34,10 +34,10 @@ echo "🚀 Step 2.5: Generating Feeds (Parallel)..."
 echo "----------------------------------------"
 
 # Run in background
-poetry run python cross_feed.py &
+uv run python cross_feed.py &
 PID_CROSS=$!
 
-poetry run python watch_feed.py &
+uv run python watch_feed.py &
 PID_WATCH=$!
 
 

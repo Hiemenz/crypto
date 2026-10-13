@@ -5,7 +5,7 @@ Scans for Excellent-tier signals across all assets and timeframes,
 then generates Claude commentary on each one.
 
 Usage:
-    ANTHROPIC_API_KEY=... poetry run python agents/signal_monitor_agent.py
+    ANTHROPIC_API_KEY=... uv run python agents/signal_monitor_agent.py
 """
 
 import os
