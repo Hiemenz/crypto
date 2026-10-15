@@ -27,10 +27,10 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-# E Ink display drivers. Optional so the pipeline installs on a laptop, a VPS,
+# E Ink display driver (shared, from hiemenz-utils). Optional so the pipeline installs on a laptop, a VPS,
 # or CI; display.py is only imported when is_raspberry_pi() is true.
 # Install on the Pi with: uv sync --extra eink
-eink = ["spidev>=3.8,<4", "rpi-gpio>=0.7.1,<0.8"]
+eink = ["hiemenz-utils[eink] @ git+https://github.com/Hiemenz/hiemenz-utils.git"]
 
 [dependency-groups]
 dev = ["pytest>=9.1.1,<10"]
