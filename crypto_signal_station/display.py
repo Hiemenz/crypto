@@ -2,8 +2,7 @@ import os
 import json
 import time
 import sys
-sys.path.append('lib')  # Ensure the library path is correct
-from waveshare_epd import epd7in5_V2, epd7in3f  # Adjust the import based on your specific model
+from hiemenz_utils.eink.waveshare import epd7in5_V2, epd7in3f  # shared driver (hiemenz-utils[eink])
 from PIL import Image
 
 starting_image = 0
