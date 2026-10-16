@@ -1266,6 +1266,47 @@ def _count_signals(buy_summary_text: str, sell_summary_text: str):
         return len({line.strip() for line in block.splitlines() if line.startswith("  ")})
     return _count_items(buy_summary_text), _count_items(sell_summary_text)
 
+def _deliver_results(crypto_tweet, stocks_tweet, crypto_buy, crypto_sell, stock_buy, stock_sell, prices_str):
+    """Send the daily results to every destination, each isolated so one failure can't block the rest.
+
+    Slack goes first (retried inside post_slack). Anything that still fails is reported to the
+    error channel and the process exits non-zero, so a delivery failure is never silent.
+    """
+    import traceback
+    from slack_report import build_report
+    date_label = pd.Timestamp.now("UTC").strftime("%a %b %d")
+
+    def to_slack():
+        text, blocks = build_report(date_label, crypto_buy, crypto_sell, stock_buy, stock_sell, prices_str,
+                                    breadth_mod.latest_breadth_line("stocks"))
+        return notify.post_slack(notify._load_config(), text, blocks)
+
+    failures = []
+    for name, send in (
+        ("slack", to_slack),
+        ("x-crypto", lambda: send_tweet(crypto_tweet)),
+        ("x-stocks", lambda: send_tweet(stocks_tweet)),
+    ):
+        try:
+            ok = send()
+        except Exception:
+            print(f"Delivery to {name} raised:\n{traceback.format_exc()}")
+            failures.append(f"{name}: {traceback.format_exc().strip().splitlines()[-1]}")
+            continue
+        if ok is False and name != "slack":  # Slack returns False only when unconfigured
+            failures.append(f"{name}: post rejected (see log)")
+        elif ok is False:
+            print("Slack not configured (slack_channel_id / token) - skipped")
+    if failures:
+        detail = "Not delivered:\n" + "\n".join(failures)
+        print(detail)
+        try:
+            notify.notify_failure("tweet delivery", detail)
+        except Exception as e:
+            print(f"Could not send failure notice: {e}")
+        sys.exit(1)
+
+
 def _price_alert_state_path():
     return db.table_path("notify", "price_alert_state.json")
 
@@ -1485,5 +1526,5 @@ if __name__ == "__main__":
                 print("---")
                 print(stocks_tweet)
             else:
-                send_tweet(crypto_tweet)
-                send_tweet(stocks_tweet)
+                _deliver_results(crypto_tweet, stocks_tweet, crypto_buy_summary, crypto_sell_summary,
+                                 stock_buy_summary, stock_sell_summary, crypto_prices_str)
