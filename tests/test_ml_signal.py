@@ -700,3 +700,71 @@ def test_format_correlation_report_handles_none():
 def test_correlation_all_and_report_handles_missing_data(lake):
     text = ml_signal.correlation_all_and_report(categories=("crypto",))
     assert "No correlation result" in text
+
+
+# ── Tests covering bugs fixed in the 2026-08 code review ──────────────────────
+
+def test_build_dataset_engineers_on_full_series_before_dropna(lake, monkeypatch):
+    """_engineer_features must receive every row — including those with NaN in a
+    raw indicator column — so rolling windows span the full, untruncated
+    per-symbol series.  Before the fix, _build_dataset called dropna first,
+    silently corrupting mom_5d / dist_from_52w_* for bars after the gap."""
+    _seed_learnable_symbol("AAA-USD", "crypto", days=400)
+
+    # Inject one interior NaN into rsi.  The old early dropna would remove this
+    # row, shifting rolling positions for every subsequent bar.
+    sigs = db.scan_signals_lake("crypto", "1d", columns=ml_signal._RAW_COLUMNS)
+    sigs_with_gap = sigs.copy()
+    sigs_with_gap.iloc[len(sigs) // 2, sigs_with_gap.columns.get_loc("rsi")] = float("nan")
+    db.replace_signals(sigs_with_gap, "AAA-USD", "crypto", "1d")
+
+    seen_lengths = []
+    original = ml_signal._engineer_features
+    def capture(df, *args, **kwargs):
+        seen_lengths.append(len(df))
+        return original(df, *args, **kwargs)
+    monkeypatch.setattr(ml_signal, "_engineer_features", capture)
+
+    ml_signal._build_dataset("crypto")
+
+    assert seen_lengths, "_engineer_features was never called"
+    # The full series — NaN row and all — must reach _engineer_features.
+    # If _build_dataset had called dropna first this would be len(sigs) - 1.
+    assert seen_lengths[0] == len(sigs)
+
+
+def test_build_dataset_mkt_breadth_all_nan_excluded_from_dropna(lake, monkeypatch):
+    """When compute_breadth_timeseries returns empty (OHLCV history under 200
+    days), mkt_breadth is NaN for every row.  The old dropna(subset=ALL_FEATURES)
+    wiped the entire dataset; the fix scopes dropna to features that actually
+    have data, so the dataset survives despite all-NaN mkt_breadth."""
+    import cycle_forecast as cycle_forecast_mod
+    monkeypatch.setattr(
+        cycle_forecast_mod, "compute_breadth_timeseries",
+        lambda *a, **kw: pd.DataFrame(),
+    )
+
+    _seed_learnable_symbol("AAA-USD", "crypto", days=400)
+    data = ml_signal._build_dataset("crypto")
+
+    assert not data.empty
+    assert data["mkt_breadth"].isna().all()
+
+
+def test_predict_latest_scores_symbol_with_nan_in_unused_column(lake):
+    """A symbol with NaN in a column the persisted model doesn't use must still
+    appear in predict_latest() output.  Before the fix, the early
+    dropna(subset=[all_raw_cols]) silently excluded it."""
+    _seed_learnable_symbol("AAA-USD", "crypto", days=900)
+    ml_signal.fit_and_evaluate("crypto", features=["rsi"])
+
+    # Seed a second symbol whose bb_upper/bb_lower are NaN — columns a rsi-only
+    # model doesn't need — to prove they no longer gate scoring.
+    _, sigs = _seed_learnable_symbol("BBB-USD", "crypto", days=900)
+    sigs = sigs.copy()
+    sigs["bb_upper"] = float("nan")
+    sigs["bb_lower"] = float("nan")
+    db.replace_signals(sigs, "BBB-USD", "crypto", "1d")
+
+    preds = ml_signal.predict_latest("crypto")
+    assert "BBB-USD" in preds["symbol"].values
