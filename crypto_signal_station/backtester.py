@@ -3,8 +3,8 @@
 Backtesting module for Crypto Signal Station.
 
 Usage:
-    poetry run python crypto_signal_station/backtester.py BTC-USD 1d
-    poetry run python crypto_signal_station/backtester.py ETH-USD 1wk
+    uv run python crypto_signal_station/backtester.py BTC-USD 1d
+    uv run python crypto_signal_station/backtester.py ETH-USD 1wk
 """
 
 import os

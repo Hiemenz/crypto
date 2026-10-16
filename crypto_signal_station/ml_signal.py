@@ -81,10 +81,10 @@ whether the wins are bigger than the losses.
 Storage: data/ml_signal/model_<category>.joblib  (fitted model + scaler)
          data/ml_signal/eval_<category>.json      (out-of-sample scorecard)
 Usage:
-    poetry run python crypto_signal_station/crypto_signal_pipeline.py mlsignal       # full feature set, logistic regression
-    poetry run python crypto_signal_station/crypto_signal_pipeline.py mlselect       # algorithmic feature selection
-    poetry run python crypto_signal_station/crypto_signal_pipeline.py mlcycle        # + cycles through 3 methods
-    poetry run python crypto_signal_station/crypto_signal_pipeline.py mlwalkforward  # validate the persisted model across time
+    uv run python crypto_signal_station/crypto_signal_pipeline.py mlsignal       # full feature set, logistic regression
+    uv run python crypto_signal_station/crypto_signal_pipeline.py mlselect       # algorithmic feature selection
+    uv run python crypto_signal_station/crypto_signal_pipeline.py mlcycle        # + cycles through 3 methods
+    uv run python crypto_signal_station/crypto_signal_pipeline.py mlwalkforward  # validate the persisted model across time
 """
 
 import itertools

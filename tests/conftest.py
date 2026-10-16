@@ -11,7 +11,7 @@ sys.path.insert(0, REPO_ROOT)
 sys.path.insert(0, os.path.join(REPO_ROOT, "crypto_signal_station"))
 # generate_api_data.py writes OUTPUT_DIR = "frontend/public/data" (relative),
 # so tests that exercise it monkeypatch OUTPUT_DIR; everything else needs cwd
-# at the repo root so Poetry-discovered imports resolve correctly.
+# at the repo root so uv-discovered imports resolve correctly.
 os.chdir(REPO_ROOT)
 
 import db  # noqa: E402
