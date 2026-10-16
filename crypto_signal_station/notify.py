@@ -18,6 +18,7 @@ import hashlib
 import json
 import os
 import sys
+import time
 
 import requests
 import yaml
@@ -82,6 +83,61 @@ def _send_discord(cfg, title, message):
     return True
 
 
+def _slack_token(cfg):
+    """SLACK_BOT_TOKEN env, else cfg slack_bot_token, else SLACK_BOT_TOKEN in cfg slack_env_file."""
+    tok = os.environ.get("SLACK_BOT_TOKEN") or (cfg.get("slack_bot_token") or "").strip()
+    if tok:
+        return tok
+    try:
+        with open(os.path.expanduser(cfg.get("slack_env_file") or "")) as f:
+            for line in f:
+                if line.startswith("SLACK_BOT_TOKEN="):
+                    return line.split("=", 1)[1].strip().strip("\"'")
+    except OSError:
+        pass
+    return ""
+
+
+def post_slack(cfg, text, blocks=None, attempts=3):
+    """Post to cfg slack_channel_id, retrying transient errors. Returns True only if Slack said ok.
+
+    Returns False when Slack is unconfigured; raises RuntimeError once the retries are exhausted
+    so callers can't mistake a failed delivery for a sent one.
+    """
+    channel = str(cfg.get("slack_channel_id") or "").strip()
+    token = _slack_token(cfg)
+    if not channel or not token:
+        return False
+    payload = {"channel": channel, "text": text, "unfurl_links": False}
+    if blocks:
+        payload["blocks"] = blocks
+    err = "unknown"
+    for attempt in range(attempts):
+        try:
+            resp = requests.post(
+                "https://slack.com/api/chat.postMessage",
+                json=payload,
+                headers={"Authorization": f"Bearer {token}"},
+                timeout=30,
+            )
+            if resp.status_code == 429:
+                err = "rate_limited"
+                time.sleep(min(int(resp.headers.get("Retry-After", 2)), 30))
+                continue
+            resp.raise_for_status()
+            data = resp.json()
+            if data.get("ok"):
+                return True
+            err = data.get("error", "unknown")
+            if err in ("invalid_auth", "not_authed", "token_revoked", "channel_not_found", "not_in_channel",
+                       "is_archived", "missing_scope", "account_inactive"):
+                break  # permanent: retrying won't help
+        except requests.RequestException as e:
+            err = str(e)
+        time.sleep(2 ** attempt)
+    raise RuntimeError(f"Slack post failed: {err}")
+
+
 def send_notification(title, message, priority="default", config=None):
     """Send to every configured channel; True if at least one accepted it.
 
@@ -94,6 +150,7 @@ def send_notification(title, message, priority="default", config=None):
         ("ntfy", lambda: _send_ntfy(cfg, title, message, priority)),
         ("telegram", lambda: _send_telegram(cfg, title, message)),
         ("discord", lambda: _send_discord(cfg, title, message)),
+        ("slack", lambda: post_slack(cfg, f"*{title}*\n{message}")),
     ):
         try:
             if fn():

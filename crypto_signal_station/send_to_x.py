@@ -36,12 +36,13 @@ def post_tweet(api_key, api_key_secret, access_token, access_token_secret, tweet
     if response.status_code == 201:
         print("Tweet posted successfully!")
         print(f"Tweet ID: {response.json().get('data', {}).get('id')}")
-    else:
-        print(f"Failed to post tweet: {response.status_code}")
-        print(response.json())
+        return True
+    print(f"Failed to post tweet: {response.status_code}")
+    print(response.json())
+    return False
 
 def send_tweet(tweet_text):
     credentials = load_twitter_auth(CONFIG_PATH)
 
-    post_tweet(credentials['api_key'], credentials['api_key_secret'], credentials['access_token'], credentials['access_token_secret'], tweet_text)
+    return post_tweet(credentials['api_key'], credentials['api_key_secret'], credentials['access_token'], credentials['access_token_secret'], tweet_text)
 
